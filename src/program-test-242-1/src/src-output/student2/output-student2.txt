@@ -1,0 +1,33 @@
+.\.\src\src-output\student2\242-1-test1-student2.java:4: error: reached end of file while parsing
+ {
+  ^
+1 error
+.\.\src\src-output\student2\ArraySearcher.java:12: error: ')' expected
+	 System.out.println (" ";)
+	                        ^
+.\.\src\src-output\student2\ArraySearcher.java:12: error: illegal start of expression
+	 System.out.println (" ";)
+	                         ^
+.\.\src\src-output\student2\ArraySearcher.java:21: error: illegal start of expression
+		 if (a[i]==)
+		           ^
+.\.\src\src-output\student2\ArraySearcher.java:22: error: ';' expected
+			 a[i]--
+			       ^
+.\.\src\src-output\student2\ArraySearcher.java:24: error: reached end of file while parsing
+ }
+  ^
+5 errors
+.\.\src\src-output\student2\Factorial.java:9: error: ';' expected
+		 factorial= n*(n++)
+		                   ^
+1 error
+.\.\src\src-output\student2\TestProgram.java:23: error: class, interface, or enum expected
+	*/ 2. 
+	   ^
+1 error
+Error: Could not find or load main class Factorial
+Error: Could not find or load main class Factorial
+Error: Could not find or load main class ArraySearcher
+Error: Could not find or load main class ArraySearcher
+Error: Could not find or load main class TestProgram

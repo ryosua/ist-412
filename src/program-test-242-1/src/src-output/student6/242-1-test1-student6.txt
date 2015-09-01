@@ -1,0 +1,36 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Part  1a\
+\
+1. The function of the path and class path environmental variables is to be accessible by all paths for a test program \
+\
+2. The statement is not valid because you are taking the double syntax and setting it equal to the value of 1, it should be set to 1.0 or a non whole number.\
+\
+3. The statement is not valid because a int value needs to be a whole number and it is set to 1.0.\
+\
+4. The value of b would be false \
+\
+5. if replaced the value of b would be true\
+\
+6. long should be used on a 64 bit output\
+\
+7.The result would be a double because the double type is dominant.\
+\
+8. A while loop should be used when evaluating multiple statements.\
+\
+Part 1b\
+\
+9. The program consist of a public class called Demo,  The first output for the first parameters would output be x1 add the value by 1, x2 would add by 2, x3 become array of zero.\
+\
+The second output would have the variable x increment by x.\
+\
+The third output would would have x decrement by x\
+\
+The fourth output would have the array be set equal to zero.\
+\
+\
+}

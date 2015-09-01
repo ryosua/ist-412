@@ -1,0 +1,52 @@
+1. The finction PATH and CLASSPATH environmental variables are route to the location where the file is saved. This path is how terminal finds the file where it is said to be located.
+
+2. Yes, the statement double x = 1; is valid because Java automatically casts an Integer to a Double because there is no loss of precision.
+
+3. No, the statement int a = 1.0 is not valid because because there is a loss of precision. Since 1.0 is a double, the number must be casted as an integer to be valid. This means that there must be: int a = (int)1.0; to become a valid statement.
+
+4. false; 1
+
+5. false; 1
+
+6. A long should be used instead of an int variable when the variable is longer than the alloted size of the int. A long can hold more space than an integer. An integer can only hold 16 bits where as a long can hold more data.
+
+7. It prints out "Loss of Percision". This is because the double variable must change to an integer to be able to be added with an integer. That means that the decimals are lost form the double.
+
+8. A while or do-while loop should be used in place of a for loop when there is not a specific amount of times that the loop has to run. A for loop only runs a specific number of times to which it is told, where as a while or do-while loop can run once or fifteen times.
+
+9.
+
+public class Demo
+{
+ public static void main(String [] args)
+ {
+ int x1 = 1;
+ int x2 = 2;
+ int [] x3 = {3, 3};
+ x1 = increment(x1);
+ System.out.println("In main: x1 = " + x1);  //outputs the int x1 after it has been returned by the method increment(). The printout is: In main: x1 = 2
+ decrement(x2);
+ System.out.println("In main: x2 = " + x2);  //outputs the int variable x2 that was declared in the main mehtod. The printout is: In main:x2 = 2
+ zeroOutArray(x3);
+ System.out.println("In main: x3[0], x3[1] = " + x3[0] + ", " + x3[1]); //outputs the array values from zeroOutArray. The printout is: In main: x3[0], x3[1] = 0, 0
+ }
+ 
+ public static int increment(int x)
+ {
+ x++;
+ System.out.println("In increment: x = " + x);
+ }
+ 
+ public static void decrement(int x)
+ {
+ x--;
+ System.out.println("In decrement: x = " + x);
+ }
+ 
+ public static void zeroOutArray(int [] x)
+ {
+ x[0] = 0;
+ x[1] = 0;
+ System.out.println("In zeroOutArray: x[0], x[1] = " + x[0] + ", " + x[1]);
+ }
+}

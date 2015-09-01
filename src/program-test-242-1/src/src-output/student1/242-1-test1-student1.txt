@@ -1,0 +1,38 @@
+Part 1A - student1
+------------------
+1. Environmental variables are used by the Windows OS so that it knows where to find very general programs which should be accessible anywhre on the system (such as calc.exe, and in this case JAVA). Assuming the system variables are set correctly you can access JAVA as well as any other programs in the System32 directory with shorthand in the command prompt. The PATH variable is the path to the working directory, including the JAVA source code. The Class Path is the directory in which the compiled JAVA source (the class files) will be generated in. Having both of these is important to compile and run the JAVA code.
+
+2. Yes the statement is valid. All syntax is correct and there is no loss of precision storing an int into a double.
+
+3. No the statement is not valid. While the syntax is correct you cannot put a double/float into an int, this will trigger a "loss of precision" error.
+
+4. Starting with the left hand side (left of the OR || operator)... b would be assigned a value of true, as X is equal to 1 so essentially it is 1 == 1 which is true and that true result gets assigned to boolean b. On the right side starting innermost, y = x + 1 which evaluates to y = 2, 2 != 1 so the right side evaluates to false. Going to the overal picture you have the left side true and the right side false. This results in a true || false which true is the dominant outcome so the whole statement evaulates to true. After execution Y is equal to 2.
+
+5. Unless there is another way of writing the or operator which I am not aware of, writing it that way will result in a syntax error and failure to compile.
+
+6. Anytime you have a number larger than the int limit (roughly -2.14 billion to +2.14 billion)
+
+7. it will result in the double, this is tone to retain the precision of the larger datatype.
+
+8. In my experience they both are pretty much the same thing, only difference being the order in which the condition is checked. While the condition is checked before the body is run, Do While the body is run first and then the condition is checked. I suppose if you need something to run once initially use a do while, else use a while.
+
+x1 = 2
+x2 = 1
+
+Part 1B - student1
+--------------------
+9. Output Statements --->>>
+In increment: x = 2
+In main: x1 = 2
+
+*Explanation --> x1 is incremented in main because the increment method returns the updated result and re-assigns it to the main variable
+
+In decrement: x = 1
+In main: x2 = 2
+
+*Explanation --> x2 is not decremented in main because the decrement method does not return a value, and main is not assigned to the return if there was one.
+
+In zeroOutArray: x[0], x[1] = 0, 0
+In main: x3[0], x3[1] = 0, 0
+
+*Explanation --> even without the assignment in main and the return in the method the updated array values will be reflected in main because JAVA passes arrays via reference

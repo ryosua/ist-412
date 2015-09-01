@@ -1,0 +1,26 @@
+The factorial of n = 120
+The factorial of n = 3628800
+nSearch = 4
+arrayLength = 4
+a[0] = 2; a[1] = 3; a[2] = 1; a[3] = 5; 
+nSearch not found.
+nSearch = 3
+arrayLength = 4
+a[0] = 2; a[1] = 3; a[2] = 4; a[3] = 5; 
+First occurance of 3 at index 1
+
+Start ArraySearcher Test1 by student4
+nSearch = 4
+arrayLength = 4
+a[0] = 2; a[1] = 3; a[2] = 1; a[3] = 5; 
+nSearch not found.
+
+End of ArraySearcher Test1
+
+Start ArraySearcher Test2 by student4
+nSearch = 3
+arrayLength = 4
+a[0] = 1; a[1] = 2; a[2] = 3; a[3] = 4; 
+First occurance of 3 at index 2
+
+End of ArraySearcher Test2

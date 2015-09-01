@@ -1,0 +1,22 @@
+1. The Path environmental variable just points the compiler or program to where the files are located, the class path variable points directly to the java file and can only be accessed where that java class is saved in a specific directory
+
+2. This statement is valid because a double is a higher variable than an int so you can enter an int for a double and not lose any accuracy.
+
+3. This statement is valid also, even though you enter a zero after the decimal place, the compiler will still recognize the number as 1, so long as the number after the decimal is always zero.
+
+4. After the expression the value of y will be 2 and b = true.
+
+5. After the expression b would be false, and y would still equal 2.
+
+6. You should use a long when you have a decimal that has 2 or more decimal places
+
+7. The result type is a double. This makes sense because you can upgrade the int value to a double without losing any accuracy but cannot reduce a double to an int without losing some type of accuracy so therefore the return type would logically be a double
+
+8. while loops should be used when you don't have a fixed number of times you want to run through a loop, a for lop should be used when you have a fixed number to run through a loop. 
+
+9. x1 = increment(x1); = printing out 1+1 which is 2
+    System.out.println("In main: x1 = " + x1); = prints out 2
+    decrement(x2); = prints out 2 - 1 which is 1
+    System.out.println("In main: x2 = " + x2); = prints out 1
+    zeroOutArray(x3); = changes both array spots to zero
+    System.out.println("In main: x3[0], x3[1] = " + x3[0] + ", " + x3[1]); = prints out both array spots which are both zeros

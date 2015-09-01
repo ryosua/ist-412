@@ -1,0 +1,169 @@
+run #: 1 ; studentNumber: 0; Name: mudgettdr; Handle: 0000000
+Output goes to: ./src/src-output/mudgettdr/output-mudgettdr.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 2 ; studentNumber: 1; Name: student1; Handle: 1111111
+Output goes to: ./src/src-output/student1/output-student1.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 3 ; studentNumber: 2; Name: student2; Handle: 2222222
+Output goes to: ./src/src-output/student2/output-student2.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: 242-1-test1-student2.java
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compile Exception
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 4 ; studentNumber: 3; Name: student3; Handle: 3333333
+Output goes to: ./src/src-output/student3/output-student3.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compile Exception
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 5 ; studentNumber: 4; Name: student4; Handle: 4444444
+Output goes to: ./src/src-output/student4/output-student4.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 6 ; studentNumber: 5; Name: student5; Handle: 5555555
+Output goes to: ./src/src-output/student5/output-student5.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 7 ; studentNumber: 6; Name: student6; Handle: 6666666
+Output goes to: ./src/src-output/student6/output-student6.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+

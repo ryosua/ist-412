@@ -1,0 +1,17 @@
+1. They function to get to your files and in order to compile and run programs
+2. Yes because it will automatically save it as 1.0 
+3. Yes but it will save it as 1 without the decimal
+4. true. y would be 2
+5. It would come out as true also.
+6. You use long instead of int when you need a huge range of values wider than provided by int
+7. The result would be a double or should be a double. This makes sense because if it was an int
+	we could loose precision.
+8. You would use a while or do-while loop instead of a for loop if you do not know the exact number of times 
+	you would want to loop.
+9.  In increment: x = 2
+	In main: x1 = 1
+	In decrement: x = 1
+	In main: x2 = 2
+	In zeroOutArray: x[0], x[1] = 0, 0
+	In main: x3[0], x3[1] = 3, 3
+	

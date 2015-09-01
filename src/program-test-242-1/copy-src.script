@@ -1,0 +1,50 @@
+#!/bin/bash
+
+cd C:/java/bin
+ls -al
+rm -r ./242-1/*
+
+cd C:/java/src/program-test-242-1/src
+ls -al
+rm -r ./src-output/*
+
+
+List="mudgettdr student1 student2 student3 student4 student5 student6"
+filesDir="files-dir"
+filesZip="files-zip"
+filesTest="files-test"
+let "k = 0"
+for dirName in $List     # Splits the variable in parts at whitespace.
+do
+	echo " "
+    let "k += 1" 
+    echo "Test number $k"    
+    echo "Directory number " "$k" "$dirName" 
+    srcOutput="src-output"
+    echo "Unzipped files directory: $filesDir/*$dirName*"
+    echo "Zipped files directory: $filesZip/"
+    echo "Test files directory: $filesTest/"
+    echo Working directory: "$srcOutput/$dirName"
+    mkdir "$srcOutput/$dirName"
+    echo "In filesDir/*$dirName*"
+    echo "Will copy any files to $srcOutput/$dirName"
+    cp -r "$filesDir/*$dirName*" $srcOutput/$dirName
+    cd $filesZip/
+    echo "In filesZip/"
+    echo "Will copy any files to $srcOutput/$dirName"
+    cp "*$dirName*" ../$srcOutput/$dirName
+    cd ..
+    echo "In filesTest/"
+    echo "Will copy any files to $srcOutput/$dirName"
+    cp -r "$filesTest/*" $srcOutput/$dirName
+    cd "$srcOutput/$dirName"
+    echo "In working directory $srcOutput/$dirName"
+    echo "Will unzip all .zip files"
+    7z e * -aos
+    rm ._*
+    rm .DS*
+    rm *_MACOSX*
+    rmdir *_MACOSX*
+    cd ../../
+
+done 

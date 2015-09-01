@@ -1,0 +1,22 @@
+1. The PATH function sets the location for where the files and classes are running from 
+   The CLASSPATH function is what calls the class files you created and where they are being called from
+
+2. double x= 1; is a valid statement because a double can either be a whole number, such as 1, or it can have a floating point decimal, such as 1.0.
+	
+3. int a= 1.0; is not a valid statement because an int is only a single valued number with no decimal.
+	
+4. The value will be true and the value of y will be 2
+
+5. The value will be true
+
+6. You should use long instead of int when you are dealing with more complex numbers such as pi and don't want to loose precision or rounding errors. 
+
+7. The result will be a double. Which makes sense because 
+
+8. You should use a while loop/ do- while loop when you have a boolean  that  can be tested to see if you want to continue to iterate the block of code. Whereas for-loops are useful when you know the number of iterations you want to perform before you start the loop
+
+9. System.out.println("In main: x1 = " + x1); will print out 2, because it is incrementing(adding) the number by one
+   System.out.println("In main: x2 = " + x2); will print out 2, because it is decrementing (subtracting) the number by two
+   System.out.println("In main: x3[0], x3[1] = " + x3[0] + ", " + x3[1]); will print out 1, because it is taking the value of the indicated index and adding them together.
+   
+  

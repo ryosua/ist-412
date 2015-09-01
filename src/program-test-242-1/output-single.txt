@@ -1,0 +1,25 @@
+configFileName: ./configSingle.txt
+run #: 1 ; studentNumber: 0; Name: mudgettdr; Handle: 0000000
+Output goes to: ./src/src-output/mudgettdr/output-mudgettdr.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+

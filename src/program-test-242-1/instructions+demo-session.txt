@@ -1,0 +1,585 @@
+Setup:
+
+1. To run this file with no modifications, put the java/ directory directly off the Windows C-Drive.  So, the directory structure should be exactly as it is when you unzip the java-tester-demo.zip file as follows:
+
+C:\java
+C:\java\bin and C:\java\bin\242-1\
+C:\java\src\program-test-242-1\ and C:java\src\winbashome directories
+
+plus the portable Java jdk
+
+C:\java\jdk1.7.0_71
+
+The home directory is program-test-242-1\, which has a src subdirectory itself, setup.bat and winbash.bat, the BASH script copy-src.script, and all the .java files for the program tester itself
+
+2. Put any unzipped files you want to process in src/files-dir/<student-handle>
+
+3. Put any zipped files you want to process in src/files-zip/ with <student-handle> in the name
+
+4. Put any test files that are the same for all runs in files-test
+
+5. Put command-line arguments for each test (starting with the name of the program and then any command-line args for that program) on a separate line in src/args.txt.  For example:
+
+Factorial 5
+Factorial 10
+ArraySearcher 4 4 2 3 1 5
+ArraySearcher 3 4 2 3 4 5
+TestProgram
+
+runs Factorial twice with args 5, 10; ArraySearcher twice with args 4 4 2 3 1 5 and 3 4 2 3 4 5; and TestProgram once without any args.
+
+6. Put any System.in (e.g., Scanner) inputs on a separate line in src/TestInput.txt.  There must be a line for each separate run, e.g., 
+
+None
+None
+None
+None
+None
+
+will run its respective program with no System.in input.
+
+NOTE: If you want to change ANY of this, you will need to make changes in the source files, mainly in SingleTester.java (for single student runs) and BatchTester.java (for multiple/batch student runs). Most of these directories are hard-coded. An important part of this project is to give users an interactive system to set up runs like this. Users should be able to select which directories they want to have various files like config files, student source files, test files, and so on.  And then they need a simple mechanism to edit these files. I have hacked a very simple Java-based editor (called TrivialEdit) that you can use to do this editing. It can run with no command-line argument and the user can select directory/file via a simple menu, or it can open up a file with path/filename given as a command-line argument.
+
+7. Here is a transcription of a session running the solution set (with handle mudgettdr) both alone (using SingleTester.java) and with six anonymized students named student1 through student6, for a batch of 7 runs (using BatchTester.java).  To get this to run:
+
+a. Open up cmdxp.exe
+
+b. type setup7 (Return)
+
+c. type winbash
+
+ - You should get a $bash prompt, and are now running in the winbash shell
+
+d. type ./copy-src.script
+
+ - This script copies any files from files-dir, files-test, and files-zip into the working directory src/src-output/ and unzips any zip files.
+
+e. To run a single student set up in the configSingle.txt file, 
+
+  type java SingleTester
+
+   If you want to save the results to a text file (e.g., named output-single.txt)
+
+  type java SingleTester > output-single.txt
+
+f. To run the batch of students set up in configBatch.txt,
+
+  type java BatchTester
+
+   If you want to save the results to a text file (e.g., named output-batch.txt)
+
+  type java SingleTester > output-batch.txt
+
+8. Session output (copied from command-line run):
+
+Microsoft Windows XP [Version 5.1.2600]
+(C) Copyright 1985-2001 Microsoft Corp.
+
+C:\java\src\program-test-242-1>setup7
+
+C:\java\src\program-test-242-1>set PATH=C:\java\jdk1.7.0_71\bin
+
+C:\java\src\program-test-242-1>set CLASSPATH=C:\java\bin;
+
+C:\java\src\program-test-242-1>winbash
+
+C:\java\src\program-test-242-1>set HOME=C:\java\src\winbashhome
+
+C:\java\src\program-test-242-1>set PATH=C:\java\src\winbashhome;C:\java\jdk1.7.0
+_71\bin
+
+C:\java\src\program-test-242-1>bash
+bash$ ./copy-src.script
+total 25
+drwxrwxrwx   1 0        0               0 Aug 30 18:48 .
+drwxrwxrwx   1 0        0               0 Aug 30 18:46 ..
+drwxrwxrwx   1 0        0               0 Aug 30 22:03 242-1
+drwxrwxrwx   1 0        0               0 Aug 30 17:32 242-2
+-rw-rw-rw-   1 0        0            2490 Aug 30 18:48 BatchTester.class
+-rw-rw-rw-   1 0        0            3522 Aug 30 18:48 Compiler.class
+-rw-rw-rw-   1 0        0             433 Aug 30 18:48 FileFilter.class
+-rw-rw-rw-   1 0        0            2440 Aug 30 18:48 SingleTester.class
+-rw-rw-rw-   1 0        0            4760 Aug 30 18:48 TestRunner.class
+-rw-rw-rw-   1 0        0            1991 Aug 30 18:48 TestTools.class
+-rw-rw-rw-   1 0        0             932 Aug 30 18:48 TrivialEdit$1.class
+-rw-rw-rw-   1 0        0            5512 Aug 30 18:48 TrivialEdit.class
+drwxrwxrwx   1 0        0               0 Aug 30 16:57 old
+rm: cannot remove `./242-1/*': No such file or directory
+total 2
+drwxrwxrwx   1 0        0               0 Aug 30 18:44 .
+drwxrwxrwx   1 0        0               0 Aug 30 18:49 ..
+-rw-rw-rw-   1 0        0              28 Feb 07  2015 TestInput.txt
+-rw-rw-rw-   1 0        0              92 Feb 07  2015 args.txt
+drwxrwxrwx   1 0        0               0 Aug 30 18:44 files-dir
+drwxrwxrwx   1 0        0               0 Aug 30 18:44 files-test
+drwxrwxrwx   1 0        0               0 Aug 30 18:44 files-zip
+drwxrwxrwx   1 0        0               0 Aug 30 22:16 src-output
+
+Test number 1
+Directory number  1 mudgettdr
+Unzipped files directory: files-dir/*mudgettdr*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/mudgettdr
+In filesDir/*mudgettdr*
+Will copy any files to src-output/mudgettdr
+cp: files-dir/*mudgettdr*: No such file or directory
+In filesZip/
+Will copy any files to src-output/mudgettdr
+In filesTest/
+Will copy any files to src-output/mudgettdr
+cp: files-test/*: No such file or directory
+In working directory src-output/mudgettdr
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-mudgettdr.zip
+
+Extracting  242-1-test1-mudgettdr
+Extracting  242-1-test1-mudgettdr\ArraySearcher.java
+Extracting  242-1-test1-mudgettdr\Factorial.java
+Extracting  242-1-test1-mudgettdr\TestProgram.java
+
+Everything is Ok
+
+Folders: 1
+Files: 3
+Size:       2356
+Compressed: 1490
+rm: cannot remove `._*': No such file or directory
+rm: cannot remove `.DS*': No such file or directory
+rm: cannot remove `*_MACOSX*': No such file or directory
+rmdir: *_MACOSX*: Invalid argument
+
+Test number 2
+Directory number  2 student1
+Unzipped files directory: files-dir/*student1*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student1
+In filesDir/*student1*
+Will copy any files to src-output/student1
+cp: files-dir/*student1*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student1
+In filesTest/
+Will copy any files to src-output/student1
+cp: files-test/*: No such file or directory
+In working directory src-output/student1
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student1.zip
+
+Extracting  242-1-test1-student1
+Extracting  242-1-test1-student1\242-1-test1-student1.txt
+Extracting  242-1-test1-student1\ArraySearcher.java
+Extracting  242-1-test1-student1\Factorial.java
+Extracting  242-1-test1-student1\TestProgram.java
+
+Everything is Ok
+
+Folders: 1
+Files: 4
+Size:       4852
+Compressed: 2914
+rm: cannot remove `._*': No such file or directory
+rm: cannot remove `.DS*': No such file or directory
+rm: cannot remove `*_MACOSX*': No such file or directory
+rmdir: *_MACOSX*: Invalid argument
+
+Test number 3
+Directory number  3 student2
+Unzipped files directory: files-dir/*student2*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student2
+In filesDir/*student2*
+Will copy any files to src-output/student2
+cp: files-dir/*student2*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student2
+In filesTest/
+Will copy any files to src-output/student2
+cp: files-test/*: No such file or directory
+In working directory src-output/student2
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student2.zip
+
+Extracting  242-1-test1-student2
+Extracting  242-1-test1-student2\242-1-test1-student2.java
+Extracting  242-1-test1-student2\242-1-test1-student2.txt
+Extracting  242-1-test1-student2\ArraySearcher.java
+Extracting  242-1-test1-student2\Factorial.java
+Extracting  242-1-test1-student2\TestProgram.java
+
+Everything is Ok
+
+Folders: 1
+Files: 5
+Size:       2710
+Compressed: 2337
+rm: cannot remove `._*': No such file or directory
+rm: cannot remove `.DS*': No such file or directory
+rm: cannot remove `*_MACOSX*': No such file or directory
+rmdir: *_MACOSX*: Invalid argument
+
+Test number 4
+Directory number  4 student3
+Unzipped files directory: files-dir/*student3*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student3
+In filesDir/*student3*
+Will copy any files to src-output/student3
+cp: files-dir/*student3*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student3
+In filesTest/
+Will copy any files to src-output/student3
+cp: files-test/*: No such file or directory
+In working directory src-output/student3
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student3.zip
+
+Extracting  242-1-test1-student3
+Extracting  242-1-test1-student3\242-1-test1-student3.txt
+Extracting  242-1-test1-student3\ArraySearcher.java
+Extracting  242-1-test1-student3\Factorial.java
+Extracting  242-1-test1-student3\TestProgram.java
+
+Everything is Ok
+
+Folders: 1
+Files: 4
+Size:       2154
+Compressed: 1784
+rm: cannot remove `._*': No such file or directory
+rm: cannot remove `.DS*': No such file or directory
+rm: cannot remove `*_MACOSX*': No such file or directory
+rmdir: *_MACOSX*: Invalid argument
+
+Test number 5
+Directory number  5 student4
+Unzipped files directory: files-dir/*student4*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student4
+In filesDir/*student4*
+Will copy any files to src-output/student4
+cp: files-dir/*student4*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student4
+In filesTest/
+Will copy any files to src-output/student4
+cp: files-test/*: No such file or directory
+In working directory src-output/student4
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student4.zip
+
+Extracting  242-1-test1-student4
+Extracting  242-1-test1-student4\.DS_Store
+Extracting  242-1-test1-student4\242-1-test1-student4.txt
+Extracting  242-1-test1-student4\ArraySearcher.java
+Extracting  242-1-test1-student4\Factorial.java
+Extracting  242-1-test1-student4\TestProgram.java
+Extracting  __MACOSX
+Extracting  __MACOSX\242-1-test1-student4
+Extracting  __MACOSX\242-1-test1-student4\._.DS_Store
+
+Everything is Ok
+
+Folders: 3
+Files: 6
+Size:       10813
+Compressed: 3488
+rm: `__MACOSX' is a directory
+
+Test number 6
+Directory number  6 student5
+Unzipped files directory: files-dir/*student5*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student5
+In filesDir/*student5*
+Will copy any files to src-output/student5
+cp: files-dir/*student5*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student5
+In filesTest/
+Will copy any files to src-output/student5
+cp: files-test/*: No such file or directory
+In working directory src-output/student5
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student5.zip
+
+Extracting  242-1-test1-student5
+Extracting  242-1-test1-student5\242-1-test1-student5.txt
+Extracting  242-1-test1-student5\ArraySearcher.java
+Extracting  242-1-test1-student5\Factorial.java
+Extracting  242-1-test1-student5\TestProgram.java
+
+Everything is Ok
+
+Folders: 1
+Files: 4
+Size:       3846
+Compressed: 2323
+rm: cannot remove `._*': No such file or directory
+rm: cannot remove `.DS*': No such file or directory
+rm: cannot remove `*_MACOSX*': No such file or directory
+rmdir: *_MACOSX*: Invalid argument
+
+Test number 7
+Directory number  7 student6
+Unzipped files directory: files-dir/*student6*
+Zipped files directory: files-zip/
+Test files directory: files-test/
+Working directory: src-output/student6
+In filesDir/*student6*
+Will copy any files to src-output/student6
+cp: files-dir/*student6*: No such file or directory
+In filesZip/
+Will copy any files to src-output/student6
+In filesTest/
+Will copy any files to src-output/student6
+cp: files-test/*: No such file or directory
+In working directory src-output/student6
+Will unzip all .zip files
+
+7-Zip 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
+
+Processing archive: 242-1-test1-student6.zip
+
+Extracting  242-1-test1-student6
+Extracting  242-1-test1-student6\242-1-test1-student6.txt
+Extracting  242-1-test1-student6\ArraySearcher.java
+Extracting  242-1-test1-student6\Factorial.java
+Extracting  242-1-test1-student6\TestProgram.java
+Extracting  __MACOSX
+Extracting  __MACOSX\242-1-test1-student6
+Extracting  __MACOSX\242-1-test1-student6\._ArraySearcher.java
+Extracting  __MACOSX\242-1-test1-student6\._TestProgram.java
+
+Everything is Ok
+
+Folders: 3
+Files: 6
+Size:       2639
+Compressed: 2792
+rm: cannot remove `.DS*': No such file or directory
+rm: `__MACOSX' is a directory
+bash$ java SingleTester
+configFileName: ./configSingle.txt
+run #: 1 ; studentNumber: 0; Name: mudgettdr; Handle: 0000000
+Output goes to: ./src/src-output/mudgettdr/output-mudgettdr.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+bash$ java BatchTester
+run #: 1 ; studentNumber: 0; Name: mudgettdr; Handle: 0000000
+Output goes to: ./src/src-output/mudgettdr/output-mudgettdr.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 2 ; studentNumber: 1; Name: student1; Handle: 1111111
+Output goes to: ./src/src-output/student1/output-student1.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 3 ; studentNumber: 2; Name: student2; Handle: 2222222
+Output goes to: ./src/src-output/student2/output-student2.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: 242-1-test1-student2.java
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compile Exception
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 4 ; studentNumber: 3; Name: student3; Handle: 3333333
+Output goes to: ./src/src-output/student3/output-student3.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compile Exception
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 5 ; studentNumber: 4; Name: student4; Handle: 4444444
+Output goes to: ./src/src-output/student4/output-student4.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 6 ; studentNumber: 5; Name: student5; Handle: 5555555
+Output goes to: ./src/src-output/student5/output-student5.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+run #: 7 ; studentNumber: 6; Name: student6; Handle: 6666666
+Output goes to: ./src/src-output/student6/output-student6.txt
+source path: ./src/src-output
+source absolute path: C:\java\src\program-test-242-1\.\src\src-output
+Compiling: ArraySearcher.java
+Compiling: Factorial.java
+Compiling: TestProgram.java
+Compiled Successfully
+[java, Factorial, 5]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 5]
+[java, Factorial, 10]
+System.in inputs: [None]
+java process arguments: [java, Factorial, 10]
+[java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 4, 4, 2, 3, 1, 5]
+[java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+System.in inputs: [None]
+java process arguments: [java, ArraySearcher, 3, 4, 2, 3, 4, 5]
+[java, TestProgram]
+System.in inputs: [None]
+java process arguments: [java, TestProgram]
+
+bash$
+
+
+
