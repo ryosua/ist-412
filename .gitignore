@@ -14,6 +14,7 @@
 # folders
 ant
 bin
+src/winbashhome/
 
 # netbeans
 /nbproject/private
@@ -21,3 +22,5 @@ bin
 manifest.mf
 nbbuild.xml
 nbproject
+
+src/program-test-242-1/src/
