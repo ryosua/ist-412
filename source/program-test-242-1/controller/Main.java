@@ -1,3 +1,6 @@
+package controller;
+
+import view.Frame;
 import javax.swing.UIManager;
 
 public class Main {
