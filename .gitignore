@@ -14,3 +14,10 @@
 # folders
 ant
 bin
+
+# netbeans
+/nbproject/private
+/build/
+manifest.mf
+nbbuild.xml
+nbproject
