@@ -1,0 +1,8 @@
+<project default="compile">
+    <target name="compile">
+        <mkdir dir="bin"/>
+        <javac includeantruntime="false" srcdir="source/program-test-242-1" destdir="bin">
+            <exclude name="**/src/**" />
+        </javac>
+    </target>
+</project>
