@@ -23,7 +23,7 @@ public class MainMenu extends JMenuBar{
 
         //Set up menu sub-items that are shown beneath a menu item.
         closeApp = new JMenuItem("Exit");
-        selectSourceDirectory = new JMenuItem("Select Source Directory");
+        selectSourceDirectory = new JMenuItem("Select Config File"); //Select Source Directory
         selectJDK = new JMenuItem("Select JDK");
 
         //Set up button group for menu radio buttons.
