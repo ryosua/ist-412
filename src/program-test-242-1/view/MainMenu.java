@@ -33,6 +33,7 @@ public class MainMenu extends JMenuBar{
         selectJDK = new JMenuItem("Select JDK");
         
         selectSourceDirectory.addActionListener(new MenuItemListener());
+        selectJDK.addActionListener(new MenuJDK());
 
         //Set up button group for menu radio buttons.
         menuRunTypeRadios = new ButtonGroup();
@@ -64,6 +65,17 @@ public class MainMenu extends JMenuBar{
     private static class MenuItemListener implements ActionListener {
 
         public MenuItemListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            System.out.println("It works");
+        }
+    }
+    
+    private static class MenuJDK implements ActionListener {
+
+        public MenuJDK() {
         }
 
         @Override
