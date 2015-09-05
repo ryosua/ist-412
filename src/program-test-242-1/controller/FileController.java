@@ -14,9 +14,11 @@ public class FileController {
 
     private File loadedFile;
 
-    public FileController(JFileChooser fileChooser, JFrame frame) {
-        this.fileChooser = fileChooser;
+    public FileController(JFrame frame) {
+        this.fileChooser = new JFileChooser();
         this.frame = frame;
+        fileChooser.setDialogType(JFileChooser.FILES_AND_DIRECTORIES);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
     }
 
     /**

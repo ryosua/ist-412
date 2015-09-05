@@ -17,9 +17,11 @@ public class InputPanel extends JPanel {
 
     private final ApplicationSettings settings = new ApplicationSettings();
     private final JFrame frame;
+    private final FileController theFileController;
 
-    public InputPanel(JFrame frame) {
+    public InputPanel(JFrame frame, FileController theFileController) {
         this.frame = frame;
+        this.theFileController = theFileController;
         
         final GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
@@ -49,26 +51,20 @@ public class InputPanel extends JPanel {
         testFieldC.fill = GridBagConstraints.HORIZONTAL;
         testFieldC.gridx = 0;
         testFieldC.gridy = 3;
-        
-        final JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogType(JFileChooser.FILES_AND_DIRECTORIES);
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        
-        final FileController fileController = new FileController(fileChooser, frame);
 
         final JButton sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
         sourcButtonC.fill = GridBagConstraints.HORIZONTAL;
         sourcButtonC.gridx = 1;
         sourcButtonC.gridy = 1;
-        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(fileController, settings, sourceDirectoryField));
+        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(theFileController, settings, sourceDirectoryField));
         
         final JButton testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
         testButtonC.fill = GridBagConstraints.HORIZONTAL;
         testButtonC.gridx = 1;
         testButtonC.gridy = 3;
-        testCaseButton.addActionListener(new ChooseSourceLocationListener(fileController, settings, testCaseDirectoryField));
+        testCaseButton.addActionListener(new ChooseSourceLocationListener(theFileController, settings, testCaseDirectoryField));
       
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);
