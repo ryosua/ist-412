@@ -61,14 +61,14 @@ public class MainMenu extends JMenuBar{
         menuRunType.add(batchRun);
     }
 
-    private static class MenuItemListener implements ActionListener {
+    private class MenuItemListener implements ActionListener {
 
         public MenuItemListener() {
         }
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.out.println("It works");
+            theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
         }
     }
 }
