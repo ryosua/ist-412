@@ -5,9 +5,9 @@ import javax.swing.JFrame;
 
 
 public class Frame extends JFrame{
-    JFrame frame = new JFrame();
-    MainMenu menu = new MainMenu();
-    FileController theFileController = new FileController(this);
+    private final JFrame frame = new JFrame();
+    private final MainMenu menu = new MainMenu();
+    private final FileController theFileController = new FileController(this);
 
     public Frame(){
         super("ProgramTester Frame");
