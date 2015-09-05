@@ -1,5 +1,6 @@
 package view;
 
+import controller.FileController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -13,8 +14,11 @@ public class MainMenu extends JMenuBar{
     JMenuItem closeApp, selectSourceDirectory, selectJDK;
     JRadioButtonMenuItem singleRun, batchRun;
     ButtonGroup menuRunTypeRadios;
+    private final FileController theFileController;
 
-    public MainMenu(){
+    public MainMenu(FileController theFileController){
+        
+        this.theFileController = theFileController;
         //Set up menu bar
         menu = new JMenuBar();
 
