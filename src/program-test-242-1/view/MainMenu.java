@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -25,6 +27,8 @@ public class MainMenu extends JMenuBar{
         closeApp = new JMenuItem("Exit");
         selectSourceDirectory = new JMenuItem("Select Config File"); //Select Source Directory
         selectJDK = new JMenuItem("Select JDK");
+        
+        selectSourceDirectory.addActionListener(new MenuItemListener());
 
         //Set up button group for menu radio buttons.
         menuRunTypeRadios = new ButtonGroup();
@@ -51,5 +55,16 @@ public class MainMenu extends JMenuBar{
         menuConfig.add(selectSourceDirectory);
         menuRunType.add(singleRun);
         menuRunType.add(batchRun);
+    }
+
+    private static class MenuItemListener implements ActionListener {
+
+        public MenuItemListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            System.out.println("It works");
+        }
     }
 }
