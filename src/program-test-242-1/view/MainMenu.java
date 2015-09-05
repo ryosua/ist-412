@@ -73,14 +73,14 @@ public class MainMenu extends JMenuBar{
         }
     }
     
-    private static class MenuJDK implements ActionListener {
+    private class MenuJDK implements ActionListener {
 
         public MenuJDK() {
         }
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.out.println("It works");
+            theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
         }
     }
 }
