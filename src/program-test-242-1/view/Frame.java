@@ -2,15 +2,12 @@ package view;
 
 import javax.swing.JFrame;
 
-/**
- * Created by Shane on 9/2/15.
- */
 public class Frame extends JFrame{
     JFrame frame = new JFrame();
     MainMenu menu = new MainMenu();
 
     public Frame(){
-        super("Test Menu Frame");
+        super("ProgramTester Frame");
 
         frame.setJMenuBar(menu);
         
