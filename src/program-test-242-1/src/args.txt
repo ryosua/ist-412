@@ -1,5 +1,0 @@
-Factorial 5
-Factorial 10
-ArraySearcher 4 4 2 3 1 5
-ArraySearcher 3 4 2 3 4 5
-TestProgram
