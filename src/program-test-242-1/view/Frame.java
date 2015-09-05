@@ -14,7 +14,7 @@ public class Frame extends JFrame{
 
         frame.setJMenuBar(menu);
         
-        final InputPanel inputPanel = new InputPanel(this, theFileController);
+        final InputPanel inputPanel = new InputPanel(theFileController);
         frame.add(inputPanel);
 
         frame.setSize(500, 500);
