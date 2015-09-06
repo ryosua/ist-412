@@ -14,11 +14,11 @@ import javax.swing.JFileChooser;
  * Created by Shane on 9/2/15.
  */
 public class MainMenu extends JMenuBar{
-    JMenuBar menu;
-    JMenu menuFile, menuRunType, menuConfig;
-    JMenuItem closeApp, selectConfig, selectJDK;
-    JRadioButtonMenuItem singleRun, batchRun;
-    ButtonGroup menuRunTypeRadios;
+    private JMenuBar menu;
+    private JMenu menuFile, menuRunType, menuConfig;
+    private JMenuItem closeApp, selectConfig, selectJDK;
+    private JRadioButtonMenuItem singleRun, batchRun;
+    private ButtonGroup menuRunTypeRadios;
     private final FileController theFileController;
 
     public MainMenu(FileController theFileController){
@@ -36,9 +36,11 @@ public class MainMenu extends JMenuBar{
         closeApp = new JMenuItem("Exit");
         selectConfig = new JMenuItem("Select Config File"); //Select Source Directory
         selectJDK = new JMenuItem("Select JDK");
-        
+
+        //Add listeners
         selectConfig.addActionListener(new MenuItemListener());
         selectJDK.addActionListener(new MenuJDK());
+        closeApp.addActionListener(new menuExitApp());
 
         //Set up button group for menu radio buttons.
         menuRunTypeRadios = new ButtonGroup();
@@ -73,9 +75,7 @@ public class MainMenu extends JMenuBar{
         }
 
         @Override
-        public void actionPerformed(ActionEvent ae) {
-            theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
-        }
+        public void actionPerformed(ActionEvent ae) { theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG); }
     }
     
     private class MenuJDK implements ActionListener {
@@ -87,5 +87,14 @@ public class MainMenu extends JMenuBar{
         public void actionPerformed(ActionEvent ae) {
             theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
         }
+    }
+
+    private class menuExitApp implements ActionListener {
+
+        public menuExitApp() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) { System.exit(0); } //Exits application
     }
 }
