@@ -18,6 +18,9 @@ manifest.mf
 nbbuild.xml
 nbproject
 
+# Intelli J
+.idea/
+
 # folders
 ant
 bin

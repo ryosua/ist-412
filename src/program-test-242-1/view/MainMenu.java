@@ -3,7 +3,12 @@ package view;
 import controller.FileController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.ButtonGroup;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JFileChooser;
 
 /**
  * Created by Shane on 9/2/15.
@@ -11,7 +16,7 @@ import javax.swing.*;
 public class MainMenu extends JMenuBar{
     JMenuBar menu;
     JMenu menuFile, menuRunType, menuConfig;
-    JMenuItem closeApp, selectSourceDirectory, selectJDK;
+    JMenuItem closeApp, selectConfig, selectJDK;
     JRadioButtonMenuItem singleRun, batchRun;
     ButtonGroup menuRunTypeRadios;
     private final FileController theFileController;
@@ -29,10 +34,10 @@ public class MainMenu extends JMenuBar{
 
         //Set up menu sub-items that are shown beneath a menu item.
         closeApp = new JMenuItem("Exit");
-        selectSourceDirectory = new JMenuItem("Select Config File"); //Select Source Directory
+        selectConfig = new JMenuItem("Select Config File"); //Select Source Directory
         selectJDK = new JMenuItem("Select JDK");
         
-        selectSourceDirectory.addActionListener(new MenuItemListener());
+        selectConfig.addActionListener(new MenuItemListener());
         selectJDK.addActionListener(new MenuJDK());
 
         //Set up button group for menu radio buttons.
@@ -57,7 +62,7 @@ public class MainMenu extends JMenuBar{
         //Adds options in dropdown format for menu item.
         menuFile.add(closeApp);
         menuConfig.add(selectJDK);
-        menuConfig.add(selectSourceDirectory);
+        menuConfig.add(selectConfig);
         menuRunType.add(singleRun);
         menuRunType.add(batchRun);
     }
