@@ -21,6 +21,9 @@ nbproject
 # Intelli J
 .idea/
 
+# settings files
+src/program-test-242-1/Settings.txt
+
 # folders
 ant
 bin
