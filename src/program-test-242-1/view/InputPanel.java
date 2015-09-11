@@ -4,8 +4,8 @@ import controller.ChooseSourceLocationListener;
 import controller.ChooseTestLocationListener;
 import model.ApplicationSettings;
 import controller.FileController;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,11 +66,33 @@ public class InputPanel extends JPanel {
         testButtonC.gridy = 3;
         testCaseButton.addActionListener(new ChooseTestLocationListener(fileController, settings, testCaseDirectoryField));
 
+        final JButton runButton = new JButton("Run");
+        final GridBagConstraints runButtonC = new GridBagConstraints();
+        runButtonC.fill = GridBagConstraints.HORIZONTAL;
+        runButtonC.gridx = 1;
+        runButtonC.gridy = 4;
+        runButtonC.gridwidth = 1;
+        runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
+        runButtonC.insets = new Insets(25,0,0,0);
+        //Run program when clicked.
+        //Button can be disabled/enabled in runController.
+        //runButton.addActionListener();
+
+        /*
+        * Check to disable/enable run button. To be moved to runController class.
+        if (sourceDirectoryField.getText().equals("") || testCaseDirectoryField.getText().equals("")) {
+            runButton.setEnabled(false);
+        }else {
+            runButton.setEnabled(true);
+        }
+        */
+
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);
         add(sourceDirectoryButton, sourcButtonC);
         add(testCaseDirectoryLabel, testLabelC);
         add(testCaseDirectoryField, testFieldC);
         add(testCaseButton, testButtonC);
+        add(runButton, runButtonC);
     }
 }
