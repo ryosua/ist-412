@@ -2,6 +2,7 @@ package view;
 
 import controller.ChooseSourceLocationListener;
 import controller.ChooseTestLocationListener;
+import controller.RunChecker;
 import model.ApplicationSettings;
 import controller.FileController;
 
@@ -15,6 +16,7 @@ public class InputPanel extends JPanel {
 
     private final ApplicationSettings settings = new ApplicationSettings();
     private final FileController fileController;
+    private RunChecker runCheck;
 
     public InputPanel(FileController fileController) {
         this.fileController = fileController;
@@ -57,14 +59,12 @@ public class InputPanel extends JPanel {
         sourcButtonC.fill = GridBagConstraints.HORIZONTAL;
         sourcButtonC.gridx = 1;
         sourcButtonC.gridy = 1;
-        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(fileController, settings, sourceDirectoryField));
 
         final JButton testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
         testButtonC.fill = GridBagConstraints.HORIZONTAL;
         testButtonC.gridx = 1;
         testButtonC.gridy = 3;
-        testCaseButton.addActionListener(new ChooseTestLocationListener(fileController, settings, testCaseDirectoryField));
 
         final JButton runButton = new JButton("Run");
         final GridBagConstraints runButtonC = new GridBagConstraints();
@@ -75,17 +75,14 @@ public class InputPanel extends JPanel {
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         runButtonC.insets = new Insets(25,0,0,0);
         //Run program when clicked.
-        //Button can be disabled/enabled in runController.
         //runButton.addActionListener();
 
-        /*
-        * Check to disable/enable run button. To be moved to runController class.
-        if (sourceDirectoryField.getText().equals("") || testCaseDirectoryField.getText().equals("")) {
-            runButton.setEnabled(false);
-        }else {
-            runButton.setEnabled(true);
-        }
-        */
+        runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField);
+        runCheck.checkSettingsForRun();
+
+        //Action listeners choose file/directory locations and implement runcheck upon selection completion.
+        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(fileController, settings, sourceDirectoryField, runCheck));
+        testCaseButton.addActionListener(new ChooseTestLocationListener(fileController, settings, testCaseDirectoryField, runCheck));
 
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);
