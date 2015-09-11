@@ -21,9 +21,6 @@ public class FileController {
      * Opens the file chooser, and returns the File selected.
      * @param dialogType JFileChooser.OPEN_DIALOG or JFileChooser.SAVE_DIALOG
      * @return the file if chosen or null if canceled
-     *
-     * *EDIT BY SHANE*
-     * You cannot return null when cancel is clicked or the program ends up throwing a NullPointerException.
      */
     public File getFileFromChooser(int dialogType) {
         File file = null;
