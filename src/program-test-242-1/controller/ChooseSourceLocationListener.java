@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
@@ -22,9 +23,13 @@ public class ChooseSourceLocationListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        settings.setSourceFileDirectory(fileController.getFileFromChooser(JFileChooser.SAVE_DIALOG));
-        textField.setText(settings.getSourceFileDirectory().getPath());
-        runCheck.checkSettingsForRun();
-        System.out.println("Checking Settings...");
+
+        final File filePicked = fileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
+        if (filePicked != FileController.emptyFile) {
+            settings.setSourceFileDirectory(filePicked);
+            textField.setText(settings.getSourceFileDirectory().getPath());
+            runCheck.checkSettingsForRun();
+            System.out.println("Checking Settings...");
+        }
     }
 }
