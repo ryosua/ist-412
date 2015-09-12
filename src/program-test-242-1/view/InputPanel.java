@@ -5,6 +5,7 @@ import controller.ChooseTestLocationListener;
 import controller.RunChecker;
 import model.ApplicationSettings;
 import controller.FileController;
+import controller.RunProgramListener;
 
 import java.awt.*;
 import javax.swing.JButton;
@@ -16,7 +17,6 @@ public class InputPanel extends JPanel {
 
     private final ApplicationSettings settings = new ApplicationSettings();
     private final FileController fileController;
-    private RunChecker runCheck;
 
     public InputPanel(FileController fileController) {
         this.fileController = fileController;
@@ -75,9 +75,9 @@ public class InputPanel extends JPanel {
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         runButtonC.insets = new Insets(25,0,0,0);
         //Run program when clicked.
-        //runButton.addActionListener();
-
-        runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField);
+        runButton.addActionListener(new RunProgramListener());
+        
+        final RunChecker runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField);
         runCheck.checkSettingsForRun();
 
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.

@@ -1,9 +1,11 @@
+package controller;
+
 
 import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
 
-public class BatchTester {
+public class BatchTester implements ProgramTester {
 
     private ApplicationSettings settings;
 
@@ -20,6 +22,7 @@ public class BatchTester {
         this.settings = settings;
     }
 
+    @Override
     public void run() {
         //  initialize student and class configuration data
         int studentNumber = 0;

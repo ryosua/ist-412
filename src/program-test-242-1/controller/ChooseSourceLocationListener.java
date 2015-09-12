@@ -12,7 +12,7 @@ public class ChooseSourceLocationListener implements ActionListener {
     private final FileController fileController;
     private final ApplicationSettings settings;
     private final JTextField textField;
-    private RunChecker runCheck;
+    private final RunChecker runCheck;
 
     public ChooseSourceLocationListener(FileController fileController, ApplicationSettings settings, JTextField textField, RunChecker runCheck) {
         this.fileController = fileController;
