@@ -1,10 +1,26 @@
 
 import java.io.*;
 import java.util.*;
+import model.ApplicationSettings;
 
 public class BatchTester {
 
-    public static void main(String[] args) {
+    private ApplicationSettings settings;
+
+    /**
+     * Provide the default constructor for now, this should eventually be
+     * deleted, and in the main method, a BatchTester will be constructed with a
+     * set of default settings.
+     */
+    public BatchTester() {
+
+    }
+
+    public BatchTester(ApplicationSettings settings) {
+        this.settings = settings;
+    }
+
+    public void run() {
         //  initialize student and class configuration data
         int studentNumber = 0;
         String studentName = "blank";
@@ -88,5 +104,10 @@ public class BatchTester {
         } catch (IOException ioe) {
             System.out.println("main IOException");
         }
+    }
+
+    public static void main(String[] args) {
+        final BatchTester batchTest = new BatchTester();
+        batchTest.run();
     }
 }
