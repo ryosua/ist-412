@@ -10,7 +10,7 @@ public class SingleTester {
     /**
      * Provide the default constructor for now, this should eventually be
      * deleted, and in the main method, a SingleTester will be constructed with
-     * a set of default 
+     * a set of default settings.
      */
     public SingleTester() {
         
