@@ -1,9 +1,26 @@
 
 import java.io.*;
 import java.util.*;
+import model.ApplicationSettings;
 
 public class SingleTester {
-    public static void main(String[] args) {
+
+    private ApplicationSettings settings;
+    
+    /**
+     * Provide the default constructor for now, this should eventually be
+     * deleted, and in the main method, a SingleTester will be constructed with
+     * a set of default 
+     */
+    public SingleTester() {
+        
+    }
+   
+    public SingleTester(ApplicationSettings settings) {
+        this.settings = settings;
+    }
+   
+    public void run() {
         //  initialize student and class configuration data    
         int studentNumber = 0;
         int runNumber = 1;
@@ -90,5 +107,10 @@ public class SingleTester {
         } catch (IOException ioe) {
             System.out.println("main IOException");
         }
+    }
+    
+     public static void main(String[] args) {
+        final SingleTester singleTest = new SingleTester();
+        singleTest.run();
     }
 }
