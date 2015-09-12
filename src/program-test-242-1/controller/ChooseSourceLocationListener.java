@@ -5,18 +5,15 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
-import model.ApplicationSettings;
 
 public class ChooseSourceLocationListener implements ActionListener {
-
-    private final FileController fileController;
-    private final ApplicationSettings settings;
+    
+    private final Main main;
     private final JTextField textField;
     private final RunChecker runCheck;
 
-    public ChooseSourceLocationListener(FileController fileController, ApplicationSettings settings, JTextField textField, RunChecker runCheck) {
-        this.fileController = fileController;
-        this.settings = settings;
+    public ChooseSourceLocationListener(Main main, JTextField textField, RunChecker runCheck) {
+        this.main = main;
         this.textField = textField;
         this.runCheck = runCheck;
     }
@@ -24,10 +21,10 @@ public class ChooseSourceLocationListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        final File filePicked = fileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
+        final File filePicked = main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
         if (filePicked != FileController.emptyFile) {
-            settings.setSourceFileDirectory(filePicked);
-            textField.setText(settings.getSourceFileDirectory().getPath());
+            main.getSettings().setSourceFileDirectory(filePicked);
+            textField.setText(main.getSettings().getSourceFileDirectory().getPath());
             runCheck.checkSettingsForRun();
             System.out.println("Checking Settings...");
         }

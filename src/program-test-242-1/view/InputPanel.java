@@ -3,8 +3,8 @@ package view;
 import controller.ChooseSourceLocationListener;
 import controller.ChooseTestLocationListener;
 import controller.RunChecker;
-import model.ApplicationSettings;
 import controller.FileController;
+import controller.Main;
 import controller.RunProgramListener;
 
 import java.awt.*;
@@ -15,11 +15,10 @@ import javax.swing.JTextField;
 
 public class InputPanel extends JPanel {
 
-    private final ApplicationSettings settings = new ApplicationSettings();
-    private final FileController fileController;
+    private final Main main;
 
-    public InputPanel(FileController fileController) {
-        this.fileController = fileController;
+    public InputPanel(Main main) {
+        this.main = main;
 
         createAndAddComponents();
     }
@@ -81,8 +80,8 @@ public class InputPanel extends JPanel {
         runCheck.checkSettingsForRun();
 
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
-        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(fileController, settings, sourceDirectoryField, runCheck));
-        testCaseButton.addActionListener(new ChooseTestLocationListener(fileController, settings, testCaseDirectoryField, runCheck));
+        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField, runCheck));
+        testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField, runCheck));
 
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);

@@ -8,25 +8,23 @@ import javax.swing.JTextField;
 import model.ApplicationSettings;
 
 public class ChooseTestLocationListener implements ActionListener {
-
-    private final FileController fileController;
-    private final ApplicationSettings settings;
+    
+    private final Main main;
     private final JTextField textField;
     private final RunChecker runCheck;
 
-    public ChooseTestLocationListener(FileController fileController, ApplicationSettings settings, JTextField textField, RunChecker runCheck) {
-        this.fileController = fileController;
-        this.settings = settings;
+    public ChooseTestLocationListener(Main main, JTextField textField, RunChecker runCheck) {
+        this.main = main;
         this.textField = textField;
         this.runCheck = runCheck;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final File filePicked = fileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
+        final File filePicked = main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
         if (filePicked != FileController.emptyFile) {
-            settings.setTestCaseDirectory(filePicked);
-            textField.setText(settings.getTestCaseDirectory().getPath());
+            main.getSettings().setTestCaseDirectory(filePicked);
+            textField.setText(main.getSettings().getTestCaseDirectory().getPath());
             runCheck.checkSettingsForRun();
             System.out.println("Checking Settings...");
         }

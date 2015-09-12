@@ -1,6 +1,7 @@
 package view;
 
 import controller.FileController;
+import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
@@ -10,20 +11,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JFileChooser;
 
-/**
- * Created by Shane on 9/2/15.
- */
 public class MainMenu extends JMenuBar{
     private JMenuBar menu;
     private JMenu menuFile, menuRunType, menuConfig;
     private JMenuItem closeApp, selectConfig, selectJDK;
     private JRadioButtonMenuItem singleRun, batchRun;
     private ButtonGroup menuRunTypeRadios;
-    private final FileController theFileController;
+    private final Main main;
 
-    public MainMenu(FileController theFileController){
-        
-        this.theFileController = theFileController;
+    public MainMenu(Main main){
+        this.main = main;
         //Set up menu bar
         menu = new JMenuBar();
 
@@ -75,7 +72,7 @@ public class MainMenu extends JMenuBar{
         }
 
         @Override
-        public void actionPerformed(ActionEvent ae) { theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG); }
+        public void actionPerformed(ActionEvent ae) { main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG); }
     }
     
     private class MenuJDK implements ActionListener {
@@ -85,7 +82,7 @@ public class MainMenu extends JMenuBar{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            theFileController.getFileFromChooser(JFileChooser.SAVE_DIALOG);
+            main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
         }
     }
 

@@ -2,18 +2,17 @@ package controller;
 
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 public class FileController {
     
     public static final File emptyFile = new File("");
-
+    
     private final JFileChooser fileChooser;
-    private final JFrame frame;
-
-    public FileController(JFrame frame) {
+    private final Main main;
+  
+    public FileController(Main main) {
         this.fileChooser = new JFileChooser();
-        this.frame = frame;
+        this.main = main;
 
         fileChooser.setDialogType(JFileChooser.FILES_AND_DIRECTORIES);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -35,7 +34,7 @@ public class FileController {
             fileChooser.setApproveButtonText("Choose");
         }
 
-        int returnVal = fileChooser.showOpenDialog(frame);
+        int returnVal = fileChooser.showOpenDialog(main.getFrame());
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
