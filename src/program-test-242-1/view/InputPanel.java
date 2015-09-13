@@ -1,5 +1,6 @@
 package view;
 
+import controller.ChooseOutputLocationListener;
 import controller.ChooseSourceLocationListener;
 import controller.ChooseTestLocationListener;
 import controller.RunChecker;
@@ -38,6 +39,12 @@ public class InputPanel extends JPanel {
         testLabelC.fill = GridBagConstraints.HORIZONTAL;
         testLabelC.gridx = 0;
         testLabelC.gridy = 2;
+        
+        final JLabel outputFileLabel = new JLabel("Output file:");
+        final GridBagConstraints outputLabelC = new GridBagConstraints();
+        outputLabelC.fill = GridBagConstraints.HORIZONTAL;
+        outputLabelC.gridx = 0;
+        outputLabelC.gridy = 4;
 
         final JTextField sourceDirectoryField = new JTextField();
         sourceDirectoryField.setEditable(false);
@@ -45,6 +52,13 @@ public class InputPanel extends JPanel {
         sourceFieldC.fill = GridBagConstraints.HORIZONTAL;
         sourceFieldC.gridx = 0;
         sourceFieldC.gridy = 1;
+        
+        final JTextField outputField = new JTextField();
+        outputField.setEditable(false);
+        final GridBagConstraints outputFieldC = new GridBagConstraints();
+        outputFieldC.fill = GridBagConstraints.HORIZONTAL;
+        outputFieldC.gridx = 0;
+        outputFieldC.gridy = 5;
 
         final JTextField testCaseDirectoryField = new JTextField();
         testCaseDirectoryField.setEditable(false);
@@ -64,24 +78,31 @@ public class InputPanel extends JPanel {
         testButtonC.fill = GridBagConstraints.HORIZONTAL;
         testButtonC.gridx = 1;
         testButtonC.gridy = 3;
+        
+        final JButton outputButton = new JButton("Choose Location");
+        final GridBagConstraints outputButtonC = new GridBagConstraints();
+        outputButtonC.fill = GridBagConstraints.HORIZONTAL;
+        outputButtonC.gridx = 1;
+        outputButtonC.gridy = 5;
 
         final JButton runButton = new JButton("Run");
         final GridBagConstraints runButtonC = new GridBagConstraints();
         runButtonC.fill = GridBagConstraints.HORIZONTAL;
         runButtonC.gridx = 1;
-        runButtonC.gridy = 4;
+        runButtonC.gridy = 6;
         runButtonC.gridwidth = 1;
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         runButtonC.insets = new Insets(25,0,0,0);
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener());
         
-        final RunChecker runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField);
+        final RunChecker runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField, outputField);
         runCheck.checkSettingsForRun();
 
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField, runCheck));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField, runCheck));
+        outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField, runCheck));
 
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);
@@ -89,6 +110,9 @@ public class InputPanel extends JPanel {
         add(testCaseDirectoryLabel, testLabelC);
         add(testCaseDirectoryField, testFieldC);
         add(testCaseButton, testButtonC);
+        add(outputFileLabel, outputLabelC);
+        add(outputField, outputFieldC);
+        add(outputButton, outputButtonC);
         add(runButton, runButtonC);
     }
 }

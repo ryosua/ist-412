@@ -6,11 +6,16 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class ApplicationSettings {
-
+    
+    private File outputFileDirectory = null;
     private File sourceFileDirectory = null;
     private File testCaseDirectory = null;
     private File javaVersionDirectory = null;
     private String settingsFileName = "Settings.txt";
+    
+    public File getOutputFileDirectory() {
+        return outputFileDirectory;
+    }
 
     public File getSourceFileDirectory() {
         return sourceFileDirectory;
@@ -18,6 +23,11 @@ public class ApplicationSettings {
 
     public File getTestCaseDirectory() {
         return testCaseDirectory;
+    }
+    
+    public void setOutputFileDirectory(File directory) {
+        outputFileDirectory = directory;
+		writeDataToSettingsFile();
     }
 
     public void setSourceFileDirectory(File directory) {
@@ -32,6 +42,11 @@ public class ApplicationSettings {
 	
     public void writeDataToSettingsFile(){
         try (PrintWriter out = new PrintWriter(settingsFileName)) {
+            
+            if(outputFileDirectory != null){
+                out.println("Output File Directory: " + outputFileDirectory.toString());
+            }
+            
             if(sourceFileDirectory != null){
                 out.println("Source File Directory: " + sourceFileDirectory.toString());
             }
@@ -55,7 +70,10 @@ public class ApplicationSettings {
 
             while(inFile.hasNextLine()){
                 String setting = inFile.nextLine();
-
+                
+                if(setting.startsWith("Output File Directory: ")){
+                    outputFileDirectory = new File(setting.substring("Output File Directory: ".length()));
+                }
                 if(setting.startsWith("Source File Directory: ")){
                     sourceFileDirectory = new File(setting.substring("Source File Directory: ".length()));
                 }

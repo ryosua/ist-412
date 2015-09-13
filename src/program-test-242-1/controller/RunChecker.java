@@ -3,21 +3,19 @@ package controller;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-/**
- * Created by Shane on 9/10/2015.
- */
 public class RunChecker {
-    private JButton runButton;
-    private JTextField sourceField, testField;
-
-    public RunChecker(JButton runButton, JTextField sourceField, JTextField testField){
+    private final JButton runButton;
+    private final JTextField sourceField, testField, outputField;
+            
+    public RunChecker(JButton runButton, JTextField sourceField, JTextField testField, JTextField outputField){
         this.runButton = runButton;
         this.sourceField = sourceField;
         this.testField = testField;
+        this.outputField = outputField;
     }
 
     public void checkSettingsForRun(){
-        if (sourceField.getText().equals("") || testField.getText().equals("")) {
+        if (sourceField.getText().equals("") || testField.getText().equals("") || outputField.getText().equals("")) {
             runButton.setEnabled(false);
         }else {
             runButton.setEnabled(true);
