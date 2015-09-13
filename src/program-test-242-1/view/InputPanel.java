@@ -96,7 +96,10 @@ public class InputPanel extends JPanel {
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener());
         
-        final RunChecker runCheck = new RunChecker(runButton, sourceDirectoryField, testCaseDirectoryField, outputField);
+        final RunChecker runCheck = new RunChecker(runButton);
+        runCheck.trackTextField(sourceDirectoryField);
+        runCheck.trackTextField(testCaseDirectoryField);
+        runCheck.trackTextField(outputField);
         runCheck.checkSettingsForRun();
 
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
