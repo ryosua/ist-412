@@ -1,12 +1,12 @@
 package view;
 
-import controller.ChooseOutputLocationListener;
-import controller.ChooseSourceLocationListener;
-import controller.ChooseTestLocationListener;
+import controller.listener.ChooseOutputLocationListener;
+import controller.listener.ChooseSourceLocationListener;
+import controller.listener.ChooseTestLocationListener;
 import controller.RunChecker;
 import controller.FileController;
 import controller.Main;
-import controller.RunProgramListener;
+import controller.listener.RunProgramListener;
 
 import java.awt.*;
 import javax.swing.JButton;
