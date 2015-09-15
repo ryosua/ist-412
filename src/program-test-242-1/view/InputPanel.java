@@ -94,7 +94,7 @@ public class InputPanel extends JPanel {
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         runButtonC.insets = new Insets(25,0,0,0);
         //Run program when clicked.
-        runButton.addActionListener(new RunProgramListener());
+        runButton.addActionListener(new RunProgramListener(main.getSettings()));
         
         final RunChecker runCheck = new RunChecker(runButton);
         runCheck.trackTextField(sourceDirectoryField);

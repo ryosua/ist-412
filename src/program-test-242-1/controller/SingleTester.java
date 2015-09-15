@@ -4,19 +4,11 @@ package controller;
 import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
+import model.Results;
 
 public class SingleTester implements ProgramTester {
 
     private ApplicationSettings settings;
-    
-    /**
-     * Provide the default constructor for now, this should eventually be
-     * deleted, and in the main method, a SingleTester will be constructed with
-     * a set of default settings.
-     */
-    public SingleTester() {
-        
-    }
    
     public SingleTester(ApplicationSettings settings) {
         this.settings = settings;
@@ -81,12 +73,17 @@ public class SingleTester implements ProgramTester {
             System.out.println("run #: " + runNumber + " ; studentNumber: " + studentNumber
                     + "; Name: " + studentName + "; Handle: " + studentHandle);
             System.out.println("Output goes to: " + outputFileName);
+            
+            // Keep track of the output files, so we can generate a file for all
+            // the results, for every test.
+            Results results = new Results();
+            ResultsController resultsController = new ResultsController(settings.getOutputFileDirectory(), results);
 
             //    run javac compiler - returns 0 on success
             //    Compiler Constructor:
             //    public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String outFileName)
-            Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName);
+            Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName, results);
             int success = c.compileJava();
 
             //    Print whether or not compile successful
@@ -107,13 +104,19 @@ public class SingleTester implements ProgramTester {
             r.runJava();
             runNumber++;
             System.out.println();
+            
+            System.out.println(results.toString());
+            resultsController.writeResults();
+            
         } catch (IOException ioe) {
             System.out.println("main IOException");
         }
     }
     
-     public static void main(String[] args) {
-        final SingleTester singleTest = new SingleTester();
+    public static void main(String[] args) {
+        final Main main = new Main();
+        main.getFrame().setVisible(true);
+        final SingleTester singleTest = new SingleTester(main.getSettings());
         singleTest.run();
     }
 }

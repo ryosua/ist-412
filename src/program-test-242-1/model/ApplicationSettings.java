@@ -90,4 +90,16 @@ public class ApplicationSettings {
             inFile.close();
         }
     }
+    
+    @Override
+    public String toString() {
+        String string = "Settings: \n\n";
+        
+        string += "Output file: " + outputFileDirectory + "\n";
+        string += "Source file: " + sourceFileDirectory + "\n";
+        string += "Test directory: " + testCaseDirectory + "\n";
+        string += "Java directory: " + javaVersionDirectory + "\n";
+                
+        return string;
+    }
 }

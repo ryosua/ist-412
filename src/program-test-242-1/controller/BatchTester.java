@@ -4,6 +4,7 @@ package controller;
 import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
+import model.Results;
 
 public class BatchTester implements ProgramTester {
 
@@ -51,6 +52,10 @@ public class BatchTester implements ProgramTester {
             File configFile = new File(configFileName);
             Scanner in = new Scanner(configFile);
             int runNumber = 1;
+            
+             // Keep track of the output files, so we can generate a file for all
+            // the results, for every test.
+            Results results = new Results();
 
             while (in.hasNextLine()) {
                 String line = in.nextLine();
@@ -84,7 +89,7 @@ public class BatchTester implements ProgramTester {
                 //      Compiler Constructor:
                 //      public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
                 //      String srcPath, String stdPath, String outFileName)
-                Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName);
+                Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName, results);
                 int success = c.compileJava();
 
                 //      Print whether or not compile successful

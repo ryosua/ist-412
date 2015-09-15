@@ -3,9 +3,11 @@ package controller;
 import java.io.*;
 import java.util.*;
 import java.lang.ProcessBuilder.Redirect;
+import model.Results;
 
 public class Compiler
 {
+  private final Results results;
   private int number;
   private String name;
   private String handle;
@@ -16,8 +18,10 @@ public class Compiler
   private String outputFileName;
   private int success;
     
-  public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, String srcPath, String stdPath, String outFileName)
+  public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results)
   {
+    this.results = results;
+    
     number = numbr;
     name = nme;
     handle = hndl;
@@ -94,6 +98,9 @@ public class Compiler
 
             pb.redirectErrorStream(true);
             pb.redirectOutput(Redirect.appendTo(outputFile));
+            
+            // Save output file for later.
+            results.addFile(outputFile);
 
 //          start javac process        
             Process p = pb.start();

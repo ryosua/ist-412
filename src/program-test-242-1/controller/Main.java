@@ -9,11 +9,13 @@ public class Main {
     private final Frame f;
     private final FileController fileController;
     private final ApplicationSettings settings;
-    
+   
     public Main() {
+        // Settings need to come first because other classes depend on it.
+        settings = new ApplicationSettings();
+        
         f = new Frame(this);
         fileController = new FileController(this);
-        settings = new ApplicationSettings();
     }
 
     public static void main(String[] args) {
