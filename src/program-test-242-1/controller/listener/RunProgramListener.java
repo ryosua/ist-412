@@ -27,7 +27,7 @@ public class RunProgramListener implements ActionListener {
           
         // This needs to be changed to if batch mode.
         } else if (false) {
-            tester = new BatchTester();
+            tester = new BatchTester(settings);
         }
         tester.run();
     }

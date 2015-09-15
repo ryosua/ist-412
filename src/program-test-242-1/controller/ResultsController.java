@@ -6,6 +6,9 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import model.Results;
 
+/**
+ * Writes the results to an output file.
+ */
 public class ResultsController {
 
     private final File outputFile;
@@ -23,6 +26,7 @@ public class ResultsController {
                 while (in.hasNext()) {
                     out.println(in.nextLine());
                 }
+                out.println();
                 in.close();
             }
         } catch (FileNotFoundException ex) {

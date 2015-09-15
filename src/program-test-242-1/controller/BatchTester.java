@@ -9,16 +9,7 @@ import model.Results;
 public class BatchTester implements ProgramTester {
 
     private ApplicationSettings settings;
-
-    /**
-     * Provide the default constructor for now, this should eventually be
-     * deleted, and in the main method, a BatchTester will be constructed with a
-     * set of default settings.
-     */
-    public BatchTester() {
-
-    }
-
+    
     public BatchTester(ApplicationSettings settings) {
         this.settings = settings;
     }
@@ -53,9 +44,10 @@ public class BatchTester implements ProgramTester {
             Scanner in = new Scanner(configFile);
             int runNumber = 1;
             
-             // Keep track of the output files, so we can generate a file for all
+            // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
             Results results = new Results();
+            ResultsController resultsController = new ResultsController(settings.getOutputFileDirectory(), results);
 
             while (in.hasNextLine()) {
                 String line = in.nextLine();
@@ -108,6 +100,9 @@ public class BatchTester implements ProgramTester {
                 r.runJava();
                 runNumber++;
                 System.out.println();
+                
+                System.out.println(results.toString());
+                resultsController.writeResults();
             }
         } catch (IOException ioe) {
             System.out.println("main IOException");
@@ -115,7 +110,8 @@ public class BatchTester implements ProgramTester {
     }
 
     public static void main(String[] args) {
-        final BatchTester batchTest = new BatchTester();
+        final Main main = new Main();
+        final BatchTester batchTest = new BatchTester(main.getSettings());
         batchTest.run();
     }
 }

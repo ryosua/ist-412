@@ -115,7 +115,6 @@ public class SingleTester implements ProgramTester {
     
     public static void main(String[] args) {
         final Main main = new Main();
-        main.getFrame().setVisible(true);
         final SingleTester singleTest = new SingleTester(main.getSettings());
         singleTest.run();
     }

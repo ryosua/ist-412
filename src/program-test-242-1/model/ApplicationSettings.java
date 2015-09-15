@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ApplicationSettings {
     
-    private File outputFileDirectory = null;
+    private File outputFileDirectory = new File("testResults.txt");
     private File sourceFileDirectory = null;
     private File testCaseDirectory = null;
     private File javaVersionDirectory = null;
