@@ -4,7 +4,6 @@ import controller.listener.ChooseOutputLocationListener;
 import controller.listener.ChooseSourceLocationListener;
 import controller.listener.ChooseTestLocationListener;
 import controller.RunChecker;
-import controller.FileController;
 import controller.Main;
 import controller.listener.RunProgramListener;
 
@@ -13,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.ApplicationSettings;
 
 public class InputPanel extends JPanel {
 
@@ -45,8 +45,11 @@ public class InputPanel extends JPanel {
         outputLabelC.fill = GridBagConstraints.HORIZONTAL;
         outputLabelC.gridx = 0;
         outputLabelC.gridy = 4;
+        
+        final ApplicationSettings settings = main.getSettings();
 
         final JTextField sourceDirectoryField = new JTextField();
+        sourceDirectoryField.setText(settings.getSourceFileDirectory().getPath());
         sourceDirectoryField.setEditable(false);
         final GridBagConstraints sourceFieldC = new GridBagConstraints();
         sourceFieldC.fill = GridBagConstraints.HORIZONTAL;
@@ -54,6 +57,7 @@ public class InputPanel extends JPanel {
         sourceFieldC.gridy = 1;
         
         final JTextField outputField = new JTextField();
+        outputField.setText(settings.getOutputFileDirectory().getPath());
         outputField.setEditable(false);
         final GridBagConstraints outputFieldC = new GridBagConstraints();
         outputFieldC.fill = GridBagConstraints.HORIZONTAL;
@@ -61,6 +65,7 @@ public class InputPanel extends JPanel {
         outputFieldC.gridy = 5;
 
         final JTextField testCaseDirectoryField = new JTextField();
+        testCaseDirectoryField.setText(settings.getTestCaseDirectory().getPath());
         testCaseDirectoryField.setEditable(false);
         final GridBagConstraints testFieldC = new GridBagConstraints();
         testFieldC.fill = GridBagConstraints.HORIZONTAL;

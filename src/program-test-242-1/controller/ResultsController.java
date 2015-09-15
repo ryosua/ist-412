@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import model.Results;
@@ -20,7 +21,13 @@ public class ResultsController {
     }
 
     public void writeResults() {
-        try (PrintWriter out = new PrintWriter(outputFile)) {
+        PrintWriter out = null;
+            
+        try {
+            // Create a new output file if it does not exsit.
+            outputFile.createNewFile();
+            out = new PrintWriter(outputFile);
+            
             for (File file : results.getFiles()) {
                 Scanner in = new Scanner(file);
                 while (in.hasNext()) {
@@ -31,6 +38,10 @@ public class ResultsController {
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+        } catch (IOException ioEx) {
+            ioEx.printStackTrace();
+        } finally {
+            out.close();
         }
     }
 }

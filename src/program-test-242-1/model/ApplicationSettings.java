@@ -1,18 +1,23 @@
 package model;
 
+import controller.FileController;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ApplicationSettings {
     
-    private File outputFileDirectory = new File("testResults.txt");
-    private File sourceFileDirectory = null;
-    private File testCaseDirectory = null;
-    private File javaVersionDirectory = null;
-    private String settingsFileName = "Settings.txt";
+    private final File settingsFile = new File("Settings.txt");
     
+    private File outputFileDirectory = new File("testResults.txt");
+    private File sourceFileDirectory = FileController.emptyFile;
+    private File testCaseDirectory = FileController.emptyFile;
+    private File javaVersionDirectory = FileController.emptyFile;
+   
     public File getOutputFileDirectory() {
         return outputFileDirectory;
     }
@@ -41,22 +46,22 @@ public class ApplicationSettings {
     }
 	
     public void writeDataToSettingsFile(){
-        try (PrintWriter out = new PrintWriter(settingsFileName)) {
+        try (PrintWriter out = new PrintWriter(settingsFile)) {
             
             if(outputFileDirectory != null){
-                out.println("Output File Directory: " + outputFileDirectory.toString());
+                out.println("Output File Directory: " + outputFileDirectory.getPath());
             }
             
             if(sourceFileDirectory != null){
-                out.println("Source File Directory: " + sourceFileDirectory.toString());
+                out.println("Source File Directory: " + sourceFileDirectory.getPath());
             }
 
             if(testCaseDirectory != null){
-                out.println("Test Case Directory: " + testCaseDirectory.toString());
+                out.println("Test Case Directory: " + testCaseDirectory.getPath());
             }
 
             if(javaVersionDirectory != null){
-                out.println("Java Version Directory: " + javaVersionDirectory.toString());
+                out.println("Java Version Directory: " + javaVersionDirectory.getPath());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -66,7 +71,10 @@ public class ApplicationSettings {
     public void readDataFromSettingsFile(){
         Scanner inFile = null;
         try {
-            inFile = new Scanner(new File(settingsFileName));
+            // Create a new settings file if it does not exsit.
+            settingsFile.createNewFile();
+            
+            inFile = new Scanner(settingsFile);
 
             while(inFile.hasNextLine()){
                 String setting = inFile.nextLine();
@@ -86,6 +94,8 @@ public class ApplicationSettings {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(ApplicationSettings.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             inFile.close();
         }

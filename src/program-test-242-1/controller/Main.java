@@ -13,6 +13,7 @@ public class Main {
     public Main() {
         // Settings need to come first because other classes depend on it.
         settings = new ApplicationSettings();
+        settings.readDataFromSettingsFile();
         
         f = new Frame(this);
         fileController = new FileController(this);
