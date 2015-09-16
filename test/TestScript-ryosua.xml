@@ -1,0 +1,74 @@
+<project name="Test" basedir="." default="run-all">
+
+	<property file="build.properties"/>
+	
+	<!-- The clean target deletes the bin and dist directories (permitting 
+ 	you to start from scratch. --> 
+
+	<target name="clean">
+	  <delete dir="${binDirectory}"/>
+	  <delete dir="${distDirectory}"/>
+	</target>
+
+
+	<!-- The compile-all target creates the bin directory, copies any 
+	.properties files from the src directory into the bin directory, 
+	and compiles the code in the src directory while simultaneously
+	placing the generated .class files into he bin directory. -->
+
+	<target name="compile-all" depends="clean">
+	  <mkdir dir="${binDirectory}"/>
+	  <copy todir="${binDirectory}">
+	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
+	  </copy>
+	  <unzip src="${libDirectory}/log4j-1.2.15.jar" dest="${binDirectory}"/>
+	  <javac srcdir="${srcDirectory}"
+		 destdir="${binDirectory}"
+		 includeAntRuntime="false"
+		 fork="true"
+	  />		
+	</target>
+
+
+
+	<!-- The build-all target creates the dist directory and jars 
+	the files in the bin directory, placing the resulting .jar file 
+	in the dist directory. -->
+
+	<target name="build-all" depends="compile-all"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- The run-all target runs the .jar file created in the 
+	previous target, utilizing the class as the executable class. -->
+
+	<target name="run-all" depends="build-all">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
+
+	<!-- The doc target has no dependencies, creates the javadocs 
+	and places them in the doc directory. -->
+
+	<target name="doc">
+	<javadoc sourcepath="${srcDirectory}"
+		 destdir="${docDirectory}"
+		 author="true"
+		 version="true">
+	</javadoc>
+	</target>
+
+
+</project>
