@@ -24,6 +24,9 @@ nbproject
 # Files
 src/program-test-242-1/Settings.txt
 src/program-test-242-1/testResults.txt
+build.properties
+lab1-instructions-ant-build-script.pdf
+lab1-instructions-ant-build-script.doc
 
 # folders
 ant
@@ -32,3 +35,10 @@ src/winbashhome
 src/program-test-242-1/src/
 jdk1.7.0_71/
 apache-ant-1.8.2/
+test/lab1/bin /
+test/lab1/bin
+test/lab1/dist
+test/lab1/src
+test/lab1/lib
+test/lab1/doc
+test/lab1/ant-with-eclipse-lab-extension
