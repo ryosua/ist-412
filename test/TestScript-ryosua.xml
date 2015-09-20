@@ -31,11 +31,58 @@
 
 
 
+	<!-- An incremental compile -->
+
+	<target name="compile">
+	  <mkdir dir="${binDirectory}"/>
+	  <copy todir="${binDirectory}">
+	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
+	  </copy>
+	  <unzip src="${libDirectory}/log4j-1.2.15.jar" dest="${binDirectory}"/>
+	  <javac srcdir="${srcDirectory}"
+		 destdir="${binDirectory}"
+		 includeAntRuntime="false"
+		 fork="true"
+	  />		
+	</target>
+
+
+
 	<!-- The build-all target creates the dist directory and jars 
 	the files in the bin directory, placing the resulting .jar file 
 	in the dist directory. -->
 
 	<target name="build-all" depends="compile-all"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- An incremental build -->
+
+	<target name="build" depends="compile"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- Just jars the .class files with no recompile.-->
+
+	<target name="build-ind"> 
 	  <mkdir dir="${distDirectory}"/>
 	  <jar destfile="${distDirectory}/${appName}.jar"
 	       basedir="${binDirectory}">
@@ -57,6 +104,29 @@
 	    >
 	  </java>
 	</target>
+
+
+
+	<!-- Runs the program after building. -->
+
+	<target name="run" depends="build">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
+
+
+	<!-- Runs the program without building. -->
+
+	<target name="run-ind">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
 
 
 	<!-- The doc target has no dependencies, creates the javadocs 
