@@ -1,5 +1,14 @@
 <project name="Test" basedir="." default="run-all">
 
+	<!-- 
+	Ryan Yosua
+	Dan Servich
+	Gilberto Aponte
+	Matt Sherman
+	Qiu Lo
+	Shane Eckenrode
+ 	--> 
+
 	<property file="build.properties"/>
 	
 	<!-- The clean target deletes the bin and dist directories (permitting 
