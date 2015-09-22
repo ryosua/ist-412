@@ -27,10 +27,20 @@ public class SingleTester implements ProgramTester {
         String path = "C:/java/jdk1.7.0_71/bin";
 
         //  set fixed paths and file names:
-        String sourcePath = "./src/src-output";
-        String testDataPath = "./src";
+        
+        String sourcePath = settings.getSourceFileDirectory().toString();
+        String testDataPath = settings.getTestCaseDirectory().toString();
+        
+      
+        //sourcePath = "./src/src-output";
+        //testDataPath = "./src";
+      
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
+        
+        // Serialize paths
+        
+        
         /*  make sure set correctly
          System.out.println("sourcePath: " + sourcePath);
          System.out.println("testDataPath: " + testDataPath);
