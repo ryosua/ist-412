@@ -2,7 +2,6 @@ package controller.listener;
 
 import controller.FileController;
 import controller.Main;
-import controller.RunChecker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,12 +17,10 @@ public abstract class ChooseLocationListener implements ActionListener {
 
     private final Main main;
     private final JTextField textField;
-    private final RunChecker runCheck;
 
-    public ChooseLocationListener(Main main, JTextField textField, RunChecker runCheck) {
+    public ChooseLocationListener(Main main, JTextField textField) {
         this.main = main;
         this.textField = textField;
-        this.runCheck = runCheck;
     }
 
     public abstract void saveFile(File filePicked);
@@ -36,17 +33,12 @@ public abstract class ChooseLocationListener implements ActionListener {
         if (filePicked != FileController.emptyFile) {
             saveFile(filePicked);
             updateTextField(filePicked);
-            runCheck.checkSettingsForRun();
-            System.out.println("Checking Settings...");
+            System.out.println(main.getSettings().toString());
         }
     }
 
     public Main getMain() {
         return main;
-    }
-
-    public RunChecker getRunCheck() {
-        return runCheck;
     }
 
     public JTextField getTextField() {

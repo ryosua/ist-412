@@ -3,7 +3,6 @@ package view;
 import controller.listener.ChooseOutputLocationListener;
 import controller.listener.ChooseSourceLocationListener;
 import controller.listener.ChooseTestLocationListener;
-import controller.RunChecker;
 import controller.Main;
 import controller.listener.RunProgramListener;
 
@@ -101,16 +100,10 @@ public class InputPanel extends JPanel {
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener(main.getSettings()));
         
-        final RunChecker runCheck = new RunChecker(runButton);
-        runCheck.trackTextField(sourceDirectoryField);
-        runCheck.trackTextField(testCaseDirectoryField);
-        runCheck.trackTextField(outputField);
-        runCheck.checkSettingsForRun();
-
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
-        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField, runCheck));
-        testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField, runCheck));
-        outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField, runCheck));
+        sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
+        testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
+        outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
 
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);

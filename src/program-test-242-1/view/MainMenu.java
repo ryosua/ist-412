@@ -1,6 +1,7 @@
 package view;
 
-import controller.FileController;
+import controller.listener.ChooseConfigLocationListener;
+import controller.listener.ChooseJDKLocationListener;
 import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,6 @@ import javax.swing.JMenu;
 import javax.swing.ButtonGroup;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JFileChooser;
 
 public class MainMenu extends JMenuBar{
     private JMenuBar menu;
@@ -35,8 +35,8 @@ public class MainMenu extends JMenuBar{
         selectJDK = new JMenuItem("Select JDK");
 
         //Add listeners
-        selectConfig.addActionListener(new MenuItemListener());
-        selectJDK.addActionListener(new MenuJDK());
+        selectConfig.addActionListener(new ChooseConfigLocationListener(main, null));
+        selectJDK.addActionListener(new ChooseJDKLocationListener(main, null));
         closeApp.addActionListener(new menuExitApp());
 
         //Set up button group for menu radio buttons.
@@ -65,27 +65,7 @@ public class MainMenu extends JMenuBar{
         menuRunType.add(singleRun);
         menuRunType.add(batchRun);
     }
-
-    private class MenuItemListener implements ActionListener {
-
-        public MenuItemListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent ae) { main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG); }
-    }
     
-    private class MenuJDK implements ActionListener {
-
-        public MenuJDK() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
-        }
-    }
-
     private class menuExitApp implements ActionListener {
 
         public menuExitApp() {

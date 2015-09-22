@@ -1,14 +1,13 @@
 package controller.listener;
 
 import controller.Main;
-import controller.RunChecker;
 import java.io.File;
 import javax.swing.JTextField;
 
 public class ChooseOutputLocationListener extends ChooseLocationListener {
 
-    public ChooseOutputLocationListener(Main main, JTextField textField, RunChecker runCheck) {
-        super(main, textField, runCheck);
+    public ChooseOutputLocationListener(Main main, JTextField textField) {
+        super(main, textField);
     }
 
     @Override
