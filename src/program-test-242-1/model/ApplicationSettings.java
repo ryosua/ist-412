@@ -1,6 +1,5 @@
 package model;
 
-import controller.FileController;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,8 +13,8 @@ public class ApplicationSettings {
     private final File settingsFile = new File("Settings.txt");
     
     private File outputFileDirectory = new File("testResults.txt");
-    private File sourceFileDirectory = new File("./src/src-output");
-    private File testCaseDirectory = new File("./src");
+    private File sourceFileDirectory = new File("src/src-output");
+    private File testCaseDirectory = new File("src");
     private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
    
     public File getOutputFileDirectory() {
@@ -105,10 +104,10 @@ public class ApplicationSettings {
     public String toString() {
         String string = "Settings: \n\n";
         
-        string += "Output file: " + outputFileDirectory + "\n";
-        string += "Source file: " + sourceFileDirectory + "\n";
-        string += "Test directory: " + testCaseDirectory + "\n";
-        string += "Java directory: " + javaVersionDirectory + "\n";
+        string += "Output file: " + outputFileDirectory.getAbsolutePath() + "\n";
+        string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
+        string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
+        string += "Java directory: " + javaVersionDirectory.getAbsolutePath() + "\n";
                 
         return string;
     }
