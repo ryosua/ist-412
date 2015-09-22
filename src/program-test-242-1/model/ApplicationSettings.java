@@ -14,9 +14,9 @@ public class ApplicationSettings {
     private final File settingsFile = new File("Settings.txt");
     
     private File outputFileDirectory = new File("testResults.txt");
-    private File sourceFileDirectory = FileController.emptyFile;
-    private File testCaseDirectory = FileController.emptyFile;
-    private File javaVersionDirectory = FileController.emptyFile;
+    private File sourceFileDirectory = new File("./src/src-output");
+    private File testCaseDirectory = new File("./src");
+    private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
    
     public File getOutputFileDirectory() {
         return outputFileDirectory;
