@@ -17,6 +17,10 @@ public class ApplicationSettings {
     private File testCaseDirectory = new File("src");
     private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
    
+    public File getJavaVersionDirectory() {
+        return javaVersionDirectory;
+    }
+    
     public File getOutputFileDirectory() {
         return outputFileDirectory;
     }
@@ -29,14 +33,19 @@ public class ApplicationSettings {
         return testCaseDirectory;
     }
     
+    public void setJavaVersionDirectory(File directory) {
+        outputFileDirectory = directory;
+        writeDataToSettingsFile();
+    }
+    
     public void setOutputFileDirectory(File directory) {
         outputFileDirectory = directory;
-		writeDataToSettingsFile();
+        writeDataToSettingsFile();
     }
 
     public void setSourceFileDirectory(File directory) {
         sourceFileDirectory = directory;
-		writeDataToSettingsFile();
+	writeDataToSettingsFile();
     }
 
     public void setTestCaseDirectory(File directory) {

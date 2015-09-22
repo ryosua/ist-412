@@ -24,7 +24,7 @@ public class SingleTester implements ProgramTester {
         String className = "242-1/";
         String configFileName = "./configSingle.txt";
         System.out.println("configFileName: " + configFileName);
-        String path = "C:/java/jdk1.7.0_71/bin";
+        File path = settings.getJavaVersionDirectory();
 
         //  set fixed paths and file names:
         
@@ -60,7 +60,7 @@ public class SingleTester implements ProgramTester {
             Scanner in = new Scanner(configFile);
             String line = in.nextLine();
             Scanner inLine = new Scanner(line);
-            path = inLine.next();
+            path = new File(inLine.next());
             line = in.nextLine();
             inLine = new Scanner(line);
             studentName = inLine.next();
@@ -93,7 +93,7 @@ public class SingleTester implements ProgramTester {
             //    Compiler Constructor:
             //    public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String outFileName)
-            Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName, results);
+            Compiler c = new Compiler(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath, studentPath, outputFileName, results);
             int success = c.compileJava();
 
             //    Print whether or not compile successful
@@ -108,7 +108,7 @@ public class SingleTester implements ProgramTester {
             //    public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String tstDataPath, String argFileName, 
             //    String tstInputFileName, String inputFileName, String outFileName)
-            TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path, classPath,
+            TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath,
                     sourcePath, studentPath, testDataPath, argsFileName, testInputFileName, inputFileStub,
                     outputFileName);
             r.runJava();

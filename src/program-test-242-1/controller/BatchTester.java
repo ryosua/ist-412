@@ -24,10 +24,10 @@ public class BatchTester implements ProgramTester {
         String configFileName = "./configBatch.txt";
         //  System.out.println("configFileName: " + configFileName);
 
-        String path = "C:/java/jdk1.7.0_71/bin";
+        File path = settings.getJavaVersionDirectory();
         //  set fixed paths and file names:
-        String sourcePath = "./src/src-output";
-        String testDataPath = "./src";
+        File sourcePath = settings.getSourceFileDirectory();
+        File testDataPath = settings.getTestCaseDirectory();
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
         /*  make sure set correctly
@@ -81,7 +81,7 @@ public class BatchTester implements ProgramTester {
                 //      Compiler Constructor:
                 //      public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
                 //      String srcPath, String stdPath, String outFileName)
-                Compiler c = new Compiler(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, outputFileName, results);
+                Compiler c = new Compiler(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results);
                 int success = c.compileJava();
 
                 //      Print whether or not compile successful
@@ -96,7 +96,7 @@ public class BatchTester implements ProgramTester {
                 //      public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
                 //      String srcPath, String stdPath, String tstDataPath, String argFileName, 
                 //      String tstInputFileName, String inputFileStub, String outFileName)
-                TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path, classPath, sourcePath, studentPath, testDataPath, argsFileName, testInputFileName, inputFileStub, outputFileName);
+                TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, testDataPath.getAbsolutePath(), argsFileName, testInputFileName, inputFileStub, outputFileName);
                 r.runJava();
                 runNumber++;
                 System.out.println();
