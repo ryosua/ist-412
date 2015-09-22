@@ -69,7 +69,7 @@ public class SingleTester implements ProgramTester {
             studentHandle = inLine.next();
 
             //    set paths and file names:
-            String classPath = "/java/bin/" + className + studentName;
+            File classPath = new File("C:/java/bin/" + className + studentName);
             String studentPath = sourcePath + "/" + studentName;
             String inputFileStub = studentPath + "/input";
             String outputFileName = studentPath + File.separatorChar + "output-" + studentName + ".txt";
@@ -92,7 +92,7 @@ public class SingleTester implements ProgramTester {
             //    Compiler Constructor:
             //    public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String outFileName)
-            Compiler c = new Compiler(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath, studentPath, outputFileName, results);
+            Compiler c = new Compiler(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath.getAbsolutePath(), sourcePath, studentPath, outputFileName, results);
             int success = c.compileJava();
 
             //    Print whether or not compile successful
@@ -107,7 +107,7 @@ public class SingleTester implements ProgramTester {
             //    public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String tstDataPath, String argFileName, 
             //    String tstInputFileName, String inputFileName, String outFileName)
-            TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath,
+            TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath.getAbsolutePath(),
                     sourcePath, studentPath, testDataPath, argsFileName, testInputFileName, inputFileStub,
                     outputFileName);
             r.runJava();
