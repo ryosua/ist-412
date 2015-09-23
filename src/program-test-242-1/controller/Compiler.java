@@ -38,7 +38,7 @@ public class Compiler
     try
     {
 //    create new bin directory
-      boolean createBin = new File(classPath).mkdir();
+      boolean createBin = new File(classPath).mkdirs();
 
 //    create new javac ProcessBuilder        
 //      ProcessBuilder pb =
