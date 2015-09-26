@@ -22,6 +22,7 @@
 	  <copy todir="${binDirectory}">
 	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
 	  </copy>
+	  <unzip src="${libDirectory}/junit-4.10.jar" dest="${binDirectory}"/>
 	  <javac srcdir="${srcDirectory}"
 		 destdir="${binDirectory}"
 		 includeAntRuntime="false"
@@ -40,6 +41,7 @@
 	  <copy todir="${binDirectory}">
 	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
 	  </copy>
+	  <unzip src="${libDirectory}/junit-4.10.jar" dest="${binDirectory}"/>
 	  <javac srcdir="${srcDirectory}"
 		 destdir="${binDirectory}"
 		 includeAntRuntime="false"
@@ -143,5 +145,22 @@
 	</javadoc>
 	</target>
 
+	<!-- Comiles all then runs the jUnit tests. -->
+	<target name="test-all" depends="compile-all">
+		<java classname="org.junit.runner.JUnitCore"
+			fork="true"
+		    >
+		    <arg value="ProgramJUnitTest"/>
+		</java>
+	</target>
+
+	<!-- Runs the jUnit tests. -->
+	<target name="test">
+		<java classname="org.junit.runner.JUnitCore"
+			fork="true"
+		    >
+		    <arg value="ProgramJUnitTest"/>
+		</java>
+	</target>
 
 </project>
