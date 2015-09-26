@@ -10,11 +10,13 @@ public class Main {
     private final Frame f;
     private final FileController fileController;
     private final ApplicationSettings settings;
+    private final UserController userController;
    
     public Main() {
-        // Settings need to come first because other classes depend on it.
+        // Changing the order may cause null pointers.
         settings = new ApplicationSettings();
         settings.readDataFromSettingsFile();
+        userController = new UserController();
         
         f = new Frame(this);
         fileController = new FileController(this);
@@ -43,5 +45,9 @@ public class Main {
     
     public ApplicationSettings getSettings() {
         return settings;
+    }
+    
+    public UserController getUserController() {
+        return userController;
     }
 }
