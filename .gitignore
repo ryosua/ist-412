@@ -24,6 +24,8 @@ nbproject
 # Files
 src/program-test-242-1/Settings.txt
 src/program-test-242-1/testResults.txt
+src/program-test-242-1/ProgramJUnitTest.java
+src/program-test-242-1/users.txt
 
 # folders
 ant
@@ -37,4 +39,3 @@ junit4.10/
 junit-demo/
 junit4.11/
 *.jar
-src/program-test-242-1/ProgramJUnitTest.java
