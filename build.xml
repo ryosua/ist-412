@@ -1,12 +1,146 @@
-<project default="compile">
-    <target name="compile">
-        <mkdir dir="bin"/>
-        <javac includeantruntime="false" srcdir="src/program-test-242-1" destdir="bin">
-            <exclude name="**/src/**" />
-        </javac>
-    </target>
+<project name="ProgramTest" basedir="src/program-test-242-1" default="run-all">
 
-    <target name="clean">
-        <delete dir="bin"/>
-    </target>
+	<property file="C:/java/build.properties"/>
+	
+	<!-- The clean target deletes the bin and dist directories (permitting 
+ 	you to start from scratch. --> 
+
+	<target name="clean">
+	  <delete dir="${binDirectory}"/>
+	  <delete dir="${distDirectory}"/>
+	</target>
+
+
+	<!-- The compile-all target creates the bin directory, copies any 
+	.properties files from the src directory into the bin directory, 
+	and compiles the code in the src directory while simultaneously
+	placing the generated .class files into he bin directory. -->
+
+	<target name="compile-all" depends="clean">
+	  <mkdir dir="${binDirectory}"/>
+	  <copy todir="${binDirectory}">
+	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
+	  </copy>
+	  <javac srcdir="${srcDirectory}"
+		 destdir="${binDirectory}"
+		 includeAntRuntime="false"
+		 fork="true"
+	  >
+	  <exclude name="**/src/**" />
+	  </javac>	
+	</target>
+
+
+
+	<!-- An incremental compile -->
+
+	<target name="compile">
+	  <mkdir dir="${binDirectory}"/>
+	  <copy todir="${binDirectory}">
+	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
+	  </copy>
+	  <javac srcdir="${srcDirectory}"
+		 destdir="${binDirectory}"
+		 includeAntRuntime="false"
+		 fork="true"
+	  >
+	  <exclude name="**/src/**" />
+	  </javac>
+	</target>
+
+
+
+	<!-- The build-all target creates the dist directory and jars 
+	the files in the bin directory, placing the resulting .jar file 
+	in the dist directory. -->
+
+	<target name="build-all" depends="compile-all"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- An incremental build -->
+
+	<target name="build" depends="compile"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- Just jars the .class files with no recompile.-->
+
+	<target name="build-ind"> 
+	  <mkdir dir="${distDirectory}"/>
+	  <jar destfile="${distDirectory}/${appName}.jar"
+	       basedir="${binDirectory}">
+	       <manifest>
+		 <attribute name="Main-Class"
+		   value="${mainClass}"/>
+	       </manifest>
+	  </jar>
+	</target>
+
+
+
+	<!-- The run-all target runs the .jar file created in the 
+	previous target, utilizing the class as the executable class. -->
+
+	<target name="run-all" depends="build-all">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
+
+
+	<!-- Runs the program after building. -->
+
+	<target name="run" depends="build">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
+
+
+	<!-- Runs the program without building. -->
+
+	<target name="run-ind">
+	  <java jar="${distDirectory}/${appName}.jar"
+		fork="true"
+	    >
+	  </java>
+	</target>
+
+
+
+	<!-- The doc target has no dependencies, creates the javadocs 
+	and places them in the doc directory. -->
+
+	<target name="doc">
+	<javadoc sourcepath="${srcDirectory}"
+		 destdir="${docDirectory}"
+		 author="true"
+		 version="true">
+	</javadoc>
+	</target>
+
+
 </project>

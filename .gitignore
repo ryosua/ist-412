@@ -36,3 +36,4 @@ test/
 junit4.10/
 junit-demo/
 junit4.11/
+*.jar
