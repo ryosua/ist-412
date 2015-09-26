@@ -15,11 +15,17 @@ public class RegisterPanel extends JPanel {
     
     private JTextField passwordField;
     private JTextField usernameField;
+    private JLabel messageLabel;
     
     public RegisterPanel(Main main) {
         this.main = main;
 
         createAndAddComponents();
+    }
+    
+    public void clearFields() {
+        passwordField.setText("");
+        usernameField.setText("");
     }
     
     public String getPassword() {
@@ -28,6 +34,10 @@ public class RegisterPanel extends JPanel {
     
     public String getUserName() {
         return usernameField.getText();
+    }
+    
+    public void setMessageLabel(String message) {
+        messageLabel.setText(message);
     }
 
     private void createAndAddComponents() {
@@ -45,6 +55,12 @@ public class RegisterPanel extends JPanel {
         passwordLabelC.fill = GridBagConstraints.HORIZONTAL;
         passwordLabelC.gridx = 0;
         passwordLabelC.gridy = 2;
+        
+        messageLabel = new JLabel("");
+        final GridBagConstraints messageLabelC = new GridBagConstraints();
+        messageLabelC.fill = GridBagConstraints.HORIZONTAL;
+        messageLabelC.gridx = 0;
+        messageLabelC.gridy = 5;
 
         usernameField = new JTextField();
         final GridBagConstraints usernameFieldC = new GridBagConstraints();
@@ -70,5 +86,6 @@ public class RegisterPanel extends JPanel {
         add(usernameField, usernameFieldC);
         add(passwordField, passwordFieldC);
         add(registerButton, registerButtonC);
+        add(messageLabel, messageLabelC);
     }
 }

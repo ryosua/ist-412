@@ -20,7 +20,14 @@ public class RegisterUserListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        userController.registerUser(panel.getUserName(), panel.getPassword());
+        boolean success = false;
+        success = userController.registerUser(panel.getUserName(), panel.getPassword());
+        if (success == false) {
+            panel.setMessageLabel("Invalid username or password");
+        } else {
+            panel.setMessageLabel("User registered");
+            panel.clearFields();
+        }
     }
     
 }
