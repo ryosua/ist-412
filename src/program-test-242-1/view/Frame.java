@@ -22,8 +22,14 @@ public class Frame extends JFrame {
        
         frame.setJMenuBar(menu);
         
+        
+        final RegisterPanel registerPanel = new RegisterPanel(main);
+        frame.add(registerPanel);
+        
+        /*
         final InputPanel inputPanel = new InputPanel(main);
         frame.add(inputPanel);
+        */
 
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
