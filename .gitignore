@@ -37,3 +37,4 @@ junit4.10/
 junit-demo/
 junit4.11/
 *.jar
+src/program-test-242-1/ProgramJUnitTest.java
