@@ -10,6 +10,7 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
 
@@ -100,6 +101,21 @@ public class InputPanel extends JPanel {
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener(main.getSettings()));
         
+        final JRadioButton singleRun = new JRadioButton("Single Run");
+        final GridBagConstraints singleRunBtn = new GridBagConstraints();
+        singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
+        singleRunBtn.gridx = 0;
+        singleRunBtn.gridy = 6;
+        //singleRunBtn.addActionListener(new );
+        singleRun.setSelected(true);
+        
+        final JRadioButton batchRun = new JRadioButton("Batch Run");
+        final GridBagConstraints batchRunBtn = new GridBagConstraints();
+        batchRunBtn.fill = GridBagConstraints.HORIZONTAL;
+        batchRunBtn.gridx = 0;
+        batchRunBtn.gridy = 7;
+        //batchRunBtn.addActionListener(new );
+        
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
@@ -115,5 +131,8 @@ public class InputPanel extends JPanel {
         add(outputField, outputFieldC);
         add(outputButton, outputButtonC);
         add(runButton, runButtonC);
+        add(singleRun, singleRunBtn);
+        add(batchRun, batchRunBtn);
+        
     }
 }

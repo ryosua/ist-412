@@ -9,13 +9,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.ButtonGroup;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
+//import javax.swing.JRadioButtonMenuItem;
 
 public class MainMenu extends JMenuBar{
     private JMenuBar menu;
     private JMenu menuFile, menuRunType, menuConfig;
     private JMenuItem closeApp, selectConfig, selectJDK;
-    private JRadioButtonMenuItem singleRun, batchRun;
+    //private JRadioButtonMenuItem singleRun, batchRun;
     private ButtonGroup menuRunTypeRadios;
     private final Main main;
 
@@ -43,27 +43,27 @@ public class MainMenu extends JMenuBar{
         menuRunTypeRadios = new ButtonGroup();
 
         //Set up menu radio button sub-items.
-        singleRun = new JRadioButtonMenuItem("Single Run");
-        batchRun = new JRadioButtonMenuItem("Batch Run");
+        //singleRun = new JRadioButtonMenuItem("Single Run");
+        //batchRun = new JRadioButtonMenuItem("Batch Run");
 
         //Set default selection for run type.
-        singleRun.setSelected(true);
+        //singleRun.setSelected(true);
 
         //Add radio buttons to button group.
-        menuRunTypeRadios.add(singleRun);
-        menuRunTypeRadios.add(batchRun);
+        //menuRunTypeRadios.add(singleRun);
+        //menuRunTypeRadios.add(batchRun);
 
         //Add options to the menubar.
         this.add(menuFile);
-        this.add(menuRunType);
+        //this.add(menuRunType);
         this.add(menuConfig);
 
         //Adds options in dropdown format for menu item.
         menuFile.add(closeApp);
         menuConfig.add(selectJDK);
         menuConfig.add(selectConfig);
-        menuRunType.add(singleRun);
-        menuRunType.add(batchRun);
+        //menuRunType.add(singleRun);
+        //menuRunType.add(batchRun);
     }
     
     private class menuExitApp implements ActionListener {
