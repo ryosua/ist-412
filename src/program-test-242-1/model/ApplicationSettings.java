@@ -60,7 +60,7 @@ public class ApplicationSettings {
 
     public void setTestCaseDirectory(File directory) {
         testCaseDirectory = directory;
-		writeDataToSettingsFile();
+        writeDataToSettingsFile();
     }
 	
     public void writeDataToSettingsFile(){
