@@ -27,8 +27,6 @@ public class FileController {
     public File getFileFromChooser(int dialogType) {
         File file = null;
 
-        fileChooser.setDialogType(dialogType);
-
         if (dialogType == JFileChooser.SAVE_DIALOG) {
             fileChooser.setDialogTitle("Choose a location");
             fileChooser.setApproveButtonText("Choose");
@@ -43,5 +41,10 @@ public class FileController {
         }
 
         return file;
+    }
+    
+    public void setFileType(int fileType) {
+        fileChooser.setDialogType(fileType);
+        fileChooser.setFileSelectionMode(fileType);
     }
 }

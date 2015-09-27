@@ -2,6 +2,7 @@ package controller.listener;
 
 import controller.Main;
 import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 public class ChooseOutputLocationListener extends ChooseLocationListener {
@@ -20,4 +21,8 @@ public class ChooseOutputLocationListener extends ChooseLocationListener {
         getTextField().setText(getMain().getSettings().getOutputFileDirectory().getPath());
     }
     
+    @Override
+    public void setFileType() {
+        getMain().getFileController().setFileType(JFileChooser.FILES_ONLY);
+    }
 }
