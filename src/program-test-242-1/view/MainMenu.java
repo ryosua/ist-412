@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-//import javax.swing.JRadioButtonMenuItem;
 
 public class MainMenu extends JMenuBar{
     private final JMenuBar menu;

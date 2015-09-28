@@ -6,6 +6,7 @@ import controller.listener.ChooseTestLocationListener;
 import controller.Main;
 import controller.listener.ChooseConfigLocationListener;
 import controller.listener.ChooseJDKLocationListener;
+import controller.listener.RadioButtonListener;
 import controller.listener.RunProgramListener;
 
 import java.awt.*;
@@ -142,7 +143,6 @@ public class InputPanel extends JPanel {
         singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
         singleRunBtn.gridx = 0;
         singleRunBtn.gridy = 10;
-        //singleRunBtn.addActionListener(new );
         singleRun.setSelected(true);
         
         final JRadioButton batchRun = new JRadioButton("Batch Run");
@@ -150,7 +150,6 @@ public class InputPanel extends JPanel {
         batchRunBtn.fill = GridBagConstraints.HORIZONTAL;
         batchRunBtn.gridx = 0;
         batchRunBtn.gridy = 11;
-        //batchRunBtn.addActionListener(new );
         
         //Add runtype radio buttons to button group.
         final ButtonGroup runTypeRadios = new ButtonGroup();
@@ -161,8 +160,9 @@ public class InputPanel extends JPanel {
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
+        singleRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
+        batchRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
         
-
         add(jdkLabel, jdkLabelC);
         add(jdkDirectoryField, jdkFieldC);
         add(configLabel, configLabelC);
