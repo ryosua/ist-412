@@ -20,12 +20,9 @@ import model.ApplicationSettings;
 public class InputPanel extends JPanel {
 
     private final Main main;
-    private final JTextField configField, jdkDirectoryField;
 
     public InputPanel(Main main) {
         this.main = main;
-        configField = new JTextField();
-        jdkDirectoryField = new JTextField();
 
         createAndAddComponents();
     }
@@ -67,7 +64,7 @@ public class InputPanel extends JPanel {
         
         final ApplicationSettings settings = main.getSettings();
 
-        //final JTextField jdkDirectoryField = new JTextField();
+        final JTextField jdkDirectoryField = new JTextField();
         jdkDirectoryField.setText(settings.getJavaVersionDirectory().getPath());
         jdkDirectoryField.setEditable(false);
         final GridBagConstraints jdkFieldC = new GridBagConstraints();
@@ -75,7 +72,7 @@ public class InputPanel extends JPanel {
         jdkFieldC.gridx = 0;
         jdkFieldC.gridy = 1;
         
-        //final JTextField configField = new JTextField();
+        final JTextField configField = new JTextField();
         configField.setText(settings.getConfigFile().getPath());
         configField.setEditable(false);
         final GridBagConstraints configFieldC = new GridBagConstraints();
@@ -108,6 +105,19 @@ public class InputPanel extends JPanel {
         testFieldC.gridx = 0;
         testFieldC.gridy = 7;
 
+        final JButton jdkDirectoryButton = new JButton("Choose Location");
+        final GridBagConstraints jdkButtonC = new GridBagConstraints();
+        jdkButtonC.fill = GridBagConstraints.HORIZONTAL;
+        jdkButtonC.gridx = 1;
+        jdkButtonC.gridy = 1;
+        
+        final JButton configButton = new JButton("Choose Location");
+        final GridBagConstraints configButtonC = new GridBagConstraints();
+        configButtonC.fill = GridBagConstraints.HORIZONTAL;
+        configButtonC.gridx = 1;
+        configButtonC.gridy = 3;
+        configButtonC.insets = new Insets(0,0,30,0);
+        
         final JButton sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
         sourcButtonC.fill = GridBagConstraints.HORIZONTAL;
@@ -161,8 +171,12 @@ public class InputPanel extends JPanel {
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
+        jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
+        configButton.addActionListener(new ChooseConfigLocationListener(main, configField));
         
 
+        add(jdkDirectoryButton, jdkButtonC);
+        add(configButton, configButtonC);
         add(jdkLabel, jdkLabelC);
         add(jdkDirectoryField, jdkFieldC);
         add(configLabel, configLabelC);
@@ -180,13 +194,5 @@ public class InputPanel extends JPanel {
         add(singleRun, singleRunBtn);
         add(batchRun, batchRunBtn);
         
-    }
-    
-    public JTextField getConfigField(){
-        return configField;
-    }
-    
-    public JTextField getJDKField(){
-        return jdkDirectoryField;
     }
 }
