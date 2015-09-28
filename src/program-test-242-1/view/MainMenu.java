@@ -11,16 +11,18 @@ import javax.swing.JMenuItem;
 //import javax.swing.JRadioButtonMenuItem;
 
 public class MainMenu extends JMenuBar{
-    private JMenuBar menu;
-    private JMenu menuFile, menuRunType, menuConfig;
-    private JMenuItem closeApp, selectConfig, selectJDK;
-    private Main main;
+    private final JMenuBar menu;
+    private final JMenu menuFile, menuRunType, menuConfig;
+    private final JMenuItem closeApp, selectConfig, selectJDK;
+    private final Main main;
+    private final InputPanel panel;
 
     public MainMenu(Main main){
         this.main = main;
         //Set up menu bar
         menu = new JMenuBar();
-
+        panel = new InputPanel(main);
+        
         //Set up menu items that are displayed on bar.
         menuFile = new JMenu("File");
         menuRunType = new JMenu("Run Type");
@@ -30,11 +32,11 @@ public class MainMenu extends JMenuBar{
         closeApp = new JMenuItem("Exit");
         selectConfig = new JMenuItem("Select Config File");
         selectJDK = new JMenuItem("Select JDK");
-        
+                
         //Add listeners
         //***Need to get textfield from InputPanel here to replace nulls.***
-        selectConfig.addActionListener(new ChooseConfigLocationListener(main, null));
-        selectJDK.addActionListener(new ChooseJDKLocationListener(main, null));
+        selectConfig.addActionListener(new ChooseConfigLocationListener(main, panel.getConfigField()));
+        selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
         closeApp.addActionListener(new menuExitApp());
 
         //Add options to the menubar.

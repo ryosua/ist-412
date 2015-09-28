@@ -12,7 +12,6 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -21,9 +20,12 @@ import model.ApplicationSettings;
 public class InputPanel extends JPanel {
 
     private final Main main;
+    private final JTextField configField, jdkDirectoryField;
 
     public InputPanel(Main main) {
         this.main = main;
+        configField = new JTextField();
+        jdkDirectoryField = new JTextField();
 
         createAndAddComponents();
     }
@@ -65,7 +67,7 @@ public class InputPanel extends JPanel {
         
         final ApplicationSettings settings = main.getSettings();
 
-        final JTextField jdkDirectoryField = new JTextField();
+        //final JTextField jdkDirectoryField = new JTextField();
         jdkDirectoryField.setText(settings.getJavaVersionDirectory().getPath());
         jdkDirectoryField.setEditable(false);
         final GridBagConstraints jdkFieldC = new GridBagConstraints();
@@ -73,7 +75,7 @@ public class InputPanel extends JPanel {
         jdkFieldC.gridx = 0;
         jdkFieldC.gridy = 1;
         
-        final JTextField configField = new JTextField();
+        //final JTextField configField = new JTextField();
         configField.setText(settings.getConfigFile().getPath());
         configField.setEditable(false);
         final GridBagConstraints configFieldC = new GridBagConstraints();
@@ -178,5 +180,13 @@ public class InputPanel extends JPanel {
         add(singleRun, singleRunBtn);
         add(batchRun, batchRunBtn);
         
+    }
+    
+    public JTextField getConfigField(){
+        return configField;
+    }
+    
+    public JTextField getJDKField(){
+        return jdkDirectoryField;
     }
 }
