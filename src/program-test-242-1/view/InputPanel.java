@@ -6,6 +6,7 @@ import controller.listener.ChooseTestLocationListener;
 import controller.Main;
 import controller.listener.ChooseConfigLocationListener;
 import controller.listener.ChooseJDKLocationListener;
+import controller.listener.RadioButtonListener;
 import controller.listener.RunProgramListener;
 
 import java.awt.*;
@@ -173,6 +174,9 @@ public class InputPanel extends JPanel {
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
         jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
         configButton.addActionListener(new ChooseConfigLocationListener(main, configField));
+        
+        singleRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
+        batchRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
         
 
         add(jdkDirectoryButton, jdkButtonC);
