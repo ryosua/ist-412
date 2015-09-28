@@ -12,11 +12,11 @@ public class ApplicationSettings {
     
     private final File settingsFile = new File("Settings.txt");
     
-    private File configFile = new File("configSingle.txt"); // Just single for now.
+    private File configFile = new File("C:/java/src/program-test-242-1/configSingle.txt"); // Just single for now.
     private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
-    private File outputFileDirectory = new File("testResults.txt");
-    private File sourceFileDirectory = new File("src/src-output");
-    private File testCaseDirectory = new File("src");
+    private File outputFileDirectory = new File("C:/java/src/program-test-242-1/testResults.txt");
+    private File sourceFileDirectory = new File("C:/java/src/program-test-242-1/src/src-output");
+    private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
     
     public File getConfigFile() {
         return configFile;
