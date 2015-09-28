@@ -11,8 +11,8 @@ import javax.swing.JMenuItem;
 
 public class MainMenu extends JMenuBar{
     private final JMenuBar menu;
-    private final JMenu menuFile, menuRunType, menuConfig;
-    private final JMenuItem closeApp, selectConfig, selectJDK;
+    private final JMenu menuFile;
+    private final JMenuItem closeApp;
     private final Main main;
     private final InputPanel panel;
 
@@ -24,30 +24,31 @@ public class MainMenu extends JMenuBar{
         
         //Set up menu items that are displayed on bar.
         menuFile = new JMenu("File");
-        menuRunType = new JMenu("Run Type");
-        menuConfig = new JMenu("Config");
+        //menuRunType = new JMenu("Run Type");
+        //menuConfig = new JMenu("Config");
 
         //Set up menu sub-items that are shown beneath a menu item.
         closeApp = new JMenuItem("Exit");
-        selectConfig = new JMenuItem("Select Config File");
-        selectJDK = new JMenuItem("Select JDK");
+        //selectConfig = new JMenuItem("Select Config File");
+        //selectJDK = new JMenuItem("Select JDK");
                 
         //Add listeners
         //***Need to get textfield from InputPanel here to replace nulls.***
-        selectConfig.addActionListener(new ChooseConfigLocationListener(main, panel.getConfigField()));
-        selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
+        //selectConfig.addActionListener(new ChooseConfigLocationListener(main, panel.getConfigField()));
+        //selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
         closeApp.addActionListener(new menuExitApp());
 
         //Add options to the menubar.
         this.add(menuFile);
-        this.add(menuConfig);
+        //this.add(menuConfig);
 
         //Adds options in dropdown format for menu item.
         menuFile.add(closeApp);
-        menuConfig.add(selectJDK);
-        menuConfig.add(selectConfig);
+        //menuConfig.add(selectJDK);
+        //menuConfig.add(selectConfig);
     }
     
+    /*
     public JMenuItem getConfigMenuButton(){
         return selectConfig;
     }
@@ -55,7 +56,7 @@ public class MainMenu extends JMenuBar{
     public JMenuItem getJDKMenuButton(){
         return selectJDK;
     }
-    
+    */
     private class menuExitApp implements ActionListener {
 
         public menuExitApp() {

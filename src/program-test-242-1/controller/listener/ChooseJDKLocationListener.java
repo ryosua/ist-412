@@ -18,7 +18,6 @@ public class ChooseJDKLocationListener extends ChooseLocationListener {
 
     @Override
     public void updateTextField(File filePicked) {
-        //Will throw nullPointer due to MainMenu Lines 37-38.
         getTextField().setText(getMain().getSettings().getJavaVersionDirectory().getPath());
     }
     
