@@ -22,8 +22,6 @@ public class SingleTester implements ProgramTester {
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
-        String configFileName = "./configSingle.txt";
-        System.out.println("configFileName: " + configFileName);
         File path = settings.getJavaVersionDirectory();
 
         //  set fixed paths and file names:
@@ -56,7 +54,7 @@ public class SingleTester implements ProgramTester {
              - random 6-digit handle on third line
              e.g. - 543890 - use the one given to you in class
              */
-            File configFile = new File(configFileName);
+            File configFile = settings.getConfigFile();
             Scanner in = new Scanner(configFile);
             String line = in.nextLine();
             Scanner inLine = new Scanner(line);

@@ -21,8 +21,6 @@ public class BatchTester implements ProgramTester {
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
-        String configFileName = "./configBatch.txt";
-        //  System.out.println("configFileName: " + configFileName);
 
         File path = settings.getJavaVersionDirectory();
         //  set fixed paths and file names:
@@ -40,7 +38,7 @@ public class BatchTester implements ProgramTester {
         try {
             //    config file has list of ordinal student number,
             //    student name, and random handle
-            File configFile = new File(configFileName);
+            File configFile = settings.getConfigFile();
             Scanner in = new Scanner(configFile);
             int runNumber = 1;
             
