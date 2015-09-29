@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class ApplicationSettings {
     public final static String SINGLE_MODE = "Single Mode";
     public final static String BATCH_MODE = "Batch Mode";
-    
+   
     private final File settingsFile = new File("Settings.txt");
     
     private File configFile = new File("C:/java/src/program-test-242-1/configSingle.txt"); // Just single for now.
@@ -135,7 +135,7 @@ public class ApplicationSettings {
                 else if(setting.startsWith("Java Version Directory: ")){
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
                 } 
-                else if(setting.startsWith("Run Mode: ")){
+                else if(setting.startsWith("Run mode: ")){
                     runMode = new String(setting.substring("Run Mode: ".length()));
                 }
             }
@@ -157,6 +157,7 @@ public class ApplicationSettings {
         string += "Output file: " + outputFileDirectory.getAbsolutePath() + "\n";
         string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
+        string += "Run mode: " + runMode + "\n";
        
         return string;
     }

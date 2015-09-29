@@ -153,13 +153,19 @@ public class InputPanel extends JPanel {
         singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
         singleRunBtn.gridx = 0;
         singleRunBtn.gridy = 10;
-        //singleRun.setSelected(true);
-        
+         
         final JRadioButton batchRun = new JRadioButton("Batch Run");
         final GridBagConstraints batchRunBtn = new GridBagConstraints();
         batchRunBtn.fill = GridBagConstraints.HORIZONTAL;
         batchRunBtn.gridx = 0;
         batchRunBtn.gridy = 11;
+        
+        // Set the correct run radio to selected.
+        if (settings.getRunMode().equals(ApplicationSettings.SINGLE_MODE)) {
+            singleRun.setSelected(true);
+        } else {
+            batchRun.setSelected(true);
+        }
         
         //Add runtype radio buttons to button group.
         final ButtonGroup runTypeRadios = new ButtonGroup();
