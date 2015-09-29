@@ -72,7 +72,7 @@ public class ApplicationSettings {
     }
     
     public void setRunMode(String runMode) {
-        runMode = runMode;
+        this.runMode = runMode;
         writeDataToSettingsFile();
     }
 	
