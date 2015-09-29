@@ -153,15 +153,13 @@ public class InputPanel extends JPanel {
         singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
         singleRunBtn.gridx = 0;
         singleRunBtn.gridy = 10;
-        //singleRunBtn.addActionListener(new );
-        singleRun.setSelected(true);
+        //singleRun.setSelected(true);
         
         final JRadioButton batchRun = new JRadioButton("Batch Run");
         final GridBagConstraints batchRunBtn = new GridBagConstraints();
         batchRunBtn.fill = GridBagConstraints.HORIZONTAL;
         batchRunBtn.gridx = 0;
         batchRunBtn.gridy = 11;
-        //batchRunBtn.addActionListener(new );
         
         //Add runtype radio buttons to button group.
         final ButtonGroup runTypeRadios = new ButtonGroup();
@@ -175,8 +173,9 @@ public class InputPanel extends JPanel {
         jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
         configButton.addActionListener(new ChooseConfigLocationListener(main, configField));
         
-        singleRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
-        batchRun.addActionListener(new RadioButtonListener(singleRun, batchRun));
+        //Action listeners for the batches
+        singleRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
+        batchRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
         
 
         add(jdkDirectoryButton, jdkButtonC);

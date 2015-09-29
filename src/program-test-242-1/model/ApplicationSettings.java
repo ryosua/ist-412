@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ApplicationSettings {
+    public final static String SINGLE_MODE = "Single Mode";
+    public final static String BATCH_MODE = "Batch Mode";
     
     private final File settingsFile = new File("Settings.txt");
     
@@ -17,6 +19,12 @@ public class ApplicationSettings {
     private File outputFileDirectory = new File("C:/java/src/program-test-242-1/testResults.txt");
     private File sourceFileDirectory = new File("C:/java/src/program-test-242-1/src/src-output");
     private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
+    
+    private String runMode = SINGLE_MODE;
+    
+    public String getRunMode() {
+        return runMode;
+    }
     
     public File getConfigFile() {
         return configFile;
@@ -62,6 +70,11 @@ public class ApplicationSettings {
         testCaseDirectory = directory;
         writeDataToSettingsFile();
     }
+    
+    public void setRunMode(String runMode) {
+        runMode = runMode;
+        writeDataToSettingsFile();
+    }
 	
     public void writeDataToSettingsFile(){
         try (PrintWriter out = new PrintWriter(settingsFile)) {
@@ -84,6 +97,10 @@ public class ApplicationSettings {
 
             if(testCaseDirectory != null){
                 out.println("Test Case Directory: " + testCaseDirectory.getPath());
+            }
+            
+            if(runMode != null) {
+                out.println("Run mode: " + runMode);
             }
 
             
@@ -117,6 +134,9 @@ public class ApplicationSettings {
                 }
                 else if(setting.startsWith("Java Version Directory: ")){
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
+                } 
+                else if(setting.startsWith("Run Mode: ")){
+                    runMode = new String(setting.substring("Run Mode: ".length()));
                 }
             }
         } catch (FileNotFoundException e) {

@@ -5,9 +5,11 @@
  */
 package controller.listener;
 
+import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
+import model.ApplicationSettings;
 
 /**
  *
@@ -15,10 +17,12 @@ import javax.swing.JRadioButton;
  */
 public class RadioButtonListener implements ActionListener {
     private final JRadioButton singleRun, batchRun;
+    private final Main main;
     
-    public RadioButtonListener(JRadioButton singleRun, JRadioButton batchRun) {
+    public RadioButtonListener(Main main, JRadioButton singleRun, JRadioButton batchRun) {
         this.singleRun = singleRun;
         this.batchRun = batchRun;
+        this.main = main;
     }
 
     @Override
@@ -26,9 +30,11 @@ public class RadioButtonListener implements ActionListener {
        Object source = e.getSource();
        if (source == singleRun) {
            System.out.println("Single Run selected.");
+           main.getSettings().setRunMode(ApplicationSettings.SINGLE_MODE);
        }
        else if (source == batchRun) {
            System.out.println("Batch Run selected.");
+           main.getSettings().setRunMode(ApplicationSettings.BATCH_MODE);
        }
     }
     
