@@ -11,7 +11,7 @@ public class FileController {
     private final Main main;
   
     public FileController(Main main) {
-        this.fileChooser = new JFileChooser();
+        this.fileChooser = new JFileChooser("C:\\java");
         this.main = main;
 
         fileChooser.setDialogType(JFileChooser.FILES_AND_DIRECTORIES);
@@ -26,7 +26,6 @@ public class FileController {
      */
     public File getFileFromChooser(int dialogType) {
         File file = null;
-
         if (dialogType == JFileChooser.SAVE_DIALOG) {
             fileChooser.setDialogTitle("Choose a location");
             fileChooser.setApproveButtonText("Choose");
@@ -41,6 +40,10 @@ public class FileController {
         }
 
         return file;
+    }
+    
+    public void setFileDirectory(){
+        
     }
     
     public void setFileType(int fileType) {
