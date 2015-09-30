@@ -1,6 +1,7 @@
 <project name="ProgramTest" basedir="src/program-test-242-1" default="run-all">
 
-	<property file="C:/java/build.properties"/>
+	<!-- build.properties must be in basedir --> 
+	<property file="build.properties"/>
 	
 	<!-- The clean target deletes the bin and dist directories (permitting 
  	you to start from scratch. --> 

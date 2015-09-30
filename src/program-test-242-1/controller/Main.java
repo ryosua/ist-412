@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JFrame;
 import model.ApplicationSettings;
 import view.Frame;
+import view.InputPanel;
 
 public class Main {
 

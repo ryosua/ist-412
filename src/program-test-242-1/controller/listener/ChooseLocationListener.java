@@ -24,11 +24,14 @@ public abstract class ChooseLocationListener implements ActionListener {
     }
 
     public abstract void saveFile(File filePicked);
+            
+    public abstract void setFileType();
 
     public abstract void updateTextField(File filePicked);
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        setFileType();
         final File filePicked = main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
         if (filePicked != FileController.emptyFile) {
             saveFile(filePicked);

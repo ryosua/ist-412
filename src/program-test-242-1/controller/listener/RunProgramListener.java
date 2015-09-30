@@ -22,11 +22,12 @@ public class RunProgramListener implements ActionListener {
         ProgramTester tester;
                 
         // This needs to be changed to if single mode.
-        if (true) {  
+        if (settings.getRunMode().equals(ApplicationSettings.SINGLE_MODE)) {
+            System.out.println("Running in single mode");
             tester = new SingleTester(settings);
-          
         // This needs to be changed to if batch mode.
-        } else if (false) {
+        } else {
+            System.out.println("Running in batch mode");
             tester = new BatchTester(settings);
         }
         tester.run();

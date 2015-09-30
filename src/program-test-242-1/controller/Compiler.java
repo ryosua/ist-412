@@ -86,7 +86,7 @@ public class Compiler
 	        System.out.println("Compiling: " + javaFileList[k]);
 
             ProcessBuilder pb =
-            new ProcessBuilder("javac", "-d", classPath, "./" + studentPath + "/" + javaFileList[k]);
+            new ProcessBuilder("javac", "-d", classPath, studentPath + "/" + javaFileList[k]);
 	  
 //          Create environment map and set environmental variables         
             Map<String, String> env = pb.environment();       

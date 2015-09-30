@@ -7,65 +7,56 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.ButtonGroup;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
 
 public class MainMenu extends JMenuBar{
-    private JMenuBar menu;
-    private JMenu menuFile, menuRunType, menuConfig;
-    private JMenuItem closeApp, selectConfig, selectJDK;
-    private JRadioButtonMenuItem singleRun, batchRun;
-    private ButtonGroup menuRunTypeRadios;
+    private final JMenuBar menu;
+    private final JMenu menuFile;
+    private final JMenuItem closeApp;
     private final Main main;
+    private final InputPanel panel;
 
     public MainMenu(Main main){
         this.main = main;
         //Set up menu bar
         menu = new JMenuBar();
-
+        panel = new InputPanel(main);
+        
         //Set up menu items that are displayed on bar.
         menuFile = new JMenu("File");
-        menuRunType = new JMenu("Run Type");
-        menuConfig = new JMenu("Config");
+        //menuRunType = new JMenu("Run Type");
+        //menuConfig = new JMenu("Config");
 
         //Set up menu sub-items that are shown beneath a menu item.
         closeApp = new JMenuItem("Exit");
-        selectConfig = new JMenuItem("Select Config File"); //Select Source Directory
-        selectJDK = new JMenuItem("Select JDK");
-
+        //selectConfig = new JMenuItem("Select Config File");
+        //selectJDK = new JMenuItem("Select JDK");
+                
         //Add listeners
-        selectConfig.addActionListener(new ChooseConfigLocationListener(main, null));
-        selectJDK.addActionListener(new ChooseJDKLocationListener(main, null));
+        //***Need to get textfield from InputPanel here to replace nulls.***
+        //selectConfig.addActionListener(new ChooseConfigLocationListener(main, panel.getConfigField()));
+        //selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
         closeApp.addActionListener(new menuExitApp());
-
-        //Set up button group for menu radio buttons.
-        menuRunTypeRadios = new ButtonGroup();
-
-        //Set up menu radio button sub-items.
-        singleRun = new JRadioButtonMenuItem("Single Run");
-        batchRun = new JRadioButtonMenuItem("Batch Run");
-
-        //Set default selection for run type.
-        singleRun.setSelected(true);
-
-        //Add radio buttons to button group.
-        menuRunTypeRadios.add(singleRun);
-        menuRunTypeRadios.add(batchRun);
 
         //Add options to the menubar.
         this.add(menuFile);
-        this.add(menuRunType);
-        this.add(menuConfig);
+        //this.add(menuConfig);
 
         //Adds options in dropdown format for menu item.
         menuFile.add(closeApp);
-        menuConfig.add(selectJDK);
-        menuConfig.add(selectConfig);
-        menuRunType.add(singleRun);
-        menuRunType.add(batchRun);
+        //menuConfig.add(selectJDK);
+        //menuConfig.add(selectConfig);
     }
     
+    /*
+    public JMenuItem getConfigMenuButton(){
+        return selectConfig;
+    }
+    
+    public JMenuItem getJDKMenuButton(){
+        return selectJDK;
+    }
+    */
     private class menuExitApp implements ActionListener {
 
         public menuExitApp() {
