@@ -1,4 +1,6 @@
-#*.class
+*.class
+*.jar
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -24,6 +26,8 @@ nbproject
 # Files
 src/program-test-242-1/Settings.txt
 src/program-test-242-1/testResults.txt
+src/program-test-242-1/build.properties
+src/program-test-242-1/ProgramJUnitTest.java
 
 # folders
 ant
@@ -36,7 +40,6 @@ test/
 junit4.10/
 junit-demo/
 junit4.11/
-*.jar
-src/program-test-242-1/ProgramJUnitTest.java
+
 lab1+ant-demo-20150915/
 java-tester-demo/
