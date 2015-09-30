@@ -17,15 +17,12 @@ public class ApplicationSettings {
     private File configFile = new File("C:/java/src/program-test-242-1/configSingle.txt"); // Just single for now.
     private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
     private File outputFileDirectory = new File("C:/java/src/program-test-242-1/testResults.txt");
+    private File rootDirectory = new File("C:/java");
     private File sourceFileDirectory = new File("C:/java/src/program-test-242-1/src/src-output");
     private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
     
     private String runMode = SINGLE_MODE;
-    
-    public String getRunMode() {
-        return runMode;
-    }
-    
+   
     public File getConfigFile() {
         return configFile;
     }
@@ -36,6 +33,14 @@ public class ApplicationSettings {
     
     public File getOutputFileDirectory() {
         return outputFileDirectory;
+    }
+    
+    public File getRootDirectory() {
+        return rootDirectory;
+    }
+    
+    public String getRunMode() {
+        return runMode;
     }
 
     public File getSourceFileDirectory() {
@@ -60,6 +65,16 @@ public class ApplicationSettings {
         outputFileDirectory = directory;
         writeDataToSettingsFile();
     }
+    
+    public void setRootDirectory(File directory) {
+        this.rootDirectory = directory;
+        writeDataToSettingsFile();
+    }
+    
+    public void setRunMode(String runMode) {
+        this.runMode = runMode;
+        writeDataToSettingsFile();
+    }
 
     public void setSourceFileDirectory(File directory) {
         sourceFileDirectory = directory;
@@ -70,12 +85,7 @@ public class ApplicationSettings {
         testCaseDirectory = directory;
         writeDataToSettingsFile();
     }
-    
-    public void setRunMode(String runMode) {
-        this.runMode = runMode;
-        writeDataToSettingsFile();
-    }
-	
+   	
     public void writeDataToSettingsFile(){
         try (PrintWriter out = new PrintWriter(settingsFile)) {
             
@@ -91,6 +101,14 @@ public class ApplicationSettings {
                 out.println("Output File Directory: " + outputFileDirectory.getPath());
             }
             
+            if(rootDirectory != null) {
+                out.println("Root Directory: " + rootDirectory.getPath());
+            }
+            
+            if(runMode != null) {
+                out.println("Run mode: " + runMode);
+            }
+            
             if(sourceFileDirectory != null){
                 out.println("Source File Directory: " + sourceFileDirectory.getPath());
             }
@@ -98,11 +116,6 @@ public class ApplicationSettings {
             if(testCaseDirectory != null){
                 out.println("Test Case Directory: " + testCaseDirectory.getPath());
             }
-            
-            if(runMode != null) {
-                out.println("Run mode: " + runMode);
-            }
-
             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -126,6 +139,12 @@ public class ApplicationSettings {
                 else if(setting.startsWith("Output File Directory: ")){
                     outputFileDirectory = new File(setting.substring("Output File Directory: ".length()));
                 }
+                else if(setting.startsWith("Root Directory: ")){
+                    rootDirectory = new File(setting.substring("Root Directory: ".length()));
+                }
+                else if(setting.startsWith("Run mode: ")){
+                    runMode = new String(setting.substring("Run Mode: ".length()));
+                }
                 else if(setting.startsWith("Source File Directory: ")){
                     sourceFileDirectory = new File(setting.substring("Source File Directory: ".length()));
                 }
@@ -135,9 +154,6 @@ public class ApplicationSettings {
                 else if(setting.startsWith("Java Version Directory: ")){
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
                 } 
-                else if(setting.startsWith("Run mode: ")){
-                    runMode = new String(setting.substring("Run Mode: ".length()));
-                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -155,9 +171,10 @@ public class ApplicationSettings {
         string += "Config file: " + configFile.getAbsolutePath() + "\n";
         string += "Java directory: " + javaVersionDirectory.getAbsolutePath() + "\n";
         string += "Output file: " + outputFileDirectory.getAbsolutePath() + "\n";
+        string += "Root directory: " + rootDirectory.getAbsolutePath() + "\n";
+        string += "Run mode: " + runMode + "\n";
         string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
-        string += "Run mode: " + runMode + "\n";
        
         return string;
     }

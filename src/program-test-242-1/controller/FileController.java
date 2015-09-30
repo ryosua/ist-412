@@ -11,7 +11,7 @@ public class FileController {
     private final Main main;
   
     public FileController(Main main) {
-        this.fileChooser = new JFileChooser("C:\\java");
+        this.fileChooser = new JFileChooser(main.getSettings().getRootDirectory());
         this.main = main;
 
         fileChooser.setDialogType(JFileChooser.FILES_AND_DIRECTORIES);

@@ -60,7 +60,7 @@ public class BatchTester implements ProgramTester {
                 }
 
                 //      set paths and file names:
-                String classPath = "/java/bin/" + className + studentName;
+                String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + className + studentName;
                 String studentPath = sourcePath + "/" + studentName;
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";

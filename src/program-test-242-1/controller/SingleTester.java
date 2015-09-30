@@ -67,7 +67,7 @@ public class SingleTester implements ProgramTester {
             studentHandle = inLine.next();
 
             //    set paths and file names:
-            File classPath = new File("C:/java/bin/" + className + studentName);
+            File classPath = new File(settings.getRootDirectory() + "/bin/" + className + studentName);
             String studentPath = sourcePath + "/" + studentName;
             String inputFileStub = studentPath + "/input";
             String outputFileName = studentPath + File.separatorChar + "output-" + studentName + ".txt";
