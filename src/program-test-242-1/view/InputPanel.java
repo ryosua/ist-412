@@ -7,6 +7,7 @@ import controller.Main;
 import controller.listener.ChooseConfigLocationListener;
 import controller.listener.ChooseJDKLocationListener;
 import controller.listener.ChooseRootLocationListener;
+import controller.listener.OutputCheckBoxListener;
 import controller.listener.RadioButtonListener;
 import controller.listener.RunProgramListener;
 import java.awt.GridBagConstraints;
@@ -15,6 +16,7 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -34,7 +36,7 @@ public class InputPanel extends JPanel {
     private void createAndAddComponents() {
         final GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
-
+        
         final JLabel jdkLabel = new JLabel("Current JDK Selected: ");
         final GridBagConstraints jdkLabelC = new GridBagConstraints();
         jdkLabelC.fill = GridBagConstraints.HORIZONTAL;
@@ -171,6 +173,15 @@ public class InputPanel extends JPanel {
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener(main.getSettings()));
 
+        final JCheckBox showOutputCheckbox = new JCheckBox("Show Output in New Window", true);
+        final GridBagConstraints showOutputCheckboxC = new GridBagConstraints();
+        showOutputCheckboxC.fill = GridBagConstraints.HORIZONTAL;
+        showOutputCheckboxC.gridx = 1;
+        showOutputCheckboxC.gridy = 13;
+        showOutputCheckboxC.gridwidth = 1;
+        showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
+        showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
+        
         final JRadioButton singleRun = new JRadioButton("Single Run");
         final GridBagConstraints singleRunBtn = new GridBagConstraints();
         singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
@@ -228,5 +239,6 @@ public class InputPanel extends JPanel {
         add(runButton, runButtonC);
         add(singleRun, singleRunBtn);
         add(batchRun, batchRunBtn);
+        add(showOutputCheckbox, showOutputCheckboxC);
     }
 }

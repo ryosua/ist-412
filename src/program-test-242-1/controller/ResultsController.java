@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import model.Results;
+import view.OutputFrame;
 
 /**
  * Writes the results to an output file.
@@ -14,7 +15,8 @@ public class ResultsController {
 
     private final File outputFile;
     private final Results results;
-
+    private String resultDatatoPrint = "";
+    
     public ResultsController(File outputFile, Results results) {
         this.outputFile = outputFile;
         this.results = results;
@@ -31,11 +33,15 @@ public class ResultsController {
             for (File file : results.getFiles()) {
                 Scanner in = new Scanner(file);
                 while (in.hasNext()) {
-                    out.println(in.nextLine());
+                    String line = in.nextLine();
+                    out.println(line);
+                    resultDatatoPrint +=line + "\n";
                 }
                 out.println();
                 in.close();
+                //System.out.println("\n\n\n\n\n\nRESULTS\n\n\n\n\n\n" + resultDatatoPrint);
             }
+            OutputFrame frame = new OutputFrame(resultDatatoPrint);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ioEx) {

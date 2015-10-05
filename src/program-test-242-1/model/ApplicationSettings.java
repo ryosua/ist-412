@@ -22,7 +22,9 @@ public class ApplicationSettings {
     private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
     
     private String runMode = SINGLE_MODE;
-   
+    private String displayOutputCheck = Boolean.TRUE.toString();
+            
+            
     public File getConfigFile() {
         return configFile;
     }
@@ -49,6 +51,10 @@ public class ApplicationSettings {
 
     public File getTestCaseDirectory() {
         return testCaseDirectory;
+    }
+    
+    public String getDisplayOutputCheck(){
+        return displayOutputCheck;
     }
     
     public void setConfigFile(File file) {
@@ -85,6 +91,11 @@ public class ApplicationSettings {
         testCaseDirectory = directory;
         writeDataToSettingsFile();
     }
+    
+    public void setDisplayOutputCheck(String value){
+        displayOutputCheck = value;
+        writeDataToSettingsFile();
+    }
    	
     public void writeDataToSettingsFile(){
         try (PrintWriter out = new PrintWriter(settingsFile)) {
@@ -115,6 +126,10 @@ public class ApplicationSettings {
 
             if(testCaseDirectory != null){
                 out.println("Test Case Directory: " + testCaseDirectory.getPath());
+            }
+            
+            if(displayOutputCheck != null){
+                out.println("Display Output: " + displayOutputCheck);
             }
             
         } catch (FileNotFoundException e) {
@@ -154,6 +169,9 @@ public class ApplicationSettings {
                 else if(setting.startsWith("Java Version Directory: ")){
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
                 } 
+                else if(setting.startsWith("Display Output: ")){
+                    displayOutputCheck = setting.substring("Display Output: ".length());
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -175,7 +193,7 @@ public class ApplicationSettings {
         string += "Run mode: " + runMode + "\n";
         string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
-       
+        string += "Display Output: " + displayOutputCheck + "\n";
         return string;
     }
 }
