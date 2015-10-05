@@ -28,6 +28,7 @@ src/program-test-242-1/Settings.txt
 src/program-test-242-1/testResults.txt
 src/program-test-242-1/build.properties
 src/program-test-242-1/ProgramJUnitTest.java
+users.txt
 
 # folders
 ant
@@ -43,3 +44,4 @@ junit4.11/
 
 lab1+ant-demo-20150915/
 java-tester-demo/
+
