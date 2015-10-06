@@ -151,6 +151,9 @@
 			fork="true"
 		    >
 		    <arg value="ProgramJUnitTest"/>
+		    <classpath>
+      			<pathelement path="${binDirectory}"/>
+    		</classpath>
 		</java>
 	</target>
 
@@ -160,6 +163,9 @@
 			fork="true"
 		    >
 		    <arg value="ProgramJUnitTest"/>
+		    <classpath>
+      			<pathelement path="${binDirectory}"/>
+    		</classpath>
 		</java>
 	</target>
 
