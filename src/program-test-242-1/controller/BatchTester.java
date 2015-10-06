@@ -45,7 +45,7 @@ public class BatchTester implements ProgramTester {
             // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
             Results results = new Results();
-            ResultsController resultsController = new ResultsController(settings.getOutputFileDirectory(), results);
+            ResultsController resultsController = new ResultsController(settings, results);
 
             while (in.hasNextLine()) {
                 String line = in.nextLine();

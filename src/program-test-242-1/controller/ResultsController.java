@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import model.ApplicationSettings;
 import model.Results;
 import view.OutputFrame;
 
@@ -13,12 +14,15 @@ import view.OutputFrame;
  */
 public class ResultsController {
 
+    private ApplicationSettings settings;
     private final File outputFile;
     private final Results results;
     private String resultDatatoPrint = "";
+    private OutputFrame frame;
     
-    public ResultsController(File outputFile, Results results) {
-        this.outputFile = outputFile;
+    public ResultsController(ApplicationSettings settings, Results results) {
+        this.settings = settings;
+        this.outputFile = this.settings.getOutputFileDirectory();
         this.results = results;
     }
 
@@ -41,7 +45,11 @@ public class ResultsController {
                 in.close();
                 //System.out.println("\n\n\n\n\n\nRESULTS\n\n\n\n\n\n" + resultDatatoPrint);
             }
-            OutputFrame frame = new OutputFrame(resultDatatoPrint);
+            
+            
+            if(settings.getDisplayOutputCheck().equals(Boolean.TRUE.toString()))
+                frame = new OutputFrame(resultDatatoPrint);
+            
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ioEx) {

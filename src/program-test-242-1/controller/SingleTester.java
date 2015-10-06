@@ -84,7 +84,7 @@ public class SingleTester implements ProgramTester {
             // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
             Results results = new Results();
-            ResultsController resultsController = new ResultsController(settings.getOutputFileDirectory(), results);
+            ResultsController resultsController = new ResultsController(settings, results);
 
             //    run javac compiler - returns 0 on success
             //    Compiler Constructor:
