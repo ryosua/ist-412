@@ -26,7 +26,7 @@ public class OutputFrame extends JFrame{
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
-        output = new OutputPanel(results);
+        output = new OutputPanel(this, results);
         this.add(output);
         
         

@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.listener.CloseOutputWindowListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -20,21 +21,26 @@ public class OutputPanel extends JPanel{
     private JTextArea outputArea;
     private JButton closeButton;
     private String results;
+    private OutputFrame theFrame;
     
-    public OutputPanel(String results){
+    public OutputPanel(OutputFrame frame, String results){
+        theFrame = frame;
+        this.results = results;
+
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
-        this.results = results;
         outputArea = new JTextArea(results);
+        outputArea.setEditable(false);
         GridBagConstraints outputAreaC = new GridBagConstraints();
         outputAreaC.fill = GridBagConstraints.HORIZONTAL;
         outputAreaC.gridx = 0;
         outputAreaC.gridy = 0;
         outputAreaC.gridheight = 10;
-        outputAreaC.gridwidth = 5;
+        outputAreaC.gridwidth = 10;
         
         
         closeButton = new JButton("Close Window");
+        closeButton.addActionListener(new CloseOutputWindowListener(this));
         GridBagConstraints closeButtonC = new GridBagConstraints();
         closeButtonC.fill = GridBagConstraints.HORIZONTAL;
         closeButtonC.gridx = 0;
@@ -43,5 +49,9 @@ public class OutputPanel extends JPanel{
         
         this.add(outputArea, outputAreaC);
         this.add(closeButton, closeButtonC);
+    }
+    
+    public OutputFrame getFrame(){
+        return theFrame;
     }
 }
