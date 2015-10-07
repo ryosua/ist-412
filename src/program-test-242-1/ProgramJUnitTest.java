@@ -12,8 +12,7 @@ public class ProgramJUnitTest
     public void setupTest() {
        
     }
-    
-    // Ryan's Tests *****************************************************
+   
     @Test
     public void exampleTest() {
         fail("This is an example test that should fail.");
