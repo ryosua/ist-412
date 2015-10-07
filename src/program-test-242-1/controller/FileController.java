@@ -42,10 +42,6 @@ public class FileController {
         return file;
     }
     
-    public void setFileDirectory(){
-        
-    }
-    
     public void setFileType(int fileType) {
         fileChooser.setDialogType(fileType);
         fileChooser.setFileSelectionMode(fileType);
