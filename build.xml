@@ -2,6 +2,12 @@
 
 	<!-- build.properties must be in basedir --> 
 	<property file="build.properties"/>
+
+	<path id="classpath">
+        <fileset dir="${libDirectory}" includes="**/*.jar"/>
+    </path>
+
+    <path id="application" location="${distDirectory}/${appName}.jar"/>
 	
 	<!-- The clean target deletes the bin and dist directories (permitting 
  	you to start from scratch. --> 
@@ -22,8 +28,7 @@
 	  <copy todir="${binDirectory}">
 	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
 	  </copy>
-	  <unzip src="${libDirectory}/junit-4.10.jar" dest="${binDirectory}"/>
-	  <javac srcdir="${srcDirectory}"
+	  <javac srcdir="${srcDirectory}" classpathref="classpath"
 		 destdir="${binDirectory}"
 		 includeAntRuntime="false"
 		 fork="true"
@@ -41,8 +46,7 @@
 	  <copy todir="${binDirectory}">
 	    <fileset dir="${srcDirectory}" includes="**/*.properties"/>
 	  </copy>
-	  <unzip src="${libDirectory}/junit-4.10.jar" dest="${binDirectory}"/>
-	  <javac srcdir="${srcDirectory}"
+	  <javac srcdir="${srcDirectory}" classpathref="classpath"
 		 destdir="${binDirectory}"
 		 includeAntRuntime="false"
 		 fork="true"
@@ -104,20 +108,25 @@
 	previous target, utilizing the class as the executable class. -->
 
 	<target name="run-all" depends="build-all">
-	  <java jar="${distDirectory}/${appName}.jar"
-		fork="true"
-	    >
+	  <java fork="true" classname="${mainClass}">
+	    <classpath>
+            <path refid="classpath"/>
+            <path refid="application"/>
+            <path location="${distDirectory}/${appName}.jar"/>
+        </classpath>
 	  </java>
 	</target>
 
 
 
 	<!-- Runs the program after building. -->
-
 	<target name="run" depends="build">
-	  <java jar="${distDirectory}/${appName}.jar"
-		fork="true"
-	    >
+	  <java fork="true" classname="${mainClass}">
+	    <classpath>
+            <path refid="classpath"/>
+            <path refid="application"/>
+            <path location="${distDirectory}/${appName}.jar"/>
+        </classpath>
 	  </java>
 	</target>
 
@@ -126,9 +135,12 @@
 	<!-- Runs the program without building. -->
 
 	<target name="run-ind">
-	  <java jar="${distDirectory}/${appName}.jar"
-		fork="true"
-	    >
+	  <java fork="true" classname="${mainClass}">
+	    <classpath>
+            <path refid="classpath"/>
+            <path refid="application"/>
+            <path location="${distDirectory}/${appName}.jar"/>
+        </classpath>
 	  </java>
 	</target>
 
@@ -145,28 +157,21 @@
 	</javadoc>
 	</target>
 
-	<!-- Comiles all then runs the jUnit tests. -->
-	<target name="test-all" depends="compile-all">
-		<java classname="org.junit.runner.JUnitCore"
-			fork="true"
-		    >
-		    <arg value="ProgramJUnitTest"/>
-		    <classpath>
-      			<pathelement path="${binDirectory}"/>
-    		</classpath>
-		</java>
-	</target>
 
-	<!-- Runs the jUnit tests. -->
-	<target name="test">
-		<java classname="org.junit.runner.JUnitCore"
-			fork="true"
-		    >
-		    <arg value="ProgramJUnitTest"/>
-		    <classpath>
-      			<pathelement path="${binDirectory}"/>
-    		</classpath>
-		</java>
-	</target>
+	<!-- Runs all JunitTests -->
+	<target name="test" depends="build">
+        <junit printsummary="yes" showoutput="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <path refid="application"/>
+            </classpath>
+            
+            <batchtest fork="yes">
+                <fileset dir="${srcDirectory}" includes="*Test.java"/>
+            </batchtest>
+
+            <formatter type="plain" usefile="false" />
+        </junit>
+    </target>
 
 </project>

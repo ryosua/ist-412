@@ -4,7 +4,7 @@ import java.io.File;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class ProgramJUnitTest
+public class FileFilterTest
 {
     private Main main;
     
