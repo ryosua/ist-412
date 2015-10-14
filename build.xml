@@ -1,4 +1,4 @@
-<project name="ProgramTest" basedir="src/program-test-242-1" default="run-all">
+<project name="ProgramTest" basedir="." default="run-all">
 
 	<!-- build.properties must be in basedir --> 
 	<property file="build.properties"/>
