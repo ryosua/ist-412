@@ -42,8 +42,25 @@ public class FileController {
         return file;
     }
     
-    public void setFileType(int fileType) {
-        fileChooser.setDialogType(fileType);
-        fileChooser.setFileSelectionMode(fileType);
+    /**
+     * Sets the JFileChooser to allow the user to just select files, just select directories, or select both files and directories. The default is JFilesChooser.FILES_ONLY.
+     * @param mode the type of files to be displayed:
+     *     JFileChooser.FILES_ONLY
+     *     JFileChooser.DIRECTORIES_ONLY
+     *     JFileChooser.FILES_AND_DIRECTORIES
+     */
+    public void setFileSelectionMode(int mode) {
+        fileChooser.setFileSelectionMode(mode);
+    }
+    
+    /**
+     * Sets the type of this dialog.
+     * @param mode the type of dialog to be displayed:
+     *     JFileChooser.OPEN_DIALOG
+     *     JFileChooser.SAVE_DIALOG
+     *     JFileChooser.CUSTOM_DIALOG
+     */
+    public void setDialogType(int mode) {
+        fileChooser.setDialogType(mode);
     }
 }

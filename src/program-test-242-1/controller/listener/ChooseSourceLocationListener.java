@@ -23,6 +23,6 @@ public class ChooseSourceLocationListener extends ChooseLocationListener {
     
     @Override
     public void setFileType() {
-        getMain().getFileController().setFileType(JFileChooser.FILES_AND_DIRECTORIES);
+        getMain().getFileController().setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
     }  
 }

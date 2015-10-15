@@ -23,6 +23,6 @@ public class ChooseConfigLocationListener extends ChooseLocationListener {
     
     @Override
     public void setFileType() {
-        getMain().getFileController().setFileType(JFileChooser.FILES_ONLY);
+        getMain().getFileController().setFileSelectionMode(JFileChooser.FILES_ONLY);
     }   
 }
