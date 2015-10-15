@@ -1,15 +1,15 @@
 package view;
 
-import controller.listener.ChooseOutputLocationListener;
-import controller.listener.ChooseSourceLocationListener;
-import controller.listener.ChooseTestLocationListener;
+import view.listener.ChooseOutputLocationListener;
+import view.listener.ChooseSourceLocationListener;
+import view.listener.ChooseTestLocationListener;
 import controller.Main;
-import controller.listener.ChooseConfigLocationListener;
-import controller.listener.ChooseJDKLocationListener;
-import controller.listener.ChooseRootLocationListener;
-import controller.listener.OutputCheckBoxListener;
-import controller.listener.RadioButtonListener;
-import controller.listener.RunProgramListener;
+import view.listener.ChooseConfigLocationListener;
+import view.listener.ChooseJDKLocationListener;
+import view.listener.ChooseRootLocationListener;
+import view.listener.OutputCheckBoxListener;
+import view.listener.RadioButtonListener;
+import view.listener.RunProgramListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;

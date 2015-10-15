@@ -1,7 +1,7 @@
 package view;
 
 import controller.Main;
-import controller.listener.RegisterUserListener;
+import view.listener.RegisterUserListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;

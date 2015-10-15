@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.listener.CloseOutputWindowListener;
+import view.listener.CloseOutputWindowListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;

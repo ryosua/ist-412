@@ -1,4 +1,4 @@
-package controller.listener;
+package view.listener;
 
 import view.FileChooser;
 import controller.Main;

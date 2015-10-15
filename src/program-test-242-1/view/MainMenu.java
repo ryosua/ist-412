@@ -1,7 +1,7 @@
 package view;
 
-import controller.listener.ChooseConfigLocationListener;
-import controller.listener.ChooseJDKLocationListener;
+import view.listener.ChooseConfigLocationListener;
+import view.listener.ChooseJDKLocationListener;
 import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
