@@ -1,6 +1,6 @@
 package controller.listener;
 
-import controller.FileController;
+import view.FileChooser;
 import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +32,8 @@ public abstract class ChooseLocationListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         setFileType();
-        final File filePicked = main.getFileController().getFileFromChooser(JFileChooser.SAVE_DIALOG);
-        if (filePicked != FileController.emptyFile) {
+        final File filePicked = main.getFileChooser().getFileFromChooser(JFileChooser.SAVE_DIALOG);
+        if (filePicked != FileChooser.emptyFile) {
             saveFile(filePicked);
             updateTextField(filePicked);
             System.out.println(main.getSettings().toString());

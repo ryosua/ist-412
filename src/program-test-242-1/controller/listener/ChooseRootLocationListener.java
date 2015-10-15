@@ -18,7 +18,7 @@ public class ChooseRootLocationListener extends ChooseLocationListener {
 
     @Override
     public void setFileType() {
-        getMain().getFileController().setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        getMain().getFileChooser().setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     }
 
     @Override

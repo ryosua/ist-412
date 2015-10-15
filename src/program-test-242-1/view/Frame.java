@@ -1,13 +1,12 @@
 package view;
 
-import controller.FileController;
 import controller.Main;
 import javax.swing.JFrame;
 
 
 public class Frame extends JFrame {
     private final JFrame frame;
-    private final FileController theFileController;
+    private final FileChooser theFileController;
     private final Main main;
     private final MainMenu menu;
 
@@ -17,7 +16,7 @@ public class Frame extends JFrame {
         this.main = main;
         
         frame = new JFrame();
-        theFileController = new FileController(main);
+        theFileController = new FileChooser(main);
         menu = new MainMenu(main);
        
         frame.setJMenuBar(menu);

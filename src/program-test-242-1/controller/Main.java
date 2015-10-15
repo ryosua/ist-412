@@ -1,5 +1,6 @@
 package controller;
 
+import view.FileChooser;
 import javax.swing.JFrame;
 import model.ApplicationSettings;
 import view.Frame;
@@ -7,7 +8,7 @@ import view.InputPanel;
 
 public class Main {
 
-    private final FileController fileController;
+    private final FileChooser fileChooser;
     private final ApplicationSettings settings;
     private final UserController userController;
 
@@ -18,7 +19,7 @@ public class Main {
         settings = new ApplicationSettings();
         settings.readDataFromSettingsFile();
         userController = new UserController();
-        fileController = new FileController(this);
+        fileChooser = new FileChooser(this);
     }
 
     public static void main(String[] args) {
@@ -39,8 +40,8 @@ public class Main {
         f = new Frame(this);
     }
 
-    public FileController getFileController() {
-        return fileController;
+    public FileChooser getFileChooser() {
+        return fileChooser;
     }
 
     public JFrame getFrame() {

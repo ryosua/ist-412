@@ -1,16 +1,17 @@
-package controller;
+package view;
 
+import controller.Main;
 import java.io.File;
 import javax.swing.JFileChooser;
 
-public class FileController {
+public class FileChooser {
     
     public static final File emptyFile = new File("");
     
     private final JFileChooser fileChooser;
     private final Main main;
   
-    public FileController(Main main) {
+    public FileChooser(Main main) {
         this.fileChooser = new JFileChooser(main.getSettings().getRootDirectory());
         this.main = main;
 
