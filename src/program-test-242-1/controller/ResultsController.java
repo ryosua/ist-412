@@ -58,4 +58,8 @@ public class ResultsController {
             out.close();
         }
     }
+    
+    public File getOutputFile(){
+        return outputFile;
+    }
 }
