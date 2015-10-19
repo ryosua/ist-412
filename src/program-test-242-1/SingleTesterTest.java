@@ -20,7 +20,7 @@ public class SingleTesterTest
     }
    
     @Test
-    public void theOutputContainsNoExceptions() {
+    public void theOutputContainsNoExceptionsAndFileIsNotEmpty() {
         // Run the program in single test mode.
         final SingleTester singleTest = new SingleTester(main.getSettings());
         singleTest.run();
@@ -28,10 +28,13 @@ public class SingleTesterTest
         // Check to see if the output contains any exceptions.
         Scanner in = null;
         boolean error = false;
+        int numberOfLines = 0;
+        
         try {
             in = new Scanner(main.getSettings().getOutputFileDirectory());
-            
+                
             while(in.hasNext()) {
+                numberOfLines++;
                 if (in.nextLine().toLowerCase().contains("exception")
                     || in.nextLine().toLowerCase().contains("error")) {
                     error = true;
@@ -44,6 +47,10 @@ public class SingleTesterTest
             in.close();
         }
         
+        if (numberOfLines == 0) {
+            error = true;
+        }
+         
         assertFalse(error);
     }
     
