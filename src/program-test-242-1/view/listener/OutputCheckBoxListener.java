@@ -31,10 +31,10 @@ public class OutputCheckBoxListener implements ActionListener{
         //abstractButton.setText(newLabel);
         if(selected){
             System.out.println("Check Box clicked. Value is: " + selected);
-            settings.setDisplayOutputCheck(Boolean.TRUE.toString());
+            settings.setDisplayOutputCheck(true);
         }else{
             System.out.println("Check Box unclicked. Value is: " + selected);
-            settings.setDisplayOutputCheck(Boolean.FALSE.toString());
+            settings.setDisplayOutputCheck(false);
         }
         
     }

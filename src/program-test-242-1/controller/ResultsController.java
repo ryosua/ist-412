@@ -47,9 +47,9 @@ public class ResultsController {
             }
             
             
-            if(settings.getDisplayOutputCheck().equals(Boolean.TRUE.toString()))
+            if(settings.getDisplayOutputCheck()) {
                 frame = new OutputFrame(resultDatatoPrint);
-            
+            }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ioEx) {

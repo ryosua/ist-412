@@ -200,7 +200,10 @@ public class InputPanel extends JPanel {
         } else {
             batchRun.setSelected(true);
         }
-
+        
+        // Select the show output checkbox if the setting is true.
+        showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
+      
         //Add runtype radio buttons to button group.
         final ButtonGroup runTypeRadios = new ButtonGroup();
         runTypeRadios.add(singleRun);

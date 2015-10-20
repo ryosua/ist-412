@@ -22,7 +22,7 @@ public class ApplicationSettings {
     private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
     
     private String runMode = SINGLE_MODE;
-    private String displayOutputCheck = Boolean.TRUE.toString();
+    private boolean displayOutputCheck = true;
             
             
     public File getConfigFile() {
@@ -53,7 +53,7 @@ public class ApplicationSettings {
         return testCaseDirectory;
     }
     
-    public String getDisplayOutputCheck(){
+    public boolean getDisplayOutputCheck(){
         return displayOutputCheck;
     }
     
@@ -92,7 +92,7 @@ public class ApplicationSettings {
         writeDataToSettingsFile();
     }
     
-    public void setDisplayOutputCheck(String value){
+    public void setDisplayOutputCheck(boolean value){
         displayOutputCheck = value;
         writeDataToSettingsFile();
     }
@@ -128,9 +128,7 @@ public class ApplicationSettings {
                 out.println("Test Case Directory: " + testCaseDirectory.getPath());
             }
             
-            if(displayOutputCheck != null){
-                out.println("Display Output: " + displayOutputCheck);
-            }
+            out.println("Display Output: " + String.valueOf(displayOutputCheck));
             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -170,7 +168,7 @@ public class ApplicationSettings {
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
                 } 
                 else if(setting.startsWith("Display Output: ")){
-                    displayOutputCheck = setting.substring("Display Output: ".length());
+                    displayOutputCheck = Boolean.valueOf(setting.substring("Display Output: ".length()));
                 }
             }
         } catch (FileNotFoundException e) {
