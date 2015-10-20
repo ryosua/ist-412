@@ -6,30 +6,36 @@
 package view;
 
 import javax.swing.JFrame;
+import model.ApplicationSettings;
 
 /**
  *
  * @author dos5385
  */
-public class OutputFrame extends JFrame{
-    private  OutputPanel output;
-    private String results;
-    public OutputFrame(String results){
-        this.results = results;
-        initFrame();
-        
-    }
+public class OutputFrame extends JFrame {
     
-    public void initFrame(){
-        
+    private final String results;
+    private final ApplicationSettings settings;
+            
+    private OutputPanel output;
+
+
+    public OutputFrame(String results, ApplicationSettings settings) {
+        this.results = results;
+        this.settings = settings;
+        initFrame();
+
+    }
+
+    public void initFrame() {
+
         this.setSize(500, 500);
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
-        output = new OutputPanel(this, results);
+
+        output = new OutputPanel(this, results, settings);
         this.add(output);
-        
-        
+
         this.setVisible(true);
     }
 }

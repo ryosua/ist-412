@@ -13,21 +13,25 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import model.ApplicationSettings;
 
 /**
  *
  * @author dos5385
  */
-public class OutputPanel extends JPanel{
-    
+public class OutputPanel extends JPanel {
+
+    private final ApplicationSettings settings;
+
     private JTextArea outputArea;
     private JButton closeButton, outputButton, sourceButton;
     private String results;
     private OutputFrame theFrame;
-    
-    public OutputPanel(OutputFrame frame, String results){
+
+    public OutputPanel(OutputFrame frame, String results, ApplicationSettings settings) {
         theFrame = frame;
         this.results = results;
+        this.settings = settings;
 
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
@@ -39,8 +43,7 @@ public class OutputPanel extends JPanel{
         outputAreaC.gridy = 0;
         outputAreaC.gridheight = 10;
         outputAreaC.gridwidth = 10;
-        
-        
+
         closeButton = new JButton("Close Window");
         closeButton.addActionListener(new CloseOutputWindowListener(this));
         GridBagConstraints closeButtonC = new GridBagConstraints();
@@ -48,34 +51,34 @@ public class OutputPanel extends JPanel{
         closeButtonC.gridx = 0;
         closeButtonC.gridy = 11;
         closeButtonC.gridwidth = 1;
-        
+
         this.add(outputArea, outputAreaC);
         this.add(closeButton, closeButtonC);
-        
+
         outputButton = new JButton("Open Output");
-        outputButton.addActionListener(new OpenOutputWindowListener(this));
+        outputButton.addActionListener(new OpenOutputWindowListener(this, settings));
         GridBagConstraints outputButtonC = new GridBagConstraints();
         outputButtonC.fill = GridBagConstraints.HORIZONTAL;
         outputButtonC.gridx = 14;
         outputButtonC.gridy = 0;
         outputButtonC.gridwidth = 1;
-        
+
         this.add(outputArea, outputAreaC);
         this.add(outputButton, outputButtonC);
-        
+
         sourceButton = new JButton("Open Source");
-        sourceButton.addActionListener(new SourceOutputWindowListener(this));
+        sourceButton.addActionListener(new SourceOutputWindowListener(this, settings));
         GridBagConstraints sourceButtonC = new GridBagConstraints();
         sourceButtonC.fill = GridBagConstraints.HORIZONTAL;
         sourceButtonC.gridx = 14;
         sourceButtonC.gridy = 1;
         sourceButtonC.gridwidth = 1;
-        
+
         this.add(outputArea, outputAreaC);
         this.add(sourceButton, sourceButtonC);
     }
-        
-    public OutputFrame getFrame(){
+
+    public OutputFrame getFrame() {
         return theFrame;
     }
 }

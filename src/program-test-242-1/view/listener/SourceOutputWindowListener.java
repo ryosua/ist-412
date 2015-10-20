@@ -10,33 +10,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import model.ApplicationSettings;
 import view.OutputPanel;
 
 /**
  *
  * @author qyl5054
  */
-public class SourceOutputWindowListener implements ActionListener{
-    private OutputPanel thePanel;
-    public SourceOutputWindowListener(OutputPanel panel){
-        thePanel = panel;
+public class SourceOutputWindowListener implements ActionListener {
+    
+    private final OutputPanel thePanel;
+    private final ApplicationSettings settings;
+
+    public SourceOutputWindowListener(OutputPanel panel, ApplicationSettings settings) {
+        this.thePanel = panel;
+        this.settings = settings;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         thePanel.getFrame().setVisible(false);
         Desktop desktop = null;
         // on Windows, retrieve the path of the "Program Files" folder
         //File file = new File(System.getenv("programfiles"));
-        File file = new File("C:/java/src/program-test-242-1/src/src-output");
+        File file = settings.getSourceFileDirectory();
         if (Desktop.isDesktopSupported()) {
             desktop = Desktop.getDesktop();
         }
         try {
             desktop.open(file);
-            }
-        catch (IOException evt){  
-        throw new RuntimeException(evt);
+        } catch (IOException evt) {
+            throw new RuntimeException(evt);
         }
     }
-}    
+}
