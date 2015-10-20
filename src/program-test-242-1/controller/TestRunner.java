@@ -71,7 +71,7 @@ public class TestRunner {
 //        parse argsLine via TestTools.parseLine
                     arg = TestTools.parseLine(argsLine);
                     arg.add(0, "java");
-                    System.out.println(arg);
+                    //System.out.println(arg);
 
 //        scan TestInput.txt
                     String testInputLine = testInputs.nextLine();
@@ -80,7 +80,7 @@ public class TestRunner {
 //        create input file for current run
                     List<String> inputs = new ArrayList<String>();
                     inputs = TestTools.parseLine(testInputLine);
-                    System.out.println("System.in inputs: " + inputs);
+                    //System.out.println("System.in inputs: " + inputs);
                     inputFileName = inputFileStub + run + ".txt";
                     PrintWriter writeTests = new PrintWriter(inputFileName);
                     for (String element : inputs) {
@@ -124,7 +124,7 @@ public class TestRunner {
                     pb.redirectInput(Redirect.from(inputFile));
                     pb.redirectErrorStream(true);
                     pb.redirectOutput(Redirect.appendTo(outputFile));
-                    System.out.println("java process arguments: " + pb.command());
+                    //System.out.println("java process arguments: " + pb.command());
 
 //        start java process    
                     Process p = pb.start();

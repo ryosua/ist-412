@@ -71,7 +71,8 @@ public class SingleTester implements ProgramTester {
             String studentPath = sourcePath + "/" + studentName;
             String inputFileStub = studentPath + "/input";
             String outputFileName = studentPath + File.separatorChar + "output-" + studentName + ".txt";
-        
+            
+            /*
             System.out.println("classPath: " + classPath);
             System.out.println("studentPath: " + studentPath);
             System.out.println("inputFileStub: " + inputFileStub);
@@ -80,6 +81,7 @@ public class SingleTester implements ProgramTester {
             System.out.println("run #: " + runNumber + " ; studentNumber: " + studentNumber
                     + "; Name: " + studentName + "; Handle: " + studentHandle);
             System.out.println("Output goes to: " + outputFileName);
+            */
             
             // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
@@ -110,13 +112,14 @@ public class SingleTester implements ProgramTester {
                     outputFileName);
             r.runJava();
             runNumber++;
-            System.out.println();
+            //System.out.println();
             
-            System.out.println(results.toString());
+            //System.out.println(results.toString());
             resultsController.writeResults();
             
         } catch (IOException ioe) {
             System.out.println("main IOException");
+            ioe.printStackTrace();
         }
     }
     

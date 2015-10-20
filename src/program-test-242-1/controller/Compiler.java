@@ -48,8 +48,8 @@ public class Compiler
 //    Determine current working directory
 	  File srcAbsPath = new File(sourcePath);
 	  String srcAbsPathName = srcAbsPath.getAbsolutePath();
-	  System.out.println("source path: " + sourcePath); 
-	  System.out.println("source absolute path: " + srcAbsPathName);
+	  //System.out.println("source path: " + sourcePath); 
+	  //System.out.println("source absolute path: " + srcAbsPathName);
 
 	  
       File cwd = pbDir.directory();
@@ -83,7 +83,7 @@ public class Compiler
 		{
 		  if(filter.accept(nwdPath, javaFileList[k]) == true)
 		  { 
-	        System.out.println("Compiling: " + javaFileList[k]);
+	        //System.out.println("Compiling: " + javaFileList[k]);
 
             ProcessBuilder pb =
             new ProcessBuilder("javac", "-d", classPath, studentPath + "/" + javaFileList[k]);
@@ -117,11 +117,13 @@ public class Compiler
 		} catch(Exception e)
           {
             System.out.println("Compile Exception: " + javaFileList[k]);
+            e.printStackTrace();
           }	
       }      
 	} catch(Exception e)
       {
         System.out.println("Compile Exception");
+        e.printStackTrace();
       }
     return success;
   }

@@ -70,10 +70,12 @@ public class BatchTester implements ProgramTester {
                  System.out.println("inputFileStub: " + inputFileStub);
                  System.out.println("outputFileName: " + outputFileName);
                  */
-
+                
+                /*
                 System.out.println("run #: " + runNumber + " ; studentNumber: " + studentNumber
                         + "; Name: " + studentName + "; Handle: " + studentHandle);
                 System.out.println("Output goes to: " + outputFileName);
+                */
 
                 //      run javac compiler - returns 0 on success
                 //      Compiler Constructor:
@@ -84,9 +86,9 @@ public class BatchTester implements ProgramTester {
 
                 //      Print whether or not compile successful
                 if (success == 0) {
-                    System.out.println("Compiled Successfully");
+                    //System.out.println("Compiled Successfully");
                 } else {
-                    System.out.println("Compile Exception");
+                    //System.out.println("Compile Exception");
                 }
 
                 //      Run the test cases
@@ -97,13 +99,14 @@ public class BatchTester implements ProgramTester {
                 TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, testDataPath.getAbsolutePath(), argsFileName, testInputFileName, inputFileStub, outputFileName);
                 r.runJava();
                 runNumber++;
-                System.out.println();
+                //System.out.println();
                 
-                System.out.println(results.toString());
+                //System.out.println(results.toString());
                 resultsController.writeResults();
             }
         } catch (IOException ioe) {
             System.out.println("main IOException");
+            ioe.printStackTrace();
         }
     }
 
