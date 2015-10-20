@@ -6,6 +6,8 @@
 package view;
 
 import view.listener.CloseOutputWindowListener;
+import view.listener.OpenOutputWindowListener;
+import view.listener.SourceOutputWindowListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -19,7 +21,7 @@ import javax.swing.JTextArea;
 public class OutputPanel extends JPanel{
     
     private JTextArea outputArea;
-    private JButton closeButton;
+    private JButton closeButton, outputButton, sourceButton;
     private String results;
     private OutputFrame theFrame;
     
@@ -49,8 +51,30 @@ public class OutputPanel extends JPanel{
         
         this.add(outputArea, outputAreaC);
         this.add(closeButton, closeButtonC);
+        
+        outputButton = new JButton("Open Output");
+        outputButton.addActionListener(new OpenOutputWindowListener(this));
+        GridBagConstraints outputButtonC = new GridBagConstraints();
+        outputButtonC.fill = GridBagConstraints.HORIZONTAL;
+        outputButtonC.gridx = 14;
+        outputButtonC.gridy = 0;
+        outputButtonC.gridwidth = 1;
+        
+        this.add(outputArea, outputAreaC);
+        this.add(outputButton, outputButtonC);
+        
+        sourceButton = new JButton("Open Source");
+        sourceButton.addActionListener(new SourceOutputWindowListener(this));
+        GridBagConstraints sourceButtonC = new GridBagConstraints();
+        sourceButtonC.fill = GridBagConstraints.HORIZONTAL;
+        sourceButtonC.gridx = 14;
+        sourceButtonC.gridy = 1;
+        sourceButtonC.gridwidth = 1;
+        
+        this.add(outputArea, outputAreaC);
+        this.add(sourceButton, sourceButtonC);
     }
-    
+        
     public OutputFrame getFrame(){
         return theFrame;
     }
