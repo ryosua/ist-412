@@ -5,9 +5,8 @@
  */
 package view.listener;
 
+import view.TrivialEdit;
 import java.io.File;
-import java.io.IOException;
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.ApplicationSettings;
@@ -30,17 +29,10 @@ public class OpenOutputWindowListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         thePanel.getFrame().setVisible(false);
-        Desktop desktop = null;
-        // on Windows, retrieve the path of the "Program Files" folder
-        //File file = new File(System.getenv("programfiles"));
         File file = settings.getOutputFileDirectory();
-        if (Desktop.isDesktopSupported()) {
-            desktop = Desktop.getDesktop();
-        }
-        try {
-            desktop.open(file);
-        } catch (IOException evt) {
-            throw new RuntimeException(evt);
-        }
+        
+        TrivialEdit editor = new TrivialEdit();
+        editor.doOpenOnStart(file.toString());
+        editor.setVisible(true);
     }
 }
