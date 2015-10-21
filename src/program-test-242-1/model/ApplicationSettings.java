@@ -14,12 +14,12 @@ public class ApplicationSettings {
    
     private final File settingsFile = new File("Settings.txt");
     
-    private File configFile = new File(""); // Just single for now.
-    private File javaVersionDirectory = new File("");
-    private File outputFileDirectory = new File("");
-    private File rootDirectory = new File("");
-    private File sourceFileDirectory = new File("");
-    private File testCaseDirectory = new File("");
+    private File configFile = new File("C:/java/src/program-test-242-1/configSingle.txt"); // Just single for now.
+    private File javaVersionDirectory = new File("C:/java/jdk1.7.0_71/bin");
+    private File outputFileDirectory = new File("C:/java/src/program-test-242-1/testResults.txt");
+    private File rootDirectory = new File("C:/java");
+    private File sourceFileDirectory = new File("C:/java/src/program-test-242-1/src/src-output");
+    private File testCaseDirectory = new File("C:/java/src/program-test-242-1/src");
     
     private String runMode = SINGLE_MODE;
     private boolean displayOutputCheck = true;
