@@ -85,7 +85,7 @@ public class InputPanel extends JPanel {
         final JTextField rootDirectoryField = new JTextField();
         rootDirectoryFieldText = settings.getRootDirectory().getPath();
         rootDirectoryField.setText(rootDirectoryFieldText);
-        rootDirectoryFieldText = rootDirectoryFieldText+ "/src";
+        rootDirectoryFieldText = rootDirectoryFieldText + "/src";
         rootDirectoryField.setEditable(false);
         final GridBagConstraints rootDirectoryFieldC = new GridBagConstraints();
         rootDirectoryFieldC.fill = GridBagConstraints.HORIZONTAL;
@@ -181,6 +181,7 @@ public class InputPanel extends JPanel {
         outputButtonC.gridy = 11;
 
         final JButton runButton = new JButton("Run");
+        runButton.setSize(WIDTH, 10);
         final GridBagConstraints runButtonC = new GridBagConstraints();
         runButtonC.fill = GridBagConstraints.HORIZONTAL;
         runButtonC.gridx = 1;
