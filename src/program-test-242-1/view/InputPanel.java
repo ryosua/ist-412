@@ -26,6 +26,12 @@ import model.ApplicationSettings;
 public class InputPanel extends JPanel {
 
     private final Main main;
+    private String rootDirectoryFieldText;
+    private String jdkDirectoryFieldText;
+    private String configFieldText;
+    private String sourceDirectoryFieldText;
+    private String outputFieldText;
+    private String testCaseDirectoryFieldText;
 
     public InputPanel(Main main) {
         this.main = main;
@@ -37,130 +43,141 @@ public class InputPanel extends JPanel {
         final GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
         
+        final JLabel rootDirectoryLabel = new JLabel("Root Directory:");
+        final GridBagConstraints rootDirectoryLabelC = new GridBagConstraints();
+        rootDirectoryLabelC.fill = GridBagConstraints.HORIZONTAL;
+        rootDirectoryLabelC.gridx = 0;
+        rootDirectoryLabelC.gridy = 0;
+        
         final JLabel jdkLabel = new JLabel("Current JDK Selected: ");
         final GridBagConstraints jdkLabelC = new GridBagConstraints();
         jdkLabelC.fill = GridBagConstraints.HORIZONTAL;
         jdkLabelC.gridx = 0;
-        jdkLabelC.gridy = 0;
+        jdkLabelC.gridy = 2;
 
         final JLabel configLabel = new JLabel("Current Config Selected: ");
         final GridBagConstraints configLabelC = new GridBagConstraints();
         configLabelC.fill = GridBagConstraints.HORIZONTAL;
         configLabelC.gridx = 0;
-        configLabelC.gridy = 2;
+        configLabelC.gridy = 4;
         configLabelC.insets = new Insets(5, 0, 0, 0);
 
         final JLabel sourceDirectoryLabel = new JLabel("Choose a Source Directory or Zip File:");
         final GridBagConstraints sourceLabelC = new GridBagConstraints();
         sourceLabelC.fill = GridBagConstraints.HORIZONTAL;
         sourceLabelC.gridx = 0;
-        sourceLabelC.gridy = 4;
+        sourceLabelC.gridy = 6;
 
         final JLabel testCaseDirectoryLabel = new JLabel("Add Test Case Files:");
         final GridBagConstraints testLabelC = new GridBagConstraints();
         testLabelC.fill = GridBagConstraints.HORIZONTAL;
         testLabelC.gridx = 0;
-        testLabelC.gridy = 6;
+        testLabelC.gridy = 8;
 
         final JLabel outputFileLabel = new JLabel("Output file:");
         final GridBagConstraints outputLabelC = new GridBagConstraints();
         outputLabelC.fill = GridBagConstraints.HORIZONTAL;
         outputLabelC.gridx = 0;
-        outputLabelC.gridy = 8;
-        
-        final JLabel rootDirectoryLabel = new JLabel("Root Directory:");
-        final GridBagConstraints rootDirectoryLabelC = new GridBagConstraints();
-        rootDirectoryLabelC.fill = GridBagConstraints.HORIZONTAL;
-        rootDirectoryLabelC.gridx = 0;
-        rootDirectoryLabelC.gridy = 10;
+        outputLabelC.gridy = 10;
 
         final ApplicationSettings settings = main.getSettings();
 
-        final JTextField jdkDirectoryField = new JTextField();
-        jdkDirectoryField.setText(settings.getJavaVersionDirectory().getPath());
-        jdkDirectoryField.setEditable(false);
-        final GridBagConstraints jdkFieldC = new GridBagConstraints();
-        jdkFieldC.fill = GridBagConstraints.HORIZONTAL;
-        jdkFieldC.gridx = 0;
-        jdkFieldC.gridy = 1;
-
-        final JTextField configField = new JTextField();
-        configField.setText(settings.getConfigFile().getPath());
-        configField.setEditable(false);
-        final GridBagConstraints configFieldC = new GridBagConstraints();
-        configFieldC.fill = GridBagConstraints.HORIZONTAL;
-        configFieldC.gridx = 0;
-        configFieldC.gridy = 3;
-        configFieldC.insets = new Insets(0, 0, 30, 0);
-
-        final JTextField sourceDirectoryField = new JTextField();
-        sourceDirectoryField.setText(settings.getSourceFileDirectory().getPath());
-        sourceDirectoryField.setEditable(false);
-        final GridBagConstraints sourceFieldC = new GridBagConstraints();
-        sourceFieldC.fill = GridBagConstraints.HORIZONTAL;
-        sourceFieldC.gridx = 0;
-        sourceFieldC.gridy = 5;
-
-        final JTextField outputField = new JTextField();
-        outputField.setText(settings.getOutputFileDirectory().getPath());
-        outputField.setEditable(false);
-        final GridBagConstraints outputFieldC = new GridBagConstraints();
-        outputFieldC.fill = GridBagConstraints.HORIZONTAL;
-        outputFieldC.gridx = 0;
-        outputFieldC.gridy = 9;
-        
         final JTextField rootDirectoryField = new JTextField();
-        rootDirectoryField.setText(settings.getRootDirectory().getPath());
+        rootDirectoryFieldText= settings.getRootDirectory().getPath();
+        rootDirectoryField.setText(rootDirectoryFieldText);
         rootDirectoryField.setEditable(false);
         final GridBagConstraints rootDirectoryFieldC = new GridBagConstraints();
         rootDirectoryFieldC.fill = GridBagConstraints.HORIZONTAL;
         rootDirectoryFieldC.gridx = 0;
-        rootDirectoryFieldC.gridy = 11;
+        rootDirectoryFieldC.gridy = 1;
+        
+        final JTextField jdkDirectoryField = new JTextField();
+        jdkDirectoryFieldText = settings.getJavaVersionDirectory().getPath();
+        jdkDirectoryFieldText = jdkDirectoryFieldText.replace(rootDirectoryFieldText, "~");
+        jdkDirectoryField.setText(jdkDirectoryFieldText);
+        jdkDirectoryField.setEditable(false);
+        final GridBagConstraints jdkFieldC = new GridBagConstraints();
+        jdkFieldC.fill = GridBagConstraints.HORIZONTAL;
+        jdkFieldC.gridx = 0;
+        jdkFieldC.gridy = 3;
+
+        final JTextField configField = new JTextField();
+        configFieldText = settings.getConfigFile().getPath();
+        configFieldText = configFieldText.replace(rootDirectoryFieldText, "~");
+        configField.setText(configFieldText);
+        configField.setEditable(false);
+        final GridBagConstraints configFieldC = new GridBagConstraints();
+        configFieldC.fill = GridBagConstraints.HORIZONTAL;
+        configFieldC.gridx = 0;
+        configFieldC.gridy = 5;
+        configFieldC.insets = new Insets(0, 0, 30, 0);
+
+        final JTextField sourceDirectoryField = new JTextField();
+        sourceDirectoryFieldText = settings.getSourceFileDirectory().getPath();
+        sourceDirectoryFieldText = sourceDirectoryFieldText.replace(rootDirectoryFieldText, "~");
+        sourceDirectoryField.setText(sourceDirectoryFieldText);
+        sourceDirectoryField.setEditable(false);
+        final GridBagConstraints sourceFieldC = new GridBagConstraints();
+        sourceFieldC.fill = GridBagConstraints.HORIZONTAL;
+        sourceFieldC.gridx = 0;
+        sourceFieldC.gridy = 7;
+
+        final JTextField outputField = new JTextField();
+        outputFieldText = settings.getOutputFileDirectory().getPath();
+        outputFieldText = outputFieldText.replace(rootDirectoryFieldText, "~");
+        outputField.setText(outputFieldText);
+        outputField.setEditable(false);
+        final GridBagConstraints outputFieldC = new GridBagConstraints();
+        outputFieldC.fill = GridBagConstraints.HORIZONTAL;
+        outputFieldC.gridx = 0;
+        outputFieldC.gridy = 11;
 
         final JTextField testCaseDirectoryField = new JTextField();
-        testCaseDirectoryField.setText(settings.getTestCaseDirectory().getPath());
+        testCaseDirectoryFieldText = settings.getTestCaseDirectory().getPath();
+        testCaseDirectoryFieldText = testCaseDirectoryFieldText.replace(rootDirectoryFieldText, "~");
+        testCaseDirectoryField.setText(testCaseDirectoryFieldText);
         testCaseDirectoryField.setEditable(false);
         final GridBagConstraints testFieldC = new GridBagConstraints();
         testFieldC.fill = GridBagConstraints.HORIZONTAL;
         testFieldC.gridx = 0;
-        testFieldC.gridy = 7;
+        testFieldC.gridy = 9;
+        
+        final JButton rootDirectoryButton = new JButton("Choose Location");
+        final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
+        rootDirectoryButtonC.fill = GridBagConstraints.HORIZONTAL;
+        rootDirectoryButtonC.gridx = 1;
+        rootDirectoryButtonC.gridy = 1;
 
         final JButton jdkDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints jdkButtonC = new GridBagConstraints();
         jdkButtonC.fill = GridBagConstraints.HORIZONTAL;
         jdkButtonC.gridx = 1;
-        jdkButtonC.gridy = 1;
+        jdkButtonC.gridy = 3;
 
         final JButton configButton = new JButton("Choose Location");
         final GridBagConstraints configButtonC = new GridBagConstraints();
         configButtonC.fill = GridBagConstraints.HORIZONTAL;
         configButtonC.gridx = 1;
-        configButtonC.gridy = 3;
+        configButtonC.gridy = 5;
         configButtonC.insets = new Insets(0, 0, 30, 0);
 
         final JButton sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
         sourcButtonC.fill = GridBagConstraints.HORIZONTAL;
         sourcButtonC.gridx = 1;
-        sourcButtonC.gridy = 5;
+        sourcButtonC.gridy = 7;
 
         final JButton testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
         testButtonC.fill = GridBagConstraints.HORIZONTAL;
         testButtonC.gridx = 1;
-        testButtonC.gridy = 7;
+        testButtonC.gridy = 9;
 
         final JButton outputButton = new JButton("Choose Location");
         final GridBagConstraints outputButtonC = new GridBagConstraints();
         outputButtonC.fill = GridBagConstraints.HORIZONTAL;
         outputButtonC.gridx = 1;
-        outputButtonC.gridy = 9;
-        
-        final JButton rootDirectoryButton = new JButton("Choose Location");
-        final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
-        rootDirectoryButtonC.fill = GridBagConstraints.HORIZONTAL;
-        rootDirectoryButtonC.gridx = 1;
-        rootDirectoryButtonC.gridy = 11;
+        outputButtonC.gridy = 11;
 
         final JButton runButton = new JButton("Run");
         final GridBagConstraints runButtonC = new GridBagConstraints();
@@ -221,6 +238,9 @@ public class InputPanel extends JPanel {
         singleRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
         batchRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
 
+        add(rootDirectoryLabel, rootDirectoryLabelC);
+        add(rootDirectoryField, rootDirectoryFieldC);
+        add(rootDirectoryButton, rootDirectoryButtonC);
         add(jdkDirectoryButton, jdkButtonC);
         add(configButton, configButtonC);
         add(jdkLabel, jdkLabelC);
@@ -234,11 +254,8 @@ public class InputPanel extends JPanel {
         add(testCaseDirectoryField, testFieldC);
         add(testCaseButton, testButtonC);
         add(outputFileLabel, outputLabelC);
-        add(rootDirectoryLabel, rootDirectoryLabelC);
         add(outputField, outputFieldC);
-        add(rootDirectoryField, rootDirectoryFieldC);
         add(outputButton, outputButtonC);
-        add(rootDirectoryButton, rootDirectoryButtonC);
         add(runButton, runButtonC);
         add(singleRun, singleRunBtn);
         add(batchRun, batchRunBtn);
