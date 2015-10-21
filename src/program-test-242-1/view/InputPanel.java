@@ -85,6 +85,7 @@ public class InputPanel extends JPanel {
         final JTextField rootDirectoryField = new JTextField();
         rootDirectoryFieldText = settings.getRootDirectory().getPath();
         rootDirectoryField.setText(rootDirectoryFieldText);
+        rootDirectoryFieldText = rootDirectoryFieldText+ "/src";
         rootDirectoryField.setEditable(false);
         final GridBagConstraints rootDirectoryFieldC = new GridBagConstraints();
         rootDirectoryFieldC.fill = GridBagConstraints.HORIZONTAL;
