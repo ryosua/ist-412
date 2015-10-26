@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ApplicationSettings {
     public final static String SINGLE_MODE = "Single Mode";
@@ -149,32 +147,32 @@ public class ApplicationSettings {
                 if(setting.startsWith("Config File: ")) {
                     configFile = new File(setting.substring("Config File: ".length()));
                 }
-                else if(setting.startsWith("Output File Directory: ")){
+                if(setting.startsWith("Output File Directory: ")){
                     outputFileDirectory = new File(setting.substring("Output File Directory: ".length()));
                 }
-                else if(setting.startsWith("Root Directory: ")){
+                if(setting.startsWith("Root Directory: ")){
                     rootDirectory = new File(setting.substring("Root Directory: ".length()));
                 }
-                else if(setting.startsWith("Run mode: ")){
+                if(setting.startsWith("Run mode: ")){
                     runMode = new String(setting.substring("Run Mode: ".length()));
                 }
-                else if(setting.startsWith("Source File Directory: ")){
+                if(setting.startsWith("Source File Directory: ")){
                     sourceFileDirectory = new File(setting.substring("Source File Directory: ".length()));
                 }
-                else if(setting.startsWith("Test Case Directory: ")){
+                if(setting.startsWith("Test Case Directory: ")){
                     testCaseDirectory = new File(setting.substring("Test Case Directory: ".length()));
                 }
-                else if(setting.startsWith("Java Version Directory: ")){
+                if(setting.startsWith("Java Version Directory: ")){
                     javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
                 } 
-                else if(setting.startsWith("Display Output: ")){
+                if(setting.startsWith("Display Output: ")){
                     displayOutputCheck = Boolean.valueOf(setting.substring("Display Output: ".length()));
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException ex) {
-            Logger.getLogger(ApplicationSettings.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } finally {
             inFile.close();
         }
