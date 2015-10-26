@@ -167,7 +167,7 @@
             </classpath>
             
             <batchtest fork="yes">
-                <fileset dir="${srcDirectory}" includes="*Test.java"/>
+                <fileset dir="${srcDirectory}" includes="TestSuite.java"/>
             </batchtest>
 
             <formatter type="plain" usefile="false" />
