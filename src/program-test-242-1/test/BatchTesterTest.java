@@ -38,7 +38,7 @@ public class BatchTesterTest
     }
    
     @Test
-    public void theOutputContainsNoExceptionsAndFileIsNotEmpty() {
+    public void theOutputFileIsNotEmpty() {
         // Run the program in single test mode.
         final BatchTester batchTest = new BatchTester(main.getSettings());
         batchTest.run();
