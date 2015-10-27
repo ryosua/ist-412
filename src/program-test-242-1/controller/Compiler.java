@@ -5,48 +5,43 @@ import java.util.*;
 import java.lang.ProcessBuilder.Redirect;
 import model.Results;
 
-public class Compiler
-{
-  private final Results results;
-  private String path;
-  private String classPath;
-  private String sourcePath;
-  private String studentPath;
-  private String outputFileName;
-  private int success;
-    
-  public Compiler(String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results)
-  {
-    this.results = results;
-    
-    path = pth;
-    classPath = clsPath;
-    sourcePath = srcPath;
-    studentPath = stdPath;
-    outputFileName = outFileName;
-    success = 1;  // Outcome of compilation, success = 0
-  }
-    
-  public int compileJava()
-  {
-    try
-    {
+public class Compiler {
+
+    private final Results results;
+    private String path;
+    private String classPath;
+    private String sourcePath;
+    private String studentPath;
+    private String outputFileName;
+    private int success;
+
+    public Compiler(String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results) {
+        this.results = results;
+
+        path = pth;
+        classPath = clsPath;
+        sourcePath = srcPath;
+        studentPath = stdPath;
+        outputFileName = outFileName;
+        success = 1;  // Outcome of compilation, success = 0
+    }
+
+    public int compileJava() {
+        try {
 //    create new bin directory
-      boolean createBin = new File(classPath).mkdirs();
+            boolean createBin = new File(classPath).mkdirs();
 
 //    create new javac ProcessBuilder        
 //      ProcessBuilder pb =
 //      new ProcessBuilder("javac", "-d", classPath, "./" + studentPath + "/*.java");
-
-      ProcessBuilder pbDir = new ProcessBuilder("dir");
+            ProcessBuilder pbDir = new ProcessBuilder("dir");
 //    Determine current working directory
-	  File srcAbsPath = new File(sourcePath);
-	  String srcAbsPathName = srcAbsPath.getAbsolutePath();
+            File srcAbsPath = new File(sourcePath);
+            String srcAbsPathName = srcAbsPath.getAbsolutePath();
 	  //System.out.println("source path: " + sourcePath); 
-	  //System.out.println("source absolute path: " + srcAbsPathName);
+            //System.out.println("source absolute path: " + srcAbsPathName);
 
-	  
-      File cwd = pbDir.directory();
+            File cwd = pbDir.directory();
 //    debug code - to confirm correct directory       
 //    TestTools.dir(cwd);
 //    NB - ProcessBuilder default is to return a null  
@@ -57,68 +52,63 @@ public class Compiler
 //    Also returns a null pointer if the directory
 //    doesn't exist.
 
-      File nwd = TestTools.cd(cwd, studentPath);
-      String studentPathName = nwd.getAbsolutePath();
-	  File nwdPath = new File(studentPath);
+            File nwd = TestTools.cd(cwd, studentPath);
+            String studentPathName = nwd.getAbsolutePath();
+            File nwdPath = new File(studentPath);
 //    System.out.println("studentPathName: " + studentPathName);
 //    debug code to test new working directory
 //    TestTools.dir(nwd);
 
-	  FileFilter filter = new FileFilter();
-	  String[] javaFileList = nwdPath.list(filter); 
+            FileFilter filter = new FileFilter();
+            String[] javaFileList = nwdPath.list(filter);
 //    set up output file      
-      File outputFile = new File(outputFileName);
+            File outputFile = new File(outputFileName);
 //    System.out.println(outputFileName);
-      outputFile.delete();
-	  
-	  for(int k = 0; k < javaFileList.length; k++)
-	  {
-	    try
-		{
-		  if(filter.accept(nwdPath, javaFileList[k]) == true)
-		  { 
-	        //System.out.println("Compiling: " + javaFileList[k]);
+            outputFile.delete();
 
-            ProcessBuilder pb =
-            new ProcessBuilder("javac", "-d", classPath, studentPath + "/" + javaFileList[k]);
-	  
+            for (int k = 0; k < javaFileList.length; k++) {
+                try {
+                    if (filter.accept(nwdPath, javaFileList[k]) == true) {
+                        //System.out.println("Compiling: " + javaFileList[k]);
+
+                        ProcessBuilder pb
+                                = new ProcessBuilder("javac", "-d", classPath, studentPath + "/" + javaFileList[k]);
+
 //          Create environment map and set environmental variables         
-            Map<String, String> env = pb.environment();       
-            env.clear();
-            env.put("PATH", path);
-            env.put("CLASSPATH", classPath);
+                        Map<String, String> env = pb.environment();
+                        env.clear();
+                        env.put("PATH", path);
+                        env.put("CLASSPATH", classPath);
 //          env.put("SOURCEPATH", sourcePath);
 //          env.remove("OTHERVAR");
 
-            pb.redirectErrorStream(true);
-            pb.redirectOutput(Redirect.appendTo(outputFile));
-            
-            // Save output file for later.
-            results.addFile(outputFile);
+                        pb.redirectErrorStream(true);
+                        pb.redirectOutput(Redirect.appendTo(outputFile));
+
+                        // Save output file for later.
+                        results.addFile(outputFile);
 
 //          start javac process        
-            Process p = pb.start();
-        
+                        Process p = pb.start();
+
 //          need other processes to wait for compilation to finish
 //          basically joins the thread to the javac process to force sequential
 //          execution - need to be careful - if any process hangs, whole run hangs
-            success = p.waitFor();
+                        success = p.waitFor();
 
-            assert pb.redirectInput() == Redirect.PIPE;
-            assert pb.redirectOutput().file() == outputFile;
-            assert p.getInputStream().read() == -1;
-		  } 
-		} catch(Exception e)
-          {
-            System.out.println("Compile Exception: " + javaFileList[k]);
+                        assert pb.redirectInput() == Redirect.PIPE;
+                        assert pb.redirectOutput().file() == outputFile;
+                        assert p.getInputStream().read() == -1;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Compile Exception: " + javaFileList[k]);
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Compile Exception");
             e.printStackTrace();
-          }	
-      }      
-	} catch(Exception e)
-      {
-        System.out.println("Compile Exception");
-        e.printStackTrace();
-      }
-    return success;
-  }
+        }
+        return success;
+    }
 }
