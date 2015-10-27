@@ -108,10 +108,12 @@ public class SingleTester implements ProgramTester {
             //    public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String tstDataPath, String argFileName, 
             //    String tstInputFileName, String inputFileName, String outFileName)
-            TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath.getAbsolutePath(),
-                    sourcePath, studentPath, testDataPath, argsFileName, testInputFileName, inputFileStub,
-                    outputFileName);
-            r.runJava();
+            
+
+//TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath.getAbsolutePath(),
+            //        sourcePath, studentPath, testDataPath, argsFileName, testInputFileName, inputFileStub,
+            //        outputFileName);
+//            r.runJava();
             runNumber++;
             //System.out.println();
             

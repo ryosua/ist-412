@@ -96,7 +96,8 @@ public class BatchTester implements ProgramTester {
                 //      public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
                 //      String srcPath, String stdPath, String tstDataPath, String argFileName, 
                 //      String tstInputFileName, String inputFileStub, String outFileName)
-                TestRunner r = new TestRunner(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, testDataPath.getAbsolutePath(), argsFileName, testInputFileName, inputFileStub, outputFileName);
+                //    public TestRunner(String pth, String clsPath, String stdPath, String argFileName, String tstInputFileName, String inFileStub, String outFileName) {
+                TestRunner r = new TestRunner(path.getAbsolutePath(), classPath, studentPath, argsFileName, testInputFileName, inputFileStub, outputFileName);
                 r.runJava();
                 runNumber++;
                 //System.out.println();
