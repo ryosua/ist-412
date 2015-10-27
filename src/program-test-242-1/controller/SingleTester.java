@@ -93,7 +93,7 @@ public class SingleTester implements ProgramTester {
             //    Compiler Constructor:
             //    public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
             //    String srcPath, String stdPath, String outFileName)
-            Compiler c = new Compiler(runNumber, studentName, studentHandle, path.getAbsolutePath(), classPath.getAbsolutePath(), sourcePath, studentPath, outputFileName, results);
+            Compiler c = new Compiler(path.getAbsolutePath(), classPath.getAbsolutePath(), sourcePath, studentPath, outputFileName, results);
             int success = c.compileJava();
 
             //    Print whether or not compile successful

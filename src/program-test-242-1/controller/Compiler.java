@@ -8,9 +8,6 @@ import model.Results;
 public class Compiler
 {
   private final Results results;
-  private int number;
-  private String name;
-  private String handle;
   private String path;
   private String classPath;
   private String sourcePath;
@@ -18,13 +15,10 @@ public class Compiler
   private String outputFileName;
   private int success;
     
-  public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results)
+  public Compiler(String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results)
   {
     this.results = results;
     
-    number = numbr;
-    name = nme;
-    handle = hndl;
     path = pth;
     classPath = clsPath;
     sourcePath = srcPath;
