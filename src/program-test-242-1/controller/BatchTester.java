@@ -22,6 +22,34 @@ public class BatchTester implements ProgramTester {
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
+        
+/*
+ ///////////////////////////////////////////////////////////////////////////
+        
+        This is sample code that will allow us to root through a directory and 
+        pull the names from each. 
+        This will give us the names for each student in the desired folder for 
+        testing.
+        
+        public static void main(String... args) {
+          File[] files = new File("C:/").listFiles();
+          showFiles(files);
+        }
+
+public static void showFiles(File[] files) {
+    for (File file : files) {
+        if (file.isDirectory()) {
+            System.out.println("Directory: " + file.getName());
+            showFiles(file.listFiles()); // Calls same method again.
+        } else {
+            System.out.println("File: " + file.getName());
+        }
+    }
+}
+////////////////////////////////////////////////        
+*/
+        
+        
 
         File path = settings.getJavaVersionDirectory();
         //  set fixed paths and file names:
