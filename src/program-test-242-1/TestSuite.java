@@ -1,4 +1,3 @@
-import test.SingleTesterTest;
 import test.ResultsControllerTest;
 import test.FileFilterTest;
 import test.BatchTesterTest;
@@ -12,7 +11,6 @@ import test.ApplicationSettingsTest;
     BatchTesterTest.class,
     FileFilterTest.class,
     ResultsControllerTest.class,
-    SingleTesterTest.class
 })
 
 public class TestSuite {

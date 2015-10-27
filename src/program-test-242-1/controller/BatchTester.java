@@ -1,14 +1,16 @@
 package controller;
 
+
 import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
 import model.Results;
+import model.Student;
 
 public class BatchTester implements ProgramTester {
 
     private ApplicationSettings settings;
-
+    
     public BatchTester(ApplicationSettings settings) {
         this.settings = settings;
     }
@@ -34,7 +36,7 @@ public class BatchTester implements ProgramTester {
             File configFile = settings.getConfigFile();
             Scanner in = new Scanner(configFile);
             int runNumber = 1;
-
+            
             // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
             Results results = new Results();
@@ -55,12 +57,14 @@ public class BatchTester implements ProgramTester {
                 String studentPath = sourcePath + "/" + studentName;
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
-
+                
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results);
+            
                 //      run javac compiler - returns 0 on success
                 //      Compiler Constructor:
                 //      public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
                 //      String srcPath, String stdPath, String outFileName)
-                Compiler c = new Compiler(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results);
+                Compiler c = new Compiler(student);
                 int success = c.compileJava();
 
                 //      Print whether or not compile successful
@@ -80,7 +84,7 @@ public class BatchTester implements ProgramTester {
                 r.runJava();
                 runNumber++;
                 //System.out.println();
-
+                
                 //System.out.println(results.toString());
                 resultsController.writeResults();
             }
