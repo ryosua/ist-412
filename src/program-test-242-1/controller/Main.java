@@ -9,7 +9,6 @@ public class Main {
 
     private final FileChooser fileChooser;
     private final ApplicationSettings settings;
-    private final UserController userController;
 
     private Frame f;
 
@@ -17,7 +16,6 @@ public class Main {
         // Changing the order may cause null pointers.
         settings = new ApplicationSettings();
         ApplicationSettingsController.readDataFromSettingsFile(settings);
-        userController = new UserController();
         fileChooser = new FileChooser(this);
     }
 
@@ -40,9 +38,5 @@ public class Main {
 
     public ApplicationSettings getSettings() {
         return settings;
-    }
-
-    public UserController getUserController() {
-        return userController;
     }
 }

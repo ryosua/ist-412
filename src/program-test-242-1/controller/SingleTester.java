@@ -72,9 +72,10 @@ public class SingleTester implements ProgramTester {
             String inputFileStub = studentPath + "/input";
             String outputFileName = studentPath + File.separatorChar + "output-" + studentName + ".txt";
             
-            /*
-            System.out.println("classPath: " + classPath);
+            
+            //System.out.println("classPath: " + classPath);
             System.out.println("studentPath: " + studentPath);
+            /*
             System.out.println("inputFileStub: " + inputFileStub);
             System.out.println("outputFileName: " + outputFileName);
 
