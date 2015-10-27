@@ -3,27 +3,17 @@ package controller;
 import java.io.*;
 import java.util.*;
 import java.lang.ProcessBuilder.Redirect;
-import model.Results;
+import model.Student;
 
 public class Compiler
 {
-  private final Results results;
-  private String path;
-  private String classPath;
-  private String sourcePath;
-  private String studentPath;
-  private String outputFileName;
+  private final Student student;
+ 
   private int success;
     
-  public Compiler(String pth, String clsPath, String srcPath, String stdPath, String outFileName, Results results)
+  public Compiler(Student student)
   {
-    this.results = results;
-    
-    path = pth;
-    classPath = clsPath;
-    sourcePath = srcPath;
-    studentPath = stdPath;
-    outputFileName = outFileName;
+    this.student = student;
     success = 1;  // Outcome of compilation, success = 0
   }
     
@@ -32,7 +22,7 @@ public class Compiler
     try
     {
 //    create new bin directory
-      boolean createBin = new File(classPath).mkdirs();
+      boolean createBin = new File(student.getClassPath()).mkdirs();
 
 //    create new javac ProcessBuilder        
 //      ProcessBuilder pb =
@@ -40,7 +30,7 @@ public class Compiler
 
       ProcessBuilder pbDir = new ProcessBuilder("dir");
 //    Determine current working directory
-	  File srcAbsPath = new File(sourcePath);
+	  File srcAbsPath = new File(student.getSourcePath());
 	  String srcAbsPathName = srcAbsPath.getAbsolutePath();
 	  //System.out.println("source path: " + sourcePath); 
 	  //System.out.println("source absolute path: " + srcAbsPathName);
@@ -57,9 +47,9 @@ public class Compiler
 //    Also returns a null pointer if the directory
 //    doesn't exist.
 
-      File nwd = TestTools.cd(cwd, studentPath);
+      File nwd = TestTools.cd(cwd, student.getStudentPath());
       String studentPathName = nwd.getAbsolutePath();
-	  File nwdPath = new File(studentPath);
+	  File nwdPath = new File(student.getStudentPath());
 //    System.out.println("studentPathName: " + studentPathName);
 //    debug code to test new working directory
 //    TestTools.dir(nwd);
@@ -67,7 +57,7 @@ public class Compiler
 	  FileFilter filter = new FileFilter();
 	  String[] javaFileList = nwdPath.list(filter); 
 //    set up output file      
-      File outputFile = new File(outputFileName);
+      File outputFile = new File(student.getOutputFileName());
 //    System.out.println(outputFileName);
       outputFile.delete();
 	  
@@ -80,13 +70,13 @@ public class Compiler
 	        //System.out.println("Compiling: " + javaFileList[k]);
 
             ProcessBuilder pb =
-            new ProcessBuilder("javac", "-d", classPath, studentPath + "/" + javaFileList[k]);
+            new ProcessBuilder("javac", "-d", student.getClassPath(), student.getPath() + "/" + javaFileList[k]);
 	  
 //          Create environment map and set environmental variables         
             Map<String, String> env = pb.environment();       
             env.clear();
-            env.put("PATH", path);
-            env.put("CLASSPATH", classPath);
+            env.put("PATH", student.getPath());
+            env.put("CLASSPATH", student.getClassPath());
 //          env.put("SOURCEPATH", sourcePath);
 //          env.remove("OTHERVAR");
 
@@ -94,7 +84,7 @@ public class Compiler
             pb.redirectOutput(Redirect.appendTo(outputFile));
             
             // Save output file for later.
-            results.addFile(outputFile);
+            student.getResults().addFile(outputFile);
 
 //          start javac process        
             Process p = pb.start();
