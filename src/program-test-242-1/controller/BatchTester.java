@@ -28,13 +28,7 @@ public class BatchTester implements ProgramTester {
         File testDataPath = settings.getTestCaseDirectory();
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
-        /*  make sure set correctly
-         System.out.println("path: " + path);
-         System.out.println("sourcePath: " + sourcePath);
-         System.out.println("testDataPath: " + testDataPath);
-         System.out.println("argsFileName: " + argsFileName);
-         System.out.println("testInputFileName: " + testInputFileName);
-         */
+
         try {
             //    config file has list of ordinal student number,
             //    student name, and random handle
@@ -51,8 +45,6 @@ public class BatchTester implements ProgramTester {
                 String line = in.nextLine();
 
                 Scanner inLine = new Scanner(line);
-                //      debug code - print out scanned config info
-                //      System.out.print("scanned config info: ");
                 while (inLine.hasNext()) {
                     studentNumber = inLine.nextInt();
                     studentName = inLine.next();
@@ -64,19 +56,7 @@ public class BatchTester implements ProgramTester {
                 String studentPath = sourcePath + "/" + studentName;
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
-                /*      make sure set correctly
-                 System.out.println("classPath: " + classPath);
-                 System.out.println("studentPath: " + studentPath);
-                 System.out.println("inputFileStub: " + inputFileStub);
-                 System.out.println("outputFileName: " + outputFileName);
-                 */
-                
-                /*
-                System.out.println("run #: " + runNumber + " ; studentNumber: " + studentNumber
-                        + "; Name: " + studentName + "; Handle: " + studentHandle);
-                System.out.println("Output goes to: " + outputFileName);
-                */
-
+            
                 //      run javac compiler - returns 0 on success
                 //      Compiler Constructor:
                 //      public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 

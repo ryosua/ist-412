@@ -25,26 +25,12 @@ public class SingleTester implements ProgramTester {
         File path = settings.getJavaVersionDirectory();
 
         //  set fixed paths and file names:
-        
         String sourcePath = settings.getSourceFileDirectory().toString();
         String testDataPath = settings.getTestCaseDirectory().toString();
-        
-      
-        //sourcePath = "./src/src-output";
-        //testDataPath = "./src";
       
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
-        
-        // Serialize paths
-        
-        
-        /*  make sure set correctly
-         System.out.println("sourcePath: " + sourcePath);
-         System.out.println("testDataPath: " + testDataPath);
-         System.out.println("argsFileName: " + argsFileName);
-         System.out.println("testInputFileName: " + testInputFileName);
-         */
+               
         try {
             /*    config file contains:
              - path to Java jdk (enclosed in quotes) on first line
@@ -66,23 +52,13 @@ public class SingleTester implements ProgramTester {
             inLine = new Scanner(line);
             studentHandle = inLine.next();
 
-            //    set paths and file names:
+            // set paths and file names:
             File classPath = new File(settings.getRootDirectory() + "/bin/" + className + studentName);
             String studentPath = sourcePath + "/" + studentName;
             String inputFileStub = studentPath + "/input";
             String outputFileName = studentPath + File.separatorChar + "output-" + studentName + ".txt";
             
-            
-            //System.out.println("classPath: " + classPath);
             System.out.println("studentPath: " + studentPath);
-            /*
-            System.out.println("inputFileStub: " + inputFileStub);
-            System.out.println("outputFileName: " + outputFileName);
-
-            System.out.println("run #: " + runNumber + " ; studentNumber: " + studentNumber
-                    + "; Name: " + studentName + "; Handle: " + studentHandle);
-            System.out.println("Output goes to: " + outputFileName);
-            */
             
             // Keep track of the output files, so we can generate a file for all
             // the results, for every test.
