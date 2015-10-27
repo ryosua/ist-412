@@ -16,7 +16,7 @@ public class Main {
     public Main() {
         // Changing the order may cause null pointers.
         settings = new ApplicationSettings();
-        settings.readDataFromSettingsFile();
+        ApplicationSettingsController.readDataFromSettingsFile(settings);
         userController = new UserController();
         fileChooser = new FileChooser(this);
     }

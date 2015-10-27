@@ -1,5 +1,6 @@
 package model;
 
+import controller.ApplicationSettingsController;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,128 +55,49 @@ public class ApplicationSettings {
     public boolean getDisplayOutputCheck(){
         return displayOutputCheck;
     }
+
+    public File getSettingsFile() {
+        return settingsFile;
+    }
     
     public void setConfigFile(File file) {
         configFile = file;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     public void setJavaVersionDirectory(File directory) {
         javaVersionDirectory = directory;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     public void setOutputFileDirectory(File directory) {
         outputFileDirectory = directory;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     public void setRootDirectory(File directory) {
         this.rootDirectory = directory;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     public void setRunMode(String runMode) {
         this.runMode = runMode;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
 
     public void setSourceFileDirectory(File directory) {
         sourceFileDirectory = directory;
-	writeDataToSettingsFile();
+	ApplicationSettingsController.writeDataToSettingsFile(this);
     }
 
     public void setTestCaseDirectory(File directory) {
         testCaseDirectory = directory;
-        writeDataToSettingsFile();
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     public void setDisplayOutputCheck(boolean value){
         displayOutputCheck = value;
-        writeDataToSettingsFile();
-    }
-   	
-    public void writeDataToSettingsFile(){
-        try (PrintWriter out = new PrintWriter(settingsFile)) {
-            
-            if(configFile != null){
-                out.println("Config File: " + configFile.getPath());
-            }
-            
-            if(javaVersionDirectory != null){
-                out.println("Java Version Directory: " + javaVersionDirectory.getPath());
-            }
-            
-            if(outputFileDirectory != null){
-                out.println("Output File Directory: " + outputFileDirectory.getPath());
-            }
-            
-            if(rootDirectory != null) {
-                out.println("Root Directory: " + rootDirectory.getPath());
-            }
-            
-            if(runMode != null) {
-                out.println("Run mode: " + runMode);
-            }
-            
-            if(sourceFileDirectory != null){
-                out.println("Source File Directory: " + sourceFileDirectory.getPath());
-            }
-
-            if(testCaseDirectory != null){
-                out.println("Test Case Directory: " + testCaseDirectory.getPath());
-            }
-            
-            out.println("Display Output: " + String.valueOf(displayOutputCheck));
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void readDataFromSettingsFile(){
-        Scanner inFile = null;
-        try {
-            // Create a new settings file if it does not exsit.
-            settingsFile.createNewFile();
-            
-            inFile = new Scanner(settingsFile);
-
-            while(inFile.hasNextLine()){
-                String setting = inFile.nextLine();
-                
-                if(setting.startsWith("Config File: ")) {
-                    configFile = new File(setting.substring("Config File: ".length()));
-                }
-                if(setting.startsWith("Output File Directory: ")){
-                    outputFileDirectory = new File(setting.substring("Output File Directory: ".length()));
-                }
-                if(setting.startsWith("Root Directory: ")){
-                    rootDirectory = new File(setting.substring("Root Directory: ".length()));
-                }
-                if(setting.startsWith("Run mode: ")){
-                    runMode = new String(setting.substring("Run Mode: ".length()));
-                }
-                if(setting.startsWith("Source File Directory: ")){
-                    sourceFileDirectory = new File(setting.substring("Source File Directory: ".length()));
-                }
-                if(setting.startsWith("Test Case Directory: ")){
-                    testCaseDirectory = new File(setting.substring("Test Case Directory: ".length()));
-                }
-                if(setting.startsWith("Java Version Directory: ")){
-                    javaVersionDirectory = new File(setting.substring("Java Version Directory: ".length()));
-                } 
-                if(setting.startsWith("Display Output: ")){
-                    displayOutputCheck = Boolean.valueOf(setting.substring("Display Output: ".length()));
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            inFile.close();
-        }
+        ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
     @Override
