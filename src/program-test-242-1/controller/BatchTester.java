@@ -30,7 +30,11 @@ public class BatchTester implements ProgramTester {
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
         
-        for (Student student : getStudentsFromConfig()) {
+        //Read students from the config file.
+        BatchConfigReader reader = new BatchConfigReader(results, settings);
+        ArrayList<Student> students = reader.readStudentsFromConfig();
+        
+        for (Student student : students) {
             // Run javac compiler - returns 0 on success.
             Compiler c = new Compiler(student);
             int success = c.compileJava();
@@ -53,50 +57,6 @@ public class BatchTester implements ProgramTester {
         final Main main = new Main();
         final BatchTester batchTest = new BatchTester(main.getSettings());
         batchTest.run();
-    }
-
-    private ArrayList<Student> getStudentsFromConfig() {
-        ArrayList<Student> students = new ArrayList<>();
-
-        //  initialize student and class configuration data
-        int studentNumber = 0;
-        String studentName = "blank";
-        String studentHandle = "000000";
-        String className = "242-1/";
-
-        File path = settings.getJavaVersionDirectory();
-        // Set fixed paths and file names:
-        File sourcePath = settings.getSourceFileDirectory();
-
-        try {
-            // Config file has list of ordinal student number,
-            // student name, and random handle
-            File configFile = settings.getConfigFile();
-            Scanner in = new Scanner(configFile);
-
-            while (in.hasNextLine()) {
-                String line = in.nextLine();
-
-                Scanner inLine = new Scanner(line);
-                while (inLine.hasNext()) {
-                    studentNumber = inLine.nextInt();
-                    studentName = inLine.next();
-                    studentHandle = inLine.next();
-                }
-
-                // Set paths and file names:
-                String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + className + studentName;
-                String studentPath = sourcePath + "/" + studentName;
-                String inputFileStub = studentPath + "/input";
-                String outputFileName = studentPath + "/output-" + studentName + ".txt";
-
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub);
-                students.add(student);
-            }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return students;
     }
 }
 
