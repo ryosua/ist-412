@@ -8,9 +8,9 @@ import test.ApplicationSettingsTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     //working on this //ApplicationSettingsTest.class,
-    BatchTesterTest.class,
     FileFilterTest.class,
     ResultsControllerTest.class,
+    BatchTesterTest.class
 })
 
 public class TestSuite {
