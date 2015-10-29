@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
@@ -9,21 +8,100 @@ import model.Student;
 
 public class BatchTester implements ProgramTester {
 
-    private ApplicationSettings settings;
-    
+    private final ApplicationSettings settings;
+    private final Results results;
+    private final ResultsController resultsController;
+
     public BatchTester(ApplicationSettings settings) {
         this.settings = settings;
-    }
 
+        // Keep track of the output files, so we can generate a file for all
+        // the results, for every test.
+        this.results = new Results();
+        this.resultsController = new ResultsController(settings, results);
+    }
+    
+    /**
+     * Compiles, runs, and prints the results from all students.
+     */
     @Override
     public void run() {
+        File testDataPath = settings.getTestCaseDirectory();
+        String argsFileName = testDataPath + "/args.txt";
+        String testInputFileName = testDataPath + "/TestInput.txt";
+        
+        for (Student student : getStudentsFromConfig()) {
+            // Run javac compiler - returns 0 on success.
+            Compiler c = new Compiler(student);
+            int success = c.compileJava();
+
+            // Print whether or not compile successful
+            if (success == 0) {
+                System.out.println("Compiled Successfully");
+            } else {
+                System.out.println("Compile Exception");
+            }
+
+            TestRunner r = new TestRunner(student.getPath(), student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
+            r.runJava();
+        }
+
+        resultsController.writeResults();
+    }
+
+    public static void main(String[] args) {
+        final Main main = new Main();
+        final BatchTester batchTest = new BatchTester(main.getSettings());
+        batchTest.run();
+    }
+
+    private ArrayList<Student> getStudentsFromConfig() {
+        ArrayList<Student> students = new ArrayList<>();
+
         //  initialize student and class configuration data
         int studentNumber = 0;
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
-        
-/*
+
+        File path = settings.getJavaVersionDirectory();
+        //  set fixed paths and file names:
+        File sourcePath = settings.getSourceFileDirectory();
+
+        try {
+            //    config file has list of ordinal student number,
+            //    student name, and random handle
+            File configFile = settings.getConfigFile();
+            Scanner in = new Scanner(configFile);
+
+            while (in.hasNextLine()) {
+                String line = in.nextLine();
+
+                Scanner inLine = new Scanner(line);
+                while (inLine.hasNext()) {
+                    studentNumber = inLine.nextInt();
+                    studentName = inLine.next();
+                    studentHandle = inLine.next();
+                }
+
+                //      set paths and file names:
+                String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + className + studentName;
+                String studentPath = sourcePath + "/" + studentName;
+                String inputFileStub = studentPath + "/input";
+                String outputFileName = studentPath + "/output-" + studentName + ".txt";
+
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub);
+                students.add(student);
+            }
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return students;
+    }
+}
+
+
+    /*
  ///////////////////////////////////////////////////////////////////////////
         
         This is sample code that will allow us to root through a directory and 
@@ -48,83 +126,3 @@ public static void showFiles(File[] files) {
 }
 ////////////////////////////////////////////////        
 */
-        
-        
-
-        File path = settings.getJavaVersionDirectory();
-        //  set fixed paths and file names:
-        File sourcePath = settings.getSourceFileDirectory();
-        File testDataPath = settings.getTestCaseDirectory();
-        String argsFileName = testDataPath + "/args.txt";
-        String testInputFileName = testDataPath + "/TestInput.txt";
-
-        try {
-            //    config file has list of ordinal student number,
-            //    student name, and random handle
-            File configFile = settings.getConfigFile();
-            Scanner in = new Scanner(configFile);
-            int runNumber = 1;
-            
-            // Keep track of the output files, so we can generate a file for all
-            // the results, for every test.
-            Results results = new Results();
-            ResultsController resultsController = new ResultsController(settings, results);
-
-            while (in.hasNextLine()) {
-                String line = in.nextLine();
-
-                Scanner inLine = new Scanner(line);
-                while (inLine.hasNext()) {
-                    studentNumber = inLine.nextInt();
-                    studentName = inLine.next();
-                    studentHandle = inLine.next();
-                }
-
-                //      set paths and file names:
-                String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + className + studentName;
-                String studentPath = sourcePath + "/" + studentName;
-                String inputFileStub = studentPath + "/input";
-                String outputFileName = studentPath + "/output-" + studentName + ".txt";
-                
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results);
-            
-                //      run javac compiler - returns 0 on success
-                //      Compiler Constructor:
-                //      public Compiler(int numbr, String nme, String hndl, String pth, String clsPath, 
-                //      String srcPath, String stdPath, String outFileName)
-                Compiler c = new Compiler(student);
-                int success = c.compileJava();
-
-                //      Print whether or not compile successful
-                if (success == 0) {
-                    //System.out.println("Compiled Successfully");
-                } else {
-                    //System.out.println("Compile Exception");
-                }
-
-                //      Run the test cases
-                //      TestRunner consructor:
-                //      public TestRunner(int numbr, String nme, String hndl, String pth, String clsPath, 
-                //      String srcPath, String stdPath, String tstDataPath, String argFileName, 
-                //      String tstInputFileName, String inputFileStub, String outFileName)
-                //    public TestRunner(String pth, String clsPath, String stdPath, String argFileName, String tstInputFileName, String inFileStub, String outFileName) {
-                TestRunner r = new TestRunner(path.getAbsolutePath(), classPath, studentPath, argsFileName, testInputFileName, inputFileStub, outputFileName);
-                r.runJava();
-                runNumber++;
-                //System.out.println();
-                
-                //System.out.println(results.toString());
-                resultsController.writeResults();
-            }
-        } catch (IOException ioe) {
-            System.out.println("main IOException");
-            ioe.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        final Main main = new Main();
-        final BatchTester batchTest = new BatchTester(main.getSettings());
-        batchTest.run();
-    }
-}

@@ -8,14 +8,16 @@ public class Student {
     private final String sourcePath;
     private final String studentPath;
     private final String outputFileName;
+    private final String inputFileStub;
     
-    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, Results results) {
+    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, Results results, String inputFileStub) {
         this.results = results;
         this.path = path;
         this.classPath = classPath;
         this.sourcePath = sourcePath;
         this.studentPath = studentPath;
         this.outputFileName = outputFileName;
+        this.inputFileStub = inputFileStub;
         
         System.out.println("path: " + path);
         System.out.println("classPath: " + classPath);
@@ -44,5 +46,9 @@ public class Student {
 
     public String getOutputFileName() {
         return outputFileName;
+    }
+    
+    public String getInputFileStub() {
+        return inputFileStub;
     }
 }
