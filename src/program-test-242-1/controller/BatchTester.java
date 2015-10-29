@@ -65,12 +65,12 @@ public class BatchTester implements ProgramTester {
         String className = "242-1/";
 
         File path = settings.getJavaVersionDirectory();
-        //  set fixed paths and file names:
+        // Set fixed paths and file names:
         File sourcePath = settings.getSourceFileDirectory();
 
         try {
-            //    config file has list of ordinal student number,
-            //    student name, and random handle
+            // Config file has list of ordinal student number,
+            // student name, and random handle
             File configFile = settings.getConfigFile();
             Scanner in = new Scanner(configFile);
 
@@ -84,7 +84,7 @@ public class BatchTester implements ProgramTester {
                     studentHandle = inLine.next();
                 }
 
-                //      set paths and file names:
+                // Set paths and file names:
                 String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + className + studentName;
                 String studentPath = sourcePath + "/" + studentName;
                 String inputFileStub = studentPath + "/input";
