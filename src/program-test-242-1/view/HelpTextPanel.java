@@ -14,11 +14,13 @@ public class HelpTextPanel extends JPanel{
     private int columns;
     
     public HelpTextPanel(){
+        main = new Main();
+        
         //Setup the panel
         setupPanel();
         
         //Setup the textfile pathing
-        setupTutorialFile();
+        setupTutorialFile(main.getSettings());
         
         //Read the textfile and write into the panel.
         writeTextToPanel(tutorialTextFile);
@@ -34,8 +36,8 @@ public class HelpTextPanel extends JPanel{
     }
     
     //Store path for tutorial textfile in settings?
-    private void setupTutorialFile(){
-        tutorialTextFile = new File("");
+    private void setupTutorialFile(ApplicationSettings settings){
+        tutorialTextFile = new File(settings.getTutorialTextDirectory().getAbsolutePath());
     }
     
     private void writeTextToPanel(File text){

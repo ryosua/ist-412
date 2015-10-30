@@ -41,6 +41,10 @@ public class ApplicationSettingsController {
                 out.println("Test Case Directory: " + settings.getTestCaseDirectory().getPath());
             }
 
+            if(settings.getTutorialTextDirectory() != null) {
+                out.println("Tutorial Text Directory: " + settings.getTutorialTextDirectory().getPath());
+            }
+            
             out.println("Display Output: " + String.valueOf(settings.getDisplayOutputCheck()));
 
         } catch (FileNotFoundException e) {
@@ -82,6 +86,9 @@ public class ApplicationSettingsController {
                 } 
                 if(setting.startsWith("Display Output: ")){
                     settings.setDisplayOutputCheck(Boolean.valueOf(setting.substring("Display Output: ".length())));
+                }
+                if(setting.startsWith("Tutorial Text Directory: ")){
+                    settings.setTutorialTextDirectory(new File(settings.getRootDirectory().getPath() + "/tutorial.txt"));
                 }
             }
         } catch (FileNotFoundException e) {
