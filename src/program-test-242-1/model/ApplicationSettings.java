@@ -20,6 +20,7 @@ public class ApplicationSettings {
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");
     private File tutorialTextDirectory = new File("");
+    private File tutorialImageDirectory = new File("");
     
     private String runMode = SINGLE_MODE;
     private boolean displayOutputCheck = true;
@@ -63,6 +64,10 @@ public class ApplicationSettings {
     
     public File getTutorialTextDirectory(){
         return tutorialTextDirectory;
+    }
+    
+    public File getTutorialImageDirectory(){
+        return tutorialImageDirectory;
     }
     
     public void setConfigFile(File file) {
@@ -110,6 +115,11 @@ public class ApplicationSettings {
         ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
+    public void setTutorialImageDirectory(File directory){
+        tutorialImageDirectory = directory;
+        ApplicationSettingsController.writeDataToSettingsFile(this);
+    }
+    
     @Override
     public String toString() {
         String string = "Settings: \n\n";
@@ -123,6 +133,7 @@ public class ApplicationSettings {
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
         string += "Display Output: " + displayOutputCheck + "\n";
         string += "Tutorial text directory: " + tutorialTextDirectory + "\n";
+        string += "Tutorial image directory: " + tutorialImageDirectory + "\n";
         return string;
     }
 }
