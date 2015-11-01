@@ -22,8 +22,8 @@ public class HelpFrame extends JFrame{
         imagePanel = new HelpImagePanel();
         buttonPanel = new HelpButtonPanel(textPanel, imagePanel);
         
-        add(textPanel, BorderLayout.WEST);
-        add(imagePanel, BorderLayout.EAST);
+        add(textPanel, BorderLayout.CENTER);
+        add(imagePanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.SOUTH);
     }
 }
