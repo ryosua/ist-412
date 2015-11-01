@@ -4,6 +4,7 @@ import view.listener.ChooseOutputLocationListener;
 import view.listener.ChooseSourceLocationListener;
 import view.listener.ChooseTestLocationListener;
 import controller.Main;
+import java.awt.Component;
 import view.listener.ChooseConfigLocationListener;
 import view.listener.ChooseJDKLocationListener;
 import view.listener.ChooseRootLocationListener;
@@ -12,6 +13,7 @@ import view.listener.RadioButtonListener;
 import view.listener.RunProgramListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Dimension;
 import java.awt.Insets;
 
 import javax.swing.JButton;
@@ -85,9 +87,9 @@ public class InputPanel extends JPanel {
         final JTextField rootDirectoryField = new JTextField();
         rootDirectoryFieldText = settings.getRootDirectory().getPath();
         rootDirectoryField.setText(rootDirectoryFieldText);
-        rootDirectoryFieldText = rootDirectoryFieldText + "/src";
         rootDirectoryField.setEditable(false);
         final GridBagConstraints rootDirectoryFieldC = new GridBagConstraints();
+        InputPanel.setMinimumSize(rootDirectoryField);
         rootDirectoryFieldC.fill = GridBagConstraints.HORIZONTAL;
         rootDirectoryFieldC.gridx = 0;
         rootDirectoryFieldC.gridy = 1;
@@ -96,6 +98,7 @@ public class InputPanel extends JPanel {
         jdkDirectoryFieldText = settings.getJavaVersionDirectory().getPath();
         jdkDirectoryFieldText = jdkDirectoryFieldText.replace(rootDirectoryFieldText, "~");
         jdkDirectoryField.setText(jdkDirectoryFieldText);
+        rootDirectoryFieldText = rootDirectoryFieldText + "/src";
         jdkDirectoryField.setEditable(false);
         final GridBagConstraints jdkFieldC = new GridBagConstraints();
         jdkFieldC.fill = GridBagConstraints.HORIZONTAL;
@@ -145,45 +148,51 @@ public class InputPanel extends JPanel {
         
         final JButton rootDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
-        rootDirectoryButtonC.fill = GridBagConstraints.HORIZONTAL;
+        rootDirectoryButtonC.fill = GridBagConstraints.NONE;
+        rootDirectoryButtonC.anchor = GridBagConstraints.EAST;
         rootDirectoryButtonC.gridx = 1;
         rootDirectoryButtonC.gridy = 1;
-
+        
         final JButton jdkDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints jdkButtonC = new GridBagConstraints();
-        jdkButtonC.fill = GridBagConstraints.HORIZONTAL;
+        jdkButtonC.fill = GridBagConstraints.NONE;
+        jdkButtonC.anchor = GridBagConstraints.EAST;
         jdkButtonC.gridx = 1;
         jdkButtonC.gridy = 3;
 
         final JButton configButton = new JButton("Choose Location");
         final GridBagConstraints configButtonC = new GridBagConstraints();
-        configButtonC.fill = GridBagConstraints.HORIZONTAL;
+        configButtonC.fill = GridBagConstraints.NONE;
+        configButtonC.anchor = GridBagConstraints.EAST;
         configButtonC.gridx = 1;
         configButtonC.gridy = 5;
         configButtonC.insets = new Insets(0, 0, 30, 0);
 
         final JButton sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
-        sourcButtonC.fill = GridBagConstraints.HORIZONTAL;
+        sourcButtonC.fill = GridBagConstraints.NONE;
+        sourcButtonC.anchor = GridBagConstraints.EAST;
         sourcButtonC.gridx = 1;
         sourcButtonC.gridy = 7;
 
         final JButton testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
-        testButtonC.fill = GridBagConstraints.HORIZONTAL;
+        testButtonC.fill = GridBagConstraints.NONE;
+        testButtonC.anchor = GridBagConstraints.EAST;
         testButtonC.gridx = 1;
         testButtonC.gridy = 9;
 
         final JButton outputButton = new JButton("Choose Location");
         final GridBagConstraints outputButtonC = new GridBagConstraints();
-        outputButtonC.fill = GridBagConstraints.HORIZONTAL;
+        outputButtonC.fill = GridBagConstraints.NONE;
+        outputButtonC.anchor = GridBagConstraints.EAST;
         outputButtonC.gridx = 1;
         outputButtonC.gridy = 11;
 
         final JButton runButton = new JButton("Run");
         runButton.setSize(WIDTH, 10);
         final GridBagConstraints runButtonC = new GridBagConstraints();
-        runButtonC.fill = GridBagConstraints.HORIZONTAL;
+        runButtonC.fill = GridBagConstraints.NONE;
         runButtonC.gridx = 1;
         runButtonC.gridy = 12;
         runButtonC.gridwidth = 1;
@@ -219,6 +228,7 @@ public class InputPanel extends JPanel {
         } else {
             batchRun.setSelected(true);
         }
+        
         
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
@@ -263,4 +273,12 @@ public class InputPanel extends JPanel {
         add(batchRun, batchRunBtn);
         add(showOutputCheckbox, showOutputCheckboxC);
     }
+    
+    //sets the minimum size for JTextFields
+    private static void setMinimumSize(final Component c) {
+    c.setMinimumSize(new Dimension(c
+        .getPreferredSize().width - 1,
+        c.getPreferredSize().height));
+    }
+    
 }
