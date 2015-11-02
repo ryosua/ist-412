@@ -1,0 +1,3 @@
+Unzip the file. Once extracted, open the folder. Go in the src folder.
+
+Go into program-test-242-1 folder.
