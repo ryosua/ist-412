@@ -98,7 +98,6 @@ public class InputPanel extends JPanel {
         jdkDirectoryFieldText = settings.getJavaVersionDirectory().getPath();
         jdkDirectoryFieldText = jdkDirectoryFieldText.replace(rootDirectoryFieldText, "~");
         jdkDirectoryField.setText(jdkDirectoryFieldText);
-        rootDirectoryFieldText = rootDirectoryFieldText + "/src";
         jdkDirectoryField.setEditable(false);
         final GridBagConstraints jdkFieldC = new GridBagConstraints();
         jdkFieldC.fill = GridBagConstraints.HORIZONTAL;
