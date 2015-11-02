@@ -24,7 +24,7 @@ public class Frame extends JFrame {
         final InputPanel inputPanel = new InputPanel(main);
         frame.add(inputPanel);
 
-        frame.setSize(500, 500);
+        frame.setSize(600, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
