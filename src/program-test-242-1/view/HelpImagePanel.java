@@ -29,9 +29,11 @@ public class HelpImagePanel extends JPanel{
     
     //Adds images to to list which will be used to cycle through tutorial steps.
     private void addImages(File directory){
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < directory.listFiles().length - 1; i++){
             tutorialImages.add(new ImageIcon(directory + "/" + rootImageName + i + ".png"));
         }
+        //Debug
+        System.out.println(tutorialImages.toString());
     }
     
     public void setCurrentImageCounter(int img){
@@ -47,7 +49,7 @@ public class HelpImagePanel extends JPanel{
     }
     
     public void setDisplayedImage(){
-        image.setIcon(tutorialImages.get(this.getCurrentImageCounter()));
+        image.setIcon(tutorialImages.get(getCurrentImageCounter()));
     }
     
     public void setupPanel(){

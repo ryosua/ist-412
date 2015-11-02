@@ -32,13 +32,13 @@ public class HelpTextPanel extends JPanel{
         readTextStepsFromFile(tutorialTextFile);
         
         //Read the textfile and write into the panel.
-        addTextToPanel(currentText);
+        addTextToPanel();
     }
 
     private void setupPanel(){
         currentText = 0;
-        rows = 30;
-        columns = 30;
+        rows = 10;
+        columns = 50;
         tutorialTextArea = new JTextArea(rows, columns);
         tutorialTextArea.setEditable(false);
         
@@ -54,17 +54,32 @@ public class HelpTextPanel extends JPanel{
         try{
             Scanner in = new Scanner(text);
             while(in.hasNextLine()){
-                if(!in.nextLine().equals("")){
-                    System.out.println(in.nextLine());
-                    tutorialText.add(in.nextLine());
+                String line = in.nextLine();
+                        
+                if(!line.equals("")){
+                    tutorialText.add(line);
                 }
             }
+            //Debug
+            System.out.println(tutorialText.toString());
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
     }
     
-    public void addTextToPanel(int text){
-        tutorialTextArea.setText(tutorialText.get(text));
+    public void setCurrentTextCounter(int text){
+        currentText = text;
+    }
+    
+    public int getCurrentTextCounter(){
+        return currentText;
+    }
+    
+    public ArrayList<String> getTextArray(){
+        return tutorialText;
+    }
+    
+    public void addTextToPanel(){
+        tutorialTextArea.setText(tutorialText.get(getCurrentTextCounter()));
     }
 }
