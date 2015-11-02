@@ -51,4 +51,18 @@ public class Student {
     public String getInputFileStub() {
         return inputFileStub;
     }
+    
+    @Override
+    public String toString() {
+        String result = "";
+        result += "results: " + results.toString() + "\n";
+        result += "path: " + path + "\n";
+        result += "classPath: " + classPath + "\n";
+        result += "sourcePath: " + sourcePath + "\n";
+        result += "studentPath: " + studentPath + "\n";
+        result += "outputFileName: " + outputFileName + "\n";
+        result += "inputFileStub: " + inputFileStub + "\n";
+        
+        return result;
+    }
 }

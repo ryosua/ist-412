@@ -51,6 +51,8 @@ public class BatchTester implements ProgramTester {
         }
 
         resultsController.writeResults();
+        
+        System.out.println("Batch Tester finished.");
     }
 
     public static void main(String[] args) {
