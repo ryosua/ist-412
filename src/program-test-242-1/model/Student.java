@@ -1,5 +1,7 @@
 package model;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Student {
 
     private final Results results;
@@ -64,5 +66,30 @@ public class Student {
         result += "inputFileStub: " + inputFileStub + "\n";
         
         return result;
+    }
+    
+    @Override 
+    public boolean equals(Object obj) {
+        Student otherStudent = (Student) obj;
+        return getResults().equals(otherStudent.getResults()) &&
+               getPath().equals(otherStudent.getPath()) &&
+               getClassPath().equals(otherStudent.getClassPath()) &&
+               getSourcePath().equals(otherStudent.getSourcePath()) &&
+               getStudentPath().equals(otherStudent.getStudentPath()) &&
+               getOutputFileName().equals(otherStudent.getOutputFileName()) &&
+               getInputFileStub().equals(otherStudent.getInputFileStub());
+    }
+    
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
+            append(results).
+            append(path).
+            append(classPath).
+            append(sourcePath).
+            append(studentPath).
+            append(outputFileName).
+            append(inputFileStub).
+            toHashCode();
     }
 }

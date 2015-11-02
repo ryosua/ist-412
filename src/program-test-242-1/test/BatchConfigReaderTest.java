@@ -61,13 +61,13 @@ public class BatchConfigReaderTest {
         //Create some students.
         ArrayList<Student> expectedStudents = new ArrayList();
         Student expectedStudent = new Student(
-                main.getSettings().getJavaVersionDirectory().toString(),
-                main.getSettings().getRootDirectory() + "/bin/242-1/mudgettdr",
-                main.getSettings().getSourceFileDirectory().toString(),
-                main.getSettings().getSourceFileDirectory() + "/mudgettdr",
-                main.getSettings().getSourceFileDirectory() + "/mudgettdr/output-mudgettdr.txt",
+                main.getSettings().getJavaVersionDirectory().getAbsolutePath(),
+                main.getSettings().getRootDirectory().getAbsolutePath() + "/bin/242-1/mudgettdr",
+                main.getSettings().getSourceFileDirectory().getAbsolutePath(),
+                main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
+                main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/output-mudgettdr.txt",
                 results,
-                main.getSettings().getSourceFileDirectory() + "/mudgettdr/input"
+                main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/input"
         );
         expectedStudents.add(expectedStudent);
         
@@ -76,10 +76,7 @@ public class BatchConfigReaderTest {
         ArrayList<Student> readStudents = reader.readStudentsFromConfig();
         
         boolean studentsAreEqual = expectedStudents.equals(readStudents);
-        
-        System.out.println("Expected students:\n" + expectedStudents.toString());
-        System.out.println("Read students:\n" + readStudents.toString());
-        
+         
         assertTrue("The students were not read correctly from config file",
             studentsAreEqual);
     }
@@ -102,12 +99,3 @@ public class BatchConfigReaderTest {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
-
-/*
-path: /Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk
-classPath: /Users/ryosua/java/bin/242-1/mudgettdr
-sourcePath: /Users/ryosua/java/src/program-test-242-1/src/src-output
-studentPath: /Users/ryosua/java/src/program-test-242-1/src/src-output/mudgettdr
-outputFileName: /Users/ryosua/java/src/program-test-242-1/src/src-output/mudgettdr/output-mudgettdr.txt
-inputFileStub: /Users/ryosua/java/src/program-test-242-1/src/src-output/mudgettdr/input
-*/
