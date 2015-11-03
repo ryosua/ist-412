@@ -2,10 +2,6 @@ package model;
 
 import controller.ApplicationSettingsController;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class ApplicationSettings {
     public final static String SINGLE_MODE = "Single Mode";
