@@ -33,13 +33,13 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
         
         if(imagePanel.getImageArray().size() == textPanel.getTextArray().size()){
             totalSteps = imagePanel.getImageArray().size();
+            updateStepLabel();
         }else{
             System.out.println("Array Size Mismatch.");
             stepLabel.setText("Array Size Mismatch.");
             totalSteps = 0;
         }
         
-        updateStepLabel();
         add(previousButton);
         add(nextButton);
         add(stepLabel);

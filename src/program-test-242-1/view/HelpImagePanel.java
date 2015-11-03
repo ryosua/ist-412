@@ -31,7 +31,7 @@ public class HelpImagePanel extends JPanel{
     //Must have the same number of images as there are steps (text file lines) within the tutorial
     //  text file since each step displays both an image and text.
     private void addImages(File directory){
-        for(int i = 0; i < directory.listFiles().length - 1; i++){
+        for(int i = 0; i < directory.listFiles().length; i++){
             tutorialImages.add(new ImageIcon(directory + "/" + rootImageName + i + ".png"));
         }
         //Debug
