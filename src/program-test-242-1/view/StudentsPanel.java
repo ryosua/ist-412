@@ -43,9 +43,11 @@ public class StudentsPanel extends JPanel {
         BoxLayout boxLayout = new BoxLayout(checkBoxesPanel, BoxLayout.Y_AXIS);
 
         final JCheckBox[] checkBoxes = new JCheckBox[students.size()];
+        StudentCheckBoxChangeListener studentCheckBoxChangeListener = new StudentCheckBoxChangeListener(checkBoxes);
 
         for (int i = 0; i < students.size(); i++) {
             checkBoxes[i] = new JCheckBox(students.get(i).getStudentName());
+            checkBoxes[i].addChangeListener(studentCheckBoxChangeListener);
             checkBoxesPanel.add(checkBoxes[i]);
         }
         // Set all of the student check boxes to the select all box's selection.
@@ -53,8 +55,8 @@ public class StudentsPanel extends JPanel {
             @Override
             public void stateChanged(ChangeEvent e) {
                 boolean selected = selectAllCheckBox.isSelected();
-               
-                for(JCheckBox box: checkBoxes) {
+
+                for (JCheckBox box : checkBoxes) {
                     box.setSelected(selected);
                 }
             }
@@ -63,6 +65,27 @@ public class StudentsPanel extends JPanel {
         checkBoxesPanel.setLayout(boxLayout);
 
         this.add(checkBoxesPanel, BorderLayout.CENTER);
+    }
+
+    private class StudentCheckBoxChangeListener implements ChangeListener {
+        
+        private final JCheckBox[] checkBoxes;
+        
+        public StudentCheckBoxChangeListener(JCheckBox[] checkBoxes) {
+            this.checkBoxes = checkBoxes;
+        }
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            JCheckBox box = (JCheckBox) e.getSource();
+            
+            for(JCheckBox b: checkBoxes) {
+                if (b == box) {
+                    System.out.println("State changed" + b.getText());
+                }   
+            }
+        }
+
     }
 
 }
