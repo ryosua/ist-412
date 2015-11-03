@@ -24,12 +24,15 @@ public class ChooseStudentsListener  implements ActionListener {
             StudentsFrame frame = new StudentsFrame(this, settings);
             frame.initFrame();
 
-            textField.setText("# students selected");
+            textField.setText("Select students");
         }
     }
     
     public void setStudentWindowOpen(boolean open) {
         studentWindowOpen = open;
     }
-  
+    
+    public JTextField getTextField() {
+        return textField;
+    } 
 }

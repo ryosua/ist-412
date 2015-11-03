@@ -2,6 +2,7 @@ package model;
 
 import controller.ApplicationSettingsController;
 import java.io.File;
+import java.util.ArrayList;
 
 public class ApplicationSettings {
 
@@ -16,6 +17,7 @@ public class ApplicationSettings {
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");
+    private ArrayList<Student> students = null;
 
     private boolean displayOutputCheck = true;
 
@@ -49,6 +51,10 @@ public class ApplicationSettings {
 
     public File getSettingsFile() {
         return settingsFile;
+    }
+    
+    public ArrayList<Student> getStudents() {
+        return students;
     }
 
     public void setConfigFile(File file) {
@@ -84,6 +90,10 @@ public class ApplicationSettings {
     public void setDisplayOutputCheck(boolean value) {
         displayOutputCheck = value;
         ApplicationSettingsController.writeDataToSettingsFile(this);
+    }
+    
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
     }
 
     @Override

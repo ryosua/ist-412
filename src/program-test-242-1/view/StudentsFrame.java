@@ -36,4 +36,8 @@ public class StudentsFrame extends JFrame {
         this.setVisible(true);
         chooseStudentslistener.setStudentWindowOpen(true);
     }
+    
+    public ChooseStudentsListener getChooseStudentsListener() {
+        return chooseStudentslistener;
+    }
 }

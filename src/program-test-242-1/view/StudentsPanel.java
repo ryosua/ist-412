@@ -15,8 +15,11 @@ import model.Student;
 
 public class StudentsPanel extends JPanel {
 
-    private final JFrame frame;
+    private final StudentsFrame frame;
     private final ApplicationSettings settings;
+
+    private JCheckBox[] checkBoxes;
+    private ArrayList<Student> students;
 
     public StudentsPanel(StudentsFrame frame, ApplicationSettings settings) {
         this.frame = frame;
@@ -37,12 +40,12 @@ public class StudentsPanel extends JPanel {
 
         // Read students from config.
         BatchConfigReader studentReader = new BatchConfigReader(results, settings);
-        ArrayList<Student> students = studentReader.readStudentsFromConfig();
+        students = studentReader.readStudentsFromConfig();
 
         JPanel checkBoxesPanel = new JPanel();
         BoxLayout boxLayout = new BoxLayout(checkBoxesPanel, BoxLayout.Y_AXIS);
 
-        final JCheckBox[] checkBoxes = new JCheckBox[students.size()];
+        checkBoxes = new JCheckBox[students.size()];
         StudentCheckBoxChangeListener studentCheckBoxChangeListener = new StudentCheckBoxChangeListener(checkBoxes);
 
         for (int i = 0; i < students.size(); i++) {
@@ -67,10 +70,41 @@ public class StudentsPanel extends JPanel {
         this.add(checkBoxesPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Gets the students that are selected in the window.
+     *
+     * @param students the students represented by the checkboxes
+     * @param checkBoxes
+     * @return the students that are selected
+     */
+    private ArrayList<Student> getStudentsSelected() {
+        ArrayList<Student> selectedStudents = new ArrayList<>();
+
+        for (int i = 0; i < students.size(); i++) {
+            if (checkBoxes[i].isSelected() == true) {
+                selectedStudents.add(students.get(i));
+            }
+        }
+
+        return selectedStudents;
+    }
+    
+    private int getNumberOfSelectedStudents() {
+        return getStudentsSelected().size();
+    }
+
+    private void saveSelectedStudents() {
+        settings.setStudents(getStudentsSelected());
+    }
+    
+    private void updateInputPanelTextField() {
+        frame.getChooseStudentsListener().getTextField().setText(getNumberOfSelectedStudents() + " students selected.");
+    }
+
     private class StudentCheckBoxChangeListener implements ChangeListener {
-        
+
         private final JCheckBox[] checkBoxes;
-        
+
         public StudentCheckBoxChangeListener(JCheckBox[] checkBoxes) {
             this.checkBoxes = checkBoxes;
         }
@@ -78,14 +112,14 @@ public class StudentsPanel extends JPanel {
         @Override
         public void stateChanged(ChangeEvent e) {
             JCheckBox box = (JCheckBox) e.getSource();
-            
-            for(JCheckBox b: checkBoxes) {
+
+            for (JCheckBox b : checkBoxes) {
                 if (b == box) {
-                    System.out.println("State changed" + b.getText());
-                }   
+                    saveSelectedStudents();
+                    updateInputPanelTextField();
+                }
             }
         }
-
     }
 
 }

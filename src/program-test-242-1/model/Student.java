@@ -84,7 +84,7 @@ public class Student {
                 && getStudentPath().equals(otherStudent.getStudentPath())
                 && getOutputFileName().equals(otherStudent.getOutputFileName())
                 && getInputFileStub().equals(otherStudent.getInputFileStub())
-                && getInputFileStub().equals(otherStudent.getStudentName());
+                && getStudentName().equals(otherStudent.getStudentName());
     }
 
     @Override

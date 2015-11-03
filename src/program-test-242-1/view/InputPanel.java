@@ -102,7 +102,7 @@ public class InputPanel extends JPanel {
         jdkFieldC.gridy = 3;
 
         final JTextField studentsField = new JTextField();
-        studentsField.setText("placeholder");
+        studentsField.setText("No students selected.");
         studentsField.setEditable(false);
         final GridBagConstraints studentsFieldC = new GridBagConstraints();
         studentsFieldC.fill = GridBagConstraints.HORIZONTAL;

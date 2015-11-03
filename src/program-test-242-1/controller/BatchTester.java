@@ -20,7 +20,7 @@ public class BatchTester {
         this.results = new Results();
         this.resultsController = new ResultsController(settings, results);
     }
-    
+
     /**
      * Compiles, runs, and prints the results from all students.
      */
@@ -28,30 +28,34 @@ public class BatchTester {
         File testDataPath = settings.getTestCaseDirectory();
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
-        
+
         //Read students from the config file.
         BatchConfigReader reader = new BatchConfigReader(results, settings);
-        ArrayList<Student> students = reader.readStudentsFromConfig();
-        
-        for (Student student : students) {
-            // Run javac compiler - returns 0 on success.
-            Compiler c = new Compiler(student);
-            int success = c.compileJava();
+        ArrayList<Student> students = settings.getStudents();
 
-            // Print whether or not compile successful
-            if (success == 0) {
-                System.out.println("Compiled Successfully");
-            } else {
-                System.out.println("Compile Exception");
+        if (students != null) {
+            for (Student student : students) {
+                // Run javac compiler - returns 0 on success.
+                Compiler c = new Compiler(student);
+                int success = c.compileJava();
+
+                // Print whether or not compile successful
+                if (success == 0) {
+                    System.out.println(student.getStudentName() + " compiled Successfully");
+                } else {
+                    System.out.println(student.getStudentName() + " compile Exception");
+                }
+
+                TestRunner r = new TestRunner(student.getPath(), student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
+                r.runJava();
             }
 
-            TestRunner r = new TestRunner(student.getPath(), student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
-            r.runJava();
-        }
+            resultsController.writeResults();
 
-        resultsController.writeResults();
-        
-        System.out.println("Batch Tester finished.");
+            System.out.println("Batch Tester finished.");
+        } else {
+            System.out.println("You must choose students before running the program.");
+        }
     }
 
     public static void main(String[] args) {
@@ -60,30 +64,3 @@ public class BatchTester {
         batchTest.run();
     }
 }
-
-
-    /*
- ///////////////////////////////////////////////////////////////////////////
-        
-        This is sample code that will allow us to root through a directory and 
-        pull the names from each. 
-        This will give us the names for each student in the desired folder for 
-        testing.
-        
-        public static void main(String... args) {
-          File[] files = new File("C:/").listFiles();
-          showFiles(files);
-        }
-
-public static void showFiles(File[] files) {
-    for (File file : files) {
-        if (file.isDirectory()) {
-            System.out.println("Directory: " + file.getName());
-            showFiles(file.listFiles()); // Calls same method again.
-        } else {
-            System.out.println("File: " + file.getName());
-        }
-    }
-}
-////////////////////////////////////////////////        
-*/
