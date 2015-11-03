@@ -53,7 +53,7 @@ public class BatchConfigReader {
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub);
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub, studentName);
                 students.add(student);
             }
         } catch (FileNotFoundException ex) {

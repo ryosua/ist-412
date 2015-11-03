@@ -11,8 +11,9 @@ public class Student {
     private final String studentPath;
     private final String outputFileName;
     private final String inputFileStub;
-    
-    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, Results results, String inputFileStub) {
+    private final String studentName;
+
+    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, Results results, String inputFileStub, String studentName) {
         this.results = results;
         this.path = path;
         this.classPath = classPath;
@@ -20,7 +21,8 @@ public class Student {
         this.studentPath = studentPath;
         this.outputFileName = outputFileName;
         this.inputFileStub = inputFileStub;
-        
+        this.studentName = studentName;
+
         System.out.println("path: " + path);
         System.out.println("classPath: " + classPath);
         System.out.println("sourcePath: " + sourcePath);
@@ -49,11 +51,15 @@ public class Student {
     public String getOutputFileName() {
         return outputFileName;
     }
-    
+
     public String getInputFileStub() {
         return inputFileStub;
     }
     
+    public String getStudentName() {
+        return studentName;
+    }
+
     @Override
     public String toString() {
         String result = "";
@@ -64,32 +70,34 @@ public class Student {
         result += "studentPath: " + studentPath + "\n";
         result += "outputFileName: " + outputFileName + "\n";
         result += "inputFileStub: " + inputFileStub + "\n";
-        
+
         return result;
     }
-    
-    @Override 
+
+    @Override
     public boolean equals(Object obj) {
         Student otherStudent = (Student) obj;
-        return getResults().equals(otherStudent.getResults()) &&
-               getPath().equals(otherStudent.getPath()) &&
-               getClassPath().equals(otherStudent.getClassPath()) &&
-               getSourcePath().equals(otherStudent.getSourcePath()) &&
-               getStudentPath().equals(otherStudent.getStudentPath()) &&
-               getOutputFileName().equals(otherStudent.getOutputFileName()) &&
-               getInputFileStub().equals(otherStudent.getInputFileStub());
+        return getResults().equals(otherStudent.getResults())
+                && getPath().equals(otherStudent.getPath())
+                && getClassPath().equals(otherStudent.getClassPath())
+                && getSourcePath().equals(otherStudent.getSourcePath())
+                && getStudentPath().equals(otherStudent.getStudentPath())
+                && getOutputFileName().equals(otherStudent.getOutputFileName())
+                && getInputFileStub().equals(otherStudent.getInputFileStub())
+                && getInputFileStub().equals(otherStudent.getStudentName());
     }
-    
+
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
-            append(results).
-            append(path).
-            append(classPath).
-            append(sourcePath).
-            append(studentPath).
-            append(outputFileName).
-            append(inputFileStub).
-            toHashCode();
+                append(results).
+                append(path).
+                append(classPath).
+                append(sourcePath).
+                append(studentPath).
+                append(outputFileName).
+                append(inputFileStub).
+                append(studentName).
+                toHashCode();
     }
 }

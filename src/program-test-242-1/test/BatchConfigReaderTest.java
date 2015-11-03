@@ -67,7 +67,8 @@ public class BatchConfigReaderTest {
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/output-mudgettdr.txt",
                 results,
-                main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/input"
+                main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/input",
+                "mudgettdr"
         );
         expectedStudents.add(expectedStudent);
         

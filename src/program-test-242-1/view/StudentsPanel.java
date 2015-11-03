@@ -33,7 +33,7 @@ public class StudentsPanel extends JPanel {
         ArrayList<Student> students = studentReader.readStudentsFromConfig();
         
         for (Student student: students) {
-            JCheckBox studentCheckbox = new JCheckBox(student.getStudentPath());
+            JCheckBox studentCheckbox = new JCheckBox(student.getStudentName());
             this.add(studentCheckbox);
         }
     }
