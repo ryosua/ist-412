@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.ApplicationSettings;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class HelpImagePanel extends JPanel{
     private ArrayList<ImageIcon> tutorialImages;
@@ -30,12 +31,14 @@ public class HelpImagePanel extends JPanel{
     //Adds images to to list which will be used to cycle through tutorial steps.
     //Must have the same number of images as there are steps (text file lines) within the tutorial
     //  text file since each step displays both an image and text.
-    private void addImages(File directory){
+    private void addImages(File directory){        
         for(int i = 0; i < directory.listFiles().length; i++){
             tutorialImages.add(new ImageIcon(directory + "/" + rootImageName + i + ".png"));
+            //System.out.println("Directory Array: " + directory.listFiles()[i]);
         }
         //Debug
-        System.out.println("Help Image Array: " + tutorialImages.toString());
+        //System.out.println("Help Image Array: " + tutorialImages.toString());
+        //System.out.println("Directory Files: " + directory.listFiles().length);
     }
     
     public void setCurrentImageCounter(int img){
