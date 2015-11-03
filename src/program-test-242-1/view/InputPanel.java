@@ -9,7 +9,6 @@ import view.listener.ChooseConfigLocationListener;
 import view.listener.ChooseJDKLocationListener;
 import view.listener.ChooseRootLocationListener;
 import view.listener.OutputCheckBoxListener;
-import view.listener.RadioButtonListener;
 import view.listener.RunProgramListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,11 +16,9 @@ import java.awt.Dimension;
 import java.awt.Insets;
 
 import javax.swing.JButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
 
@@ -208,35 +205,10 @@ public class InputPanel extends JPanel {
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
-        
-        final JRadioButton singleRun = new JRadioButton("Single Run");
-        final GridBagConstraints singleRunBtn = new GridBagConstraints();
-        singleRunBtn.fill = GridBagConstraints.HORIZONTAL;
-        singleRunBtn.gridx = 0;
-        singleRunBtn.gridy = 12;
-
-        final JRadioButton batchRun = new JRadioButton("Batch Run");
-        final GridBagConstraints batchRunBtn = new GridBagConstraints();
-        batchRunBtn.fill = GridBagConstraints.HORIZONTAL;
-        batchRunBtn.gridx = 0;
-        batchRunBtn.gridy = 13;
-
-        // Set the correct run radio to selected.
-        if (settings.getRunMode().equals(ApplicationSettings.SINGLE_MODE)) {
-            singleRun.setSelected(true);
-        } else {
-            batchRun.setSelected(true);
-        }
-        
-        
+               
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
       
-        //Add runtype radio buttons to button group.
-        final ButtonGroup runTypeRadios = new ButtonGroup();
-        runTypeRadios.add(singleRun);
-        runTypeRadios.add(batchRun);
-
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
@@ -244,10 +216,6 @@ public class InputPanel extends JPanel {
         rootDirectoryButton.addActionListener(new ChooseRootLocationListener(main, rootDirectoryField));
         jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
         configButton.addActionListener(new ChooseConfigLocationListener(main, configField));
-
-        //Action listeners for the batches.
-        singleRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
-        batchRun.addActionListener(new RadioButtonListener(main, singleRun, batchRun));
 
         add(rootDirectoryLabel, rootDirectoryLabelC);
         add(rootDirectoryField, rootDirectoryFieldC);
@@ -268,8 +236,6 @@ public class InputPanel extends JPanel {
         add(outputField, outputFieldC);
         add(outputButton, outputButtonC);
         add(runButton, runButtonC);
-        add(singleRun, singleRunBtn);
-        add(batchRun, batchRunBtn);
         add(showOutputCheckbox, showOutputCheckboxC);
     }
     

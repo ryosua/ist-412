@@ -6,7 +6,7 @@ import model.ApplicationSettings;
 import model.Results;
 import model.Student;
 
-public class BatchTester implements ProgramTester {
+public class BatchTester {
 
     private final ApplicationSettings settings;
     private final Results results;
@@ -24,7 +24,6 @@ public class BatchTester implements ProgramTester {
     /**
      * Compiles, runs, and prints the results from all students.
      */
-    @Override
     public void run() {
         File testDataPath = settings.getTestCaseDirectory();
         String argsFileName = testDataPath + "/args.txt";
