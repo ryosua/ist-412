@@ -213,7 +213,7 @@ public class InputPanel extends JPanel {
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
         rootDirectoryButton.addActionListener(new ChooseRootLocationListener(main, rootDirectoryField));
         jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
-        studentsButton.addActionListener(new ChooseStudentsListener(studentsField));
+        studentsButton.addActionListener(new ChooseStudentsListener(settings, studentsField));
 
         add(rootDirectoryLabel, rootDirectoryLabelC);
         add(rootDirectoryField, rootDirectoryFieldC);
