@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.ApplicationSettings;
-import org.apache.commons.lang3.ArrayUtils;
 
 public class HelpImagePanel extends JPanel{
     private ArrayList<ImageIcon> tutorialImages;
