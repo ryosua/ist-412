@@ -5,7 +5,7 @@ import view.listener.ChooseSourceLocationListener;
 import view.listener.ChooseTestLocationListener;
 import controller.Main;
 import java.awt.Component;
-import view.listener.ChooseConfigLocationListener;
+import view.listener.ChooseStudentsListener;
 import view.listener.ChooseJDKLocationListener;
 import view.listener.ChooseRootLocationListener;
 import view.listener.OutputCheckBoxListener;
@@ -54,12 +54,12 @@ public class InputPanel extends JPanel {
         jdkLabelC.gridx = 0;
         jdkLabelC.gridy = 2;
 
-        final JLabel configLabel = new JLabel("Current Config Selected: ");
-        final GridBagConstraints configLabelC = new GridBagConstraints();
-        configLabelC.fill = GridBagConstraints.HORIZONTAL;
-        configLabelC.gridx = 0;
-        configLabelC.gridy = 4;
-        configLabelC.insets = new Insets(5, 0, 0, 0);
+        final JLabel chooseStudentsLabel = new JLabel("Choose Students: ");
+        final GridBagConstraints studentsLabelC = new GridBagConstraints();
+        studentsLabelC.fill = GridBagConstraints.HORIZONTAL;
+        studentsLabelC.gridx = 0;
+        studentsLabelC.gridy = 4;
+        studentsLabelC.insets = new Insets(5, 0, 0, 0);
 
         final JLabel sourceDirectoryLabel = new JLabel("Choose a Source Directory or Zip File:");
         final GridBagConstraints sourceLabelC = new GridBagConstraints();
@@ -101,16 +101,14 @@ public class InputPanel extends JPanel {
         jdkFieldC.gridx = 0;
         jdkFieldC.gridy = 3;
 
-        final JTextField configField = new JTextField();
-        configFieldText = settings.getConfigFile().getPath();
-        configFieldText = configFieldText.replace(rootDirectoryFieldText, "~");
-        configField.setText(configFieldText);
-        configField.setEditable(false);
-        final GridBagConstraints configFieldC = new GridBagConstraints();
-        configFieldC.fill = GridBagConstraints.HORIZONTAL;
-        configFieldC.gridx = 0;
-        configFieldC.gridy = 5;
-        configFieldC.insets = new Insets(0, 0, 30, 0);
+        final JTextField studentsField = new JTextField();
+        studentsField.setText("placeholder");
+        studentsField.setEditable(false);
+        final GridBagConstraints studentsFieldC = new GridBagConstraints();
+        studentsFieldC.fill = GridBagConstraints.HORIZONTAL;
+        studentsFieldC.gridx = 0;
+        studentsFieldC.gridy = 5;
+        studentsFieldC.insets = new Insets(0, 0, 30, 0);
 
         final JTextField sourceDirectoryField = new JTextField();
         sourceDirectoryFieldText = settings.getSourceFileDirectory().getPath();
@@ -156,7 +154,7 @@ public class InputPanel extends JPanel {
         jdkButtonC.gridx = 1;
         jdkButtonC.gridy = 3;
 
-        final JButton configButton = new JButton("Choose Location");
+        final JButton studentsButton = new JButton("Choose Students");
         final GridBagConstraints configButtonC = new GridBagConstraints();
         configButtonC.fill = GridBagConstraints.NONE;
         configButtonC.anchor = GridBagConstraints.EAST;
@@ -215,17 +213,17 @@ public class InputPanel extends JPanel {
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
         rootDirectoryButton.addActionListener(new ChooseRootLocationListener(main, rootDirectoryField));
         jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
-        configButton.addActionListener(new ChooseConfigLocationListener(main, configField));
+        studentsButton.addActionListener(new ChooseStudentsListener(studentsField));
 
         add(rootDirectoryLabel, rootDirectoryLabelC);
         add(rootDirectoryField, rootDirectoryFieldC);
         add(rootDirectoryButton, rootDirectoryButtonC);
         add(jdkDirectoryButton, jdkButtonC);
-        add(configButton, configButtonC);
+        add(studentsButton, configButtonC);
         add(jdkLabel, jdkLabelC);
         add(jdkDirectoryField, jdkFieldC);
-        add(configLabel, configLabelC);
-        add(configField, configFieldC);
+        add(chooseStudentsLabel, studentsLabelC);
+        add(studentsField, studentsFieldC);
         add(sourceDirectoryLabel, sourceLabelC);
         add(sourceDirectoryField, sourceFieldC);
         add(sourceDirectoryButton, sourcButtonC);
