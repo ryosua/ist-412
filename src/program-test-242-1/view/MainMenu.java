@@ -1,6 +1,6 @@
 package view;
 
-import view.listener.ChooseConfigLocationListener;
+import view.listener.ChooseStudentsListener;
 import view.listener.ChooseJDKLocationListener;
 import controller.Main;
 import java.awt.event.ActionEvent;
@@ -34,7 +34,7 @@ public class MainMenu extends JMenuBar{
                 
         //Add listeners
         //***Need to get textfield from InputPanel here to replace nulls.***
-        //selectConfig.addActionListener(new ChooseConfigLocationListener(main, panel.getConfigField()));
+        //selectConfig.addActionListener(new ChooseStudentsListener(main, panel.getConfigField()));
         //selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
         closeApp.addActionListener(new menuExitApp());
 

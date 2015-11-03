@@ -9,7 +9,6 @@ import model.ApplicationSettings;
 
 public class ApplicationSettingsController {
 
-    
     public static void writeDataToSettingsFile(ApplicationSettings settings) {
         try (PrintWriter out = new PrintWriter(settings.getSettingsFile())) {
 
@@ -27,10 +26,6 @@ public class ApplicationSettingsController {
 
             if (settings.getRootDirectory() != null) {
                 out.println("Root Directory: " + settings.getRootDirectory().getPath());
-            }
-
-            if (settings.getRunMode() != null) {
-                out.println("Run mode: " + settings.getRunMode());
             }
 
             if (settings.getSourceFileDirectory() != null) {
@@ -53,34 +48,31 @@ public class ApplicationSettingsController {
         try {
             // Create a new settings file if it does not exsit.
             settings.getSettingsFile().createNewFile();
-            
+
             inFile = new Scanner(settings.getSettingsFile());
 
-            while(inFile.hasNextLine()){
+            while (inFile.hasNextLine()) {
                 String setting = inFile.nextLine();
-                
-                if(setting.startsWith("Config File: ")) {
+
+                if (setting.startsWith("Config File: ")) {
                     settings.setConfigFile(new File(setting.substring("Config File: ".length())));
                 }
-                if(setting.startsWith("Output File Directory: ")){
+                if (setting.startsWith("Output File Directory: ")) {
                     settings.setOutputFileDirectory(new File(setting.substring("Output File Directory: ".length())));
                 }
-                if(setting.startsWith("Root Directory: ")){
+                if (setting.startsWith("Root Directory: ")) {
                     settings.setRootDirectory(new File(setting.substring("Root Directory: ".length())));
                 }
-                if(setting.startsWith("Run mode: ")){
-                    settings.setRunMode(new String(setting.substring("Run Mode: ".length())));
-                }
-                if(setting.startsWith("Source File Directory: ")){
+                if (setting.startsWith("Source File Directory: ")) {
                     settings.setSourceFileDirectory(new File(setting.substring("Source File Directory: ".length())));
                 }
-                if(setting.startsWith("Test Case Directory: ")){
+                if (setting.startsWith("Test Case Directory: ")) {
                     settings.setTestCaseDirectory(new File(setting.substring("Test Case Directory: ".length())));
                 }
-                if(setting.startsWith("Java Version Directory: ")){
+                if (setting.startsWith("Java Version Directory: ")) {
                     settings.setJavaVersionDirectory(new File(setting.substring("Java Version Directory: ".length())));
-                } 
-                if(setting.startsWith("Display Output: ")){
+                }
+                if (setting.startsWith("Display Output: ")) {
                     settings.setDisplayOutputCheck(Boolean.valueOf(setting.substring("Display Output: ".length())));
                 }
             }
