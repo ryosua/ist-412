@@ -45,11 +45,13 @@ public class HelpTextPanel extends JPanel{
         add(tutorialTextArea);
     }
     
-    //Store path for tutorial textfile in settings?
+    //Path stored for tutorial textfile in settings
     private void setupTutorialFile(ApplicationSettings settings){
         tutorialTextFile = new File(settings.getTutorialTextDirectory().getAbsolutePath());
     }
     
+    //Text file must have the same number of steps (text file lines) as
+    //  there are images since each step displays both an image and text.
     private void readTextStepsFromFile(File text){
         try{
             Scanner in = new Scanner(text);
@@ -61,7 +63,7 @@ public class HelpTextPanel extends JPanel{
                 }
             }
             //Debug
-            System.out.println(tutorialText.toString());
+            System.out.println("Help Text Array: " + tutorialText.toString());
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }

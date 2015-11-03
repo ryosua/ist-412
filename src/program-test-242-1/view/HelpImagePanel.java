@@ -28,12 +28,14 @@ public class HelpImagePanel extends JPanel{
     }
     
     //Adds images to to list which will be used to cycle through tutorial steps.
+    //Must have the same number of images as there are steps (text file lines) within the tutorial
+    //  text file since each step displays both an image and text.
     private void addImages(File directory){
         for(int i = 0; i < directory.listFiles().length - 1; i++){
             tutorialImages.add(new ImageIcon(directory + "/" + rootImageName + i + ".png"));
         }
         //Debug
-        System.out.println(tutorialImages.toString());
+        System.out.println("Help Image Array: " + tutorialImages.toString());
     }
     
     public void setCurrentImageCounter(int img){

@@ -5,16 +5,21 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HelpButtonPanel extends JPanel implements ActionListener{
     private final JButton nextButton, previousButton;
+    private JLabel stepLabel;
     private HelpTextPanel textPanel;
     private HelpImagePanel imagePanel;
+    private int totalSteps;
     
     public HelpButtonPanel(HelpTextPanel text, HelpImagePanel image){
         nextButton = new JButton("Next");
         previousButton = new JButton("Previous");
+        stepLabel = new JLabel();
+        totalSteps = 0;
         
         textPanel = text;
         imagePanel = image;
@@ -22,14 +27,31 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
         setupPanel();
     }
     
-    public void setupPanel(){
-        setPreferredSize(new Dimension(500, 50));
-        
+    public void setupPanel(){        
         nextButton.addActionListener(this);
         previousButton.addActionListener(this);
         
+        if(imagePanel.getImageArray().size() == textPanel.getTextArray().size()){
+            totalSteps = imagePanel.getImageArray().size();
+        }else{
+            System.out.println("Array Size Mismatch.");
+            stepLabel.setText("Array Size Mismatch.");
+            totalSteps = 0;
+        }
+        
+        updateStepLabel();
         add(previousButton);
         add(nextButton);
+        add(stepLabel);
+    }
+    
+    private void updateStepLabel(){
+        if(imagePanel.getCurrentImageCounter() == textPanel.getCurrentTextCounter()){
+            stepLabel.setText("Step: " + Integer.toString(imagePanel.getCurrentImageCounter() + 1) + "/" + Integer.toString(totalSteps));
+        }else{
+            System.out.println("Step Counters Mismatch.");
+            stepLabel.setText("Step Counters Mismatch.");
+        }
     }
 
     @Override
@@ -39,12 +61,12 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
         if(obj == nextButton){
             //******Text Panel Controls******
             textPanel.setCurrentTextCounter(textPanel.getCurrentTextCounter() + 1);
-            System.out.println(textPanel.getCurrentTextCounter());
             
             //Reset Counter to last place in order to loop back through steps.
             if(textPanel.getCurrentTextCounter() > textPanel.getTextArray().size() - 1){
                 textPanel.setCurrentTextCounter(0);
             }
+            
             
             //******Image Panel Controls******
             //Advance the image displayed by 1.
@@ -55,13 +77,15 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
                 imagePanel.setCurrentImageCounter(0);
             }
             
+            //******Step Label Controls******
+            updateStepLabel();
+            
             imagePanel.setDisplayedImage();
             textPanel.addTextToPanel();
         }
         if(obj == previousButton){
             //******Text Panel Controls******
             textPanel.setCurrentTextCounter(textPanel.getCurrentTextCounter() - 1);
-            System.out.println(textPanel.getCurrentTextCounter());
             
             if(textPanel.getCurrentTextCounter() < 0){
                 textPanel.setCurrentTextCounter(textPanel.getTextArray().size() - 1);
@@ -75,6 +99,9 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
             if(imagePanel.getCurrentImageCounter() < 0){
                 imagePanel.setCurrentImageCounter(imagePanel.getImageArray().size() - 1);
             }
+            
+            //******Step Label Controls******
+            updateStepLabel();
             
             imagePanel.setDisplayedImage();
             textPanel.addTextToPanel();
