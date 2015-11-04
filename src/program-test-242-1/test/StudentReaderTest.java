@@ -1,6 +1,6 @@
 package test;
 
-import controller.BatchConfigReader;
+import controller.StudentReader;
 import controller.Main;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,11 +12,12 @@ import model.Student;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class BatchConfigReaderTest {
+public class StudentReaderTest {
     private Main main;
     private File testFile;
     private File savedConfigFile;
@@ -39,7 +40,7 @@ public class BatchConfigReaderTest {
     }
    
     @Test
-    public void studentsReadCorrectly() {
+    public void readStudentsFromConfig() {
         System.out.println("writeResults");
                
         // Create a test file to add to the results.
@@ -72,14 +73,19 @@ public class BatchConfigReaderTest {
         );
         expectedStudents.add(expectedStudent);
         
-        // Read students from the test file using BatchConfigReader.
-        BatchConfigReader reader = new BatchConfigReader(results, main.getSettings());
+        // Read students from the test file using StudentReader.
+        StudentReader reader = new StudentReader(results, main.getSettings());
         ArrayList<Student> readStudents = reader.readStudentsFromConfig();
         
         boolean studentsAreEqual = expectedStudents.equals(readStudents);
          
         assertTrue("The students were not read correctly from config file",
             studentsAreEqual);
+    }
+    
+    @Test
+    public void readStudentsFromFileStructure() {
+        fail("We have not yet written a test for this method.");
     }
         
     @After
