@@ -25,5 +25,18 @@ public class HelpFrame extends JFrame{
         add(textPanel, BorderLayout.CENTER);
         add(imagePanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.SOUTH);
+        
+    }
+    
+    public HelpTextPanel getTextPanel(){
+        return textPanel;
+    }
+    
+    public HelpImagePanel getImagePanel(){
+        return imagePanel;
+    }
+    
+    public HelpButtonPanel getButtonPanel(){
+        return buttonPanel;
     }
 }

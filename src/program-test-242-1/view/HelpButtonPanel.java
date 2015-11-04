@@ -23,8 +23,6 @@ public class HelpButtonPanel extends JPanel implements ActionListener{
         
         textPanel = text;
         imagePanel = image;
-        
-        setupPanel();
     }
     
     public void setupPanel(){        

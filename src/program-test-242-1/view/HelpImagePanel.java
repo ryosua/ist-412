@@ -23,8 +23,8 @@ public class HelpImagePanel extends JPanel{
         displayedImage = 0;
         rootImageName = "tutorialImage";
         
-        addImages(settings.getTutorialImageDirectory());
-        setupPanel();
+        //addImages(settings.getTutorialImageDirectory());
+        //setupPanel();
     }
     
     //Adds images to to list which will be used to cycle through tutorial steps.
@@ -57,6 +57,8 @@ public class HelpImagePanel extends JPanel{
     }
     
     public void setupPanel(){
+        addImages(settings.getTutorialImageDirectory());
+        
         //Sets panel to 1st image default
         setCurrentImageCounter(0);
         image = new JLabel(tutorialImages.get(this.getCurrentImageCounter()));

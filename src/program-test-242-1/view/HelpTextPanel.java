@@ -23,7 +23,17 @@ public class HelpTextPanel extends JPanel{
         tutorialText = new ArrayList<String>();
         
         //Setup the panel
-        setupPanel();
+        //setupPanel();
+    }
+
+    public void setupPanel(){
+        currentText = 0;
+        rows = 10;
+        columns = 50;
+        tutorialTextArea = new JTextArea(rows, columns);
+        tutorialTextArea.setEditable(false);
+        
+        add(tutorialTextArea);
         
         //Setup the textfile pathing
         setupTutorialFile(main.getSettings());
@@ -33,16 +43,6 @@ public class HelpTextPanel extends JPanel{
         
         //Read the textfile and write into the panel.
         addTextToPanel();
-    }
-
-    private void setupPanel(){
-        currentText = 0;
-        rows = 10;
-        columns = 50;
-        tutorialTextArea = new JTextArea(rows, columns);
-        tutorialTextArea.setEditable(false);
-        
-        add(tutorialTextArea);
     }
     
     //Path stored for tutorial textfile in settings
@@ -63,7 +63,7 @@ public class HelpTextPanel extends JPanel{
                 }
             }
             //Debug
-            System.out.println("Help Text Array: " + tutorialText.toString());
+            //System.out.println("Help Text Array: " + tutorialText.toString());
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
