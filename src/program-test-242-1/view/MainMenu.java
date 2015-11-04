@@ -12,57 +12,58 @@ import javax.swing.JMenuItem;
 public class MainMenu extends JMenuBar{
     private final JMenuBar menu;
     private final JMenu menuFile;
-    private final JMenuItem closeApp;
+    private final JMenuItem closeApp, help;
     private final Main main;
     private final InputPanel panel;
 
     public MainMenu(Main main){
         this.main = main;
+        
         //Set up menu bar
         menu = new JMenuBar();
         panel = new InputPanel(main);
         
         //Set up menu items that are displayed on bar.
         menuFile = new JMenu("File");
-        //menuRunType = new JMenu("Run Type");
-        //menuConfig = new JMenu("Config");
 
         //Set up menu sub-items that are shown beneath a menu item.
         closeApp = new JMenuItem("Exit");
-        //selectConfig = new JMenuItem("Select Config File");
-        //selectJDK = new JMenuItem("Select JDK");
+        help = new JMenuItem("Help");
                 
         //Add listeners
-        //***Need to get textfield from InputPanel here to replace nulls.***
-        //selectConfig.addActionListener(new ChooseStudentsListener(main, panel.getConfigField()));
-        //selectJDK.addActionListener(new ChooseJDKLocationListener(main, panel.getJDKField()));
         closeApp.addActionListener(new menuExitApp());
+        help.addActionListener(new helpOpener());
 
         //Add options to the menubar.
         this.add(menuFile);
-        //this.add(menuConfig);
+        this.add(help);
 
         //Adds options in dropdown format for menu item.
         menuFile.add(closeApp);
-        //menuConfig.add(selectJDK);
-        //menuConfig.add(selectConfig);
     }
     
-    /*
-    public JMenuItem getConfigMenuButton(){
-        return selectConfig;
-    }
-    
-    public JMenuItem getJDKMenuButton(){
-        return selectJDK;
-    }
-    */
     private class menuExitApp implements ActionListener {
 
         public menuExitApp() {
         }
 
         @Override
-        public void actionPerformed(ActionEvent ae) { System.exit(0); } //Exits application
+        public void actionPerformed(ActionEvent ae) {
+            System.exit(0); //Exits application
+        }
+    }
+    
+    private class helpOpener implements ActionListener {
+        private final HelpFrame helpFrame;
+        
+        public helpOpener() {
+            helpFrame = new HelpFrame();
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            System.out.println("Help Clicked.");
+            helpFrame.setVisible(true);
+        }
     }
 }

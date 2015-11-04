@@ -17,7 +17,11 @@ public class ApplicationSettings {
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");
+    private File tutorialTextDirectory = new File("");
+    private File tutorialImageDirectory = new File("");
     private ArrayList<Student> students = null;
+    
+   
 
     private boolean displayOutputCheck = true;
 
@@ -52,6 +56,14 @@ public class ApplicationSettings {
     public File getSettingsFile() {
         return settingsFile;
     }
+    
+    public File getTutorialTextDirectory(){
+        return tutorialTextDirectory;
+    }
+  
+    public File getTutorialImageDirectory(){
+        return tutorialImageDirectory;
+    } 
     
     public ArrayList<Student> getStudents() {
         return students;
@@ -92,6 +104,16 @@ public class ApplicationSettings {
         ApplicationSettingsController.writeDataToSettingsFile(this);
     }
     
+    public void setTutorialTextDirectory(File directory){
+        tutorialTextDirectory = directory;
+        ApplicationSettingsController.writeDataToSettingsFile(this);
+    }
+
+    public void setTutorialImageDirectory(File directory){
+        tutorialImageDirectory = directory;
+        ApplicationSettingsController.writeDataToSettingsFile(this);
+    }
+
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
@@ -107,6 +129,8 @@ public class ApplicationSettings {
         string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
         string += "Display Output: " + displayOutputCheck + "\n";
+        string += "Tutorial text directory: " + tutorialTextDirectory + "\n";
+        string += "Tutorial image directory: " + tutorialImageDirectory + "\n";
         return string;
     }
 }
