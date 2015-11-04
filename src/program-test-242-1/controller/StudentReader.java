@@ -8,16 +8,16 @@ import model.ApplicationSettings;
 import model.Results;
 import model.Student;
 
-public class BatchConfigReader {
-    
+public class StudentReader {
+
     private final Results results;
     private final ApplicationSettings settings;
-    
-    public BatchConfigReader(Results results, ApplicationSettings settings) {
+
+    public StudentReader(Results results, ApplicationSettings settings) {
         this.results = results;
         this.settings = settings;
     }
-    
+
     public ArrayList<Student> readStudentsFromConfig() {
         ArrayList<Student> students = new ArrayList<>();
 
@@ -59,6 +59,34 @@ public class BatchConfigReader {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
+        return students;
+    }
+
+    public ArrayList<Student> readStudentsFromFileStructure() {
+        ArrayList<Student> students = new ArrayList<>();
+
+        File[] files = settings.getSourceFileDirectory().listFiles();
+           
+        // Set fixed paths and file names:
+        File path = settings.getJavaVersionDirectory();
+        File sourcePath = settings.getSourceFileDirectory();
+
+        for (File file : files) {
+            if (file.isDirectory()) {
+                // Use the name of the folder for the students name.
+                String studentName = file.getName();
+                
+                // Set paths and file names:
+                String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + studentName;
+                String studentPath = sourcePath + "/" + studentName;
+                String inputFileStub = studentPath + "/input";
+                String outputFileName = studentPath + "/output-" + studentName + ".txt";
+
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub, studentName);
+                students.add(student);
+            }
+        }
+
         return students;
     }
 }

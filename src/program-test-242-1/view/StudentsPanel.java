@@ -1,6 +1,6 @@
 package view;
 
-import controller.BatchConfigReader;
+import controller.StudentReader;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
@@ -39,8 +39,8 @@ public class StudentsPanel extends JPanel {
         Results results = new Results();
 
         // Read students from config.
-        BatchConfigReader studentReader = new BatchConfigReader(results, settings);
-        students = studentReader.readStudentsFromConfig();
+        StudentReader studentReader = new StudentReader(results, settings);
+        students = studentReader.readStudentsFromFileStructure();
 
         JPanel checkBoxesPanel = new JPanel();
         BoxLayout boxLayout = new BoxLayout(checkBoxesPanel, BoxLayout.Y_AXIS);
