@@ -12,6 +12,7 @@ import model.Student;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class StudentReaderTest {
     }
    
     @Test
-    public void studentsReadCorrectly() {
+    public void readStudentsFromConfig() {
         System.out.println("writeResults");
                
         // Create a test file to add to the results.
@@ -80,6 +81,11 @@ public class StudentReaderTest {
          
         assertTrue("The students were not read correctly from config file",
             studentsAreEqual);
+    }
+    
+    @Test
+    public void readStudentsFromFileStructure() {
+        fail("We have not yet written a test for this method.");
     }
         
     @After
