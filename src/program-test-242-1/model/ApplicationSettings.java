@@ -10,6 +10,7 @@ public class ApplicationSettings {
     public final static String BATCH_MODE = "Batch Mode";
 
     private final File settingsFile = new File("Settings.txt");
+    private final File tutorialDirectory = new File("tutorial");
 
     private File configFile = new File(""); // Just single for now.
     private File javaVersionDirectory = new File("");
@@ -17,8 +18,8 @@ public class ApplicationSettings {
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");
-    private File tutorialTextDirectory = new File("");
-    private File tutorialImageDirectory = new File("");
+    private File tutorialTextDirectory = new File(tutorialDirectory + "/tutorial.txt");
+    private File tutorialImageDirectory = new File(tutorialDirectory + "/tutorialImages");
     private ArrayList<Student> students = null;
     
    
@@ -59,6 +60,10 @@ public class ApplicationSettings {
     
     public File getTutorialTextDirectory(){
         return tutorialTextDirectory;
+    }
+    
+    public File getTutorialDirectory(){
+        return tutorialDirectory;
     }
   
     public File getTutorialImageDirectory(){
@@ -103,16 +108,6 @@ public class ApplicationSettings {
         displayOutputCheck = value;
         ApplicationSettingsController.writeDataToSettingsFile(this);
     }
-    
-    public void setTutorialTextDirectory(File directory){
-        tutorialTextDirectory = directory;
-        ApplicationSettingsController.writeDataToSettingsFile(this);
-    }
-
-    public void setTutorialImageDirectory(File directory){
-        tutorialImageDirectory = directory;
-        ApplicationSettingsController.writeDataToSettingsFile(this);
-    }
 
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
@@ -129,8 +124,9 @@ public class ApplicationSettings {
         string += "Source file: " + sourceFileDirectory.getAbsolutePath() + "\n";
         string += "Test directory: " + testCaseDirectory.getAbsolutePath() + "\n";
         string += "Display Output: " + displayOutputCheck + "\n";
-        string += "Tutorial text directory: " + tutorialTextDirectory + "\n";
-        string += "Tutorial image directory: " + tutorialImageDirectory + "\n";
+        string += "Tutorial text directory: " + tutorialTextDirectory.getAbsolutePath() + "\n";
+        string += "Tutorial image directory: " + tutorialImageDirectory.getAbsolutePath() + "\n";
+        string += "Tutorial directory: " + tutorialDirectory.getAbsolutePath() + "\n";
         return string;
     }
 }

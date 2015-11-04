@@ -62,7 +62,9 @@ public class MainMenu extends JMenuBar{
         
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.out.println("Help Clicked.");
+            helpFrame.getTextPanel().setupPanel();
+            helpFrame.getImagePanel().setupPanel();
+            helpFrame.getButtonPanel().setupPanel();
             helpFrame.setVisible(true);
         }
     }
