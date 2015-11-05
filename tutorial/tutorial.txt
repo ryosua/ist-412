@@ -2,26 +2,26 @@ Unzip the file. Once extracted, open the folder. Go in the src folder.
 
 Go into program-test-242-1 folder.
 
-This is step 3
+Find cmdxp.exe and open the program.
 
-This is step 4
+When the program is open, type setup7 and hit enter.
 
-This is step 5
+If there is an error, you must edit build.properties using Notepad++. Follow the image above but change your folder's location.  
 
-This is step 6
+Run setup7 again and you should get something like the image above.
 
-This is step 7
+After setup7 finished running, depending on where your folder is located, type cd../ to be in the java folder.
 
-This is step 8
+Type ant and hit enter. If there's an error, go to Windows and search for System Variable. A window should appear.
 
-This is step 9
+Click on Environment Variables and then click New...
 
-This is step 10
+Name your variable ANT and put the ant's folder location in the value. Click Ok.
 
-This is step 11
+Next go to your main folder and open setup7.bat in notepad. Follow the image above but change your folder's location. 
 
-This is step 12
+Run ant again and it should open the application
 
-This is step 13
+This is step 13 *Needs an update*
 
-This is step 14
+This is step 14 *Needs an update*
