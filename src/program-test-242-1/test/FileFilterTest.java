@@ -3,12 +3,14 @@ package test;
 import controller.FileFilter;
 import controller.Main;
 import java.io.File;
+import model.Strings;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class FileFilterTest
 {
     private Main main;
+    private File testSettingsFile;
     
     @BeforeClass
     public static void setupTests() {
@@ -17,7 +19,8 @@ public class FileFilterTest
     
     @Before
     public void setupTest() {
-        main = new Main();
+        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
+        main = new Main(testSettingsFile);
     }
    
     @Test

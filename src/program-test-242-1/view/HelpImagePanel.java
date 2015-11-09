@@ -9,15 +9,13 @@ import javax.swing.JPanel;
 import model.ApplicationSettings;
 
 public class HelpImagePanel extends JPanel{
-    private ArrayList<ImageIcon> tutorialImages;
-    private Main main;
-    private ApplicationSettings settings;
+    private final ArrayList<ImageIcon> tutorialImages;
+    private final ApplicationSettings settings;
     private int displayedImage;
     private String rootImageName;
     private JLabel image;
     
-    public HelpImagePanel(){
-        main = new Main();
+    public HelpImagePanel(Main main){
         settings = main.getSettings();
         tutorialImages = new ArrayList<ImageIcon>();
         displayedImage = 0;

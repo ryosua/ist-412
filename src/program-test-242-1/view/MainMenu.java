@@ -1,7 +1,5 @@
 package view;
 
-import view.listener.ChooseStudentsListener;
-import view.listener.ChooseJDKLocationListener;
 import controller.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,7 +55,7 @@ public class MainMenu extends JMenuBar{
         private final HelpFrame helpFrame;
         
         public helpOpener() {
-            helpFrame = new HelpFrame();
+            helpFrame = new HelpFrame(main);
         }
         
         @Override

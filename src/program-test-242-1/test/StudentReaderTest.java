@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import model.Results;
+import model.Strings;
 import model.Student;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,11 +25,13 @@ public class StudentReaderTest {
     private static File savedSourceDir;
     private static File testDir;
     private static File testSubDir;
+    private static File testSettingsFile;
 
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Setup Tests.");
-        main = new Main();
+        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
+        main = new Main(testSettingsFile);
         testFile = new File("junitTestBatchConfigFile.txt");
 
         // Save the settings files that will be modified for the test.

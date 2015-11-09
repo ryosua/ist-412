@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import model.ApplicationSettings;
 import model.Results;
+import model.Strings;
 import model.Student;
 
 public class BatchTester {
@@ -59,7 +60,8 @@ public class BatchTester {
     }
 
     public static void main(String[] args) {
-        final Main main = new Main();
+        File settingsFile = new File(Strings.SETTINGS_FILE_NAME);
+        final Main main = new Main(settingsFile);
         final BatchTester batchTest = new BatchTester(main.getSettings());
         batchTest.run();
     }
