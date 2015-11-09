@@ -18,6 +18,12 @@ public class StudentReader {
         this.settings = settings;
     }
 
+    /**
+     * Reads students from the config file. Use this method if studentHandle and
+     * className are needed.
+     *
+     * @return the students represented by the items on the config file
+     */
     public ArrayList<Student> readStudentsFromConfig() {
         ArrayList<Student> students = new ArrayList<>();
 
@@ -62,11 +68,18 @@ public class StudentReader {
         return students;
     }
 
+    /**
+     * Reads students from the file structure. Use this method if studentHandle
+     * and className are not needed. Using this method eliminates the need for a
+     * config file.
+     *
+     * @return the students read from the file structure
+     */
     public ArrayList<Student> readStudentsFromFileStructure() {
         ArrayList<Student> students = new ArrayList<>();
 
         File[] files = settings.getSourceFileDirectory().listFiles();
-           
+
         // Set fixed paths and file names:
         File path = settings.getJavaVersionDirectory();
         File sourcePath = settings.getSourceFileDirectory();
@@ -75,7 +88,7 @@ public class StudentReader {
             if (file.isDirectory()) {
                 // Use the name of the folder for the students name.
                 String studentName = file.getName();
-                
+
                 // Set paths and file names:
                 String classPath = settings.getRootDirectory().getAbsolutePath() + "/bin/" + studentName;
                 String studentPath = sourcePath + "/" + studentName;
@@ -90,29 +103,3 @@ public class StudentReader {
         return students;
     }
 }
-
-/*
- ///////////////////////////////////////////////////////////////////////////
-        
- This is sample code that will allow us to root through a directory and 
- pull the names from each. 
- This will give us the names for each student in the desired folder for 
- testing.
-        
- public static void main(String... args) {
- File[] files = new File("C:/").listFiles();
- showFiles(files);
- }
-
- public static void showFiles(File[] files) {
- for (File file : files) {
- if (file.isDirectory()) {
- System.out.println("Directory: " + file.getName());
- showFiles(file.listFiles()); // Calls same method again.
- } else {
- System.out.println("File: " + file.getName());
- }
- }
- }
- ////////////////////////////////////////////////        
- */
