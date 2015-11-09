@@ -17,6 +17,9 @@ import org.junit.Test;
 public class ApplicationSettingsTest {
 
     private static File testConfigFile;
+    private static File testJavaDir;
+    private static File testOutputFile;
+    private static File testRootDir;
 
     private Main main;
     private File testSettingsFile;
@@ -32,6 +35,9 @@ public class ApplicationSettingsTest {
         main = new Main(testSettingsFile);
         
         testConfigFile = new File("testConfig.txt");
+        testJavaDir = new File("testJavaDir");
+        testOutputFile = new File("testOutputFile");
+        testRootDir = new File("testRootDir");
     }
 
     @Test
@@ -47,19 +53,15 @@ public class ApplicationSettingsTest {
 
     @Test
     public void configFileReadAndWrite() {
-        try {
-            testConfigFile.createNewFile();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        main.getSettings().setConfigFile(testConfigFile);
-        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+        writeToSettings(testConfigFile);
         
+        // Read from settings.
         ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
         ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+        
         assertTrue(main.getSettings().getConfigFile().equals(newSettings.getConfigFile()));
     }
-
+       
     @Test
     public void javaVersionDirectoryReadAndWrite() {
         fail("Need to write this test.");
@@ -72,11 +74,6 @@ public class ApplicationSettingsTest {
 
     @Test
     public void rootDirectoryReadAndWrite() {
-        fail("Need to write this test.");
-    }
-
-    @Test
-    public void runModeReadAndWrite() {
         fail("Need to write this test.");
     }
 
@@ -95,19 +92,28 @@ public class ApplicationSettingsTest {
         fail("Need to write this test.");
     }
 
-    @Test
-    public void testToString() {
-        fail("Need to write this test.");
-    }
-
     @After
     public void teardownTest() {
         System.out.println("Test Finished");
         testConfigFile.delete();
+        testJavaDir.delete();
+        testOutputFile.delete();
+        testRootDir.delete();
     }
 
     @AfterClass
     public static void teardownTests() {
         System.out.println("All Tests Finished");
+    }
+    
+    private void writeToSettings(File fileToWrite) {
+        try {
+            fileToWrite.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setConfigFile(fileToWrite);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
     }
 }
