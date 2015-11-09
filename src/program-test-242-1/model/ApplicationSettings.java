@@ -11,6 +11,8 @@ public class ApplicationSettings {
 
     private final File settingsFile = new File("Settings.txt");
     private final File tutorialDirectory = new File("tutorial");
+    private final File tutorialTextDirectory = new File(tutorialDirectory + "/tutorial.txt");
+    private final File tutorialImageDirectory = new File(tutorialDirectory + "/tutorialImages");
 
     private File configFile = new File(""); // Just single for now.
     private File javaVersionDirectory = new File("");
@@ -18,12 +20,9 @@ public class ApplicationSettings {
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");
-    private File tutorialTextDirectory = new File(tutorialDirectory + "/tutorial.txt");
-    private File tutorialImageDirectory = new File(tutorialDirectory + "/tutorialImages");
+
     private ArrayList<Student> students = null;
     
-   
-
     private boolean displayOutputCheck = true;
 
     public File getConfigFile() {
