@@ -30,8 +30,7 @@ public class BatchTester {
         String argsFileName = testDataPath + "/args.txt";
         String testInputFileName = testDataPath + "/TestInput.txt";
 
-        //Read students from the config file.
-        StudentReader reader = new StudentReader(results, settings);
+        // Get students from the Settings.
         ArrayList<Student> students = settings.getStudents();
 
         if (students != null) {
