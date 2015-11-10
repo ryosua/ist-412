@@ -5,6 +5,7 @@ import controller.Main;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import model.Strings;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -13,6 +14,7 @@ public class BatchTesterTest
     private Main main;
     private File savedConfigFile;
     private boolean savedDisplayOutputCheck;
+    private File settingsFile;
     
     @BeforeClass
     public static void setupTests() {
@@ -21,7 +23,8 @@ public class BatchTesterTest
     
     @Before
     public void setupTest() {
-        main = new Main();
+        settingsFile = new File(Strings.SETTINGS_FILE_NAME);
+        main = new Main(settingsFile);
         
         // Save the old config file.
         savedConfigFile = main.getSettings().getConfigFile();

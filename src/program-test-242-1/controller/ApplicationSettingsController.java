@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import model.ApplicationSettings;
+import model.Strings;
 
 public class ApplicationSettingsController {
 
@@ -13,30 +14,30 @@ public class ApplicationSettingsController {
         try (PrintWriter out = new PrintWriter(settings.getSettingsFile())) {
 
             if (settings.getConfigFile() != null) {
-                out.println("Config File: " + settings.getConfigFile().getPath());
+                out.println(Strings.CONFIG_FILE_TAG + settings.getConfigFile().getPath());
             }
 
             if (settings.getJavaVersionDirectory() != null) {
-                out.println("Java Version Directory: " + settings.getJavaVersionDirectory().getPath());
+                out.println(Strings.JAVA_VERSION_DIRECTORY_TAG + settings.getJavaVersionDirectory().getPath());
             }
 
             if (settings.getOutputFileDirectory() != null) {
-                out.println("Output File Directory: " + settings.getOutputFileDirectory().getPath());
+                out.println(Strings.OUTPUT_FILE_TAG + settings.getOutputFileDirectory().getPath());
             }
 
             if (settings.getRootDirectory() != null) {
-                out.println("Root Directory: " + settings.getRootDirectory().getPath());
+                out.println(Strings.ROOT_DIRECTORY_TAG + settings.getRootDirectory().getPath());
             }
 
             if (settings.getSourceFileDirectory() != null) {
-                out.println("Source File Directory: " + settings.getSourceFileDirectory().getPath());
+                out.println(Strings.SOURCE_DIRECTORY_TAG + settings.getSourceFileDirectory().getPath());
             }
 
             if (settings.getTestCaseDirectory() != null) {
-                out.println("Test Case Directory: " + settings.getTestCaseDirectory().getPath());
+                out.println(Strings.TEST_CASE_DIRECTORY_TAG + settings.getTestCaseDirectory().getPath());
             }
             
-            out.println("Display Output: " + String.valueOf(settings.getDisplayOutputCheck()));
+            out.println(Strings.DISPLAY_OUTPUT_TAG + String.valueOf(settings.getDisplayOutputCheck()));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -54,26 +55,26 @@ public class ApplicationSettingsController {
             while (inFile.hasNextLine()) {
                 String setting = inFile.nextLine();
 
-                if (setting.startsWith("Config File: ")) {
-                    settings.setConfigFile(new File(setting.substring("Config File: ".length())));
+                if (setting.startsWith(Strings.CONFIG_FILE_TAG)) {
+                    settings.setConfigFile(new File(setting.substring(Strings.CONFIG_FILE_TAG.length())));
                 }
-                if (setting.startsWith("Output File Directory: ")) {
-                    settings.setOutputFileDirectory(new File(setting.substring("Output File Directory: ".length())));
+                if (setting.startsWith(Strings.OUTPUT_FILE_TAG)) {
+                    settings.setOutputFileDirectory(new File(setting.substring(Strings.OUTPUT_FILE_TAG.length())));
                 }
-                if (setting.startsWith("Root Directory: ")) {
-                    settings.setRootDirectory(new File(setting.substring("Root Directory: ".length())));
+                if (setting.startsWith(Strings.ROOT_DIRECTORY_TAG)) {
+                    settings.setRootDirectory(new File(setting.substring(Strings.ROOT_DIRECTORY_TAG.length())));
                 }
-                if (setting.startsWith("Source File Directory: ")) {
-                    settings.setSourceFileDirectory(new File(setting.substring("Source File Directory: ".length())));
+                if (setting.startsWith(Strings.SOURCE_DIRECTORY_TAG)) {
+                    settings.setSourceFileDirectory(new File(setting.substring(Strings.SOURCE_DIRECTORY_TAG.length())));
                 }
-                if (setting.startsWith("Test Case Directory: ")) {
-                    settings.setTestCaseDirectory(new File(setting.substring("Test Case Directory: ".length())));
+                if (setting.startsWith(Strings.TEST_CASE_DIRECTORY_TAG)) {
+                    settings.setTestCaseDirectory(new File(setting.substring(Strings.TEST_CASE_DIRECTORY_TAG.length())));
                 }
-                if (setting.startsWith("Java Version Directory: ")) {
-                    settings.setJavaVersionDirectory(new File(setting.substring("Java Version Directory: ".length())));
+                if (setting.startsWith(Strings.JAVA_VERSION_DIRECTORY_TAG)) {
+                    settings.setJavaVersionDirectory(new File(setting.substring(Strings.JAVA_VERSION_DIRECTORY_TAG.length())));
                 }
-                if (setting.startsWith("Display Output: ")) {
-                    settings.setDisplayOutputCheck(Boolean.valueOf(setting.substring("Display Output: ".length())));
+                if (setting.startsWith(Strings.DISPLAY_OUTPUT_TAG)) {
+                    settings.setDisplayOutputCheck(Boolean.valueOf(setting.substring(Strings.DISPLAY_OUTPUT_TAG.length())));
                 }
             }
         } catch (FileNotFoundException e) {

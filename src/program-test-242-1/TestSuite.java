@@ -8,8 +8,7 @@ import test.StudentReaderTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    //working on this //ApplicationSettingsTest.class,
-    //working on this //ApplicationSettingsTest.class,
+    ApplicationSettingsTest.class,
     FileFilterTest.class,
     ResultsControllerTest.class,
     StudentReaderTest.class,

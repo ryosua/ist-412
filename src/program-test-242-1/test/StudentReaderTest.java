@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import model.Results;
+import model.Strings;
 import model.Student;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,11 +25,13 @@ public class StudentReaderTest {
     private static File savedSourceDir;
     private static File testDir;
     private static File testSubDir;
+    private static File testSettingsFile;
 
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Setup Tests.");
-        main = new Main();
+        testSettingsFile = new File(Strings.SETTINGS_FILE_NAME);
+        main = new Main(testSettingsFile);
         testFile = new File("junitTestBatchConfigFile.txt");
 
         // Save the settings files that will be modified for the test.
@@ -41,7 +44,7 @@ public class StudentReaderTest {
 
     @Before
     public void setUp() {
-        
+
     }
 
     @Test
@@ -97,7 +100,7 @@ public class StudentReaderTest {
         testSubDir = new File(testDir.getAbsoluteFile() + "/mudgettdr");
         testDir.mkdirs();
         testSubDir.mkdirs();
-        
+
         main.getSettings().setSourceFileDirectory(testDir);
 
         //Create some students.
@@ -126,24 +129,20 @@ public class StudentReaderTest {
 
     @After
     public void tearDown() {
-        
+
     }
 
     @AfterClass
     public static void tearDownClass() {
         System.out.println("Teardown Tests.");
-        
+
         testFile.delete();
 
         //Set settings back.
         main.getSettings().setConfigFile(savedConfigFile);
         main.getSettings().setSourceFileDirectory(savedSourceDir);
-        
+
         testSubDir.delete();
         testDir.delete();
-    }
-
-    private void BatchConfigReader() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

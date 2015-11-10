@@ -3,94 +3,205 @@ package test;
 import controller.ApplicationSettingsController;
 import controller.Main;
 import java.io.File;
+import java.io.IOException;
 import model.ApplicationSettings;
+import model.Strings;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ApplicationSettingsTest {
+
+    private static File testConfigFile;
+    private static boolean testDisplayOutputCheck;
+    private static File testJavaDir;
+    private static File testOutputFile;
+    private static File testRootDir;
+    private static File testSourceFileDir;
+    private static File testTestCaseDir;
+
     private Main main;
-    
+    private File testSettingsFile;
+
     @BeforeClass
     public static void setupTests() {
-        System.out.println("Starting Tests");   
+        System.out.println("Starting Tests");
     }
-    
+
     @Before
     public void setupTest() {
-        main = new Main();
+        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
+        main = new Main(testSettingsFile);
+
+        testConfigFile = new File("testConfig.txt");
+        testDisplayOutputCheck = false;
+        testJavaDir = new File("testJavaDir");
+        testOutputFile = new File("testOutputFile");
+        testRootDir = new File("testRootDir");
+        testSourceFileDir = new File("testSourceDir");
+        testTestCaseDir = new File("testTestCaseDir");
     }
-    
+
     @Test
-    public void byDefaultSettingsAreEmptyFiles() {
-        File emptyFile = new File("");
-        ApplicationSettings settings = new ApplicationSettings();
-        assertTrue(settings.getConfigFile().equals(emptyFile));
-        //ect
+    public void byDefaultSettingsAreSetToTheDefaultFile() {
+        File defaultFile = new File("");
+        assertTrue(main.getSettings().getConfigFile().equals(defaultFile));
+        assertTrue(main.getSettings().getJavaVersionDirectory().equals(defaultFile));
+        assertTrue(main.getSettings().getOutputFileDirectory().equals(defaultFile));
+        assertTrue(main.getSettings().getRootDirectory().equals(defaultFile));
+        assertTrue(main.getSettings().getSourceFileDirectory().equals(defaultFile));
+        assertTrue(main.getSettings().getTestCaseDirectory().equals(defaultFile));
     }
-    
+
     @Test
     public void configFileReadAndWrite() {
-        ApplicationSettings settings = new ApplicationSettings();
-        File testFile = new File("testConfig.txt");
-        settings.setConfigFile(testFile);
-        ApplicationSettingsController.writeDataToSettingsFile(settings);
-        ApplicationSettings newSettings = new ApplicationSettings();
-        ApplicationSettingsController.readDataFromSettingsFile(settings);
-        assertTrue(settings.getConfigFile().equals(newSettings.getConfigFile()));
+        // Write to settings.
+        try {
+            testConfigFile.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setConfigFile(testConfigFile);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getConfigFile().equals(newSettings.getConfigFile()));
     }
-    
+
     @Test
     public void javaVersionDirectoryReadAndWrite() {
-        
+        // Write to settings.
+        try {
+            testJavaDir.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setJavaVersionDirectory(testJavaDir);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getJavaVersionDirectory().equals(newSettings.getJavaVersionDirectory()));
     }
-    
+
     @Test
     public void outputFileDirectoryReadAndWrite() {
-        
+        // Write to settings.
+        try {
+            testOutputFile.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setOutputFileDirectory(testOutputFile);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getOutputFileDirectory().equals(newSettings.getOutputFileDirectory()));
     }
-    
+
     @Test
     public void rootDirectoryReadAndWrite() {
-        
+        // Write to settings.
+        try {
+            testRootDir.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setRootDirectory(testRootDir);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getRootDirectory().equals(newSettings.getRootDirectory()));
     }
-    
-    @Test
-    public void runModeReadAndWrite() {
-        
-    }
-    
+
     @Test
     public void sourceFileDirectoryReadAndWrite() {
-        
+        // Write to settings.
+        try {
+            testSourceFileDir.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setSourceFileDirectory(testSourceFileDir);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getSourceFileDirectory().equals(newSettings.getSourceFileDirectory()));
     }
-    
+
     @Test
     public void testCaseDirectoryReadAndWrite() {
-        
+        // Write to settings.
+        try {
+            testTestCaseDir.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+        main.getSettings().setTestCaseDirectory(testTestCaseDir);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getTestCaseDirectory().equals(newSettings.getTestCaseDirectory()));
     }
-    
+
     @Test
     public void displayOutputCheckReadAndWrite() {
-        
+        // Write to settings.       
+        main.getSettings().setDisplayOutputCheck(testDisplayOutputCheck);
+        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
+
+        // Read from settings.
+        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
+        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
+
+        assertTrue(main.getSettings().getDisplayOutputCheck() == newSettings.getDisplayOutputCheck());
     }
-    
-    @Test
-    public void testToString() {
-        
-    }
-    
+
     @After
     public void teardownTest() {
         System.out.println("Test Finished");
+        // Delete all the files and dirs created for testing.
+        testConfigFile.delete();
+        testJavaDir.delete();
+        testOutputFile.delete();
+        testRootDir.delete();
+        testSourceFileDir.delete();
+        testTestCaseDir.delete();
+        
+        // Delete the test settings file.
+        testSettingsFile.delete();
     }
 
     @AfterClass
     public static void teardownTests() {
         System.out.println("All Tests Finished");
     }
+
 }
