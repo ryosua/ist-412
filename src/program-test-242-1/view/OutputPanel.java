@@ -1,23 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.BorderLayout;
-import view.listener.CloseOutputWindowListener;
-import view.listener.OpenOutputWindowListener;
-import view.listener.SourceOutputWindowListener;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import model.ApplicationSettings;
+import model.Student;
 
-/**
- *
- * @author dos5385
- */
 public class OutputPanel extends JPanel {
 
     private final ApplicationSettings settings;
@@ -33,14 +21,18 @@ public class OutputPanel extends JPanel {
 
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
-        
+
         outputArea = new JTextArea(results);
         outputArea.setEditable(false);
-        
+
         StudentOutputPanel studentOutputPanel = new StudentOutputPanel(this, settings);
-       
+
         this.add(studentOutputPanel, BorderLayout.WEST);
         this.add(outputArea, BorderLayout.CENTER);
+    }
+
+    public void refresh(Student student) {
+        // set the text from the student output file and set the
     }
 
     public OutputFrame getFrame() {
