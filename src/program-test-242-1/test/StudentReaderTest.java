@@ -30,7 +30,7 @@ public class StudentReaderTest {
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Setup Tests.");
-        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
+        testSettingsFile = new File(Strings.SETTINGS_FILE_NAME);
         main = new Main(testSettingsFile);
         testFile = new File("junitTestBatchConfigFile.txt");
 
@@ -44,7 +44,7 @@ public class StudentReaderTest {
 
     @Before
     public void setUp() {
-        
+
     }
 
     @Test
@@ -100,7 +100,7 @@ public class StudentReaderTest {
         testSubDir = new File(testDir.getAbsoluteFile() + "/mudgettdr");
         testDir.mkdirs();
         testSubDir.mkdirs();
-        
+
         main.getSettings().setSourceFileDirectory(testDir);
 
         //Create some students.
@@ -129,24 +129,20 @@ public class StudentReaderTest {
 
     @After
     public void tearDown() {
-        
+
     }
 
     @AfterClass
     public static void tearDownClass() {
         System.out.println("Teardown Tests.");
-        
+
         testFile.delete();
 
         //Set settings back.
         main.getSettings().setConfigFile(savedConfigFile);
         main.getSettings().setSourceFileDirectory(savedSourceDir);
-        
+
         testSubDir.delete();
         testDir.delete();
-    }
-
-    private void BatchConfigReader() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

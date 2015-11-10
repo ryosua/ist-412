@@ -40,6 +40,7 @@ public class FileFilterTest
     @After
     public void teardownTest() {
         System.out.println("Test Finished");
+        testSettingsFile.delete();
     }
 
     @AfterClass
