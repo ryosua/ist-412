@@ -43,8 +43,7 @@ public class OutputPanel extends JPanel {
 
         outputButton = new JButton("Open Output");
         outputButton.addActionListener(new OpenOutputWindowListener(this, settings));
-
-
+        
         sourceButton = new JButton("Open Source");
         sourceButton.addActionListener(new SourceOutputWindowListener(this, settings));
         
