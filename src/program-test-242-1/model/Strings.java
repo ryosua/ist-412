@@ -12,5 +12,5 @@ public class Strings {
     public static final String TEST_CASE_DIRECTORY_TAG = "Test Case Directory: ";
     
     // Test strings
-    public static final String TEST_SETTINGS_FILE_NAME = "Settings.txt";
+    public static final String TEST_SETTINGS_FILE_NAME = "TestSettings.txt";
 }

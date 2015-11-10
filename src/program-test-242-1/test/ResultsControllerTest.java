@@ -29,7 +29,7 @@ public class ResultsControllerTest {
     @Before
     public void setUp() {
         System.out.println("Setup Tests.");
-        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
+        testSettingsFile = new File(Strings.SETTINGS_FILE_NAME);
         main = new Main(testSettingsFile);
         testFile = new File("junitTestResultsFile.txt");
     }
@@ -37,6 +37,8 @@ public class ResultsControllerTest {
     @Test
     public void testWriteResults() {
         System.out.println("writeResults");
+        
+        boolean error = false;
 
         // Create a test results object and add a file with some text on it.
         Results testResults = new Results();
@@ -50,8 +52,10 @@ public class ResultsControllerTest {
             out.println("Line2");
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+            error = true;
         } catch (IOException ex) {
             ex.printStackTrace();
+            error = true;
         } finally {
             out.close();
         }
@@ -63,7 +67,7 @@ public class ResultsControllerTest {
         instance.writeResults();
 
         Scanner in = null;
-        boolean error = false;
+        
 
         try {
             in = new Scanner(main.getSettings().getOutputFileDirectory());
@@ -79,7 +83,7 @@ public class ResultsControllerTest {
             in.close();
         }
 
-        assertFalse(error);
+        assertFalse("There was an error writing the results.", error);
     }
 
     @After

@@ -14,7 +14,7 @@ public class BatchTesterTest
     private Main main;
     private File savedConfigFile;
     private boolean savedDisplayOutputCheck;
-    private File testSettingsFile;
+    private File settingsFile;
     
     @BeforeClass
     public static void setupTests() {
@@ -23,8 +23,8 @@ public class BatchTesterTest
     
     @Before
     public void setupTest() {
-        testSettingsFile = new File(Strings.TEST_SETTINGS_FILE_NAME);
-        main = new Main(testSettingsFile);
+        settingsFile = new File(Strings.SETTINGS_FILE_NAME);
+        main = new Main(settingsFile);
         
         // Save the old config file.
         savedConfigFile = main.getSettings().getConfigFile();
