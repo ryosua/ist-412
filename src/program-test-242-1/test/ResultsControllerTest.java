@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 import model.Results;
 import model.Strings;
@@ -37,19 +38,24 @@ public class ResultsControllerTest {
     @Test
     public void testWriteResults() {
         System.out.println("writeResults");
-        
+
         boolean error = false;
 
         // Create a test results object and add a file with some text on it.
         Results testResults = new Results();
+
+        ArrayList<String> expectedResults = new ArrayList<>();
+        expectedResults.add("Line1");
+        expectedResults.add("Line2");
 
         // Create a test file to add to the results.
         PrintWriter out = null;
         try {
             testFile.createNewFile();
             out = new PrintWriter(testFile);
-            out.println("Line1");
-            out.println("Line2");
+            for (String line: expectedResults) {
+                out.println(line);
+            }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             error = true;
@@ -67,14 +73,14 @@ public class ResultsControllerTest {
         instance.writeResults();
 
         Scanner in = null;
+        ArrayList<String> readResults = new ArrayList<>();
         
-
+        // Make sure the file is there and the results written match what was written.
         try {
             in = new Scanner(main.getSettings().getOutputFileDirectory());
-
-            // Make sure the file is there and there is at least something written to it.
-            if (in.hasNext() == false) {
-                error = true;
+            
+            while (in.hasNextLine() == true) {
+                readResults.add(in.nextLine());
             }
 
         } catch (FileNotFoundException ex) {
@@ -82,8 +88,15 @@ public class ResultsControllerTest {
         } finally {
             in.close();
         }
-
+        
+        // The results controller prints a new line at the end of each file.
+        expectedResults.add("");
+        
+        //System.out.println("Expected results: " + expectedResults.toString());
+        //System.out.println("Read results: " + readResults.toString());
+               
         assertFalse("There was an error writing the results.", error);
+        assertTrue("The expected results did not match the actual results.", expectedResults.equals(readResults));
     }
 
     @After
