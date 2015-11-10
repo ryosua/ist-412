@@ -23,7 +23,6 @@ public class OutputPanel extends JPanel {
     private final ApplicationSettings settings;
 
     private final JTextArea outputArea;
-    private final JButton closeButton, outputButton, sourceButton;
     private final String results;
     private final OutputFrame theFrame;
 
@@ -37,20 +36,11 @@ public class OutputPanel extends JPanel {
         
         outputArea = new JTextArea(results);
         outputArea.setEditable(false);
+        
+        StudentOutputPanel studentOutputPanel = new StudentOutputPanel(this, settings);
        
-        closeButton = new JButton("Close Window");
-        closeButton.addActionListener(new CloseOutputWindowListener(this));
-
-        outputButton = new JButton("Open Output");
-        outputButton.addActionListener(new OpenOutputWindowListener(this, settings));
-        
-        sourceButton = new JButton("Open Source");
-        sourceButton.addActionListener(new SourceOutputWindowListener(this, settings));
-        
-        this.add(closeButton, BorderLayout.WEST);
-        this.add(outputButton, BorderLayout.EAST);
+        this.add(studentOutputPanel, BorderLayout.WEST);
         this.add(outputArea, BorderLayout.CENTER);
-        this.add(sourceButton, BorderLayout.NORTH);
     }
 
     public OutputFrame getFrame() {
