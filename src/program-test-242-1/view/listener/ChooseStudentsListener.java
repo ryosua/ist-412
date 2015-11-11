@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
-import view.StudentsFrame;
+import view.ChooseStudentsFrame;
 
 public class ChooseStudentsListener  implements ActionListener {
     
@@ -21,7 +21,7 @@ public class ChooseStudentsListener  implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (studentWindowOpen == false) {
-            StudentsFrame frame = new StudentsFrame(this, settings);
+            ChooseStudentsFrame frame = new ChooseStudentsFrame(this, settings);
             frame.initFrame();
 
             textField.setText("Select students");
