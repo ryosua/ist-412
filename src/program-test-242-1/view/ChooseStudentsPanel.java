@@ -13,15 +13,15 @@ import model.ApplicationSettings;
 import model.Results;
 import model.Student;
 
-public class StudentsPanel extends JPanel {
+public class ChooseStudentsPanel extends JPanel {
 
-    private final StudentsFrame frame;
+    private final ChooseStudentsFrame frame;
     private final ApplicationSettings settings;
 
     private JCheckBox[] checkBoxes;
     private ArrayList<Student> students;
 
-    public StudentsPanel(StudentsFrame frame, ApplicationSettings settings) {
+    public ChooseStudentsPanel(ChooseStudentsFrame frame, ApplicationSettings settings) {
         this.frame = frame;
         this.settings = settings;
 
