@@ -6,7 +6,6 @@ import controller.StudentReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import model.Results;
 import model.Strings;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -41,10 +40,8 @@ public class BatchTesterTest
         // Set the output check setting to false.
         main.getSettings().setDisplayOutputCheck(false);
         
-       
         // Read students and save to settings.
-        Results results = new Results();
-        StudentReader reader = new StudentReader(results, main.getSettings());
+        StudentReader reader = new StudentReader(main.getSettings());
         main.getSettings().setStudents(reader.readStudentsFromFileStructure());
     }
    
