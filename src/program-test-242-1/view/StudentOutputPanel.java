@@ -41,11 +41,10 @@ public class StudentOutputPanel extends JPanel {
         sourceButton = new JButton("Open Source");
         sourceButton.addActionListener(new SourceOutputWindowListener(outputPanel, settings));
         
-        JScrollPane theStudentScrollPane = new JScrollPane();
-        
         JTable studentTable = new JTable();
         studentTable.setModel(new StudentTableModel(settings.getStudents()));
         
+        JScrollPane theStudentScrollPane = new JScrollPane(studentTable);
         
         JPanel buttonPanel = new JPanel();
         BoxLayout layout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
