@@ -23,7 +23,7 @@ public class OutputController {
         try (Scanner in = new Scanner(outputFile)) {
             while (in.hasNext()) {
                 String line = in.nextLine();
-                outputString +=line;
+                outputString +=line + "\n";
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(OutputPanel.class.getName()).log(Level.SEVERE, null, ex);

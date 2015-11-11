@@ -41,5 +41,10 @@ public class StudentTableModel extends AbstractTableModel {
     public String getColumnName(int column){
         return columnHeaders[column];
     }
+    public boolean isCellEditable(int row, int col)
+        { return false; }
     
+    public Student getStudent(int row){
+        return studentArrayList.get(row);
+    }
 }
