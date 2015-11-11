@@ -15,16 +15,14 @@ public class OutputFrame extends JFrame {
         this.results = results;
         this.settings = settings;
         initFrame();
-
     }
 
-    public void initFrame() {
+    private void initFrame() {
         this.setSize(500, 500);
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
-        OutputController outputController = new OutputController();
-        output = new OutputPanel(this, results, settings , outputController);
+        output = new OutputPanel(this, results, settings);
         this.add(output);
 
         this.setVisible(true);
