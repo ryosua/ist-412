@@ -58,7 +58,7 @@ public class InputPanel extends JPanel {
         final GridBagConstraints studentsLabelC = new GridBagConstraints();
         studentsLabelC.fill = GridBagConstraints.HORIZONTAL;
         studentsLabelC.gridx = 0;
-        studentsLabelC.gridy = 4;
+        studentsLabelC.gridy = 10;
         studentsLabelC.insets = new Insets(5, 0, 0, 0);
 
         final JLabel sourceDirectoryLabel = new JLabel("Choose a Source Directory or Zip File:");
@@ -77,7 +77,7 @@ public class InputPanel extends JPanel {
         final GridBagConstraints outputLabelC = new GridBagConstraints();
         outputLabelC.fill = GridBagConstraints.HORIZONTAL;
         outputLabelC.gridx = 0;
-        outputLabelC.gridy = 10;
+        outputLabelC.gridy = 4;
 
         final ApplicationSettings settings = main.getSettings();
 
@@ -107,8 +107,8 @@ public class InputPanel extends JPanel {
         final GridBagConstraints studentsFieldC = new GridBagConstraints();
         studentsFieldC.fill = GridBagConstraints.HORIZONTAL;
         studentsFieldC.gridx = 0;
-        studentsFieldC.gridy = 5;
-        studentsFieldC.insets = new Insets(0, 0, 30, 0);
+        studentsFieldC.gridy = 11;
+        //studentsFieldC.insets = new Insets(0, 0, 30, 0);
 
         final JTextField sourceDirectoryField = new JTextField();
         sourceDirectoryFieldText = settings.getSourceFileDirectory().getPath();
@@ -128,7 +128,7 @@ public class InputPanel extends JPanel {
         final GridBagConstraints outputFieldC = new GridBagConstraints();
         outputFieldC.fill = GridBagConstraints.HORIZONTAL;
         outputFieldC.gridx = 0;
-        outputFieldC.gridy = 11;
+        outputFieldC.gridy = 5;
 
         final JTextField testCaseDirectoryField = new JTextField();
         testCaseDirectoryFieldText = settings.getTestCaseDirectory().getPath();
@@ -139,6 +139,7 @@ public class InputPanel extends JPanel {
         testFieldC.fill = GridBagConstraints.HORIZONTAL;
         testFieldC.gridx = 0;
         testFieldC.gridy = 9;
+        testFieldC.insets = new Insets(0, 0, 30, 0);
         
         final JButton rootDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
@@ -159,8 +160,8 @@ public class InputPanel extends JPanel {
         configButtonC.fill = GridBagConstraints.NONE;
         configButtonC.anchor = GridBagConstraints.EAST;
         configButtonC.gridx = 1;
-        configButtonC.gridy = 5;
-        configButtonC.insets = new Insets(0, 0, 30, 0);
+        configButtonC.gridy = 11;
+        //configButtonC.insets = 
 
         final JButton sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
@@ -175,31 +176,31 @@ public class InputPanel extends JPanel {
         testButtonC.anchor = GridBagConstraints.EAST;
         testButtonC.gridx = 1;
         testButtonC.gridy = 9;
+        testButtonC.insets = new Insets(0, 0, 30, 0);
 
         final JButton outputButton = new JButton("Choose Location");
         final GridBagConstraints outputButtonC = new GridBagConstraints();
         outputButtonC.fill = GridBagConstraints.NONE;
         outputButtonC.anchor = GridBagConstraints.EAST;
         outputButtonC.gridx = 1;
-        outputButtonC.gridy = 11;
+        outputButtonC.gridy = 5;
 
         final JButton runButton = new JButton("Run");
         runButton.setSize(WIDTH, 10);
         final GridBagConstraints runButtonC = new GridBagConstraints();
         runButtonC.fill = GridBagConstraints.NONE;
         runButtonC.gridx = 1;
-        runButtonC.gridy = 12;
+        runButtonC.gridy = 13;
         runButtonC.gridwidth = 1;
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
-        runButtonC.insets = new Insets(25, 0, 0, 0);
         //Run program when clicked.
         runButton.addActionListener(new RunProgramListener(main.getSettings()));
 
         final JCheckBox showOutputCheckbox = new JCheckBox("Show Output in New Window", true);
         final GridBagConstraints showOutputCheckboxC = new GridBagConstraints();
         showOutputCheckboxC.fill = GridBagConstraints.HORIZONTAL;
-        showOutputCheckboxC.gridx = 1;
-        showOutputCheckboxC.gridy = 13;
+        showOutputCheckboxC.gridx = 0;
+        showOutputCheckboxC.gridy = 12;
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));

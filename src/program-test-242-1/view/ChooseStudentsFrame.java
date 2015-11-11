@@ -34,6 +34,8 @@ public class ChooseStudentsFrame extends JFrame {
         this.add(panel);
 
         this.setVisible(true);
+        
+        //Prevents multiple student selection windows from being opened.
         chooseStudentslistener.setStudentWindowOpen(true);
     }
     
