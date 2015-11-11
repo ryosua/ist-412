@@ -2,6 +2,7 @@ package test;
 
 import controller.BatchTester;
 import controller.Main;
+import controller.StudentReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -38,6 +39,10 @@ public class BatchTesterTest
         
         // Set the output check setting to false.
         main.getSettings().setDisplayOutputCheck(false);
+        
+        // Read students and save to settings.
+        StudentReader reader = new StudentReader(main.getSettings());
+        main.getSettings().setStudents(reader.readStudentsFromFileStructure());
     }
    
     @Test
