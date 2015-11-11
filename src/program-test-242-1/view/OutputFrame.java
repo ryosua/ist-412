@@ -1,6 +1,5 @@
 package view;
 
-import controller.OutputController;
 import javax.swing.JFrame;
 import model.ApplicationSettings;
 
