@@ -3,8 +3,7 @@ package model;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Student {
-
-    private final Results results;
+    
     private final String path;
     private final String classPath;
     private final String sourcePath;
@@ -12,9 +11,10 @@ public class Student {
     private final String outputFileName;
     private final String inputFileStub;
     private final String studentName;
+    
+    private Results results;
 
-    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, Results results, String inputFileStub, String studentName) {
-        this.results = results;
+    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, String inputFileStub, String studentName) {
         this.path = path;
         this.classPath = classPath;
         this.sourcePath = sourcePath;
@@ -59,6 +59,10 @@ public class Student {
     public String getStudentName() {
         return studentName;
     }
+    
+    public void setResults(Results results) {
+        this.results = results;
+    }
 
     @Override
     public String toString() {
@@ -77,8 +81,7 @@ public class Student {
     @Override
     public boolean equals(Object obj) {
         Student otherStudent = (Student) obj;
-        return getResults().equals(otherStudent.getResults())
-                && getPath().equals(otherStudent.getPath())
+        return getPath().equals(otherStudent.getPath())
                 && getClassPath().equals(otherStudent.getClassPath())
                 && getSourcePath().equals(otherStudent.getSourcePath())
                 && getStudentPath().equals(otherStudent.getStudentPath())
@@ -90,7 +93,6 @@ public class Student {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
-                append(results).
                 append(path).
                 append(classPath).
                 append(sourcePath).

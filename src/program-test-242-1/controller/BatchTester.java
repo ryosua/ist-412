@@ -35,6 +35,9 @@ public class BatchTester {
 
         if (students != null) {
             for (Student student : students) {
+                // Add results to student.
+                student.setResults(results);
+                        
                 // Run javac compiler - returns 0 on success.
                 Compiler c = new Compiler(student);
                 int success = c.compileJava();
