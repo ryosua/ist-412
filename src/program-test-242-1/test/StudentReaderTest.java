@@ -64,9 +64,7 @@ public class StudentReaderTest {
         } finally {
             out.close();
         }
-
-        Results results = new Results();
-
+        
         //Create some students.
         ArrayList<Student> expectedStudents = new ArrayList();
         Student expectedStudent = new Student(
@@ -75,14 +73,13 @@ public class StudentReaderTest {
                 main.getSettings().getSourceFileDirectory().getAbsolutePath(),
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/output-mudgettdr.txt",
-                results,
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/input",
                 "mudgettdr"
         );
         expectedStudents.add(expectedStudent);
 
         // Read students from the test file using StudentReader.
-        StudentReader reader = new StudentReader(results, main.getSettings());
+        StudentReader reader = new StudentReader(main.getSettings());
         ArrayList<Student> readStudents = reader.readStudentsFromConfig();
 
         boolean studentsAreEqual = expectedStudents.equals(readStudents);
@@ -111,14 +108,13 @@ public class StudentReaderTest {
                 main.getSettings().getSourceFileDirectory().getAbsolutePath(),
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/output-mudgettdr.txt",
-                results,
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr/input",
                 "mudgettdr"
         );
         expectedStudents.add(expectedStudent);
 
         // Read students from the test file using StudentReader.
-        StudentReader reader = new StudentReader(results, main.getSettings());
+        StudentReader reader = new StudentReader(main.getSettings());
         ArrayList<Student> readStudents = reader.readStudentsFromFileStructure();
 
         boolean studentsAreEqual = expectedStudents.equals(readStudents);
