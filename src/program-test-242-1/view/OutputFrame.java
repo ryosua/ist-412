@@ -1,5 +1,6 @@
 package view;
 
+import controller.OutputController;
 import javax.swing.JFrame;
 import model.ApplicationSettings;
 
@@ -7,7 +8,7 @@ public class OutputFrame extends JFrame {
 
     private final String results;
     private final ApplicationSettings settings;
-
+    
     private OutputPanel output;
 
     public OutputFrame(String results, ApplicationSettings settings) {
@@ -18,12 +19,12 @@ public class OutputFrame extends JFrame {
     }
 
     public void initFrame() {
-
         this.setSize(500, 500);
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-
-        output = new OutputPanel(this, results, settings);
+        
+        OutputController outputController = new OutputController();
+        output = new OutputPanel(this, results, settings , outputController);
         this.add(output);
 
         this.setVisible(true);
