@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -46,6 +47,7 @@ public class StudentOutputPanel extends JPanel {
         
         JScrollPane theStudentScrollPane = new JScrollPane(studentTable);
         
+        theStudentScrollPane.setPreferredSize(new Dimension(100, this.getHeight()));
         JPanel buttonPanel = new JPanel();
         BoxLayout layout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
         buttonPanel.setLayout(layout);

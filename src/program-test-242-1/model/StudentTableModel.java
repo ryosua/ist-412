@@ -37,4 +37,9 @@ public class StudentTableModel extends AbstractTableModel {
         return studentArrayList.get(rowIndex).getStudentName();
     }
     
+    @Override
+    public String getColumnName(int column){
+        return columnHeaders[column];
+    }
+    
 }
