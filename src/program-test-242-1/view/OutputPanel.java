@@ -1,6 +1,5 @@
 package view;
 
-import controller.OutputController;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -8,17 +7,15 @@ import model.ApplicationSettings;
 
 public class OutputPanel extends JPanel {
 
-    private final OutputController outputController;
     private final ApplicationSettings settings;
     private final JTextArea outputArea;
     private final String results;
     private final OutputFrame theFrame;
 
-    public OutputPanel(OutputFrame frame, String results, ApplicationSettings settings, OutputController outputController) {
+    public OutputPanel(OutputFrame frame, String results, ApplicationSettings settings) {
         theFrame = frame;
         this.results = results;
         this.settings = settings;
-        this.outputController = outputController;
 
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
