@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import model.ApplicationSettings;
+import model.StudentTableModel;
 import view.listener.CloseOutputWindowListener;
 import view.listener.OpenOutputWindowListener;
 import view.listener.SourceOutputWindowListener;
@@ -38,6 +41,12 @@ public class StudentOutputPanel extends JPanel {
         sourceButton = new JButton("Open Source");
         sourceButton.addActionListener(new SourceOutputWindowListener(outputPanel, settings));
         
+        JScrollPane theStudentScrollPane = new JScrollPane();
+        
+        JTable studentTable = new JTable();
+        studentTable.setModel(new StudentTableModel(settings.getStudents()));
+        
+        
         JPanel buttonPanel = new JPanel();
         BoxLayout layout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
         buttonPanel.setLayout(layout);
@@ -46,6 +55,7 @@ public class StudentOutputPanel extends JPanel {
         buttonPanel.add(sourceButton);
         buttonPanel.add(closeButton);
         
+        this.add(theStudentScrollPane, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
 }
