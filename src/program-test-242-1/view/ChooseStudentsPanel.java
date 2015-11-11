@@ -5,12 +5,10 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import model.ApplicationSettings;
-import model.Results;
 import model.Student;
 
 public class ChooseStudentsPanel extends JPanel {
@@ -34,12 +32,9 @@ public class ChooseStudentsPanel extends JPanel {
     private void createComponents() {
         final JCheckBox selectAllCheckBox = new JCheckBox("Select All");
         this.add(selectAllCheckBox, BorderLayout.NORTH);
-
-        // TEMPORARY - We need to refactor this class, or get an instance from BatchTester.
-        Results results = new Results();
-
+        
         // Read students from config.
-        StudentReader studentReader = new StudentReader(results, settings);
+        StudentReader studentReader = new StudentReader(settings);
         students = studentReader.readStudentsFromFileStructure();
 
         JPanel checkBoxesPanel = new JPanel();

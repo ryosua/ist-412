@@ -5,16 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.ApplicationSettings;
-import model.Results;
 import model.Student;
 
 public class StudentReader {
 
-    private final Results results;
     private final ApplicationSettings settings;
 
-    public StudentReader(Results results, ApplicationSettings settings) {
-        this.results = results;
+    public StudentReader(ApplicationSettings settings) {
         this.settings = settings;
     }
 
@@ -59,7 +56,7 @@ public class StudentReader {
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub, studentName);
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
                 students.add(student);
             }
         } catch (FileNotFoundException ex) {
@@ -95,7 +92,7 @@ public class StudentReader {
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, results, inputFileStub, studentName);
+                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
                 students.add(student);
             }
         }
