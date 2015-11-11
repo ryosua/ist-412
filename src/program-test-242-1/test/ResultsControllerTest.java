@@ -20,9 +20,10 @@ import static org.junit.Assert.*;
 public class ResultsControllerTest {
 
     private Main main;
+    private boolean savedDisplayOutputCheck;
     private File testFile;
     private File testSettingsFile;
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
@@ -33,6 +34,8 @@ public class ResultsControllerTest {
         testSettingsFile = new File(Strings.SETTINGS_FILE_NAME);
         main = new Main(testSettingsFile);
         testFile = new File("junitTestResultsFile.txt");
+        savedDisplayOutputCheck = main.getSettings().getDisplayOutputCheck();
+        main.getSettings().setDisplayOutputCheck(false);
     }
 
     @Test
@@ -103,6 +106,7 @@ public class ResultsControllerTest {
     public void tearDown() {
         System.out.println("Teardown Tests.");
         testFile.delete();
+        main.getSettings().setDisplayOutputCheck(savedDisplayOutputCheck);
     }
 
     @AfterClass
