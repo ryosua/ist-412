@@ -29,8 +29,7 @@ public class StudentReader {
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
-
-        File path = settings.getJavaVersionDirectory();
+        
         // Set fixed paths and file names:
         File sourcePath = settings.getSourceFileDirectory();
 
@@ -56,7 +55,7 @@ public class StudentReader {
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
+                Student student = new Student(classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
                 students.add(student);
             }
         } catch (FileNotFoundException ex) {
@@ -78,7 +77,6 @@ public class StudentReader {
         File[] files = settings.getSourceFileDirectory().listFiles();
 
         // Set fixed paths and file names:
-        File path = settings.getJavaVersionDirectory();
         File sourcePath = settings.getSourceFileDirectory();
 
         for (File file : files) {
@@ -92,7 +90,7 @@ public class StudentReader {
                 String inputFileStub = studentPath + "/input";
                 String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
-                Student student = new Student(path.getAbsolutePath(), classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
+                Student student = new Student(classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
                 students.add(student);
             }
         }

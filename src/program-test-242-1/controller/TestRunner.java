@@ -6,7 +6,6 @@ import java.lang.ProcessBuilder.Redirect;
 
 public class TestRunner {
 
-    private String path;
     private String classPath;
     private String studentPath;
     private String argsFileName;
@@ -16,9 +15,8 @@ public class TestRunner {
     private String outputFileName;
     private int success;
 
-    public TestRunner(String pth, String clsPath, String stdPath, String argFileName, String tstInputFileName, String inFileStub, String outFileName) {
+    public TestRunner(String clsPath, String stdPath, String argFileName, String tstInputFileName, String inFileStub, String outFileName) {
 
-        path = pth;
         classPath = clsPath;
         studentPath = stdPath;
         argsFileName = argFileName;
@@ -78,7 +76,6 @@ public class TestRunner {
 //        Create environment map and set environmental variables 
                     Map<String, String> env = pb.environment();
                     env.clear();
-                    env.put("PATH", path);
                     env.put("CLASSPATH", classPath);
 
 //        Determine current working directory

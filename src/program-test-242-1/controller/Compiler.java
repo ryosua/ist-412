@@ -75,7 +75,6 @@ public class Compiler
 //          Create environment map and set environmental variables         
             Map<String, String> env = pb.environment();       
             env.clear();
-            env.put("PATH", student.getPath());
             env.put("CLASSPATH", student.getClassPath());
 //          env.put("SOURCEPATH", sourcePath);
 //          env.remove("OTHERVAR");

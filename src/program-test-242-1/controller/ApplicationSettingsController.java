@@ -17,10 +17,6 @@ public class ApplicationSettingsController {
                 out.println(Strings.CONFIG_FILE_TAG + settings.getConfigFile().getPath());
             }
 
-            if (settings.getJavaVersionDirectory() != null) {
-                out.println(Strings.JAVA_VERSION_DIRECTORY_TAG + settings.getJavaVersionDirectory().getPath());
-            }
-
             if (settings.getOutputFileDirectory() != null) {
                 out.println(Strings.OUTPUT_FILE_TAG + settings.getOutputFileDirectory().getPath());
             }
@@ -69,9 +65,6 @@ public class ApplicationSettingsController {
                 }
                 if (setting.startsWith(Strings.TEST_CASE_DIRECTORY_TAG)) {
                     settings.setTestCaseDirectory(new File(setting.substring(Strings.TEST_CASE_DIRECTORY_TAG.length())));
-                }
-                if (setting.startsWith(Strings.JAVA_VERSION_DIRECTORY_TAG)) {
-                    settings.setJavaVersionDirectory(new File(setting.substring(Strings.JAVA_VERSION_DIRECTORY_TAG.length())));
                 }
                 if (setting.startsWith(Strings.DISPLAY_OUTPUT_TAG)) {
                     settings.setDisplayOutputCheck(Boolean.valueOf(setting.substring(Strings.DISPLAY_OUTPUT_TAG.length())));

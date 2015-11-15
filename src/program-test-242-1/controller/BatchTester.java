@@ -49,7 +49,7 @@ public class BatchTester {
                     System.out.println(student.getStudentName() + " compile Exception");
                 }
 
-                TestRunner r = new TestRunner(student.getPath(), student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
+                TestRunner r = new TestRunner(student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
                 r.runJava();
             }
 

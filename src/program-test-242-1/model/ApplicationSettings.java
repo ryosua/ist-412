@@ -15,7 +15,6 @@ public class ApplicationSettings {
     private final File tutorialImageDirectory = new File(tutorialDirectory + "/tutorialImages");
 
     private File configFile = new File(""); // Just single for now.
-    private File javaVersionDirectory = new File("");
     private File outputFileDirectory = new File("");
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
@@ -31,10 +30,6 @@ public class ApplicationSettings {
 
     public File getConfigFile() {
         return configFile;
-    }
-
-    public File getJavaVersionDirectory() {
-        return javaVersionDirectory;
     }
 
     public File getOutputFileDirectory() {
@@ -82,11 +77,6 @@ public class ApplicationSettings {
         ApplicationSettingsController.writeDataToSettingsFile(this);
     }
 
-    public void setJavaVersionDirectory(File directory) {
-        javaVersionDirectory = directory;
-        ApplicationSettingsController.writeDataToSettingsFile(this);
-    }
-
     public void setOutputFileDirectory(File directory) {
         outputFileDirectory = directory;
         ApplicationSettingsController.writeDataToSettingsFile(this);
@@ -121,7 +111,6 @@ public class ApplicationSettings {
         String string = "Settings: \n\n";
 
         string += Strings.CONFIG_FILE_TAG + configFile.getAbsolutePath() + "\n";
-        string += Strings.JAVA_VERSION_DIRECTORY_TAG + javaVersionDirectory.getAbsolutePath() + "\n";
         string += Strings.OUTPUT_FILE_TAG + outputFileDirectory.getAbsolutePath() + "\n";
         string += Strings.ROOT_DIRECTORY_TAG + rootDirectory.getAbsolutePath() + "\n";
         string += Strings.SOURCE_DIRECTORY_TAG + sourceFileDirectory.getAbsolutePath() + "\n";

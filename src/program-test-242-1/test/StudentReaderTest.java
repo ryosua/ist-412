@@ -68,7 +68,6 @@ public class StudentReaderTest {
         //Create some students.
         ArrayList<Student> expectedStudents = new ArrayList();
         Student expectedStudent = new Student(
-                main.getSettings().getJavaVersionDirectory().getAbsolutePath(),
                 main.getSettings().getRootDirectory().getAbsolutePath() + "/bin/242-1/mudgettdr",
                 main.getSettings().getSourceFileDirectory().getAbsolutePath(),
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
@@ -103,7 +102,6 @@ public class StudentReaderTest {
         //Create some students.
         ArrayList<Student> expectedStudents = new ArrayList();
         Student expectedStudent = new Student(
-                main.getSettings().getJavaVersionDirectory().getAbsolutePath(),
                 main.getSettings().getRootDirectory().getAbsolutePath() + "/bin/mudgettdr",
                 main.getSettings().getSourceFileDirectory().getAbsolutePath(),
                 main.getSettings().getSourceFileDirectory().getAbsolutePath() + "/mudgettdr",
