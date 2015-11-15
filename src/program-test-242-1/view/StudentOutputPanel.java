@@ -30,6 +30,7 @@ public class StudentOutputPanel extends JPanel {
     private JTable studentTable;
     private StudentTableModel theModel;
     private OpenOutputWindowListener outputListener;
+    private SourceOutputWindowListener sourceListener;
 
     public StudentOutputPanel(OutputPanel outputPanel, ApplicationSettings settings) {
         this.outputPanel = outputPanel;
@@ -52,8 +53,9 @@ public class StudentOutputPanel extends JPanel {
         outputButton = new JButton("Open Output");
         outputButton.addActionListener(outputListener);
 
+        sourceListener = new SourceOutputWindowListener(outputPanel, settings, students.get(0));
         sourceButton = new JButton("Open Source");
-        sourceButton.addActionListener(new SourceOutputWindowListener(outputPanel, settings));
+        sourceButton.addActionListener(sourceListener);
 
         studentTable = new JTable();
         theModel = new StudentTableModel(students);
@@ -93,6 +95,7 @@ public class StudentOutputPanel extends JPanel {
             Student selectedStudent = theModel.getStudent(adjRow);
             theOutputController.refreshOutputPanel(outputPanel, selectedStudent);
             outputListener.setStudent(selectedStudent);
+            sourceListener.setStudent(selectedStudent);
         }
 
     }
