@@ -4,7 +4,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Student {
     
-    private final String path;
     private final String classPath;
     private final String sourcePath;
     private final String studentPath;
@@ -14,8 +13,7 @@ public class Student {
     
     private Results results;
 
-    public Student(String path, String classPath, String sourcePath, String studentPath, String outputFileName, String inputFileStub, String studentName) {
-        this.path = path;
+    public Student(String classPath, String sourcePath, String studentPath, String outputFileName, String inputFileStub, String studentName) {
         this.classPath = classPath;
         this.sourcePath = sourcePath;
         this.studentPath = studentPath;
@@ -26,10 +24,6 @@ public class Student {
 
     public Results getResults() {
         return results;
-    }
-
-    public String getPath() {
-        return path;
     }
 
     public String getClassPath() {
@@ -64,7 +58,6 @@ public class Student {
     public String toString() {
         String result = "";
         result += "results: " + results.toString() + "\n";
-        result += "path: " + path + "\n";
         result += "classPath: " + classPath + "\n";
         result += "sourcePath: " + sourcePath + "\n";
         result += "studentPath: " + studentPath + "\n";
@@ -77,8 +70,7 @@ public class Student {
     @Override
     public boolean equals(Object obj) {
         Student otherStudent = (Student) obj;
-        return getPath().equals(otherStudent.getPath())
-                && getClassPath().equals(otherStudent.getClassPath())
+        return getClassPath().equals(otherStudent.getClassPath())
                 && getSourcePath().equals(otherStudent.getSourcePath())
                 && getStudentPath().equals(otherStudent.getStudentPath())
                 && getOutputFileName().equals(otherStudent.getOutputFileName())
@@ -89,7 +81,6 @@ public class Student {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
-                append(path).
                 append(classPath).
                 append(sourcePath).
                 append(studentPath).

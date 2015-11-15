@@ -6,7 +6,6 @@ import view.listener.ChooseTestLocationListener;
 import controller.Main;
 import java.awt.Component;
 import view.listener.ChooseStudentsListener;
-import view.listener.ChooseJDKLocationListener;
 import view.listener.ChooseRootLocationListener;
 import view.listener.OutputCheckBoxListener;
 import view.listener.RunProgramListener;
@@ -26,8 +25,6 @@ public class InputPanel extends JPanel {
 
     private final Main main;
     private String rootDirectoryFieldText;
-    private String jdkDirectoryFieldText;
-    private String configFieldText;
     private String sourceDirectoryFieldText;
     private String outputFieldText;
     private String testCaseDirectoryFieldText;
@@ -41,18 +38,12 @@ public class InputPanel extends JPanel {
     private void createAndAddComponents() {
         final GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
-        
+
         final JLabel rootDirectoryLabel = new JLabel("Root Directory:");
         final GridBagConstraints rootDirectoryLabelC = new GridBagConstraints();
         rootDirectoryLabelC.fill = GridBagConstraints.HORIZONTAL;
         rootDirectoryLabelC.gridx = 0;
         rootDirectoryLabelC.gridy = 0;
-        
-        final JLabel jdkLabel = new JLabel("Current JDK Selected: ");
-        final GridBagConstraints jdkLabelC = new GridBagConstraints();
-        jdkLabelC.fill = GridBagConstraints.HORIZONTAL;
-        jdkLabelC.gridx = 0;
-        jdkLabelC.gridy = 2;
 
         final JLabel chooseStudentsLabel = new JLabel("Choose Students: ");
         final GridBagConstraints studentsLabelC = new GridBagConstraints();
@@ -90,16 +81,6 @@ public class InputPanel extends JPanel {
         rootDirectoryFieldC.fill = GridBagConstraints.HORIZONTAL;
         rootDirectoryFieldC.gridx = 0;
         rootDirectoryFieldC.gridy = 1;
-        
-        final JTextField jdkDirectoryField = new JTextField();
-        jdkDirectoryFieldText = settings.getJavaVersionDirectory().getPath();
-        jdkDirectoryFieldText = jdkDirectoryFieldText.replace(rootDirectoryFieldText, "~");
-        jdkDirectoryField.setText(jdkDirectoryFieldText);
-        jdkDirectoryField.setEditable(false);
-        final GridBagConstraints jdkFieldC = new GridBagConstraints();
-        jdkFieldC.fill = GridBagConstraints.HORIZONTAL;
-        jdkFieldC.gridx = 0;
-        jdkFieldC.gridy = 3;
 
         final JTextField studentsField = new JTextField();
         studentsField.setText("No students selected.");
@@ -140,20 +121,13 @@ public class InputPanel extends JPanel {
         testFieldC.gridx = 0;
         testFieldC.gridy = 9;
         testFieldC.insets = new Insets(0, 0, 30, 0);
-        
+
         final JButton rootDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
         rootDirectoryButtonC.fill = GridBagConstraints.NONE;
         rootDirectoryButtonC.anchor = GridBagConstraints.EAST;
         rootDirectoryButtonC.gridx = 1;
         rootDirectoryButtonC.gridy = 1;
-        
-        final JButton jdkDirectoryButton = new JButton("Choose Location");
-        final GridBagConstraints jdkButtonC = new GridBagConstraints();
-        jdkButtonC.fill = GridBagConstraints.NONE;
-        jdkButtonC.anchor = GridBagConstraints.EAST;
-        jdkButtonC.gridx = 1;
-        jdkButtonC.gridy = 3;
 
         final JButton studentsButton = new JButton("Choose Students");
         final GridBagConstraints configButtonC = new GridBagConstraints();
@@ -204,25 +178,21 @@ public class InputPanel extends JPanel {
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
-               
+
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
-      
+
         //Action listeners choose file/directory locations and implement runcheck upon selection completion.
         sourceDirectoryButton.addActionListener(new ChooseSourceLocationListener(main, sourceDirectoryField));
         testCaseButton.addActionListener(new ChooseTestLocationListener(main, testCaseDirectoryField));
         outputButton.addActionListener(new ChooseOutputLocationListener(main, outputField));
         rootDirectoryButton.addActionListener(new ChooseRootLocationListener(main, rootDirectoryField));
-        jdkDirectoryButton.addActionListener(new ChooseJDKLocationListener(main, jdkDirectoryField));
         studentsButton.addActionListener(new ChooseStudentsListener(settings, studentsField));
 
         add(rootDirectoryLabel, rootDirectoryLabelC);
         add(rootDirectoryField, rootDirectoryFieldC);
         add(rootDirectoryButton, rootDirectoryButtonC);
-        add(jdkDirectoryButton, jdkButtonC);
         add(studentsButton, configButtonC);
-        add(jdkLabel, jdkLabelC);
-        add(jdkDirectoryField, jdkFieldC);
         add(chooseStudentsLabel, studentsLabelC);
         add(studentsField, studentsFieldC);
         add(sourceDirectoryLabel, sourceLabelC);
@@ -237,12 +207,12 @@ public class InputPanel extends JPanel {
         add(runButton, runButtonC);
         add(showOutputCheckbox, showOutputCheckboxC);
     }
-    
+
     //sets the minimum size for JTextFields
     private static void setMinimumSize(final Component c) {
-    c.setMinimumSize(new Dimension(c
-        .getPreferredSize().width - 1,
-        c.getPreferredSize().height));
+        c.setMinimumSize(new Dimension(c
+                .getPreferredSize().width - 1,
+                c.getPreferredSize().height));
     }
-    
+
 }

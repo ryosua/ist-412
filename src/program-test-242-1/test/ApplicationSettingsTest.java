@@ -50,7 +50,6 @@ public class ApplicationSettingsTest {
     public void byDefaultSettingsAreSetToTheDefaultFile() {
         File defaultFile = new File("");
         assertTrue(main.getSettings().getConfigFile().equals(defaultFile));
-        assertTrue(main.getSettings().getJavaVersionDirectory().equals(defaultFile));
         assertTrue(main.getSettings().getOutputFileDirectory().equals(defaultFile));
         assertTrue(main.getSettings().getRootDirectory().equals(defaultFile));
         assertTrue(main.getSettings().getSourceFileDirectory().equals(defaultFile));
@@ -74,25 +73,6 @@ public class ApplicationSettingsTest {
         ApplicationSettingsController.readDataFromSettingsFile(newSettings);
 
         assertTrue(main.getSettings().getConfigFile().equals(newSettings.getConfigFile()));
-    }
-
-    @Test
-    public void javaVersionDirectoryReadAndWrite() {
-        // Write to settings.
-        try {
-            testJavaDir.createNewFile();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-       
-        main.getSettings().setJavaVersionDirectory(testJavaDir);
-        ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
-
-        // Read from settings.
-        ApplicationSettings newSettings = new ApplicationSettings(testSettingsFile);
-        ApplicationSettingsController.readDataFromSettingsFile(newSettings);
-
-        assertTrue(main.getSettings().getJavaVersionDirectory().equals(newSettings.getJavaVersionDirectory()));
     }
 
     @Test
