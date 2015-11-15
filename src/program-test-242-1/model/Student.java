@@ -57,7 +57,6 @@ public class Student {
     @Override
     public String toString() {
         String result = "";
-        result += "results: " + results.toString() + "\n";
         result += "classPath: " + classPath + "\n";
         result += "sourcePath: " + sourcePath + "\n";
         result += "studentPath: " + studentPath + "\n";
