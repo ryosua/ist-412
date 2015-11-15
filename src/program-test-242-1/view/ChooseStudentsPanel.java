@@ -4,9 +4,11 @@ import controller.StudentReader;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ChangeEvent;
@@ -21,8 +23,9 @@ public class ChooseStudentsPanel extends JPanel {
 
     private JCheckBox[] checkBoxes;
     private JPanel checkBoxesPanel;
-    private JScrollBar scrollBar;
     private JScrollPane scrollPane;
+    private JPanel buttonPanel = new JPanel();
+    private final JButton okButton = new JButton("Ok");
     private ArrayList<Student> students;
 
     public ChooseStudentsPanel(ChooseStudentsFrame frame, ApplicationSettings settings) {
@@ -69,8 +72,18 @@ public class ChooseStudentsPanel extends JPanel {
 
         checkBoxesPanel.setLayout(boxLayout);
 
+        okButton.setMaximumSize(new Dimension (80,10));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+        buttonPanel.add(okButton);
+        
         scrollPane = new JScrollPane(checkBoxesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane);
+        this.add(buttonPanel, BorderLayout.PAGE_END);
     }
 
     /**
@@ -102,6 +115,11 @@ public class ChooseStudentsPanel extends JPanel {
     
     private void updateInputPanelTextField() {
         frame.getChooseStudentsListener().getTextField().setText(getNumberOfSelectedStudents() + " students selected.");
+    }
+    
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        frame.dispose();
+        frame.setChooseStudentsListener(false);
     }
 
     private class StudentCheckBoxChangeListener implements ChangeListener {
