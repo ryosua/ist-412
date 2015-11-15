@@ -22,10 +22,6 @@ public class Student {
         this.outputFileName = outputFileName;
         this.inputFileStub = inputFileStub;
         this.studentName = studentName;
-
-        System.out.println("path: " + path);
-        System.out.println("classPath: " + classPath);
-        System.out.println("sourcePath: " + sourcePath);
     }
 
     public Results getResults() {
