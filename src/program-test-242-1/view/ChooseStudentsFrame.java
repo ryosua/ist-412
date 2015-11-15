@@ -14,6 +14,7 @@ public class ChooseStudentsFrame extends JFrame {
     public ChooseStudentsFrame(final ChooseStudentsListener chooseStudentslistener, ApplicationSettings settings) {
         this.chooseStudentslistener = chooseStudentslistener;
         this.settings = settings;
+        this.setResizable(false);
 
         initFrame();
 

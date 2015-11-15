@@ -29,7 +29,7 @@ public class ChooseStudentsPanel extends JPanel {
         createComponents();
     }
 
-    private void createComponents() {
+    private void createComponents() {        
         final JCheckBox selectAllCheckBox = new JCheckBox("Select All");
         this.add(selectAllCheckBox, BorderLayout.NORTH);
         
@@ -57,6 +57,7 @@ public class ChooseStudentsPanel extends JPanel {
                 for (JCheckBox box : checkBoxes) {
                     box.setSelected(selected);
                 }
+                repaint(); //Fixes graphical issue when select all is clicked rapidly.
             }
         });
 
