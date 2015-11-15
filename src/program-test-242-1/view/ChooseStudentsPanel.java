@@ -2,10 +2,14 @@ package view;
 
 import controller.StudentReader;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import model.ApplicationSettings;
@@ -17,6 +21,9 @@ public class ChooseStudentsPanel extends JPanel {
     private final ApplicationSettings settings;
 
     private JCheckBox[] checkBoxes;
+    private JPanel checkBoxesPanel;
+    private JScrollBar scrollBar;
+    private JScrollPane scrollPane;
     private ArrayList<Student> students;
 
     public ChooseStudentsPanel(ChooseStudentsFrame frame, ApplicationSettings settings) {
@@ -37,7 +44,7 @@ public class ChooseStudentsPanel extends JPanel {
         StudentReader studentReader = new StudentReader(settings);
         students = studentReader.readStudentsFromFileStructure();
 
-        JPanel checkBoxesPanel = new JPanel();
+        checkBoxesPanel = new JPanel();
         BoxLayout boxLayout = new BoxLayout(checkBoxesPanel, BoxLayout.Y_AXIS);
 
         checkBoxes = new JCheckBox[students.size()];
@@ -62,7 +69,8 @@ public class ChooseStudentsPanel extends JPanel {
 
         checkBoxesPanel.setLayout(boxLayout);
 
-        this.add(checkBoxesPanel, BorderLayout.CENTER);
+        scrollPane = new JScrollPane(checkBoxesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        this.add(scrollPane);
     }
 
     /**
