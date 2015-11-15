@@ -2,7 +2,6 @@ package view;
 
 import controller.StudentReader;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
@@ -69,7 +68,7 @@ public class ChooseStudentsPanel extends JPanel {
 
         checkBoxesPanel.setLayout(boxLayout);
 
-        scrollPane = new JScrollPane(checkBoxesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane = new JScrollPane(checkBoxesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane);
     }
 
