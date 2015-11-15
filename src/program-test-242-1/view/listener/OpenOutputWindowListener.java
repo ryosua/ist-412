@@ -10,6 +10,7 @@ import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.ApplicationSettings;
+import model.Student;
 import view.OutputPanel;
 
 /**
@@ -20,19 +21,23 @@ public class OpenOutputWindowListener implements ActionListener {
 
     private final OutputPanel thePanel;
     private final ApplicationSettings settings;
+    
+    private Student student;
 
-    public OpenOutputWindowListener(OutputPanel panel, ApplicationSettings settings) {
+    public OpenOutputWindowListener(OutputPanel panel, ApplicationSettings settings, Student student) {
         this.thePanel = panel;
         this.settings = settings;
+        this.student = student;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        thePanel.getFrame().setVisible(false);
-        File file = settings.getOutputFileDirectory();
-        
         TrivialEdit editor = new TrivialEdit();
-        editor.doOpenOnStart(file.toString());
+        editor.doOpenOnStart(student.getOutputFileName());
         editor.setVisible(true);
+    }
+    
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

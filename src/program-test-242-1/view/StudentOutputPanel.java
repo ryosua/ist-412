@@ -3,6 +3,7 @@ package view;
 import controller.OutputController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ public class StudentOutputPanel extends JPanel {
     private JButton sourceButton;
     private JTable studentTable;
     private StudentTableModel theModel;
+    private OpenOutputWindowListener outputListener;
 
     public StudentOutputPanel(OutputPanel outputPanel, ApplicationSettings settings) {
         this.outputPanel = outputPanel;
@@ -40,17 +42,21 @@ public class StudentOutputPanel extends JPanel {
     }
 
     private void createComponents() {
+        
+        ArrayList<Student> students = settings.getStudents();
+                
         closeButton = new JButton("Close Window");
         closeButton.addActionListener(new CloseOutputWindowListener(outputPanel));
-
+        
+        outputListener = new OpenOutputWindowListener(outputPanel, settings, students.get(0));
         outputButton = new JButton("Open Output");
-        outputButton.addActionListener(new OpenOutputWindowListener(outputPanel, settings));
+        outputButton.addActionListener(outputListener);
 
         sourceButton = new JButton("Open Source");
         sourceButton.addActionListener(new SourceOutputWindowListener(outputPanel, settings));
 
         studentTable = new JTable();
-        theModel = new StudentTableModel(settings.getStudents());
+        theModel = new StudentTableModel(students);
 
         studentTable.setModel(theModel);
 
@@ -73,13 +79,20 @@ public class StudentOutputPanel extends JPanel {
     }
 
     private class StudentRowListener implements ListSelectionListener {
+        
+        private final OutputController theOutputController;
+        
+        public StudentRowListener() {
+            this.theOutputController = new OutputController();
+        }
 
         @Override
         public void valueChanged(ListSelectionEvent e) {
             int row = studentTable.getSelectedRow();
             int adjRow = studentTable.convertRowIndexToModel(row);
-            OutputController theOutputController = new OutputController();
-            theOutputController.refreshOutputPanel(outputPanel, theModel.getStudent(adjRow));
+            Student selectedStudent = theModel.getStudent(adjRow);
+            theOutputController.refreshOutputPanel(outputPanel, selectedStudent);
+            outputListener.setStudent(selectedStudent);
         }
 
     }
