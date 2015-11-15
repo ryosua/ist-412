@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.listener;
 
 import java.awt.Desktop;
@@ -14,22 +9,18 @@ import model.ApplicationSettings;
 import model.Student;
 import view.OutputPanel;
 
-/**
- *
- * @author qyl5054
- */
 public class SourceOutputWindowListener implements ActionListener {
-    
+
     private final OutputPanel thePanel;
     private final ApplicationSettings settings;
-    
+
     private Student student;
 
     public SourceOutputWindowListener(OutputPanel panel, ApplicationSettings settings, Student student) {
         this.thePanel = panel;
         this.settings = settings;
         this.student = student;
-        
+
     }
 
     @Override
@@ -47,6 +38,7 @@ public class SourceOutputWindowListener implements ActionListener {
             throw new RuntimeException(evt);
         }
     }
+
     public void setStudent(Student student) {
         this.student = student;
     }
