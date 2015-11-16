@@ -4,6 +4,7 @@ import test.BatchTesterTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import test.ApplicationSettingsTest;
+import test.CompilerTest;
 import test.MainTest;
 import test.StudentReaderTest;
 
@@ -14,6 +15,7 @@ import test.StudentReaderTest;
     FileFilterTest.class,
     ResultsControllerTest.class,
     StudentReaderTest.class,
+    CompilerTest.class,
     BatchTesterTest.class
 })
 
