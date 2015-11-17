@@ -64,6 +64,7 @@ public class StudentOutputPanel extends JPanel {
 
         studentTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         studentTable.getSelectionModel().addListSelectionListener(new StudentRowListener());
+        studentTable.setRowSelectionInterval(0, 0);
 
         JScrollPane theStudentScrollPane = new JScrollPane(studentTable);
 
