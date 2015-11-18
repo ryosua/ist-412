@@ -80,7 +80,7 @@ public class MainMenu extends JMenuBar{
         
         public readmeOpener(){
             try{
-                readme = new File(main.getSettings().getRootDirectory() + "/readme.txt");
+                readme = new File(main.getSettings().getRootDirectory().getAbsolutePath() + "/readme.txt");
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "File Not Found", "Readme File Could Not Be Found", JOptionPane.ERROR_MESSAGE);
             }
