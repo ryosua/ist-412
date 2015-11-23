@@ -73,7 +73,7 @@ public class InputPanel extends JPanel {
         final ApplicationSettings settings = main.getSettings();
 
         final JTextField rootDirectoryField = new JTextField();
-        rootDirectoryFieldText = settings.getRootDirectory().getPath();
+        rootDirectoryFieldText = settings.getRootDirectory().getAbsolutePath();
         rootDirectoryField.setText(rootDirectoryFieldText);
         rootDirectoryField.setEditable(false);
         final GridBagConstraints rootDirectoryFieldC = new GridBagConstraints();
@@ -92,7 +92,7 @@ public class InputPanel extends JPanel {
         //studentsFieldC.insets = new Insets(0, 0, 30, 0);
 
         final JTextField sourceDirectoryField = new JTextField();
-        sourceDirectoryFieldText = settings.getSourceFileDirectory().getPath();
+        sourceDirectoryFieldText = settings.getSourceFileDirectory().getAbsolutePath();
         sourceDirectoryFieldText = sourceDirectoryFieldText.replace(rootDirectoryFieldText, "~");
         sourceDirectoryField.setText(sourceDirectoryFieldText);
         sourceDirectoryField.setEditable(false);
@@ -102,7 +102,7 @@ public class InputPanel extends JPanel {
         sourceFieldC.gridy = 7;
 
         final JTextField outputField = new JTextField();
-        outputFieldText = settings.getOutputFileDirectory().getPath();
+        outputFieldText = settings.getOutputFileDirectory().getAbsolutePath();
         outputFieldText = outputFieldText.replace(rootDirectoryFieldText, "~");
         outputField.setText(outputFieldText);
         outputField.setEditable(false);
@@ -112,7 +112,7 @@ public class InputPanel extends JPanel {
         outputFieldC.gridy = 5;
 
         final JTextField testCaseDirectoryField = new JTextField();
-        testCaseDirectoryFieldText = settings.getTestCaseDirectory().getPath();
+        testCaseDirectoryFieldText = settings.getTestCaseDirectory().getAbsolutePath();
         testCaseDirectoryFieldText = testCaseDirectoryFieldText.replace(rootDirectoryFieldText, "~");
         testCaseDirectoryField.setText(testCaseDirectoryFieldText);
         testCaseDirectoryField.setEditable(false);

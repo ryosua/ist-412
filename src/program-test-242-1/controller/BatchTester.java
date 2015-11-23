@@ -2,6 +2,7 @@ package controller;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 import model.ApplicationSettings;
 import model.Results;
 import model.Strings;
@@ -57,7 +58,7 @@ public class BatchTester {
 
             System.out.println("Batch Tester finished.");
         } else {
-            System.out.println("You must choose students before running the program.");
+            JOptionPane.showMessageDialog(null, "You must choose students before running the program.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
