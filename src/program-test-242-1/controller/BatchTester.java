@@ -41,7 +41,7 @@ public class BatchTester {
                         
                 // Run javac compiler - returns 0 on success.
                 Compiler c = new Compiler(student);
-                int success = c.compileJava();
+                int success = c.compileAllStudentJavaFiles();
 
                 // Print whether or not compile successful
                 if (success == 0) {

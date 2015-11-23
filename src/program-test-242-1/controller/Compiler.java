@@ -16,7 +16,7 @@ public class Compiler {
         success = 1;  // Outcome of compilation, success = 0
     }
 
-    public int compileJava() {
+    public int compileAllStudentJavaFiles() {
         try {
             boolean createBin = new File(student.getClassPath()).mkdirs();
 
@@ -44,10 +44,11 @@ public class Compiler {
 
             File outputFile = new File(student.getOutputFileName());
             outputFile.delete();
+            outputFile.createNewFile();
 
             for (int k = 0; k < javaFileList.length; k++) {
                 try {
-                    if (filter.accept(nwdPath, javaFileList[k]) == true) {
+                    if (filter.accept(nwdPath, javaFileList[k]) == true) {                        
                         ProcessBuilder pb
                                 = new ProcessBuilder("javac", "-d", student.getClassPath(), student.getStudentPath() + "/" + javaFileList[k]);
 
@@ -73,11 +74,17 @@ public class Compiler {
                         assert pb.redirectOutput().file() == outputFile;
                         assert p.getInputStream().read() == -1;
                     }
+                } catch (NullPointerException e) {
+                    System.out.println("Null Pointer caught 1");
+                    e.printStackTrace();
                 } catch (Exception e) {
                     System.out.println("Compile Exception: " + javaFileList[k]);
                     e.printStackTrace();
                 }
             }
+        } catch (NullPointerException e) {
+            System.out.println("Null Pointer caught 2");
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println("Compile Exception");
             e.printStackTrace();
