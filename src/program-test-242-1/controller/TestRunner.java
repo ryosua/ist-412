@@ -3,6 +3,7 @@ package controller;
 import java.io.*;
 import java.util.*;
 import java.lang.ProcessBuilder.Redirect;
+import view.FileNotFoundWarning;
 
 public class TestRunner {
 
@@ -111,6 +112,9 @@ public class TestRunner {
                 }
                 return;
             }
+        } catch (FileNotFoundException e) {
+            FileNotFoundWarning.showWarning();
+            e.printStackTrace();
         } catch (java.lang.IllegalThreadStateException itse) {
             itse.printStackTrace();
         } catch (java.util.NoSuchElementException nsee) {

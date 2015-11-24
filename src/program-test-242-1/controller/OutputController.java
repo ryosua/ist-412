@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import model.Student;
+import view.FileNotFoundWarning;
 import view.OutputPanel;
 
 public class OutputController {
@@ -25,11 +26,11 @@ public class OutputController {
                 outputString += line + "\n";
             }
         } catch (FileNotFoundException e) {
+            FileNotFoundWarning.showWarning();
             e.printStackTrace();
         }
 
         // Set the text area to the string.
         panel.getTextArea().setText(outputString);
     }
-
 }

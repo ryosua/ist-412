@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import view.FileNotFoundWarning;
 
 public class ResultsControllerTest {
 
@@ -62,6 +63,7 @@ public class ResultsControllerTest {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             error = true;
+            FileNotFoundWarning.showWarning();
         } catch (IOException ex) {
             ex.printStackTrace();
             error = true;
@@ -88,6 +90,7 @@ public class ResultsControllerTest {
 
         } catch (FileNotFoundException ex) {
             error = true;
+            FileNotFoundWarning.showWarning();
         } finally {
             in.close();
         }

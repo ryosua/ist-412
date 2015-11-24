@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.ApplicationSettings;
 import model.Student;
+import view.FileNotFoundWarning;
 
 public class StudentReader {
 
@@ -59,6 +60,7 @@ public class StudentReader {
                 students.add(student);
             }
         } catch (FileNotFoundException ex) {
+            FileNotFoundWarning.showWarning();
             ex.printStackTrace();
         }
         return students;
