@@ -2,114 +2,108 @@ package controller;
 
 import java.io.*;
 import java.util.*;
-import java.lang.ProcessBuilder.Redirect;
 
-public class TestTools
-{
-//cd based on String path
-  public static String cd(String currentDir, String destinationDir)
-  {
-    ProcessBuilder pb = new ProcessBuilder("cd", currentDir);
-    pb.directory(new File(destinationDir));
-//  System.out.println("StartDir: " + currentDir + "; EndDir: " +  pb.directory().getAbsolutePath());
-    return pb.directory().getAbsolutePath();
-  }
+public class TestTools {
 
-//cd based on abstract File path
-  public static File cd(File cwd, String destinationPath)
-  {
-    String cwdPath;
-    File nwd;
-    String nwdPath;
-    try
-    {
-      cwdPath = cwd.getAbsolutePath();
-    }catch(NullPointerException npe)
-//  NB - ProcessBuilder default is to return a null  
-//  pointer for the abstract path to indicate that it 
-//  is using System.Properties "user.dir", i.e., the 
-//  current system working directory; hence the
-//  critical need to handle a NullPointerException.
-//  Also returns a null pointer if the directory
-//  doesn't exist. 
-    {
-      cwdPath = System.getProperty("user.dir");
-//    System.out.println("cdFile - current working directory null");
-      cwd = new File(cwdPath);
-      cwdPath =  cwd.getAbsolutePath();
-    }
-//  System.out.println(cwdPath);
-//  dir(cwd);
-    
-    try
-    {
-      nwd = new File(destinationPath);
-      nwdPath = nwd.getAbsolutePath();
-//    debug code - to confirm correct directory
-//    dir(nwd);
-    } catch(NullPointerException npe) 
-    {
-//    System.out.println("cdFile - new working directory null");
-      nwd = cwd;
-      nwdPath =nwd.getAbsolutePath();
-      
-//    debug code - to confirm correct directory
-//    dir(nwd);
-    }
-//  System.out.println(nwdPath);  
-    
-    return nwd;
-  }
+    /**
+     * cd based on String path
+     *
+     * @param currentDir
+     * @param destinationDir
+     * @return
+     */
+    public static String cd(String currentDir, String destinationDir) {
+        ProcessBuilder pb = new ProcessBuilder("cd", currentDir);
+        pb.directory(new File(destinationDir));
 
-//directory listing method  
-  public static void dir(File cwd)
-  {
-    String cwdPath;
-    String [] directoryListing;
-    try
-    {
-      cwdPath = cwd.getAbsolutePath();
-      directoryListing = cwd.list();
-      for(String element : directoryListing)
-      {
-        System.out.println(element);
-      }
-    } catch(NullPointerException npe)
-//  NB - ProcessBuilder default is to return a null  
-//  pointer for the abstract path to indicate that it 
-//  is using System.Properties "user.dir", i.e., the 
-//  current system working directory; hence the
-//  critical need to handle a NullPointerException.
-//  Also returns a null pointer if the directory
-//  doesn't exist.  
-    {
-      cwdPath = System.getProperty("user.dir");
-      System.out.println("dir - current working directory null");
-      cwd = new File(cwdPath);
-      cwdPath =  cwd.getAbsolutePath();
-      directoryListing = cwd.list();
-      for(String element : directoryListing)
-      {
-        System.out.println(element);
-      }
+        return pb.directory().getAbsolutePath();
     }
-//  System.out.println(cwdPath);
-    return;
-  }
-  
-//String Parser - blank String delimiter
-  public static List<String> parseLine(String line)  
-  {
-    Scanner inputLine = new Scanner(line);
-    List<String> tokens = new ArrayList<String>();
-//    System.out.print("token ArrayList: ");
-    while(inputLine.hasNext())
-    {
-      String nextToken = inputLine.next();
-//      System.out.print(nextToken + " ");
-      tokens.add(nextToken);
+
+    /**
+     * cd based on abstract File path
+     *
+     * @param cwd
+     * @param destinationPath
+     * @return
+     */
+    public static File cd(File cwd, String destinationPath) {
+        String cwdPath;
+        File nwd;
+        String nwdPath;
+        try {
+            cwdPath = cwd.getAbsolutePath();
+        } catch (NullPointerException npe) //  NB - ProcessBuilder default is to return a null  
+        //  pointer for the abstract path to indicate that it 
+        //  is using System.Properties "user.dir", i.e., the 
+        //  current system working directory; hence the
+        //  critical need to handle a NullPointerException.
+        //  Also returns a null pointer if the directory
+        //  doesn't exist. 
+        {
+            cwdPath = System.getProperty("user.dir");
+            cwd = new File(cwdPath);
+            cwdPath = cwd.getAbsolutePath();
+        }
+
+        try {
+            nwd = new File(destinationPath);
+            nwdPath = nwd.getAbsolutePath();
+        } catch (NullPointerException npe) {
+            nwd = cwd;
+            nwdPath = nwd.getAbsolutePath();
+        }
+
+        return nwd;
     }
-//    System.out.println();
-    return tokens;
-  }
+
+    /**
+     * directory listing method
+     *
+     * @param cwd
+     */
+    public static void dir(File cwd) {
+        String cwdPath;
+        String[] directoryListing;
+        try {
+            cwdPath = cwd.getAbsolutePath();
+            directoryListing = cwd.list();
+            for (String element : directoryListing) {
+                System.out.println(element);
+            }
+        } catch (NullPointerException npe) //  NB - ProcessBuilder default is to return a null  
+        //  pointer for the abstract path to indicate that it 
+        //  is using System.Properties "user.dir", i.e., the 
+        //  current system working directory; hence the
+        //  critical need to handle a NullPointerException.
+        //  Also returns a null pointer if the directory
+        //  doesn't exist.  
+        {
+            cwdPath = System.getProperty("user.dir");
+            System.out.println("dir - current working directory null");
+            cwd = new File(cwdPath);
+            cwdPath = cwd.getAbsolutePath();
+            directoryListing = cwd.list();
+            for (String element : directoryListing) {
+                System.out.println(element);
+            }
+        }
+    }
+
+    /**
+     * String Parser - blank String delimiter
+     *
+     * @param line
+     * @return
+     */
+    public static List<String> parseLine(String line) {
+        Scanner inputLine = new Scanner(line);
+        List<String> tokens = new ArrayList<String>();
+
+        while (inputLine.hasNext()) {
+            String nextToken = inputLine.next();
+            tokens.add(nextToken);
+        }
+
+        return tokens;
+    }
 }
