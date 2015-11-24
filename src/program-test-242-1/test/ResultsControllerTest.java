@@ -92,7 +92,8 @@ public class ResultsControllerTest {
             in.close();
         }
         
-        // The results controller prints a new line at the end of each file.
+        expectedResults.add(0, "Student output file: " + testFile.getName());
+        expectedResults.add(1, "");
         expectedResults.add("");
         
         //System.out.println("Expected results: " + expectedResults.toString());

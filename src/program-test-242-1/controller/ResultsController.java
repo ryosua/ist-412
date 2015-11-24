@@ -36,6 +36,9 @@ public class ResultsController {
             
             for (File file : results.getFiles()) {
                 Scanner in = new Scanner(file);
+                    out.println("Student output file: " + file.getName());
+                    out.println();
+            
                 while (in.hasNext()) {
                     String line = in.nextLine();
                     out.println(line);
