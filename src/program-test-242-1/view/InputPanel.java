@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
 
@@ -27,6 +28,7 @@ public class InputPanel extends JPanel {
     private String rootDirectoryFieldText;
     private String sourceDirectoryFieldText;
     private String outputFieldText;
+    private JProgressBar progressBar;
     private String testCaseDirectoryFieldText;
 
     public InputPanel(Main main) {
@@ -158,6 +160,10 @@ public class InputPanel extends JPanel {
         outputButtonC.anchor = GridBagConstraints.EAST;
         outputButtonC.gridx = 1;
         outputButtonC.gridy = 5;
+        
+        progressBar = new JProgressBar();
+        progressBar.setMinimum(0);
+        progressBar.setValue(0);
 
         final JButton runButton = new JButton("Run");
         runButton.setSize(WIDTH, 10);
@@ -168,7 +174,7 @@ public class InputPanel extends JPanel {
         runButtonC.gridwidth = 1;
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         //Run program when clicked.
-        runButton.addActionListener(new RunProgramListener(main.getSettings()));
+        runButton.addActionListener(new RunProgramListener(main.getSettings(), this));
 
         final JCheckBox showOutputCheckbox = new JCheckBox("Show Output in New Window", true);
         final GridBagConstraints showOutputCheckboxC = new GridBagConstraints();
@@ -178,7 +184,16 @@ public class InputPanel extends JPanel {
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
-
+       
+        final GridBagConstraints progressBarC = new GridBagConstraints();
+        progressBarC.fill = GridBagConstraints.HORIZONTAL;
+        progressBarC.gridx = 0;
+        progressBarC.gridy = 13;
+        progressBarC.gridwidth = 1;
+        progressBarC.anchor = GridBagConstraints.LAST_LINE_END;
+        
+      
+        
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
 
@@ -206,8 +221,21 @@ public class InputPanel extends JPanel {
         add(outputButton, outputButtonC);
         add(runButton, runButtonC);
         add(showOutputCheckbox, showOutputCheckboxC);
+        add(progressBar, progressBarC);
     }
-
+    
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+    
+    public void disableAllInputs() {
+        
+    }
+    
+    public void enableAllInputs() {
+        
+    }
+    
     //sets the minimum size for JTextFields
     private static void setMinimumSize(final Component c) {
         c.setMinimumSize(new Dimension(c
