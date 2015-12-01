@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import model.ApplicationSettings;
 
@@ -27,8 +28,15 @@ public class InputPanel extends JPanel {
     private String rootDirectoryFieldText;
     private String sourceDirectoryFieldText;
     private String outputFieldText;
+    private JProgressBar progressBar;
     private String testCaseDirectoryFieldText;
-
+    
+    private JButton rootDirectoryButton;
+    private JButton studentsButton;
+    private JButton sourceDirectoryButton;
+    private JButton testCaseButton;
+    private JButton outputButton;
+    
     public InputPanel(Main main) {
         this.main = main;
 
@@ -122,14 +130,14 @@ public class InputPanel extends JPanel {
         testFieldC.gridy = 9;
         testFieldC.insets = new Insets(0, 0, 30, 0);
 
-        final JButton rootDirectoryButton = new JButton("Choose Location");
+        rootDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
         rootDirectoryButtonC.fill = GridBagConstraints.NONE;
         rootDirectoryButtonC.anchor = GridBagConstraints.EAST;
         rootDirectoryButtonC.gridx = 1;
         rootDirectoryButtonC.gridy = 1;
 
-        final JButton studentsButton = new JButton("Choose Students");
+        studentsButton = new JButton("Choose Students");
         final GridBagConstraints configButtonC = new GridBagConstraints();
         configButtonC.fill = GridBagConstraints.NONE;
         configButtonC.anchor = GridBagConstraints.EAST;
@@ -137,14 +145,14 @@ public class InputPanel extends JPanel {
         configButtonC.gridy = 11;
         //configButtonC.insets = 
 
-        final JButton sourceDirectoryButton = new JButton("Choose Location");
+        sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
         sourcButtonC.fill = GridBagConstraints.NONE;
         sourcButtonC.anchor = GridBagConstraints.EAST;
         sourcButtonC.gridx = 1;
         sourcButtonC.gridy = 7;
 
-        final JButton testCaseButton = new JButton("Choose Location");
+        testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
         testButtonC.fill = GridBagConstraints.NONE;
         testButtonC.anchor = GridBagConstraints.EAST;
@@ -152,12 +160,16 @@ public class InputPanel extends JPanel {
         testButtonC.gridy = 9;
         testButtonC.insets = new Insets(0, 0, 30, 0);
 
-        final JButton outputButton = new JButton("Choose Location");
+        outputButton = new JButton("Choose Location");
         final GridBagConstraints outputButtonC = new GridBagConstraints();
         outputButtonC.fill = GridBagConstraints.NONE;
         outputButtonC.anchor = GridBagConstraints.EAST;
         outputButtonC.gridx = 1;
         outputButtonC.gridy = 5;
+        
+        progressBar = new JProgressBar();
+        progressBar.setMinimum(0);
+        progressBar.setValue(0);
 
         final JButton runButton = new JButton("Run");
         runButton.setSize(WIDTH, 10);
@@ -168,7 +180,7 @@ public class InputPanel extends JPanel {
         runButtonC.gridwidth = 1;
         runButtonC.anchor = GridBagConstraints.LAST_LINE_END;
         //Run program when clicked.
-        runButton.addActionListener(new RunProgramListener(main.getSettings()));
+        runButton.addActionListener(new RunProgramListener(main.getSettings(), this));
 
         final JCheckBox showOutputCheckbox = new JCheckBox("Show Output in New Window", true);
         final GridBagConstraints showOutputCheckboxC = new GridBagConstraints();
@@ -178,7 +190,16 @@ public class InputPanel extends JPanel {
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
-
+       
+        final GridBagConstraints progressBarC = new GridBagConstraints();
+        progressBarC.fill = GridBagConstraints.HORIZONTAL;
+        progressBarC.gridx = 0;
+        progressBarC.gridy = 13;
+        progressBarC.gridwidth = 1;
+        progressBarC.anchor = GridBagConstraints.LAST_LINE_END;
+        
+      
+        
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
 
@@ -206,8 +227,25 @@ public class InputPanel extends JPanel {
         add(outputButton, outputButtonC);
         add(runButton, runButtonC);
         add(showOutputCheckbox, showOutputCheckboxC);
+        add(progressBar, progressBarC);
     }
-
+    
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+    
+    public void setButtonsEnabled(boolean enabled) {
+         rootDirectoryButton.setEnabled(enabled);
+         studentsButton.setEnabled(enabled);
+         sourceDirectoryButton.setEnabled(enabled);
+         testCaseButton.setEnabled(enabled);
+         outputButton.setEnabled(enabled);
+    }
+    
+    public void enableAllInputs() {
+        
+    }
+    
     //sets the minimum size for JTextFields
     private static void setMinimumSize(final Component c) {
         c.setMinimumSize(new Dimension(c
