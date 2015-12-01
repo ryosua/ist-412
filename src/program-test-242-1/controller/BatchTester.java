@@ -14,7 +14,10 @@ public class BatchTester {
     private final ApplicationSettings settings;
     private final Results results;
     private final ResultsController resultsController;
-
+    
+    /**
+     * Could be null depending on which constructor is used.
+     */
     private InputPanel inputPanel;
     
     /**
@@ -80,7 +83,7 @@ public class BatchTester {
                 TestRunner r = new TestRunner(student.getClassPath(), student.getStudentPath(), argsFileName, testInputFileName, student.getInputFileStub(), student.getOutputFileName());
                 r.runJava();
 
-                if (inputPanel.getProgressBar() != null) {
+                if (inputPanel != null) {
                     inputPanel.getProgressBar().setValue(inputPanel.getProgressBar().getValue() + 1);
                 }
             }
