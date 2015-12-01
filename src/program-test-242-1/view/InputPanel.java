@@ -30,7 +30,13 @@ public class InputPanel extends JPanel {
     private String outputFieldText;
     private JProgressBar progressBar;
     private String testCaseDirectoryFieldText;
-
+    
+    private JButton rootDirectoryButton;
+    private JButton studentsButton;
+    private JButton sourceDirectoryButton;
+    private JButton testCaseButton;
+    private JButton outputButton;
+    
     public InputPanel(Main main) {
         this.main = main;
 
@@ -124,14 +130,14 @@ public class InputPanel extends JPanel {
         testFieldC.gridy = 9;
         testFieldC.insets = new Insets(0, 0, 30, 0);
 
-        final JButton rootDirectoryButton = new JButton("Choose Location");
+        rootDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints rootDirectoryButtonC = new GridBagConstraints();
         rootDirectoryButtonC.fill = GridBagConstraints.NONE;
         rootDirectoryButtonC.anchor = GridBagConstraints.EAST;
         rootDirectoryButtonC.gridx = 1;
         rootDirectoryButtonC.gridy = 1;
 
-        final JButton studentsButton = new JButton("Choose Students");
+        studentsButton = new JButton("Choose Students");
         final GridBagConstraints configButtonC = new GridBagConstraints();
         configButtonC.fill = GridBagConstraints.NONE;
         configButtonC.anchor = GridBagConstraints.EAST;
@@ -139,14 +145,14 @@ public class InputPanel extends JPanel {
         configButtonC.gridy = 11;
         //configButtonC.insets = 
 
-        final JButton sourceDirectoryButton = new JButton("Choose Location");
+        sourceDirectoryButton = new JButton("Choose Location");
         final GridBagConstraints sourcButtonC = new GridBagConstraints();
         sourcButtonC.fill = GridBagConstraints.NONE;
         sourcButtonC.anchor = GridBagConstraints.EAST;
         sourcButtonC.gridx = 1;
         sourcButtonC.gridy = 7;
 
-        final JButton testCaseButton = new JButton("Choose Location");
+        testCaseButton = new JButton("Choose Location");
         final GridBagConstraints testButtonC = new GridBagConstraints();
         testButtonC.fill = GridBagConstraints.NONE;
         testButtonC.anchor = GridBagConstraints.EAST;
@@ -154,7 +160,7 @@ public class InputPanel extends JPanel {
         testButtonC.gridy = 9;
         testButtonC.insets = new Insets(0, 0, 30, 0);
 
-        final JButton outputButton = new JButton("Choose Location");
+        outputButton = new JButton("Choose Location");
         final GridBagConstraints outputButtonC = new GridBagConstraints();
         outputButtonC.fill = GridBagConstraints.NONE;
         outputButtonC.anchor = GridBagConstraints.EAST;
@@ -228,8 +234,12 @@ public class InputPanel extends JPanel {
         return progressBar;
     }
     
-    public void disableAllInputs() {
-        
+    public void setButtonsEnabled(boolean enabled) {
+         rootDirectoryButton.setEnabled(enabled);
+         studentsButton.setEnabled(enabled);
+         sourceDirectoryButton.setEnabled(enabled);
+         testCaseButton.setEnabled(enabled);
+         outputButton.setEnabled(enabled);
     }
     
     public void enableAllInputs() {
