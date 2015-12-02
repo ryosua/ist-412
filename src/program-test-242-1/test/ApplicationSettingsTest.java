@@ -9,7 +9,6 @@ import model.Strings;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,8 +48,9 @@ public class ApplicationSettingsTest {
     @Test
     public void byDefaultSettingsAreSetToTheDefaultFile() {
         File defaultFile = new File("");
+        File defaultOutputFile = new File("testResults.txt");
         assertTrue(main.getSettings().getConfigFile().equals(defaultFile));
-        assertTrue(main.getSettings().getOutputFileDirectory().equals(defaultFile));
+        assertTrue(main.getSettings().getOutputFileDirectory().equals(defaultOutputFile));
         assertTrue(main.getSettings().getRootDirectory().equals(defaultFile));
         assertTrue(main.getSettings().getSourceFileDirectory().equals(defaultFile));
         assertTrue(main.getSettings().getTestCaseDirectory().equals(defaultFile));
