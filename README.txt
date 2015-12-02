@@ -5,8 +5,8 @@ Note: This guide assumes you have both java and ant installed.
 1. Unzip the file.
 
 2. Download the following libraries and put them in a directory called "lib" in the root directory:
-    - commons-lang3-3.4.jar
-    - junit-4.10.jar
+    - commons-lang3-3.4.jar (http://apache.claz.org//commons/lang/binaries/commons-lang3-3.4-bin.zip)
+    - junit-4.10.jar (https://search.maven.org/remotecontent?filepath=junit/junit/4.10/junit-4.10.jar)
 
 3. Create a new file called build.properties and put it in the root directory.
 
