@@ -1,3 +1,5 @@
+Before running the program, go to your config file folder and make sure to add command line arguments and scanner inputs to the text files located in the config files directory.
+
 When you first open the program set the directories to the locations in the above picture relative to where the project is saved. Next click on Choose Students. This will open a new window with a list of students to test. 
 
 You can select one or all to test. Once you comfirm your amount, click Ok.
@@ -6,10 +8,10 @@ If you want to have your results on a window after it's done, leave the box chec
 
 The program will start running and the bar will show the progression of the run. When finished, the output panel will appear.  
 
-You can click which students' result to see on the left. You have three opitions from there.
+You can click which students' result to see on the left. You have three options from there.
 
 If you want to edit the results, click on Open Output to edit on trivial edit. Then save the change through File.
 
-If you want locate the file of a student, hightlight the student and click Open Source. The file should start with output. 
+If you want locate the file of a student, hightlight the student you want and click Open Source. The text file should start with output. 
 
-If you are satisfied, click on Close Window and then the close icon to close the program.
+Once you are satisfied with the results, you can press Close Window to continue testing or close the program by exiting it out.
