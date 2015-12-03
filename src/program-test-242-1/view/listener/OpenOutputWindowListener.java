@@ -7,10 +7,6 @@ import model.ApplicationSettings;
 import model.Student;
 import view.OutputPanel;
 
-/**
- *
- * @author qyl5054
- */
 public class OpenOutputWindowListener implements ActionListener {
 
     private final OutputPanel thePanel;
