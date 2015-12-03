@@ -3,6 +3,7 @@ package view.listener;
 import controller.BatchTester;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.ApplicationSettings;
 import view.InputPanel;
 
@@ -36,7 +37,7 @@ public class RunProgramListener implements ActionListener {
             Thread batchTesterThread = new Thread(r);
             batchTesterThread.start();
         } else {
-            System.out.println("Please select students first.");
+            JOptionPane.showMessageDialog(null, "Please select students first.", "Select Students", JOptionPane.WARNING_MESSAGE);
         }
     }
 }
