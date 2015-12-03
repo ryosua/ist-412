@@ -36,6 +36,8 @@ public class HelpTextPanel extends JPanel {
         columns = 50;
         tutorialTextArea = new JTextArea(rows, columns);
         tutorialTextArea.setEditable(false);
+        tutorialTextArea.setLineWrap(true);
+        tutorialTextArea.setWrapStyleWord(true);
 
         add(tutorialTextArea);
 
