@@ -1,4 +1,4 @@
-When using this program, the file locations are set to their default locations and should work when put in the root directory. Next click on Choose Students. This will open a new window with a list of students to test. 
+When you first open the program set the directories to the locations in the above picture relative to where the project is saved. Next click on Choose Students. This will open a new window with a list of students to test. 
 
 You can select one or all to test. Once you comfirm your amount, click Ok.
 
