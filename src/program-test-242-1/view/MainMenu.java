@@ -62,14 +62,15 @@ public class MainMenu extends JMenuBar {
 
     private class helpOpener implements ActionListener {
 
-        private final HelpFrame helpFrame;
+        private HelpFrame helpFrame;
 
         public helpOpener() {
-            helpFrame = new HelpFrame(main);
+
         }
 
         @Override
         public void actionPerformed(ActionEvent ae) {
+            helpFrame = new HelpFrame(main);
             helpFrame.getTextPanel().setupPanel();
             helpFrame.getImagePanel().setupPanel();
             helpFrame.getButtonPanel().setupPanel();
