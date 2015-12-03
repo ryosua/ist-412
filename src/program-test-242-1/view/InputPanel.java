@@ -60,13 +60,13 @@ public class InputPanel extends JPanel {
         studentsLabelC.gridy = 10;
         studentsLabelC.insets = new Insets(5, 0, 0, 0);
 
-        final JLabel sourceDirectoryLabel = new JLabel("Choose a Source Directory or Zip File:");
+        final JLabel sourceDirectoryLabel = new JLabel("Choose Unzipped Source Directory Student Files:");
         final GridBagConstraints sourceLabelC = new GridBagConstraints();
         sourceLabelC.fill = GridBagConstraints.HORIZONTAL;
         sourceLabelC.gridx = 0;
         sourceLabelC.gridy = 6;
 
-        final JLabel testCaseDirectoryLabel = new JLabel("Add Test Case Files:");
+        final JLabel testCaseDirectoryLabel = new JLabel("Choose Config File Folder:");
         final GridBagConstraints testLabelC = new GridBagConstraints();
         testLabelC.fill = GridBagConstraints.HORIZONTAL;
         testLabelC.gridx = 0;
