@@ -15,7 +15,7 @@ public class ApplicationSettings {
     private final File tutorialImageDirectory = new File(tutorialDirectory + "/tutorialImages");
 
     private File configFile = new File(""); // Just single for now.
-    private File outputFileDirectory = new File("");
+    private File outputFileDirectory = new File("testResults.txt");
     private File rootDirectory = new File("");
     private File sourceFileDirectory = new File("");
     private File testCaseDirectory = new File("");

@@ -35,7 +35,9 @@ Note: This guide assumes you have both java and ant installed.
 
 For the example submission code, there are two "src" directories within the zip folder. Find the second one and cut and paste it into the the first folder that was unzipped under the directory titled "program-test-242-1".
 
-8. Open up the command prompt/terminal, navigate to the root directory and enter the command "ant". This will run the 
+8. If on Windows, run the setup7.bat script in src/program-test-242-1.
+
+9. Open up the command prompt/terminal, navigate to the root directory and enter the command "ant". This will run the 
 default ant target for the project "run-all".
 
-9. Once you have opened the program click on the documentation tab in the menu bar for further instructions on how to use the program.
+10. Once you have opened the program click on the documentation tab in the menu bar for further instructions on how to use the program.
