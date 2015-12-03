@@ -11,12 +11,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MainTest {
-    
+
     private Main main;
-    
+
     @BeforeClass
     public static void setupTests() {
-        
+
     }
 
     @Before
@@ -24,18 +24,18 @@ public class MainTest {
         File settingsFile = new File(Strings.SETTINGS_FILE_NAME);
         main = new Main(settingsFile);
     }
-    
+
     @Test
     public void frameCreated() {
         main.openFrame();
         Assert.assertNotNull("frame is null", main.getFrame());
     }
-    
+
     @Test
     public void fileChooserNotNull() {
         Assert.assertNotNull("fileChooser is null", main.getFileChooser());
     }
-    
+
     @Test
     public void settingsNotNull() {
         Assert.assertNotNull("settings is null", main.getSettings());
@@ -48,6 +48,6 @@ public class MainTest {
 
     @AfterClass
     public static void teardownTests() {
-     
+
     }
 }

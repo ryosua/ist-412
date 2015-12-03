@@ -89,7 +89,7 @@ public class TrivialEdit extends JFrame {
         ActionListener listener = new ActionListener() {
             // An object that will serve as listener for menu items.
             public void actionPerformed(ActionEvent evt) {
-				// This will be called when the user makes a selection
+                // This will be called when the user makes a selection
                 // from the File menu.  This routine just checks 
                 // which command was selected and calls another 
                 // routine to carry out the command.

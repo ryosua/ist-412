@@ -5,12 +5,12 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 public class FileChooser {
-    
+
     public static final File emptyFile = new File("");
-    
+
     private final JFileChooser fileChooser;
     private final Main main;
-  
+
     public FileChooser(Main main) {
         this.fileChooser = new JFileChooser(main.getSettings().getRootDirectory());
         this.main = main;
@@ -42,24 +42,24 @@ public class FileChooser {
 
         return file;
     }
-    
+
     /**
-     * Sets the JFileChooser to allow the user to just select files, just select directories, or select both files and directories. The default is JFilesChooser.FILES_ONLY.
-     * @param mode the type of files to be displayed:
-     *     JFileChooser.FILES_ONLY
-     *     JFileChooser.DIRECTORIES_ONLY
-     *     JFileChooser.FILES_AND_DIRECTORIES
+     * Sets the JFileChooser to allow the user to just select files, just select
+     * directories, or select both files and directories. The default is
+     * JFilesChooser.FILES_ONLY.
+     *
+     * @param mode the type of files to be displayed: JFileChooser.FILES_ONLY
+     * JFileChooser.DIRECTORIES_ONLY JFileChooser.FILES_AND_DIRECTORIES
      */
     public void setFileSelectionMode(int mode) {
         fileChooser.setFileSelectionMode(mode);
     }
-    
+
     /**
      * Sets the type of this dialog.
-     * @param mode the type of dialog to be displayed:
-     *     JFileChooser.OPEN_DIALOG
-     *     JFileChooser.SAVE_DIALOG
-     *     JFileChooser.CUSTOM_DIALOG
+     *
+     * @param mode the type of dialog to be displayed: JFileChooser.OPEN_DIALOG
+     * JFileChooser.SAVE_DIALOG JFileChooser.CUSTOM_DIALOG
      */
     public void setDialogType(int mode) {
         fileChooser.setDialogType(mode);

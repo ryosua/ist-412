@@ -24,7 +24,7 @@ public class ResultsControllerTest {
     private boolean savedDisplayOutputCheck;
     private File testFile;
     private File testSettingsFile;
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
@@ -57,7 +57,7 @@ public class ResultsControllerTest {
         try {
             testFile.createNewFile();
             out = new PrintWriter(testFile);
-            for (String line: expectedResults) {
+            for (String line : expectedResults) {
                 out.println(line);
             }
         } catch (FileNotFoundException ex) {
@@ -79,11 +79,11 @@ public class ResultsControllerTest {
 
         Scanner in = null;
         ArrayList<String> readResults = new ArrayList<>();
-        
+
         // Make sure the file is there and the results written match what was written.
         try {
             in = new Scanner(main.getSettings().getOutputFileDirectory());
-            
+
             while (in.hasNextLine() == true) {
                 readResults.add(in.nextLine());
             }
@@ -94,14 +94,13 @@ public class ResultsControllerTest {
         } finally {
             in.close();
         }
-        
+
         expectedResults.add(0, "Student output file: " + testFile.getName());
         expectedResults.add(1, "");
         expectedResults.add("");
-        
+
         //System.out.println("Expected results: " + expectedResults.toString());
         //System.out.println("Read results: " + readResults.toString());
-               
         assertFalse("There was an error writing the results.", error);
         assertTrue("The expected results did not match the actual results.", expectedResults.equals(readResults));
     }

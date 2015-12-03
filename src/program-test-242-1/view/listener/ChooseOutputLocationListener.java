@@ -20,7 +20,7 @@ public class ChooseOutputLocationListener extends ChooseLocationListener {
     public void updateTextField(File filePicked) {
         getTextField().setText(getMain().getSettings().getOutputFileDirectory().getPath());
     }
-    
+
     @Override
     public void setFileType() {
         getMain().getFileChooser().setFileSelectionMode(JFileChooser.FILES_ONLY);

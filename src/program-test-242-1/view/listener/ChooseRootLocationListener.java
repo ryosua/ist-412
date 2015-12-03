@@ -25,5 +25,5 @@ public class ChooseRootLocationListener extends ChooseLocationListener {
     public void updateTextField(File filePicked) {
         getTextField().setText(getMain().getSettings().getRootDirectory().getPath());
     }
-    
+
 }

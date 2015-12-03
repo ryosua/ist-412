@@ -43,12 +43,12 @@ public class StudentOutputPanel extends JPanel {
     }
 
     private void createComponents() {
-        
+
         ArrayList<Student> students = settings.getStudents();
-                
+
         closeButton = new JButton("Close Window");
         closeButton.addActionListener(new CloseOutputWindowListener(outputPanel));
-        
+
         outputListener = new OpenOutputWindowListener(outputPanel, settings, students.get(0));
         outputButton = new JButton("Open Output");
         outputButton.addActionListener(outputListener);
@@ -82,9 +82,9 @@ public class StudentOutputPanel extends JPanel {
     }
 
     private class StudentRowListener implements ListSelectionListener {
-        
+
         private final OutputController theOutputController;
-        
+
         public StudentRowListener() {
             this.theOutputController = new OutputController();
         }

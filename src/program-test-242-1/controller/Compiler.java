@@ -48,7 +48,7 @@ public class Compiler {
 
             for (int k = 0; k < javaFileList.length; k++) {
                 try {
-                    if (filter.accept(nwdPath, javaFileList[k]) == true) {                        
+                    if (filter.accept(nwdPath, javaFileList[k]) == true) {
                         ProcessBuilder pb
                                 = new ProcessBuilder("javac", "-d", student.getClassPath(), student.getStudentPath() + "/" + javaFileList[k]);
 

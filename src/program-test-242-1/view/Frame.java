@@ -3,24 +3,24 @@ package view;
 import controller.Main;
 import javax.swing.JFrame;
 
-
 public class Frame extends JFrame {
+
     private final JFrame frame;
     private final FileChooser theFileController;
     private final Main main;
     private final MainMenu menu;
 
-    public Frame(Main main){
+    public Frame(Main main) {
         super("ProgramTester Frame");
-        
+
         this.main = main;
-        
+
         frame = new JFrame();
         theFileController = new FileChooser(main);
         menu = new MainMenu(main);
-       
+
         frame.setJMenuBar(menu);
-        
+
         final InputPanel inputPanel = new InputPanel(main);
         frame.add(inputPanel);
 

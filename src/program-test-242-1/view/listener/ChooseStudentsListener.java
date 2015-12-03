@@ -6,13 +6,13 @@ import javax.swing.JTextField;
 import model.ApplicationSettings;
 import view.ChooseStudentsFrame;
 
-public class ChooseStudentsListener  implements ActionListener {
-    
+public class ChooseStudentsListener implements ActionListener {
+
     private final ApplicationSettings settings;
     private final JTextField textField;
-    
+
     private boolean studentWindowOpen = false;
-    
+
     public ChooseStudentsListener(ApplicationSettings settings, JTextField textField) {
         this.settings = settings;
         this.textField = textField;
@@ -27,12 +27,12 @@ public class ChooseStudentsListener  implements ActionListener {
             textField.setText("Select students");
         }
     }
-    
+
     public void setStudentWindowOpen(boolean open) {
         studentWindowOpen = open;
     }
-    
+
     public JTextField getTextField() {
         return textField;
-    } 
+    }
 }

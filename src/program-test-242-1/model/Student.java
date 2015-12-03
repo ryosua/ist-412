@@ -3,14 +3,14 @@ package model;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Student {
-    
+
     private final String classPath;
     private final String sourcePath;
     private final String studentPath;
     private final String outputFileName;
     private final String inputFileStub;
     private final String studentName;
-    
+
     private Results results;
 
     public Student(String classPath, String sourcePath, String studentPath, String outputFileName, String inputFileStub, String studentName) {
@@ -45,11 +45,11 @@ public class Student {
     public String getInputFileStub() {
         return inputFileStub;
     }
-    
+
     public String getStudentName() {
         return studentName;
     }
-    
+
     public void setResults(Results results) {
         this.results = results;
     }

@@ -24,7 +24,7 @@ public abstract class ChooseLocationListener implements ActionListener {
     }
 
     public abstract void saveFile(File filePicked);
-            
+
     public abstract void setFileType();
 
     public abstract void updateTextField(File filePicked);

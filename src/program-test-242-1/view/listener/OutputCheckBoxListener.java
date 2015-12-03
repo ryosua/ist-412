@@ -14,29 +14,29 @@ import model.ApplicationSettings;
  *
  * @author dos5385
  */
-public class OutputCheckBoxListener implements ActionListener{
+public class OutputCheckBoxListener implements ActionListener {
 
     private ApplicationSettings settings;
-    public OutputCheckBoxListener(ApplicationSettings settings){
+
+    public OutputCheckBoxListener(ApplicationSettings settings) {
         this.settings = settings;
-        
+
     }
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         AbstractButton abstractButton = (AbstractButton) e.getSource();
         boolean selected = abstractButton.getModel().isSelected();
         //String newLabel = (selected ? "A" : "B");
         //abstractButton.setText(newLabel);
-        if(selected){
+        if (selected) {
             System.out.println("Check Box clicked. Value is: " + selected);
             settings.setDisplayOutputCheck(true);
-        }else{
+        } else {
             System.out.println("Check Box unclicked. Value is: " + selected);
             settings.setDisplayOutputCheck(false);
         }
-        
+
     }
-    
+
 }

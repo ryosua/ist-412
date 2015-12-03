@@ -30,7 +30,7 @@ public class StudentReader {
         String studentName = "blank";
         String studentHandle = "000000";
         String className = "242-1/";
-        
+
         // Set fixed paths and file names:
         File sourcePath = settings.getSourceFileDirectory();
 

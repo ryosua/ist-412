@@ -64,7 +64,7 @@ public class StudentReaderTest {
         } finally {
             out.close();
         }
-        
+
         //Create some students.
         ArrayList<Student> expectedStudents = new ArrayList();
         Student expectedStudent = new Student(

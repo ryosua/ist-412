@@ -14,14 +14,15 @@ public class BatchTester {
     private final ApplicationSettings settings;
     private final Results results;
     private final ResultsController resultsController;
-    
+
     /**
      * Could be null depending on which constructor is used.
      */
     private InputPanel inputPanel;
-    
+
     /**
      * The main constructor used for the application.
+     *
      * @param settings the settings
      * @param inputPanel the input panel
      */
@@ -37,6 +38,7 @@ public class BatchTester {
 
     /**
      * Use this constructor for testing only. inputPanel will be null.
+     *
      * @param settings the settings
      */
     public BatchTester(ApplicationSettings settings) {

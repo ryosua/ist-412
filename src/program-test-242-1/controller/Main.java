@@ -8,7 +8,7 @@ import model.Strings;
 import view.Frame;
 
 public class Main {
-    
+
     private static final File settingsFile = new File(Strings.SETTINGS_FILE_NAME);
     private final FileChooser fileChooser;
     private final ApplicationSettings settings;

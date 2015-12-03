@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class ApplicationSettings {
-    
+
     public final static String SINGLE_MODE = "Single Mode";
     public final static String BATCH_MODE = "Batch Mode";
 
@@ -21,9 +21,9 @@ public class ApplicationSettings {
     private File testCaseDirectory = new File("");
 
     private ArrayList<Student> students = null;
-    
+
     private boolean displayOutputCheck = true;
-    
+
     public ApplicationSettings(File settingsFile) {
         this.settingsFile = settingsFile;
     }
@@ -55,19 +55,19 @@ public class ApplicationSettings {
     public File getSettingsFile() {
         return settingsFile;
     }
-    
-    public File getTutorialTextDirectory(){
+
+    public File getTutorialTextDirectory() {
         return tutorialTextDirectory;
     }
-    
-    public File getTutorialDirectory(){
+
+    public File getTutorialDirectory() {
         return tutorialDirectory;
     }
-  
-    public File getTutorialImageDirectory(){
+
+    public File getTutorialImageDirectory() {
         return tutorialImageDirectory;
-    } 
-    
+    }
+
     public ArrayList<Student> getStudents() {
         return students;
     }

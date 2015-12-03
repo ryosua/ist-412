@@ -64,7 +64,7 @@ public class ApplicationSettingsTest {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-       
+
         main.getSettings().setConfigFile(testConfigFile);
         ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
 
@@ -83,7 +83,7 @@ public class ApplicationSettingsTest {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-       
+
         main.getSettings().setOutputFileDirectory(testOutputFile);
         ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
 
@@ -102,7 +102,7 @@ public class ApplicationSettingsTest {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-       
+
         main.getSettings().setRootDirectory(testRootDir);
         ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
 
@@ -121,7 +121,7 @@ public class ApplicationSettingsTest {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-       
+
         main.getSettings().setSourceFileDirectory(testSourceFileDir);
         ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
 
@@ -140,7 +140,7 @@ public class ApplicationSettingsTest {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-       
+
         main.getSettings().setTestCaseDirectory(testTestCaseDir);
         ApplicationSettingsController.writeDataToSettingsFile(main.getSettings());
 
@@ -174,7 +174,7 @@ public class ApplicationSettingsTest {
         testRootDir.delete();
         testSourceFileDir.delete();
         testTestCaseDir.delete();
-        
+
         // Delete the test settings file.
         testSettingsFile.delete();
     }

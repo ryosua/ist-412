@@ -30,13 +30,13 @@ public class InputPanel extends JPanel {
     private String outputFieldText;
     private JProgressBar progressBar;
     private String testCaseDirectoryFieldText;
-    
+
     private JButton rootDirectoryButton;
     private JButton studentsButton;
     private JButton sourceDirectoryButton;
     private JButton testCaseButton;
     private JButton outputButton;
-    
+
     public InputPanel(Main main) {
         this.main = main;
 
@@ -166,7 +166,7 @@ public class InputPanel extends JPanel {
         outputButtonC.anchor = GridBagConstraints.EAST;
         outputButtonC.gridx = 1;
         outputButtonC.gridy = 5;
-        
+
         progressBar = new JProgressBar();
         progressBar.setMinimum(0);
         progressBar.setValue(0);
@@ -190,16 +190,14 @@ public class InputPanel extends JPanel {
         showOutputCheckboxC.gridwidth = 1;
         showOutputCheckboxC.anchor = GridBagConstraints.LAST_LINE_END;
         showOutputCheckbox.addActionListener(new OutputCheckBoxListener(main.getSettings()));
-       
+
         final GridBagConstraints progressBarC = new GridBagConstraints();
         progressBarC.fill = GridBagConstraints.HORIZONTAL;
         progressBarC.gridx = 0;
         progressBarC.gridy = 13;
         progressBarC.gridwidth = 1;
         progressBarC.anchor = GridBagConstraints.LAST_LINE_END;
-        
-      
-        
+
         // Select the show output checkbox if the setting is true.
         showOutputCheckbox.setSelected(settings.getDisplayOutputCheck());
 
@@ -229,23 +227,23 @@ public class InputPanel extends JPanel {
         add(showOutputCheckbox, showOutputCheckboxC);
         add(progressBar, progressBarC);
     }
-    
+
     public JProgressBar getProgressBar() {
         return progressBar;
     }
-    
+
     public void setButtonsEnabled(boolean enabled) {
-         rootDirectoryButton.setEnabled(enabled);
-         studentsButton.setEnabled(enabled);
-         sourceDirectoryButton.setEnabled(enabled);
-         testCaseButton.setEnabled(enabled);
-         outputButton.setEnabled(enabled);
+        rootDirectoryButton.setEnabled(enabled);
+        studentsButton.setEnabled(enabled);
+        sourceDirectoryButton.setEnabled(enabled);
+        testCaseButton.setEnabled(enabled);
+        outputButton.setEnabled(enabled);
     }
-    
+
     public void enableAllInputs() {
-        
+
     }
-    
+
     //sets the minimum size for JTextFields
     private static void setMinimumSize(final Component c) {
         c.setMinimumSize(new Dimension(c

@@ -7,7 +7,7 @@ public class OutputFrame extends JFrame {
 
     private final String results;
     private final ApplicationSettings settings;
-    
+
     private OutputPanel output;
 
     public OutputFrame(String results, ApplicationSettings settings) {
@@ -20,7 +20,7 @@ public class OutputFrame extends JFrame {
         this.setSize(500, 500);
         //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
+
         output = new OutputPanel(this, results, settings);
         this.add(output);
 

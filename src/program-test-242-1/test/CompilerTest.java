@@ -81,16 +81,16 @@ public class CompilerTest {
         String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
         Student student = new Student(classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
-        
+
         // Create results just for testing purposes.
         student.setResults(new Results());
-                
+
         Compiler compiler = new Compiler(student);
         int success = compiler.compileAllStudentJavaFiles();
-        
+
         // Delete the output file.
         new File(outputFileName).delete();
-        
+
         assertEquals("The compile failed.", 0, success);
     }
 
@@ -106,16 +106,16 @@ public class CompilerTest {
         String outputFileName = studentPath + "/output-" + studentName + ".txt";
 
         Student student = new Student(classPath, sourcePath.getAbsolutePath(), studentPath, outputFileName, inputFileStub, studentName);
-        
+
         // Create results just for testing purposes.
         student.setResults(new Results());
-        
+
         Compiler compiler = new Compiler(student);
         int success = compiler.compileAllStudentJavaFiles();
-        
+
         // Delete the output file.
         new File(outputFileName).delete();
-        
+
         assertEquals("The compile succeeded when it should have failed.", 1, success);
 
     }
@@ -128,7 +128,7 @@ public class CompilerTest {
     @AfterClass
     public static void teardownTests() {
         System.out.println("All Tests Finished");
-        
+
         testValidJavaFile.delete();
         testBadJavaFile.delete();
 

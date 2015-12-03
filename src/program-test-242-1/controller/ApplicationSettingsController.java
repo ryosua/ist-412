@@ -32,7 +32,7 @@ public class ApplicationSettingsController {
             if (settings.getTestCaseDirectory() != null) {
                 out.println(Strings.TEST_CASE_DIRECTORY_TAG + settings.getTestCaseDirectory().getPath());
             }
-            
+
             out.println(Strings.DISPLAY_OUTPUT_TAG + String.valueOf(settings.getDisplayOutputCheck()));
 
         } catch (FileNotFoundException e) {

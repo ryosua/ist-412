@@ -16,12 +16,11 @@ public class StudentTableModel extends AbstractTableModel {
 
     ArrayList<Student> studentArrayList;
     String[] columnHeaders = {"Students"};
-    public StudentTableModel(ArrayList<Student> students){
+
+    public StudentTableModel(ArrayList<Student> students) {
         studentArrayList = students;
     }
-    
-    
-    
+
     @Override
     public int getRowCount() {
         return studentArrayList.size();
@@ -36,15 +35,17 @@ public class StudentTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         return studentArrayList.get(rowIndex).getStudentName();
     }
-    
+
     @Override
-    public String getColumnName(int column){
+    public String getColumnName(int column) {
         return columnHeaders[column];
     }
-    public boolean isCellEditable(int row, int col)
-        { return false; }
-    
-    public Student getStudent(int row){
+
+    public boolean isCellEditable(int row, int col) {
+        return false;
+    }
+
+    public Student getStudent(int row) {
         return studentArrayList.get(row);
     }
 }

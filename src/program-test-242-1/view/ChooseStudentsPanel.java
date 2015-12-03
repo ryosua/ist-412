@@ -38,10 +38,10 @@ public class ChooseStudentsPanel extends JPanel {
         createComponents();
     }
 
-    private void createComponents() {        
+    private void createComponents() {
         final JCheckBox selectAllCheckBox = new JCheckBox("Select All");
         this.add(selectAllCheckBox, BorderLayout.NORTH);
-        
+
         // Read students from config.
         StudentReader studentReader = new StudentReader(settings);
         students = studentReader.readStudentsFromFileStructure();
@@ -72,7 +72,7 @@ public class ChooseStudentsPanel extends JPanel {
 
         checkBoxesPanel.setLayout(boxLayout);
 
-        okButton.setMaximumSize(new Dimension (80,10));
+        okButton.setMaximumSize(new Dimension(80, 10));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class ChooseStudentsPanel extends JPanel {
             }
         });
         buttonPanel.add(okButton);
-        
+
         scrollPane = new JScrollPane(checkBoxesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane);
         this.add(buttonPanel, BorderLayout.PAGE_END);
@@ -104,7 +104,7 @@ public class ChooseStudentsPanel extends JPanel {
 
         return selectedStudents;
     }
-    
+
     private int getNumberOfSelectedStudents() {
         return getStudentsSelected().size();
     }
@@ -112,11 +112,11 @@ public class ChooseStudentsPanel extends JPanel {
     private void saveSelectedStudents() {
         settings.setStudents(getStudentsSelected());
     }
-    
+
     private void updateInputPanelTextField() {
         frame.getChooseStudentsListener().getTextField().setText(getNumberOfSelectedStudents() + " students selected.");
     }
-    
+
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         frame.dispose();
         frame.setChooseStudentsListener(false);

@@ -13,10 +13,11 @@ import view.OutputPanel;
  *
  * @author dos5385
  */
-public class CloseOutputWindowListener implements ActionListener{
-    
+public class CloseOutputWindowListener implements ActionListener {
+
     private OutputPanel thePanel;
-    public CloseOutputWindowListener(OutputPanel panel){
+
+    public CloseOutputWindowListener(OutputPanel panel) {
         thePanel = panel;
     }
 

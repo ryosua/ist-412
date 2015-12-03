@@ -19,7 +19,7 @@ public class ResultsController {
     private final Results results;
     private String resultDatatoPrint = "";
     private OutputFrame frame;
-    
+
     public ResultsController(ApplicationSettings settings, Results results) {
         this.settings = settings;
         this.outputFile = this.settings.getOutputFileDirectory();
@@ -28,29 +28,28 @@ public class ResultsController {
 
     public void writeResults() {
         PrintWriter out = null;
-            
+
         try {
             // Create a new output file if it does not exsit.
             outputFile.createNewFile();
             out = new PrintWriter(outputFile);
-            
+
             for (File file : results.getFiles()) {
                 Scanner in = new Scanner(file);
-                    out.println("Student output file: " + file.getName());
-                    out.println();
-            
+                out.println("Student output file: " + file.getName());
+                out.println();
+
                 while (in.hasNext()) {
                     String line = in.nextLine();
                     out.println(line);
-                    resultDatatoPrint +=line + "\n";
+                    resultDatatoPrint += line + "\n";
                 }
                 out.println();
                 in.close();
                 //System.out.println("\n\n\n\n\n\nRESULTS\n\n\n\n\n\n" + resultDatatoPrint);
             }
-            
-            
-            if(settings.getDisplayOutputCheck()) {
+
+            if (settings.getDisplayOutputCheck()) {
                 frame = new OutputFrame(resultDatatoPrint, settings);
             }
         } catch (FileNotFoundException ex) {
