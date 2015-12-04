@@ -240,10 +240,6 @@ public class InputPanel extends JPanel {
         outputButton.setEnabled(enabled);
     }
 
-    public void enableAllInputs() {
-
-    }
-
     //sets the minimum size for JTextFields
     private static void setMinimumSize(final Component c) {
         c.setMinimumSize(new Dimension(c
